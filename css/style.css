@@ -1835,14 +1835,14 @@ color
 .article-entry .gist .gist-file .gist-data .line-numbers {
   color: #666;
 }
-.article-entry pre,
-.article-entry code {
+.article-entry pre {
   font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
 }
 .article-entry code {
   background: #eee;
   padding: 0 0.3em;
   border: none;
+  font-family: courier;
 }
 .article-entry pre {
   color: #fff;
