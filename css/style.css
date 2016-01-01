@@ -1703,7 +1703,7 @@ color
   color: #666;
 }
 .article-entry pre {
-  font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
+  font-family: "Courier", "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
 }
 .article-entry code {
   background: #eee;
