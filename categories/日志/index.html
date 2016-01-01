@@ -33,7 +33,7 @@
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
 			
-			<img src="/img/spfk.jpg" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+			<img lazy-src="/img/spfk.jpg" class="js-avatar">
 			
 		</a>
 
@@ -57,11 +57,6 @@
 							<div class="ribbon"></div>
 						</div>
 						
-						<div class="icon-wrap icon-link hide" data-idx="2">
-							<div class="loopback_l"></div>
-							<div class="loopback_r"></div>
-						</div>
-						
 						
 						<div class="icon-wrap icon-me hide" data-idx="3">
 							<div class="user"></div>
@@ -76,8 +71,6 @@
 					<ul class="tips-inner">
 						<li>菜单</li>
 						<li>标签</li>
-						
-						<li>友情链接</li>
 						
 						
 						<li>关于我</li>
@@ -123,20 +116,12 @@
 				
 				
 				
-				<section class="switch-part switch-part3">
-					<div id="js-friends">
-					
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.ruanyifeng.com/home.html">阮一峰</a>
-			        
-			        </div>
-				</section>
-				
 
 				
 				
-				<section class="switch-part switch-part4">
+				<section class="switch-part switch-part3">
 				
-					<div id="js-aboutme">为什么我的眼里常含泪水，因为我对这土地爱得深沉！</div>
+					<div id="js-aboutme">移动前端</div>
 				</section>
 				
 			</div>
@@ -155,7 +140,7 @@
 		<header id="header" class="inner">
 			<div class="profilepic">
 			
-				<img src="/img/spfk.jpg" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+				<img lazy-src="/img/spfk.jpg" class="js-avatar">
 			
 			</div>
 			<hgroup>
@@ -278,7 +263,7 @@
 	var spfkConfig = {
 		fancybox: true,
 		mathjax: false,
-		animate: false,
+		animate: true,
 		isHome: false,
 		isPost: false,
 		isArchive: false,
