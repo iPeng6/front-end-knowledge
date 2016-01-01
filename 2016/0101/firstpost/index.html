@@ -29,7 +29,7 @@ https://nodejs.org/en/
 查看版本 git version
 安装hexo
 npm install -g hexo-cli">
-<meta property="og:updated_time" content="2016-01-01T06:11:39.000Z">
+<meta property="og:updated_time" content="2016-01-01T06:18:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="老规矩第一篇建站日志">
 <meta name="twitter:description" content="这里做一下步骤记录，本站通过hexo+github搭建
@@ -138,7 +138,7 @@ npm install -g hexo-cli">
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+						<a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
 					</div>
 				</section>
 				
@@ -272,7 +272,7 @@ npm install -g hexo-cli">
 <p><strong>配置GitHub</strong></p>
 <p>到GitHub上new repository（例：hexoblog）,复制地址</p>
 <p><strong>配置_config.yml</strong></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># URL&#10;url: http://yourname.github.io/hexoblog/&#10;root: /hexoblog/&#10;&#10;# Deployment&#10;deploy:&#10;  type: git&#10;  repo: https://github.com/yourname/hexoblog.git</span><br></pre></td></tr></table></figure>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># URL</span></span><br><span class="line">url: http:<span class="comment">//yourname.github.io/hexoblog/</span></span><br><span class="line">root: /hexoblog/</span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># Deployment</span></span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https:<span class="comment">//github.com/yourname/hexoblog.git</span></span><br></pre></td></tr></table></figure>
 <p><strong>安装 hexo-deployer-git</strong></p>
 <p>npm install hexo-deployer-git –save</p>
 <p><strong>部署</strong></p>
@@ -306,6 +306,20 @@ npm install -g hexo-cli">
   </div>
   
     
+<nav id="article-nav">
+  
+    <a href="/2016/0101/test1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          test1
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
   
 </article>
 
@@ -390,7 +404,9 @@ npm install -g hexo-cli">
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2016/0101/test1/" title="上一篇: test1">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
@@ -400,7 +416,7 @@ npm install -g hexo-cli">
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/0101/firstpost/">老规矩第一篇建站日志</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/0101/test1/">test1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/0101/firstpost/">老规矩第一篇建站日志</a></li></ul>
     <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
