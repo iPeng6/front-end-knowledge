@@ -1365,7 +1365,7 @@ color
   visibility: hidden;
 }
 #article-nav {
-  margin: 80px 0 30px 0;
+  margin: 70px 0 30px 0;
   padding-bottom: 10px;
 }
 #article-nav .article-nav-link-wrap {
@@ -1504,6 +1504,7 @@ color
   width: 85%;
   max-width: 45em;
   margin: 0 auto;
+  margin-bottom: 1.5em;
   padding: 0.5em 1.8em;
   border: 1px solid #d3d3d3;
   font-size: 0.93em;
