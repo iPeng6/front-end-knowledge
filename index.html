@@ -5,15 +5,15 @@
   
   <title>nogic&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="nogic的个人博客">
+  <meta name="description" content="nogic的个人博客，iOS，ReactNative">
 <meta property="og:type" content="website">
 <meta property="og:title" content="nogic's blog">
 <meta property="og:url" content="http://pengyl.cn/index.html">
 <meta property="og:site_name" content="nogic's blog">
-<meta property="og:description" content="nogic的个人博客">
+<meta property="og:description" content="nogic的个人博客，iOS，ReactNative">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nogic's blog">
-<meta name="twitter:description" content="nogic的个人博客">
+<meta name="twitter:description" content="nogic的个人博客，iOS，ReactNative">
   
     <link rel="alternative" href="/atom.xml" title="nogic&#39;s blog" type="application/atom+xml">
   
@@ -288,60 +288,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>这里做一下步骤记录，本站通过hexo+github搭建</p>
-<h1 id="Mac_u5B89_u88C5Hexo_u535A_u5BA2"><a href="#Mac_u5B89_u88C5Hexo_u535A_u5BA2" class="headerlink" title="Mac安装Hexo博客"></a>Mac安装Hexo博客</h1><p><strong>官方教程</strong></p>
-<p><a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="external">https://hexo.io/zh-cn/docs/index.html</a></p>
-<p><strong>安装Node.js</strong></p>
-<p><a href="https://nodejs.org/en/" target="_blank" rel="external">https://nodejs.org/en/</a></p>
-<p>查看版本 node －v</p>
-<p>安装Git,安装了Xcode即自动安装了Git</p>
-<p>查看版本 git version</p>
-<p><strong>安装hexo</strong></p>
-<p>npm install -g hexo-cli</p>
-<p>查看版本 hexo -v</p>
-<p><strong>建站</strong></p>
-<p>hexo init <folder></folder></p>
-<p>cd <folder></folder></p>
-<p>npm install</p>
-<p><strong>安装服务器hexo-server</strong></p>
-<p>npm install hexo-server –save</p>
-<p>启动服务器</p>
-<p>hexo server</p>
-<p>本地测试</p>
-<p><a href="http://0.0.0.0:4000/hexoblog/" target="_blank" rel="external">http://0.0.0.0:4000/hexoblog/</a></p>
-<p><strong>生成静态页面</strong></p>
-<p>hexo generate</p>
-<p><strong>配置GitHub</strong></p>
-<p>到GitHub上new repository（例：hexoblog）,复制地址</p>
-<p><strong>配置_config.yml</strong></p>
-<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># URL</span></span><br><span class="line">url: http:<span class="comment">//yourname.github.io/hexoblog/</span></span><br><span class="line">root: /hexoblog/</span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># Deployment</span></span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https:<span class="comment">//github.com/yourname/hexoblog.git</span></span><br></pre></td></tr></table></figure>
-<p><strong>安装 hexo-deployer-git</strong></p>
-<p>npm install hexo-deployer-git –save</p>
-<p><strong>部署</strong></p>
-<p>hexo deploy</p>
-<p><strong>生成后部署</strong></p>
-<p>hexo generate –deploy //简写 hexo d -g</p>
-<p><strong>外网访问</strong></p>
-<p><a href="http://yourname.github.io/hexoblog/" target="_blank" rel="external">http://yourname.github.io/hexoblog/</a></p>
-<p><strong>新建文章</strong></p>
-<p>hexo new [layout] <title></title></p>
-<h1 id="u57DF_u540D_u7ED1_u5B9A"><a href="#u57DF_u540D_u7ED1_u5B9A" class="headerlink" title="域名绑定"></a>域名绑定</h1><p>在仓库根目录瞎新建CNAME文件，写上你要绑定的域名如</p>
-<p>qq.cn</p>
-<p>在域名提供商后台添加A记录 指向192.30.252.153或者192.30.252.154 </p>
-<p>注意不要重复设置两个</p>
-<ol>
-<li><p>不要让相同记录指向不同的ip</p>
-</li>
-<li><p>也不要多个记录指向同一个博客 搜索引擎会认为是不同的站点 会分散权重</p>
-</li>
-</ol>
-<p>解决方法 通过301重定向 可以保证权重</p>
-<p>如qq.cn =&gt; 192.30.252.153</p>
-<p>再新建一个CNAME记录</p>
-<p>www.qq.cn =&gt; qq.github.io 因为我们知道qq.github.io这个已经是被301永久重定向qq.cn的</p>
-<h1 id="u4E3B_u9898_u4FEE_u6539"><a href="#u4E3B_u9898_u4FEE_u6539" class="headerlink" title="主题修改"></a>主题修改</h1><p>主题使用的<a href="https://github.com/luuman/hexo-theme-spfk" target="_blank" rel="external">spfk</a><br>配置多说评论 将多说二级域名的第一部分 作为short_name填入配置文件<br>将clone下来的主题里的多说.css文件 加入到多说后台自定义配置中</p>
-<p>文章下面的分享图标有些问题没有启用AwsomeFont，参照了<a href="http://luuman.github.io/" target="_blank" rel="external">原作者博客</a>自己修改模板文件</p>
-
+              <p>这里做一下步骤记录，本站通过hexo+github搭建</p>
+          
       
     </div>
     
@@ -358,6 +306,10 @@
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
 	</div>
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/0101/firstpost/#more">更多 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
