@@ -1537,6 +1537,22 @@ color
   color: #808080;
   cursor: pointer;
 }
+.bdshare-button-style2-24 .fx {
+  color: #999;
+  padding: 0;
+  margin: 6px;
+  height: 54px;
+  display: inline-block;
+  font: normal normal normal 36px/1 FontAwesome;
+  background: none;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.bdshare-button-style2-24 .fx:hover {
+  color: #fff;
+  opacity: 1;
+}
 @-moz-keyframes cd-bounce-1 {
   0% {
     opacity: 0;
