@@ -9,7 +9,8 @@
 
 ATS问题
 找不到js文件
-js文件遇到jsx的时会提示’&amp;lt;’语法错误">
+js文件遇到jsx的时会提示’&amp;lt;’语法错误
+WebSocket问题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="踩坑-在已有的iOS应用中集成React Native">
 <meta property="og:url" content="http://pengyl.cn/2016/0102/踩坑-在已有的iOS应用中集成React-Native/index.html">
@@ -18,15 +19,17 @@ js文件遇到jsx的时会提示’&amp;lt;’语法错误">
 
 ATS问题
 找不到js文件
-js文件遇到jsx的时会提示’&amp;lt;’语法错误">
-<meta property="og:updated_time" content="2016-01-02T13:10:31.000Z">
+js文件遇到jsx的时会提示’&amp;lt;’语法错误
+WebSocket问题">
+<meta property="og:updated_time" content="2016-01-02T14:04:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="踩坑-在已有的iOS应用中集成React Native">
 <meta name="twitter:description" content="原文参考的极客学院的翻译http://wiki.jikexueyuan.com/project/react-native/integration-existing.html
 
 ATS问题
 找不到js文件
-js文件遇到jsx的时会提示’&amp;lt;’语法错误">
+js文件遇到jsx的时会提示’&amp;lt;’语法错误
+WebSocket问题">
   
     <link rel="alternative" href="/atom.xml" title="nogic&#39;s blog" type="application/atom+xml">
   
@@ -246,13 +249,14 @@ var _hmt = _hmt || [];
 <ul>
 <li>ATS问题</li>
 <li>找不到js文件</li>
-<li>js文件遇到jsx的<view>时会提示’&lt;’语法错误<a id="more"></a>
-</view></li>
+<li>js文件遇到jsx的<view>时会提示’&lt;’语法错误</view></li>
+<li>WebSocket问题<a id="more"></a>
+</li>
 </ul>
 <p>ATS问题不说了</p>
 <h3 id="u627E_u4E0D_u5230js_u95EE_u9898"><a href="#u627E_u4E0D_u5230js_u95EE_u9898" class="headerlink" title="找不到js问题"></a>找不到js问题</h3><p>这句话一定要在应用根目录执行</p>
-<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(JS_DIR=`pwd`/ReactComponent; cd Pods/React; npm run <span class="keyword">start</span> -- --root <span class="variable">$JS</span>_DIR)</span><br></pre></td></tr></table></figure>
-<p>不然路径就完全不对了，然这样还是不能绑定ReactComponent为根目录，还是找不到index.ios.js文件<br>所以我还是把这个js文件直接拷贝到根目录下 可以找到了</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(JS_DIR=`pwd`/ReactComponent; cd Pods/React; npm run <span class="keyword">start</span> --root <span class="variable">$JS</span>_DIR)</span><br></pre></td></tr></table></figure>
+<p>不然路径就完全不对了，然这样还是不能绑定ReactComponent为js根目录，还是找不到index.ios.js文件<br>所以我还是把这个js文件直接拷贝到根目录下 可以找到了</p>
 <p>但是还是会出问题 报各种语法错误 感觉不识别jsx，也不识别es6语法，原来加载地址urlString最后是<code>8081/index.ios.bundle</code> 不是<code>index.ios.js</code></p>
 <p>然即便如此还是会有问题</p>
 <figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">undefined</span> <span class="keyword">is</span> <span class="keyword">not</span> an object (evaluating <span class="string">\'RCTWebSocketManager.connect\')</span></span><br></pre></td></tr></table></figure>
@@ -268,7 +272,7 @@ var _hmt = _hmt || [];
         <p><span>本文标题:</span><a href="/2016/0102/踩坑-在已有的iOS应用中集成React-Native/">踩坑-在已有的iOS应用中集成React Native</a></p>
         <p><span>文章作者:</span><a href="/" title="请访问 nogic 博客">nogic</a></p>
         <p><span>发布时间:</span>2016年01月02日 - 20时45分</p> 
-        <p><span>最后更新:</span>2016年01月02日 - 21时10分</p> 
+        <p><span>最后更新:</span>2016年01月02日 - 22时04分</p> 
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/0102/踩坑-在已有的iOS应用中集成React-Native/" title="踩坑-在已有的iOS应用中集成React Native">http://pengyl.cn/2016/0102/踩坑-在已有的iOS应用中集成React-Native/</a>
             <span class="copy-path" data-clipboard-text="原文: http://pengyl.cn/2016/0102/踩坑-在已有的iOS应用中集成React-Native/　　作者: nogic" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
