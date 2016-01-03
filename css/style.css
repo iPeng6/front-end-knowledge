@@ -1697,7 +1697,6 @@ color
   padding: 10px 10px;
   overflow: auto;
   color: #4c4c4c;
-  line-height: 22.400000000000002px;
 }
 .article-entry .highlight .gutter pre,
 .article-entry .gist .gist-file .gist-data .line-numbers {
