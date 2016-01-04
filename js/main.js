@@ -10,7 +10,7 @@ require([], function (){
 	var isPCInit = false;
 	var loadPC = function(){
 		require(['/js/pc.js'], function(pc){
-			pc.init();
+			pc&&pc.init();
 			isPCInit = true;
 		});
 	}
