@@ -250,7 +250,7 @@ nvm install node &amp;&amp; nvm alias default node
 <p>brew install android-sdk</p>
 <p><strong>定义ANDROID_HOME环境变量</strong></p>
 <p>往~/.bashrc, ~/.bash_profile添加以下内容(只添加一个注释掉另一个)</p>
-<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># 如果你是通过Homebrew安装SDK的，则加入下列路径 </span></span><br><span class="line"></span><br><span class="line">export ANDROID_HOME=/usr/local/opt/android-sdk </span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># 否则可能是（当然具体视你把SDK放在哪）： </span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># export ANDROID_HOME=~/Library/Android/sdk</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight vala"><table><tr><td class="code"><pre><span class="line"><span class="preprocessor"># 如果你是通过Homebrew安装SDK的，则加入下列路径 </span></span><br><span class="line"></span><br><span class="line">export ANDROID_HOME=/usr/local/opt/android-sdk </span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># 否则可能是（当然具体视你把SDK放在哪）： </span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># export ANDROID_HOME=~/Library/Android/sdk</span></span><br></pre></td></tr></table></figure>
 <p><strong>开启gradle daemon</strong></p>
 <p>mkdir ~/.gradle</p>
 <p>touch ~/.gradle/gradle.properties &amp;&amp; echo “org.gradle.daemon=true” &gt;&gt; ~/.gradle/gradle.properties</p>

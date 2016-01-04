@@ -253,11 +253,11 @@ var _hmt = _hmt || [];
 </ul>
 <p>ATS问题不说了</p>
 <h3 id="u627E_u4E0D_u5230js_u95EE_u9898"><a href="#u627E_u4E0D_u5230js_u95EE_u9898" class="headerlink" title="找不到js问题"></a>找不到js问题</h3><p>这句话一定要在应用根目录执行</p>
-<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(JS_DIR=`pwd`/ReactComponent; cd Pods/React; npm run <span class="keyword">start</span> --root <span class="variable">$JS</span>_DIR)</span><br></pre></td></tr></table></figure>
+<figure class="highlight xquery"><table><tr><td class="code"><pre><span class="line">(JS_DIR=`pwd`/ReactComponent; cd Pods/React; npm run <span class="keyword">start</span> --root <span class="variable">$JS</span>_DIR)</span><br></pre></td></tr></table></figure>
 <p>不然路径就完全不对了，然这样还是不能绑定ReactComponent为js根目录，还是找不到index.ios.js文件<br>所以我还是把这个js文件直接拷贝到根目录下 可以找到了</p>
 <p>但是还是会出问题 报各种语法错误 感觉不识别jsx，也不识别es6语法，原来加载地址urlString最后是<code>8081/index.ios.bundle</code> 不是<code>index.ios.js</code></p>
 <p>然即便如此还是会有问题</p>
-<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">undefined</span> <span class="keyword">is</span> <span class="keyword">not</span> an object (evaluating <span class="string">\'RCTWebSocketManager.connect\')</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight livescript"><table><tr><td class="code"><pre><span class="line"><span class="literal">undefined</span> <span class="keyword">is</span> <span class="keyword">not</span> an object (evaluating <span class="string">\'RCTWebSocketManager.connect\')</span></span><br></pre></td></tr></table></figure>
 <p>于是查到<a href="http://stackoverflow.com/questions/32330988/error-undefined-is-not-an-object-evaluating-rctwebsocketmanager-connect" target="_blank" rel="external">http://stackoverflow.com/questions/32330988/error-undefined-is-not-an-object-evaluating-rctwebsocketmanager-connect</a><br>找到解决方法就是 在Podfile文件里要加 <code>pod &#39;React/RCTWebSocket&#39;</code></p>
 
       
