@@ -17,8 +17,6 @@
 <meta name="twitter:title" content="踩坑-ReactNative集成百度地图">
 <meta name="twitter:description" content="下面这个Demo集成了ReactNative自带的地图MapView和自己学习集成了一个BDMapView，主要涉及ReactNative组件封装这一块内容，GitHub源码">
   
-    <link rel="alternative" href="/atom.xml" title="nogic&#39;s blog" type="application/atom+xml">
-  
   
     <link rel="icon" href="/img/favicon.png">
   
@@ -26,17 +24,6 @@
   <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   
-  
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?9631e0ae98876825f1203f8a5ff9de88";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
 </head>
 <body>
   <div id="container">
@@ -46,7 +33,7 @@ var _hmt = _hmt || [];
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
 			
-			<img lazy-src="/img/spfk.jpg" class="js-avatar">
+			<img lazy-src="/img/head.jpg" class="js-avatar">
 			
 		</a>
 
@@ -57,7 +44,7 @@ var _hmt = _hmt || [];
 		
 		<p class="header-subtitle">人生是一场独自的修行</p>
 		
-
+<input type="text" class="st-default-search-input" id="search" placeholder=" Search...">
 		
 			<div id="switch-btn" class="switch-btn">
 				<div class="icon">
@@ -110,11 +97,11 @@ var _hmt = _hmt || [];
 					<nav class="header-nav">
 						<div class="social">
 							
-								<a class="weibo" target="_blank" href="http://weibo.com/nogicwit" title="weibo">weibo</a>
+								<a class="fl weibo" target="_blank" href="http://weibo.com/nogicwit" title="weibo">weibo</a>
 					        
-								<a class="github" target="_blank" href="https://github.com/nogic" title="github">github</a>
+								<a class="fl github" target="_blank" href="https://github.com/nogic" title="github">github</a>
 					        
-								<a class="douban" target="_blank" href="http://www.douban.com/people/nogicwit/" title="douban">douban</a>
+								<a class="fl douban" target="_blank" href="http://www.douban.com/people/nogicwit/" title="douban">douban</a>
 					        
 						</div>
 					</nav>
@@ -153,7 +140,7 @@ var _hmt = _hmt || [];
 		<header id="header" class="inner">
 			<div class="profilepic">
 			
-				<img lazy-src="/img/spfk.jpg" class="js-avatar">
+				<img lazy-src="/img/head.jpg" class="js-avatar">
 			
 			</div>
 			<hgroup>
@@ -280,9 +267,9 @@ var _hmt = _hmt || [];
     
     <div class="copyright">
         <p><span>本文标题:</span><a href="/2016/0103/踩坑-ReactNative集成百度地图/">踩坑-ReactNative集成百度地图</a></p>
-        <p><span>文章作者:</span><a href="/" title="请访问 nogic 博客">nogic</a></p>
-        <p><span>发布时间:</span>2016年01月03日 - 17时47分</p> 
-        <p><span>最后更新:</span>2016年01月03日 - 19时40分</p> 
+        <p><span>文章作者:</span><a href="/" title="请访问 nogic 个人博客">nogic</a></p>
+        <p><span>发布时间:</span>2016年01月03日 - 17时47分</p>
+        <p><span>最后更新:</span>2016年01月03日 - 19时40分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/0103/踩坑-ReactNative集成百度地图/" title="踩坑-ReactNative集成百度地图">http://pengyl.cn/2016/0103/踩坑-ReactNative集成百度地图/</a>
             <span class="copy-path" data-clipboard-text="原文: http://pengyl.cn/2016/0103/踩坑-ReactNative集成百度地图/　　作者: nogic" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -354,10 +341,12 @@ var _hmt = _hmt || [];
 
 
 
-<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+<div class="bdsharebuttonbox">
+<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
 <a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
 <a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>
+<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
 <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 
 
@@ -451,7 +440,7 @@ var _hmt = _hmt || [];
         </div>
         <div class="visit">
             <span id="busuanzi_container_site_pv" style='display:none'>
-                <span id="site-visit" >访客数: 
+                <span id="site-visit" >海贼到访数: 
                     <span id="busuanzi_value_site_uv"></span>
                 </span>
             </span>
@@ -502,6 +491,15 @@ var _hmt = _hmt || [];
             $("#scroll > a:nth-child(2)").hide();
         };
     })
+</script>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','A1Pz-LKMXbrzcFg2FWi6','2.0.0');
 </script>
   </div>
 </body>
