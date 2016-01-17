@@ -3,33 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>踩坑-在已有的iOS应用中集成React Native | nogic&#39;s blog</title>
+  <title>reactnative fetch self-signed https(react native 请求自签名的无效证书的https) | nogic&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="原文参考的极客学院的翻译http://wiki.jikexueyuan.com/project/react-native/integration-existing.html
-
-ATS问题
-找不到js文件
-js文件遇到jsx的时会提示’&amp;lt;’语法错误
-WebSocket问题">
+  <meta name="description" content="我们知道iOS9之后苹果默认启用https验证了，这就要我们的服务器做https升级，当然我们可以通过plist配置来允许http访问，可势必会有一些安全问题，既然要启用https可是https的证书是非常贵的，我们测试开发的时候就随便用了个自己签名的证书，于是问题就来了">
 <meta property="og:type" content="article">
-<meta property="og:title" content="踩坑-在已有的iOS应用中集成React Native">
-<meta property="og:url" content="http://pengyl.cn/2016/0102/踩坑-在已有的iOS应用中集成React-Native/index.html">
+<meta property="og:title" content="reactnative fetch self-signed https(react native 请求自签名的无效证书的https)">
+<meta property="og:url" content="http://pengyl.cn/2016/0117/reactnative-fetch-selfsigned-https/index.html">
 <meta property="og:site_name" content="nogic's blog">
-<meta property="og:description" content="原文参考的极客学院的翻译http://wiki.jikexueyuan.com/project/react-native/integration-existing.html
-
-ATS问题
-找不到js文件
-js文件遇到jsx的时会提示’&amp;lt;’语法错误
-WebSocket问题">
-<meta property="og:updated_time" content="2016-01-02T14:04:22.000Z">
+<meta property="og:description" content="我们知道iOS9之后苹果默认启用https验证了，这就要我们的服务器做https升级，当然我们可以通过plist配置来允许http访问，可势必会有一些安全问题，既然要启用https可是https的证书是非常贵的，我们测试开发的时候就随便用了个自己签名的证书，于是问题就来了">
+<meta property="og:updated_time" content="2016-01-17T12:36:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="踩坑-在已有的iOS应用中集成React Native">
-<meta name="twitter:description" content="原文参考的极客学院的翻译http://wiki.jikexueyuan.com/project/react-native/integration-existing.html
-
-ATS问题
-找不到js文件
-js文件遇到jsx的时会提示’&amp;lt;’语法错误
-WebSocket问题">
+<meta name="twitter:title" content="reactnative fetch self-signed https(react native 请求自签名的无效证书的https)">
+<meta name="twitter:description" content="我们知道iOS9之后苹果默认启用https验证了，这就要我们的服务器做https升级，当然我们可以通过plist配置来允许http访问，可势必会有一些安全问题，既然要启用https可是https的证书是非常贵的，我们测试开发的时候就随便用了个自己签名的证书，于是问题就来了">
   
   
     <link rel="icon" href="/img/favicon.png">
@@ -201,11 +186,11 @@ var _hmt = _hmt || [];
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-踩坑-在已有的iOS应用中集成React-Native" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-reactnative-fetch-selfsigned-https" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/0102/踩坑-在已有的iOS应用中集成React-Native/" class="article-date">
-  	<time datetime="2016-01-02T12:45:15.000Z" itemprop="datePublished">2016-01-02</time>
+      <a href="/2016/0117/reactnative-fetch-selfsigned-https/" class="article-date">
+  	<time datetime="2016-01-17T09:38:48.000Z" itemprop="datePublished">2016-01-17</time>
 </a>
     </div>
   
@@ -218,7 +203,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      踩坑-在已有的iOS应用中集成React Native
+      reactnative fetch self-signed https(react native 请求自签名的无效证书的https)
     </h1>
   
 
@@ -243,22 +228,26 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>原文参考的极客学院的翻译<a href="http://wiki.jikexueyuan.com/project/react-native/integration-existing.html" target="_blank" rel="external">http://wiki.jikexueyuan.com/project/react-native/integration-existing.html</a></p>
-<ul>
-<li>ATS问题</li>
-<li>找不到js文件</li>
-<li>js文件遇到jsx的<view>时会提示’&lt;’语法错误</view></li>
-<li>WebSocket问题<a id="more"></a>
-</li>
-</ul>
-<p>ATS问题不说了</p>
-<h3 id="u627E_u4E0D_u5230js_u95EE_u9898"><a href="#u627E_u4E0D_u5230js_u95EE_u9898" class="headerlink" title="找不到js问题"></a>找不到js问题</h3><p>这句话一定要在应用根目录执行</p>
-<figure class="highlight xquery"><table><tr><td class="code"><pre><span class="line">(JS_DIR=`pwd`/ReactComponent; cd Pods/React; npm run <span class="keyword">start</span> --root <span class="variable">$JS</span>_DIR)</span><br></pre></td></tr></table></figure>
-<p>不然路径就完全不对了，然这样还是不能绑定ReactComponent为js根目录，还是找不到index.ios.js文件<br>所以我还是把这个js文件直接拷贝到根目录下 可以找到了</p>
-<p>但是还是会出问题 报各种语法错误 感觉不识别jsx，也不识别es6语法，原来加载地址urlString最后是<code>8081/index.ios.bundle</code> 不是<code>index.ios.js</code></p>
-<p>然即便如此还是会有问题</p>
-<figure class="highlight livescript"><table><tr><td class="code"><pre><span class="line"><span class="literal">undefined</span> <span class="keyword">is</span> <span class="keyword">not</span> an object (evaluating <span class="string">\'RCTWebSocketManager.connect\')</span></span><br></pre></td></tr></table></figure>
-<p>于是查到<a href="http://stackoverflow.com/questions/32330988/error-undefined-is-not-an-object-evaluating-rctwebsocketmanager-connect" target="_blank" rel="external">http://stackoverflow.com/questions/32330988/error-undefined-is-not-an-object-evaluating-rctwebsocketmanager-connect</a><br>找到解决方法就是 在Podfile文件里要加 <code>pod &#39;React/RCTWebSocket&#39;</code></p>
+        <p>我们知道iOS9之后苹果默认启用https验证了，这就要我们的服务器做https升级，当然我们可以通过plist配置来允许http访问，可势必会有一些安全问题，既然要启用https可是https的证书是非常贵的，我们测试开发的时候就随便用了个自己签名的证书，于是问题就来了<br><a id="more"></a></p>
+<p>当使用ReactNative的时候请求网络都是用的fetch，但是从调试错误信息来看，fetch会解释成iOS本地的NSURLConnection/NSURLSession来做网络访问，而iOS默认这些方法都会去验证证书，而我们明知道这个证书是无效的，始终<code>TypeError: Network request failed</code>，然后我尝试用原生的写一遍，提示</p>
+<p>&gt;<br>Error Domain=NSURLErrorDomain Code=-1202 “The certificate for this server is invalid. You might be connecting to a server that is pretending to be “pfs-vis.vip.com” which could put your confidential information at risk.” </p>
+<p>明显是说证书无效，后来查了很多关于这个问题的解决方法比如stachoverflow上的一个总结回答<a href="http://stackoverflow.com/questions/22663768/https-ios-with-self-signed-certificate" target="_blank" rel="external">Https iOS with self signed certificate</a>，他也说了</p>
+<blockquote>
+<p>By default, Cocoa refuses all SSL connections when the certificate is invalid…</p>
+</blockquote>
+<p>默认cocoa框架拒绝所有无效证书的SSL连接访问，通过AFN我们也能通过代理来绕过验证</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)testHttps &#123;</span><br><span class="line">  AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];</span><br><span class="line"></span><br><span class="line">  <span class="built_in">NSDictionary</span> *paramaters = @&#123;<span class="string">@"userName"</span>:<span class="string">@"zhangsan"</span>,<span class="string">@"password"</span>:<span class="string">@"12345678"</span>&#125;;</span><br><span class="line">  <span class="built_in">NSString</span> *url = <span class="string">@"https://your.domain.com/login.html"</span>;</span><br><span class="line">  </span><br><span class="line">  AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];</span><br><span class="line">  </span><br><span class="line">  securityPolicy<span class="variable">.allowInvalidCertificates</span> = <span class="literal">YES</span>;</span><br><span class="line">  securityPolicy<span class="variable">.validatesDomainName</span> = <span class="literal">false</span>;</span><br><span class="line">  mgr<span class="variable">.securityPolicy</span> = securityPolicy;</span><br><span class="line">  </span><br><span class="line">  [mgr POST:url parameters:paramaters progress:^(<span class="built_in">NSProgress</span> * _Nonnull uploadProgress) &#123;</span><br><span class="line">    </span><br><span class="line">  &#125; success:^(<span class="built_in">NSURLSessionDataTask</span> * _Nonnull task, <span class="keyword">id</span>  _Nullable responseObject) &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"--&gt; responseObject: %@"</span>,responseObject);</span><br><span class="line">  &#125; failure:^(<span class="built_in">NSURLSessionDataTask</span> * _Nullable task, <span class="built_in">NSError</span> * _Nonnull error) &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"--&gt; error: %@"</span>,error);</span><br><span class="line">  &#125;];</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>AFSSLPinningModeNone</code>这个枚举还有另外的几个值</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="built_in">NS_ENUM</span>(<span class="built_in">NSUInteger</span>, AFSSLPinningMode) &#123;</span><br><span class="line">    AFSSLPinningModeNone,</span><br><span class="line">    AFSSLPinningModePublicKey,</span><br><span class="line">    AFSSLPinningModeCertificate,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>网上也有很多方法来简单验证一下这个无效的自签名证书来保证即使用的是无效证书也能验证一下这个证书跟服务器的一致性来稍微提高一下安全性，具体后面有需要再研究</p>
+<p>我们这里是react native，用的是fetch，转成oc会默认验证，就会默认失败，如果自己改造代码封装一套给React Native 调用势必很麻烦，有没有一种不动代码就能更好的开发调试无效证书的https的方法呢？</p>
+<p>最后通过代理的方式解决了，折腾了好久</p>
+<p>通过Fiddler这个windows下的软件可以忽略https证书一种https中间人攻击的方式</p>
+<p>Tools-&gt;Fiddler Options-&gt;HTTPS-&gt;勾选Decrypt HTTPS traffic &amp; Ignore server certificate errors(unsafe)</p>
+<p>Connections-&gt; Allow remote computers to connect,这里的端口默认是8888</p>
+<p>这个是远行在windows上的，查一下电脑ip，然后我的mac设备，iPhone设备的网络代理都设置成这台电脑，然后所有的连接都是通过这台电脑了，然后我们的设备浏览器访问一下这台机器的地址 <a href="http://ip:8888" target="_blank" rel="external">http://ip:8888</a> 会有个页面最后一个连接下载证书FiddlerRoot certificate，双击安装证书mac的钥匙串就有有这个证书双击全部信任，自此我们的电脑就可以访问所有的https了，我们跟fiddler代理建立了一个信任关系，然后fiddler帮我们忽略其他服务器的证书验证</p>
+<p>mac设置代理<br>网络偏好设置-&gt;wifi高级-&gt;代理-&gt;安全Web代理(https)设置ip端口-&gt;好-&gt;应用</p>
+<p>后来想window上的Fiddler对应mac肯定也有类似的工具，那就是charles，charles也可以有类似配置，打开charles<br>Help-&gt;SSL Proxying-&gt; Install… 都装上分别是机器、模拟器、真机看着提示很容易，然后也一切OK了（–!我竟然饶了一大圈）</p>
 
       
     </div>
@@ -267,13 +256,13 @@ var _hmt = _hmt || [];
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/0102/踩坑-在已有的iOS应用中集成React-Native/">踩坑-在已有的iOS应用中集成React Native</a></p>
+        <p><span>本文标题:</span><a href="/2016/0117/reactnative-fetch-selfsigned-https/">reactnative fetch self-signed https(react native 请求自签名的无效证书的https)</a></p>
         <p><span>文章作者:</span><a href="/" title="请访问 nogic 个人博客">nogic</a></p>
-        <p><span>发布时间:</span>2016年01月02日 - 20时45分</p>
-        <p><span>最后更新:</span>2016年01月02日 - 22时04分</p>
+        <p><span>发布时间:</span>2016年01月17日 - 17时38分</p>
+        <p><span>最后更新:</span>2016年01月17日 - 20时36分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/0102/踩坑-在已有的iOS应用中集成React-Native/" title="踩坑-在已有的iOS应用中集成React Native">http://pengyl.cn/2016/0102/踩坑-在已有的iOS应用中集成React-Native/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://pengyl.cn/2016/0102/踩坑-在已有的iOS应用中集成React-Native/　　作者: nogic" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/0117/reactnative-fetch-selfsigned-https/" title="reactnative fetch self-signed https(react native 请求自签名的无效证书的https)">http://pengyl.cn/2016/0117/reactnative-fetch-selfsigned-https/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://pengyl.cn/2016/0117/reactnative-fetch-selfsigned-https/　　作者: nogic" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -286,18 +275,9 @@ var _hmt = _hmt || [];
 
 <nav id="article-nav">
   
-    <a href="/2016/0103/踩坑-ReactNative集成百度地图/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          踩坑-ReactNative集成百度地图
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/0102/reactnative环境搭建/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">开始学习React Native</div>
+    <a href="/2016/0103/踩坑-ReactNative集成百度地图/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">踩坑-ReactNative集成百度地图</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -308,7 +288,7 @@ var _hmt = _hmt || [];
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#u627E_u4E0D_u5230js_u95EE_u9898"><span class="toc-number">1.</span> <span class="toc-text">找不到js问题</span></a></li></ol>
+    
 </div>
 <style>
     .left-col .switch-btn {
@@ -364,7 +344,7 @@ var _hmt = _hmt || [];
 
     <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/0102/踩坑-在已有的iOS应用中集成React-Native/" data-title="踩坑-在已有的iOS应用中集成React Native" data-url="http://pengyl.cn/2016/0102/踩坑-在已有的iOS应用中集成React-Native/"></div>
+    <div class="ds-thread" data-thread-key="2016/0117/reactnative-fetch-selfsigned-https/" data-title="reactnative fetch self-signed https(react native 请求自签名的无效证书的https)" data-url="http://pengyl.cn/2016/0117/reactnative-fetch-selfsigned-https/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -389,15 +369,13 @@ var _hmt = _hmt || [];
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/0103/踩坑-ReactNative集成百度地图/" title="上一篇: 踩坑-ReactNative集成百度地图">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/0102/reactnative环境搭建/" title="下一篇: 开始学习React Native">
+            <a href="/2016/0103/踩坑-ReactNative集成百度地图/" title="下一篇: 踩坑-ReactNative集成百度地图">
                 <i class="fa fa-angle-right"></i>
             </a>
         
