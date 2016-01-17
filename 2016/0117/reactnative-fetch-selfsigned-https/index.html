@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://pengyl.cn/2016/0117/reactnative-fetch-selfsigned-https/index.html">
 <meta property="og:site_name" content="nogic's blog">
 <meta property="og:description" content="我们知道iOS9之后苹果默认启用https验证了，这就要我们的服务器做https升级，当然我们可以通过plist配置来允许http访问，可势必会有一些安全问题，既然要启用https可是https的证书是非常贵的，我们测试开发的时候就随便用了个自己签名的证书，于是问题就来了">
-<meta property="og:updated_time" content="2016-01-17T12:36:47.000Z">
+<meta property="og:updated_time" content="2016-01-17T12:39:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="reactnative fetch self-signed https(react native 请求自签名的无效证书的https)">
 <meta name="twitter:description" content="我们知道iOS9之后苹果默认启用https验证了，这就要我们的服务器做https升级，当然我们可以通过plist配置来允许http访问，可势必会有一些安全问题，既然要启用https可是https的证书是非常贵的，我们测试开发的时候就随便用了个自己签名的证书，于是问题就来了">
@@ -230,7 +230,9 @@ var _hmt = _hmt || [];
           
         <p>我们知道iOS9之后苹果默认启用https验证了，这就要我们的服务器做https升级，当然我们可以通过plist配置来允许http访问，可势必会有一些安全问题，既然要启用https可是https的证书是非常贵的，我们测试开发的时候就随便用了个自己签名的证书，于是问题就来了<br><a id="more"></a></p>
 <p>当使用ReactNative的时候请求网络都是用的fetch，但是从调试错误信息来看，fetch会解释成iOS本地的NSURLConnection/NSURLSession来做网络访问，而iOS默认这些方法都会去验证证书，而我们明知道这个证书是无效的，始终<code>TypeError: Network request failed</code>，然后我尝试用原生的写一遍，提示</p>
-<p>&gt;<br>Error Domain=NSURLErrorDomain Code=-1202 “The certificate for this server is invalid. You might be connecting to a server that is pretending to be “pfs-vis.vip.com” which could put your confidential information at risk.” </p>
+<blockquote>
+<p>Error Domain=NSURLErrorDomain Code=-1202 “The certificate for this server is invalid. You might be connecting to a server that is pretending to be “pfs-vis.vip.com” which could put your confidential information at risk.” </p>
+</blockquote>
 <p>明显是说证书无效，后来查了很多关于这个问题的解决方法比如stachoverflow上的一个总结回答<a href="http://stackoverflow.com/questions/22663768/https-ios-with-self-signed-certificate" target="_blank" rel="external">Https iOS with self signed certificate</a>，他也说了</p>
 <blockquote>
 <p>By default, Cocoa refuses all SSL connections when the certificate is invalid…</p>
@@ -259,7 +261,7 @@ var _hmt = _hmt || [];
         <p><span>本文标题:</span><a href="/2016/0117/reactnative-fetch-selfsigned-https/">reactnative fetch self-signed https(react native 请求自签名的无效证书的https)</a></p>
         <p><span>文章作者:</span><a href="/" title="请访问 nogic 个人博客">nogic</a></p>
         <p><span>发布时间:</span>2016年01月17日 - 17时38分</p>
-        <p><span>最后更新:</span>2016年01月17日 - 20时36分</p>
+        <p><span>最后更新:</span>2016年01月17日 - 20时39分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/0117/reactnative-fetch-selfsigned-https/" title="reactnative fetch self-signed https(react native 请求自签名的无效证书的https)">http://pengyl.cn/2016/0117/reactnative-fetch-selfsigned-https/</a>
             <span class="copy-path" data-clipboard-text="原文: http://pengyl.cn/2016/0117/reactnative-fetch-selfsigned-https/　　作者: nogic" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
