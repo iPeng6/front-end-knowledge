@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>reactnative fetch self-signed https | nogic&#39;s blog</title>
+  <title>踩坑-reactnative fetch self-signed https | nogic&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="(react native 请求自签名的无效证书的https)我们知道iOS9之后苹果默认启用https验证了，这就要我们的服务器做https升级，当然我们可以通过plist配置来允许http访问，可势必会有一些安全问题，既然要启用https可是https的证书是非常贵的，我们测试开发的时候就随便用了个自己签名的证书，于是问题就来了">
 <meta property="og:type" content="article">
-<meta property="og:title" content="reactnative fetch self-signed https">
+<meta property="og:title" content="踩坑-reactnative fetch self-signed https">
 <meta property="og:url" content="http://pengyl.cn/2016/0117/reactnative-fetch-selfsigned-https/index.html">
 <meta property="og:site_name" content="nogic's blog">
 <meta property="og:description" content="(react native 请求自签名的无效证书的https)我们知道iOS9之后苹果默认启用https验证了，这就要我们的服务器做https升级，当然我们可以通过plist配置来允许http访问，可势必会有一些安全问题，既然要启用https可是https的证书是非常贵的，我们测试开发的时候就随便用了个自己签名的证书，于是问题就来了">
-<meta property="og:updated_time" content="2016-01-17T12:46:22.000Z">
+<meta property="og:updated_time" content="2016-01-19T14:37:23.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="reactnative fetch self-signed https">
+<meta name="twitter:title" content="踩坑-reactnative fetch self-signed https">
 <meta name="twitter:description" content="(react native 请求自签名的无效证书的https)我们知道iOS9之后苹果默认启用https验证了，这就要我们的服务器做https升级，当然我们可以通过plist配置来允许http访问，可势必会有一些安全问题，既然要启用https可是https的证书是非常贵的，我们测试开发的时候就随便用了个自己签名的证书，于是问题就来了">
   
   
@@ -203,7 +203,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      reactnative fetch self-signed https
+      踩坑-reactnative fetch self-signed https
     </h1>
   
 
@@ -233,7 +233,9 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>Error Domain=NSURLErrorDomain Code=-1202 “The certificate for this server is invalid. You might be connecting to a server that is pretending to be “your.domain.com” which could put your confidential information at risk.” </p>
 </blockquote>
-<p>明显是说证书无效，后来查了很多关于这个问题的解决方法比如stackoverflow上的一个总结回答<a href="http://stackoverflow.com/questions/22663768/https-ios-with-self-signed-certificate" target="_blank" rel="external">Https iOS with self signed certificate</a>，他也说了</p>
+<p>明显是说证书无效，后来查了很多关于这个问题的解决方法比如stackoverflow上的一个总结回答<a href="http://stackoverflow.com/questions/22663768/https-ios-with-self-signed-certificate" target="_blank" rel="external">Https iOS with self signed certificate</a></p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)connection:(<span class="built_in">NSURLConnection</span> *)connection willSendRequestForAuthenticationChallenge:(<span class="built_in">NSURLAuthenticationChallenge</span> *)challenge</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>([challenge<span class="variable">.protectionSpace</span><span class="variable">.authenticationMethod</span> isEqualToString:<span class="built_in">NSURLAuthenticationMethodServerTrust</span>])</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"Ignoring SSL"</span>);</span><br><span class="line">        SecTrustRef trust = challenge<span class="variable">.protectionSpace</span><span class="variable">.serverTrust</span>;</span><br><span class="line">        <span class="built_in">NSURLCredential</span> *cred;</span><br><span class="line">        cred = [<span class="built_in">NSURLCredential</span> credentialForTrust:trust];</span><br><span class="line">        [challenge<span class="variable">.sender</span> useCredential:cred forAuthenticationChallenge:challenge];</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Provide your regular login credential if needed...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>他也说了</p>
 <blockquote>
 <p>By default, Cocoa refuses all SSL connections when the certificate is invalid…</p>
 </blockquote>
@@ -258,12 +260,12 @@ var _hmt = _hmt || [];
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/0117/reactnative-fetch-selfsigned-https/">reactnative fetch self-signed https</a></p>
+        <p><span>本文标题:</span><a href="/2016/0117/reactnative-fetch-selfsigned-https/">踩坑-reactnative fetch self-signed https</a></p>
         <p><span>文章作者:</span><a href="/" title="请访问 nogic 个人博客">nogic</a></p>
         <p><span>发布时间:</span>2016年01月17日 - 17时38分</p>
-        <p><span>最后更新:</span>2016年01月17日 - 20时46分</p>
+        <p><span>最后更新:</span>2016年01月19日 - 22时37分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/0117/reactnative-fetch-selfsigned-https/" title="reactnative fetch self-signed https">http://pengyl.cn/2016/0117/reactnative-fetch-selfsigned-https/</a>
+            <span>原始链接:</span><a class="post-url" href="/2016/0117/reactnative-fetch-selfsigned-https/" title="踩坑-reactnative fetch self-signed https">http://pengyl.cn/2016/0117/reactnative-fetch-selfsigned-https/</a>
             <span class="copy-path" data-clipboard-text="原文: http://pengyl.cn/2016/0117/reactnative-fetch-selfsigned-https/　　作者: nogic" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
@@ -346,7 +348,7 @@ var _hmt = _hmt || [];
 
     <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/0117/reactnative-fetch-selfsigned-https/" data-title="reactnative fetch self-signed https" data-url="http://pengyl.cn/2016/0117/reactnative-fetch-selfsigned-https/"></div>
+    <div class="ds-thread" data-thread-key="2016/0117/reactnative-fetch-selfsigned-https/" data-title="踩坑-reactnative fetch self-signed https" data-url="http://pengyl.cn/2016/0117/reactnative-fetch-selfsigned-https/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -383,7 +385,7 @@ var _hmt = _hmt || [];
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/0117/reactnative-fetch-selfsigned-https/">reactnative fetch self-signed https</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/0103/踩坑-ReactNative集成百度地图/">踩坑-ReactNative集成百度地图</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/0102/踩坑-在已有的iOS应用中集成React-Native/">踩坑-在已有的iOS应用中集成React Native</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/0102/reactnative环境搭建/">开始学习React Native</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/0101/firstpost/">老规矩第一篇建站日志</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/0117/reactnative-fetch-selfsigned-https/">踩坑-reactnative fetch self-signed https</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/0103/踩坑-ReactNative集成百度地图/">踩坑-ReactNative集成百度地图</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/0102/踩坑-在已有的iOS应用中集成React-Native/">踩坑-在已有的iOS应用中集成React Native</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/0102/reactnative环境搭建/">开始学习React Native</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/0101/firstpost/">老规矩第一篇建站日志</a></li></ul>
     <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
