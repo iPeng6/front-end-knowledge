@@ -1,8 +1,8 @@
 # Table of contents
 
 * [what is gitbook](README.md)
-* [标准规范](biao-zhun-gui-fan/README.md)
-  * [标准组织](biao-zhun-gui-fan/biao-zhun-hua-zhi.md)
-  * [ECMAScript](biao-zhun-gui-fan/biao-zhun-gui-fan.md)
+* [标准规范](standard-specification/README.md)
+  * [标准组织](standard-specification/standard-organization.md)
+  * [ECMAScript](standard-specification/biao-zhun-gui-fan.md)
 * [Untitled](untitled.md)
 
