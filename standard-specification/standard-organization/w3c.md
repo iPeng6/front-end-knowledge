@@ -2,9 +2,7 @@
 
 ## [W3C](https://www.w3.org/)
 
-The World Wide Web Consortium \([W3C](https://www.w3.org/)\) is an international community that develops open [standards](https://www.w3.org/TR/) to ensure the long-term growth of the Web.
-
-The W3C **mission** is to lead the World Wide Web to its full potential by developing protocols and guidelines that ensure the long-term growth of the Web.
+The World Wide Web Consortium \([W3C](https://www.w3.org/)\) is an international community that develops open [standards](https://www.w3.org/TR/) to ensure the long-term growth of the Web.Its **mission** is to lead the World Wide Web to its full potential by developing protocols and guidelines.
 
 ### 组成人员
 
@@ -36,12 +34,14 @@ W3C本身并不生产标准，而是以工作组的方式，把某项技术的�
 * WebAssembly
 * etc...
 
-### W3C标准的成熟过程
+### [W3C标准的成熟过程](https://www.w3.org/2018/Process-20180201/)
 
-1. 工作草案（WD）Working Drafts
-2. 候选推荐标准（CR）Candidate Recommendations
-3. 提案推荐标准（PR）Proposed Recommendations
-4. 正式推荐标准（REC）Recommendations
+* 草案（WD）Working Drafts
+* 候选（CR）Candidate Recommendations
+* 提案（PR）Proposed Recommendations
+* 正式推荐标准（REC）Recommendations
+
+![](../../.gitbook/assets/image.png)
 
 
 
