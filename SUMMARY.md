@@ -12,4 +12,11 @@
   * [全局对象](node/global-object.md)
   * [常用模块](node/common-module.md)
   * [npm](node/npm.md)
+* [Linux](linux/README.md)
+  * [命令](linux/command.md)
+* [测试](test.md)
+* [React](react/README.md)
+  * [Redux](react/redux.md)
+  * [Mobx](react/mobx.md)
+  * [React-Router](react/react-router.md)
 
