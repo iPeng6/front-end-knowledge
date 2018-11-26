@@ -10,3 +10,8 @@
 .markdown-section a:hover {
   text-decoration: underline;
 }
+
+.markdown-section blockquote {
+  background: #f1f4ff;
+  padding: 1px 20px;
+}
