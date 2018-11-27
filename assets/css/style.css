@@ -15,3 +15,12 @@
   background: #f1f4ff;
   padding: 1px 20px;
 }
+
+.sidebar-nav li img {
+  width: 14px;
+  width: 14px;
+  position: absolute;
+  top: 8px;
+  left: -8px;
+  z-index: 1;
+}
