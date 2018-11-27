@@ -24,3 +24,11 @@
   left: -8px;
   z-index: 1;
 }
+
+.sidebar-nav li a:hover {
+  text-decoration: none !important;
+}
+
+.markdown-section blockquote p {
+  font-weight: 500;
+}
