@@ -1,6 +1,6 @@
 # 发布
 
-## 发布一个公有包
+## 发布公有包
 
 1. 首先[注册](https://www.npmjs.com/signup)个账号
 2. 创建你的 package
@@ -45,7 +45,8 @@
 4. 发布
 
    ```bash
-   npm publish --access public
+   npm publish
+   npm publish --access public # 首次需要加上参数 --access public
    ```
 
 5. 取消发布

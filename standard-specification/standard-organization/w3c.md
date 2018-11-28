@@ -33,18 +33,18 @@ World Wide Web Consortium \([W3C](https://www.w3.org/)\) 的缩写，一个专�
 - Internationalization
 - ...
 
-## W3C 标准的成熟过程
+## 标准成熟过程
 
 [Process Document](https://www.w3.org/2018/Process-20180201/)
 
-- 草案（WD）Working Drafts
-- 候选（CR）Candidate Recommendations
-- 提案（PR）Proposed Recommendations
-- 正式推荐标准（REC）Recommendations
+1. 草案（WD）Working Drafts
+2. 候选（CR）Candidate Recommendations
+3. 提案（PR）Proposed Recommendations
+4. 正式推荐标准（REC）Recommendations
 
 ![](../../assets/w3c-process.png)
 
-## 标准
+## 哪些标准
 
 W3C 的[标准](https://www.w3.org/TR/)主要涉及以下方面
 
@@ -56,7 +56,7 @@ W3C 的[标准](https://www.w3.org/TR/)主要涉及以下方面
 - Web of Services
 - Browsers and Authoring Tools
 
- 目前所有标准在[这里](https://www.w3.org/TR/)
+ 目前所有标准在[这里](https://www.w3.org/TR/)，下面列出最新的比较关注的一些
 
 - [HTML](https://www.w3.org/TR/?tag=html)
   - [HTML 5.2(REC)](https://www.w3.org/TR/2017/REC-html52-20171214/)

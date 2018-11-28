@@ -32,6 +32,17 @@
 .markdown-section blockquote p {
   font-weight: 500;
 }
+.markdown-section h1 a,
+.markdown-section h2 a,
+.markdown-section h3 a,
+.markdown-section h4 a,
+.markdown-section h5 a {
+  text-decoration: none !important;
+}
+.markdown-section h2 {
+  font-size: 1.5rem;
+  border-bottom: 1px solid #eaecef;
+}
 .markdown-section h2::before {
   content: '# ';
   font-size: 1.2rem;
@@ -39,5 +50,5 @@
 }
 
 .markdown-section h3 {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
 }
