@@ -32,3 +32,12 @@
 .markdown-section blockquote p {
   font-weight: 500;
 }
+.markdown-section h2::before {
+  content: '# ';
+  font-size: 1.2rem;
+  color: var(--theme-color, #42b983);
+}
+
+.markdown-section h3 {
+  font-size: 1.2rem;
+}
