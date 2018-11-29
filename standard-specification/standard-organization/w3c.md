@@ -42,7 +42,7 @@ World Wide Web Consortium \([W3C](https://www.w3.org/)\) 的缩写，一个专�
 3. 提案（PR）Proposed Recommendations
 4. 正式推荐标准（REC）Recommendations
 
-![](../../assets/w3c-process.png)
+![](img/w3c-process.png)
 
 ## 哪些标准
 
