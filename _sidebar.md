@@ -18,3 +18,4 @@
   - [Redux](react/redux.md)
   - [Mobx](react/mobx.md)
   - [React-Router](react/react-router.md)
+  - [React 性能调优](react/debug-react-performance.md)
