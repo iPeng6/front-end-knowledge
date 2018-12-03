@@ -1,6 +1,7 @@
 # the-super-tiny-compiler
 
-> 原文： https://github.com/jamiebuilds/the-super-tiny-compiler/blob/master/the-super-tiny-compiler.js 2017-10-13
+> 原文：https://github.com/jamiebuilds/the-super-tiny-compiler/blob/master/the-super-tiny-compiler.js 2017-10-13
+> 翻译：https://github.com/starkwang/the-super-tiny-compiler-cn/blob/master/super-tiny-compiler-chinese.js
 
 ```js
 /**
@@ -75,7 +76,7 @@
  *     { type: 'paren',  value: ')'        }
  *   ]
  *
- * 它的抽象语法树（AST）看起来或许是这样的：
+ * 一个抽象语法树（AST）看起来像这样
  *
  *   {
  *     type: 'Program',
@@ -110,16 +111,16 @@
  * 下面我们来看看该如何转换 AST。
  *
  * 你或许注意到了我们的 AST 中有很多相似的元素，这些元素都有 type 属性，它们被称为 AST
- * 结点。这些结点含有若干属性，可以用于描述 AST 的部分信息。
+ * 节点。这些节点含有若干属性，可以用于描述 AST 的部分信息。
  *
- * 比如下面是一个“NumberLiteral”结点：
+ * 比如下面是一个“NumberLiteral”节点：
  *
  *   {
  *     type: 'NumberLiteral',
  *     value: '2'
  *   }
  *
- * 又比如下面是一个“CallExpression”结点：
+ * 又比如下面是一个“CallExpression”节点：
  *
  *   {
  *     type: 'CallExpression',
@@ -127,7 +128,7 @@
  *     params: [...nested nodes go here...]
  *   }
  *
- * 当转换 AST 的时候我们可以添加、移动、替代这些结点，也可以根据现有的 AST 生成一个全新
+ * 当转换 AST 的时候我们可以添加、移动、替代这些节点，也可以根据现有的 AST 生成一个全新
  * 的 AST
  *
  * 既然我们编译器的目标是把输入的代码转换为一种新的语言，所以我们将会着重于产生一个针对
@@ -137,7 +138,7 @@
  * 遍历（Traversal）
  * ---------
  *
- * 为了能处理所有的结点，我们需要遍历它们，使用的是深度优先遍历。
+ * 为了能处理所有的节点，我们需要遍历它们，使用的是深度优先遍历。
  *
  *   {
  *     type: 'Program',
@@ -163,7 +164,7 @@
  *
  * 对于上面的 AST 的遍历流程是这样的：
  *
- *   1. Program - 从 AST 的顶部结点开始
+ *   1. Program - 从 AST 的顶部节点开始
  *   2. CallExpression (add) - Program 的第一个子元素
  *   3. NumberLiteral (2) - CallExpression (add) 的第一个子元素
  *   4. CallExpression (subtract) - CallExpression (add) 的第二个子元素
@@ -171,7 +172,7 @@
  *   6. NumberLiteral (2) - CallExpression (subtract) 的第二个子元素
  *
  * 如果我们直接在 AST 内部操作，而不是产生一个新的 AST，那么就要在这里介绍所有种类的抽象，
- * 但是目前访问（visiting）所有结点的方法已经足够了。
+ * 但是目前访问（visiting）所有节点的方法已经足够了。
  *
  * 使用“访问（visiting）”这个词的是因为这是一种模式，代表在对象结构内对元素进行操作。
  *
@@ -179,16 +180,16 @@
  * --------
  *
  * 我们最基础的想法是创建一个“访问者（visitor）”对象，这个对象中包含一些方法，可以接收不
- * 同的结点。
+ * 同的节点。
  *
  *   var visitor = {
  *     NumberLiteral() {},
  *     CallExpression() {}
  *   };
  *
- * 当我们遍历 AST 的时候，如果遇到了匹配 type 的结点，我们可以调用 visitor 中的方法。
+ * 当我们遍历 AST 的时候，如果遇到了匹配 type 的节点，我们可以调用 visitor 中的方法。
  *
- * 一般情况下为了让这些方法可用性更好，我们会把父结点也作为参数传入。
+ * 一般情况下为了让这些方法可用性更好，我们会把父节点也作为参数传入。
  */
 
 /**
@@ -201,7 +202,7 @@
  * 代码生成有几种不同的工作方式，有些编译器将会重用之前生成的 token，有些会创建独立的代码
  * 表示，以便于线性地输出代码。但是接下来我们还是着重于使用之前生成好的 AST。
  *
- * 我们的代码生成器需要知道如何“打印”AST 中所有类型的结点，然后它会递归地调用自身，直到所
+ * 我们的代码生成器需要知道如何“打印”AST 中所有类型的节点，然后它会递归地调用自身，直到所
  * 有代码都被打印到一个很长的字符串中。
  *
  */
@@ -251,7 +252,7 @@ function tokenizer(input) {
     // 我们在这里储存了 `input` 中的当前字符
     var char = input[current];
 
-    // 要做的第一件事情就是检查是不是右圆括号。这在之后将会用在 `CallExpressions` 中，
+    // 要做的第一件事情就是检查是不是开括号。这在之后将会用在 `CallExpressions` 中，
     // 但是现在我们关心的只是字符本身。
     //
     // 检查一下是不是一个左圆括号。
@@ -259,7 +260,7 @@ function tokenizer(input) {
       // 如果是，那么我们 push 一个 type 为 `paren`，value 为左圆括号的对象。
       tokens.push({
         type: 'paren',
-        value: '(',
+        value: '('
       });
 
       // 自增 `current`
@@ -274,7 +275,7 @@ function tokenizer(input) {
     if (char === ')') {
       tokens.push({
         type: 'paren',
-        value: ')',
+        value: ')'
       });
       current++;
       continue;
@@ -314,10 +315,38 @@ function tokenizer(input) {
       // 然后我们把类型为 `number` 的 token 放入 `tokens` 数组中。
       tokens.push({
         type: 'number',
-        value: value,
+        value: value
       });
 
       // 进入下一次循环。
+      continue;
+    }
+
+    // 在我们的语言里我们也将支持字符串，任何双引号(")包裹的文本。
+    //
+    //   (concat "foo" "bar")
+    //            ^^^   ^^^ string tokens
+    //
+    // 我们将从检查左开引号开始
+    if (char === '"') {
+      // 用一个 `value` 变量来建立我们的字符串token
+      let value = '';
+
+      // 我们先跳过左引号
+      char = input[++current];
+
+      // 我们将遍历每一个字符直到遇到另一个双引号
+      while (char !== '"') {
+        value += char;
+        char = input[++current];
+      }
+
+      // 跳过右引号
+      char = input[++current];
+
+      // 将 `string` token 添加到 `tokens` 数组.
+      tokens.push({ type: 'string', value });
+
       continue;
     }
 
@@ -341,7 +370,7 @@ function tokenizer(input) {
       // 然后添加一个类型为 `name` 的 token，然后进入下一次循环。
       tokens.push({
         type: 'name',
-        value: value,
+        value: value
       });
 
       continue;
@@ -378,16 +407,26 @@ function parser(tokens) {
     // walk函数里，我们从当前token开始
     var token = tokens[current];
 
-    // 对于不同类型的结点，对应的处理方法也不同，我们从 `number` 类型的 token 开始。
+    // 对于不同类型的节点，对应的处理方法也不同，我们从 `number` 类型的 token 开始。
     // 检查是不是 `number` 类型
     if (token.type === 'number') {
       // 如果是，`current` 自增。
       current++;
 
-      // 然后我们会返回一个新的 AST 结点 `NumberLiteral`，并且把它的值设为 token 的值。
+      // 然后我们会返回一个新的 AST 节点 `NumberLiteral`，并且把它的值设为 token 的值。
       return {
         type: 'NumberLiteral',
-        value: token.value,
+        value: token.value
+      };
+    }
+
+    // 如果我们遇到一个字符串我们将像数字一样处理创建一个`StringLiteral` 节点.
+    if (token.type === 'string') {
+      current++;
+
+      return {
+        type: 'StringLiteral',
+        value: token.value
       };
     }
 
@@ -401,7 +440,7 @@ function parser(tokens) {
       var node = {
         type: 'CallExpression',
         name: token.value,
-        params: [],
+        params: []
       };
 
       // 我们再次自增 `current` 变量，跳过当前的 token
@@ -411,7 +450,7 @@ function parser(tokens) {
       // 是 `CallExpression` 的 `params`（参数）
       //
       // 这也是递归开始的地方，我们采用递归的方式来解决问题，而不是去尝试解析一个可能有无限
-      // 层嵌套的结点。
+      // 层嵌套的节点。
       //
       // 为了更好地解释，我们来看看我们的 Lisp 代码。你会注意到 `add` 函数的参数有两个，
       // 一个是数字，另一个是一个嵌套的 `CallExpression`，这个 `CallExpression` 中
@@ -441,7 +480,7 @@ function parser(tokens) {
         token.type !== 'paren' ||
         (token.type === 'paren' && token.value !== ')')
       ) {
-        // 我们调用 `walk` 函数，它将会返回一个结点，然后我们把这个节点
+        // 我们调用 `walk` 函数，它将会返回一个节点，然后我们把这个节点
         // 放入 `node.params` 中。
         node.params.push(walk());
         token = tokens[current];
@@ -450,21 +489,21 @@ function parser(tokens) {
       // 我们最后一次增加 `current`，跳过右圆括号。
       current++;
 
-      // 返回结点。
+      // 返回节点。
       return node;
     }
 
-    // 同样，如果我们遇到了一个类型未知的结点，就抛出一个错误。
+    // 同样，如果我们遇到了一个类型未知的节点，就抛出一个错误。
     throw new TypeError(token.type);
   }
 
-  // 现在，我们创建 AST，根结点是一个类型为 `Program` 的结点。
+  // 现在，我们创建 AST，根节点是一个类型为 `Program` 的节点。
   var ast = {
     type: 'Program',
-    body: [],
+    body: []
   };
 
-  // 现在我们开始 `walk` 函数，把结点放入 `ast.body` 中。
+  // 现在我们开始 `walk` 函数，把节点放入 `ast.body` 中。
   //
   // 之所以在一个循环中处理，是因为我们的程序可能在 `CallExpressions` 后面包含连续的两个
   // 参数，而不是嵌套的。
@@ -488,7 +527,7 @@ function parser(tokens) {
  */
 
 /**
- * 现在我们有了 AST，我们需要一个 visitor 去遍历所有的结点。当遇到某个类型的结点时，我们
+ * 现在我们有了 AST，我们需要一个 visitor 去遍历所有的节点。当遇到某个类型的节点时，我们
  * 需要调用 visitor 中对应类型的处理函数。
  *
  *   traverse(ast, {
@@ -515,7 +554,7 @@ function traverser(ast, visitor) {
     });
   }
 
-  // `traverseNode` 函数接受一个 `node` 和它的父结点 `parent` 作为参数，这个结点会被
+  // `traverseNode` 函数接受一个 `node` 和它的父节点 `parent` 作为参数，这个节点会被
   // 传入到 visitor 中相应的处理函数那里。
   function traverseNode(node, parent) {
     // 首先我们看看 visitor 中有没有对应 `type` 的处理函数。
@@ -526,10 +565,10 @@ function traverser(ast, visitor) {
       method(node, parent);
     }
 
-    // 下面我们对每一个不同类型的结点分开处理。
+    // 下面我们对每一个不同类型的节点分开处理。
     switch (node.type) {
-      // 我们从顶层的 `Program` 开始，Program 结点中有一个 body 属性，它是一个由若干
-      // 个结点组成的数组，所以我们对这个数组调用 `traverseArray`。
+      // 我们从顶层的 `Program` 开始，Program 节点中有一个 body 属性，它是一个由若干
+      // 个节点组成的数组，所以我们对这个数组调用 `traverseArray`。
       //
       // （记住 `traverseArray` 会调用 `traverseNode`，所以我们会递归地遍历这棵树。）
       case 'Program':
@@ -541,17 +580,18 @@ function traverser(ast, visitor) {
         traverseArray(node.params, node);
         break;
 
-      // 如果是 `NumberLiterals`，那么就没有任何子结点了，所以我们直接 break
+      // 如果是 `NumberLiterals`，那么就没有任何子节点了，所以我们直接 break
       case 'NumberLiteral':
+      case 'StringLiteral':
         break;
 
-      // 同样，如果我们不能识别当前的结点，那么就抛出一个错误。
+      // 同样，如果我们不能识别当前的节点，那么就抛出一个错误。
       default:
         throw new TypeError(node.type);
     }
   }
 
-  // 最后我们对 AST 调用 `traverseNode`，开始遍历。注意 AST 并没有父结点。
+  // 最后我们对 AST 调用 `traverseNode`，开始遍历。注意 AST 并没有父节点。
   traverseNode(ast, null);
 }
 
@@ -607,11 +647,11 @@ function transformer(ast) {
   // 创建 `newAST`，它与我们之前的 AST 类似，有一个类型为 Program 的根节点。
   var newAst = {
     type: 'Program',
-    body: [],
+    body: []
   };
 
-  // 下面的代码会有些奇技淫巧，我们在父结点上使用一个属性 `context`（上下文），这样我们就
-  // 可以把结点放入他们父结点的 context 中。当然可能会有更好的做法，但是为了简单我们姑且
+  // 下面的代码会有些奇技淫巧，我们在父节点上使用一个属性 `context`（上下文），这样我们就
+  // 可以把节点放入他们父节点的 context 中。当然可能会有更好的做法，但是为了简单我们姑且
   // 这么做吧。
   //
   // 注意 context 是一个*引用*，从旧的 AST 到新的 AST。
@@ -621,32 +661,41 @@ function transformer(ast) {
   traverser(ast, {
     // 第一个 visitor 方法接收 `NumberLiterals`。
     NumberLiteral: function(node, parent) {
-      // 我们创建一个新结点，名字叫 `NumberLiteral`，并把它放入父结点的 context 中。
+      // 我们创建一个新节点，名字叫 `NumberLiteral`，并把它放入父节点的 context 中。
       parent._context.push({
         type: 'NumberLiteral',
-        value: node.value,
+        value: node.value
       });
     },
+    // 下一个， `StringLiteral`
+    StringLiteral: {
+      enter(node, parent) {
+        parent._context.push({
+          type: 'StringLiteral',
+          value: node.value
+        });
+      }
+    },
 
-    // 下一个，`CallExpressions`。
+    // 接下来，`CallExpressions`。
     CallExpression: function(node, parent) {
-      // 我们创建一个 `CallExpression` 结点，里面有一个嵌套的 `Identifier`。
+      // 我们创建一个 `CallExpression` 节点，里面有一个嵌套的 `Identifier`。
       var expression = {
         type: 'CallExpression',
         callee: {
           type: 'Identifier',
-          name: node.name,
+          name: node.name
         },
-        arguments: [],
+        arguments: []
       };
 
-      // 下面我们在原来的 `CallExpression` 结点上定义一个新的 context，它是 expression
+      // 下面我们在原来的 `CallExpression` 节点上定义一个新的 context，它是 expression
       // 中 arguments 这个数组的引用，我们可以向其中放入参数。
       node._context = expression.arguments;
 
-      // 然后来看看父结点是不是一个 `CallExpression`，如果不是...
+      // 然后来看看父节点是不是一个 `CallExpression`，如果不是...
       if (parent.type !== 'CallExpression') {
-        // 我们把 `CallExpression` 结点包在一个 `ExpressionStatement` 中，这么做是因为
+        // 我们把 `CallExpression` 节点包在一个 `ExpressionStatement` 中，这么做是因为
         // 单独存在（原文为top level）的 `CallExpressions` 在 JavaScript 中也可以被当做
         // 是声明语句。
         //
@@ -654,13 +703,13 @@ function transformer(ast) {
         // 可以作为一个独立的语句存在。
         expression = {
           type: 'ExpressionStatement',
-          expression: expression,
+          expression: expression
         };
       }
 
-      // 最后我们把 `CallExpression`（可能是被包起来的） 放入父结点的 context 中。
+      // 最后我们把 `CallExpression`（可能是被包起来的） 放入父节点的 context 中。
       parent._context.push(expression);
-    },
+    }
   });
 
   // 最后返回创建好的新 AST。
@@ -677,14 +726,14 @@ function transformer(ast) {
 /**
  * 现在只剩最后一步啦：代码生成器。
  *
- * 我们的代码生成器会递归地调用它自己，把 AST 中的每个结点打印到一个很大的字符串中。
+ * 我们的代码生成器会递归地调用它自己，把 AST 中的每个节点打印到一个很大的字符串中。
  */
 
 function codeGenerator(node) {
-  // 对于不同 `type` 的结点分开处理。
+  // 对于不同 `type` 的节点分开处理。
   switch (node.type) {
-    // 如果是 `Program` 结点，那么我们会遍历它的 `body` 属性中的每一个结点，并且递归地
-    // 对这些结点再次调用 codeGenerator，再把结果打印进入新的一行中。
+    // 如果是 `Program` 节点，那么我们会遍历它的 `body` 属性中的每一个节点，并且递归地
+    // 对这些节点再次调用 codeGenerator，再把结果打印进入新的一行中。
     case 'Program':
       return node.body.map(codeGenerator).join('\n');
 
@@ -713,7 +762,11 @@ function codeGenerator(node) {
     case 'NumberLiteral':
       return node.value;
 
-    // 如果我们不能识别这个结点，那么抛出一个错误。
+    // 对于 `StringLiteral` 我们添加引号包裹 `node` 的 value.
+    case 'StringLiteral':
+      return '"' + node.value + '"';
+
+    // 如果我们不能识别这个节点，那么抛出一个错误。
     default:
       throw new TypeError(node.type);
   }
@@ -758,6 +811,6 @@ module.exports = {
   parser: parser,
   transformer: transformer,
   codeGenerator: codeGenerator,
-  compiler: compiler,
+  compiler: compiler
 };
 ```
