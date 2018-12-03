@@ -1,6 +1,6 @@
 # the-super-tiny-compiler
 
-> 原文：https://github.com/jamiebuilds/the-super-tiny-compiler/blob/master/the-super-tiny-compiler.js 2017-10-13
+> 原文：https://github.com/jamiebuilds/the-super-tiny-compiler/blob/master/the-super-tiny-compiler.js 2017-10-13\
 > 翻译：https://github.com/starkwang/the-super-tiny-compiler-cn/blob/master/super-tiny-compiler-chinese.js
 
 ```js

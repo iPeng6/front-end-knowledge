@@ -8,9 +8,9 @@ npm 包括三个部分
 
 1. 网站 查找发布管理包
 2. CLI 命令行工具
-3. 注册数据库 存储软件包数据及元信息
+3. registry 存储软件包数据及元信息
 
-## npm 安装
+## npm 安装更新
 
 安装 node 会附带 npm, node 建议通过版本管理工具安装如 nvm
 
@@ -19,3 +19,57 @@ npm 包括三个部分
 ```bash
 npm install npm@latest -g
 ```
+
+## 配置 registry
+
+- 将公司的 npm 设置成默认的 Enterprise registry
+
+  ```bash
+  npm config set registry https://registry.your-registry.npme.io/
+  ```
+
+- 使用 npmrc 管理多个 registry
+
+  - 安装
+    ```bash
+    npm i npmrc -g
+    ```
+  - 创建 npm 企业配置文件
+
+    ```bash
+    npmrc -c work
+    npm config set registry https://registry.your-company-registry.npme.io/
+    ```
+
+    这个会在用户根目录下新建.npmrcs 文件夹里面会有生成一个 work 文件， 然后将用户目录下的.npmrc link 到这个文件
+
+  - 创建公用的 npm registry
+
+    ```bash
+    npmrc -c name-of-profile
+    npm config set registry https://registry.npmjs.com/
+    ```
+
+    这个会在 npmrcs 文件夹里面会有生成一个 name-of-profile 文件， 然后将用户目录下的.npmrc link 到这个文件
+
+  - 切换 registry
+
+    ```bash
+    npmrc profile-name
+    ```
+
+    本质是将~/.npmrc link 到  ~/.npmrcs/profile-name
+
+  - ~/.npmrc  文件类似这样
+
+    ```bash
+    //registry.npmjs.org/:\_authToken=4662bd01-e27a-4ea3-a1a1-3a784d92edbd
+    registry=https://registry.npmjs.com/
+    ```
+
+- 使用淘宝镜像
+
+  ```bash
+   npm install -g cnpm --registry=https://registry.npm.taobao.org
+   cnpm install [name]
+  ```
