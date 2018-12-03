@@ -5,12 +5,16 @@
     - [TC39](standard-specification/standard-organization/tc39.md)
   - [ECMAScript](standard-specification/ecma.md)
 - [Node](node/README.md)
+
   - [基础架构](node/infrastructure.md)
   - [模块系统](node/module-system.md)
   - [全局对象](node/global-object.md)
   - [常用模块](node/common-module.md)
   - [npm](node/npm/README.md)
     - [发布包](node/npm/publish.md)
+  - [性能优化](node/performance/README.md)
+    - [你不知道的 node.js 性能优化](node/performance/node-performance.md)
+
 - [Linux](linux/README.md)
   - [命令](linux/command.md)
 - [测试](test.md)

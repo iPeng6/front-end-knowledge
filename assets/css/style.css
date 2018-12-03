@@ -1,21 +1,4 @@
 /* global */
-.markdown-section {
-  max-width: 960px;
-}
-
-.markdown-section a {
-  text-decoration: none;
-  font-weight: normal;
-}
-.markdown-section a:hover {
-  text-decoration: underline;
-}
-
-.markdown-section blockquote {
-  background: #f1f4ff;
-  padding: 1px 20px;
-}
-
 .sidebar-nav li img {
   width: 14px;
   width: 14px;
@@ -29,15 +12,34 @@
   text-decoration: none !important;
 }
 
+.markdown-section {
+  max-width: 960px;
+}
+.markdown-section a {
+  text-decoration: none;
+  font-weight: normal;
+}
+.markdown-section a:hover {
+  text-decoration: underline;
+}
+
+.markdown-section blockquote {
+  background: #f1f4ff;
+  padding: 1px 20px;
+}
+
 .markdown-section blockquote p {
   font-weight: 500;
 }
+
 .markdown-section h1 a,
 .markdown-section h2 a,
 .markdown-section h3 a,
 .markdown-section h4 a,
 .markdown-section h5 a {
   text-decoration: none !important;
+  color: #1a1a1a;
+  font-weight: 500;
 }
 .markdown-section h2 {
   font-size: 1.5rem;
@@ -48,7 +50,9 @@
   font-size: 1.2rem;
   color: var(--theme-color, #42b983);
 }
-
 .markdown-section h3 {
   font-size: 1.25rem;
+}
+.markdown-section pre > code {
+  padding: 1.2em 5px;
 }
