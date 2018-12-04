@@ -63,8 +63,9 @@ npm install npm@latest -g
   - ~/.npmrc  文件类似这样
 
     ```bash
-    //registry.npmjs.org/:\_authToken=4662bd01-e27a-4ea3-a1a1-3a784d92edbd
-    registry=https://registry.npmjs.com/
+    registry=https://registry.npm.taobao.org/
+    @lls:registry=http://reg-npmjs.llsstaging.com/
+    @llx:registry=https://registry-npm.liulishuo.work
     ```
 
 - 使用淘宝镜像
