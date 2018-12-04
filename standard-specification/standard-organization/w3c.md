@@ -37,10 +37,12 @@ World Wide Web Consortium \([W3C](https://www.w3.org/)\) 的缩写，一个专�
 
 [Process Document](https://www.w3.org/2018/Process-20180201/)
 
-1. 草案（WD）Working Drafts
-2. 候选（CR）Candidate Recommendations
-3. 提案（PR）Proposed Recommendations
-4. 正式推荐标准（REC）Recommendations
+1. 编辑草案（ED）Editor's Draft
+2. 首个公开工作草案（FPWD）First Public Working Draft
+3. 草案（WD）Working Drafts
+4. 候选（CR）Candidate Recommendations
+5. 提案（PR）Proposed Recommendations
+6. 正式推荐标准（REC）Recommendations
 
 ![](img/w3c-process.png)
 
