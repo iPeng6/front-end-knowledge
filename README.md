@@ -4,9 +4,10 @@
 
 - [how-javascript-works](https://github.com/Troland/how-javascript-works)
 - [JavaScript Algorithms and Data Structures](https://github.com/trekhleb/javascript-algorithms)
-- [es6 入门](http://es6.ruanyifeng.com/)
-- You-Dont-Know-JS[en](https://github.com/getify/You-Dont-Know-JS)[cn](https://github.com/yyh1102/You-Dont-Know-JS-Notebook)
-
+- [Learn ES2015](https://babeljs.io/docs/en/learn)
+- [ECMAScript 6 入门](http://es6.ruanyifeng.com/) [[Github]](https://github.com/ruanyf/es6tutorial)
+- [You-Dont-Know-JS](https://github.com/getify/You-Dont-Know-JS) [[中文]](https://github.com/yyh1102/You-Dont-Know-JS-Notebook)
+- [You-need-to-know-css](https://lhammer.cn/You-need-to-know-css)
 - [30-seconds-of-code](https://github.com/30-seconds/30-seconds-of-code)
   - [30-seconds-of-css](https://30-seconds.github.io/30-seconds-of-css/)
   - [30 Seconds of Interviews](https://30secondsofinterviews.org/)
