@@ -56,3 +56,8 @@
 .markdown-section pre > code {
   padding: 1.2em 5px;
 }
+
+.sidebar-nav .open ul,
+.sidebar-nav .active ul {
+  display: block;
+}

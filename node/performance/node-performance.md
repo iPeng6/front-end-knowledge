@@ -12,10 +12,10 @@ Node.js 每个版本的性能提升主要来自于两个方面：
 2. Node.js 内部代码的更新优化。
 
 例如最新的 V8 7.1 中，就优化了某些情形下闭包的逃逸分析，让 Array 的一些方法得到了性能提升：
-![](https://pic4.zhimg.com/80/v2-f2416997046528e262f7ebbaa99cb183_hd.jpg)
+![](img/node-per1.jpg)
 
 Node.js 的内部代码，随着版本的升级，也会有明显的优化，比如下面这个图就是 `require` 的性能随着 Node.js 版本升级的变化：
-![](https://pic3.zhimg.com/80/v2-2422b5e3291600136e86f2d67956860e_hd.jpg)
+![](img/node-per2.jpg)
 
 每个提交到 Node.js 的 PR 都会在 review 的时候考虑会不会对当前性能造成衰退。同时也有专门的 benchmarking 团队来监控性能变化，你可以在这里看到 Node.js 的每个版本的性能变化：
 
@@ -35,7 +35,7 @@ Node.js 的内部代码，随着版本的升级，也会有明显的优化，比
 - 每年十月发布的版本（版本号为奇数，例如现在的 v11）只有 8 个月的维护期。
 
 举个例子，现在（2018 年 11 月），Node.js Current 的版本是 v11，LTS 版本是 v10 和 v8。更老的 v6 处于 Maintenace LTS，从明年四月起就不再维护了。去年十月发布的 v9 版本在今年六月结束了维护。
-![](https://pic1.zhimg.com/80/v2-04bb1e38427f773d907dbba40a800028_hd.jpg)
+![](img/node-per3.jpg)
 
 对于生产环境而言，Node.js 官方推荐使用最新的 LTS 版本，现在是 v10.13.0。
 
@@ -54,7 +54,7 @@ const json = JSON.stringify(obj);
 但如果已经提前通过 Schema 知道每个字段的类型，那么就不需要遍历、识别字段类型，而可以直接用序列化对应的字段，这就大大减少了计算开销，这就是 [fast-json-stringify](https://github.com/fastify/fast-json-stringify) 的原理。
 
 根据项目中的跑分，在某些情况下甚至可以比 JSON.stringify 快接近 10 倍！
-![](https://pic3.zhimg.com/80/v2-84d6d5c90dcc907107552cf63738bd32_hd.jpg)
+![](img/node-per4.jpg)
 
 一个简单的示例：
 
@@ -350,7 +350,7 @@ JavaScript 在 V8 上跑得比 C++ 扩展还快，这种情况多半发生在与
 [How to get a performance boost using Node.js native addons](https://medium.com/developers-writing/how-to-get-a-performance-boost-using-node-js-native-addons-fd3a24719c85)
 
 其中值得注意的结论就是，C++ 代码在对参数中的字符串进行转换后（String::Utf8Value 转为 std::string），性能甚至不如 JS 实现的一半。只有在使用 NAN 提供的类型封装后，才获得了比 JS 更高的性能。
-![](https://pic4.zhimg.com/80/v2-ac1ea8894a10a284e4f097e6bb6f8a27_hd.jpg)
+![](img/node-per5.jpg)
 
 换句话说，C++ 是否比 JavaScript 更加高效需要具体问题具体分析，某些情况下，C++ 扩展不一定就会比原生 JavaScript 更高效。如果你对自己的 C++ 水平不是那么有信心，其实还是建议用 JavaScript 来实现，因为 V8 的性能比你想象的要好得多。
 
@@ -378,7 +378,7 @@ autocannon http://localhost:3000
 ```
 
 压测完毕后，我们 ctrl + c 关闭 clinic 开启的进程，就会自动生成报告。比如下面就是我们一个中间件服务的性能报告：
-![](https://pic3.zhimg.com/80/v2-0c1cc1d5c6c9aa82abb34696c0eda972_hd.jpg)
+![](img/node-per6.jpg)
 
 我们可以从 CPU 的使用曲线看出，这个中间件服务的性能瓶颈不在自身内部的计算，而在于 I/O 速度太慢。clinic 也在上面告诉我们检测到了潜在的 I/O 问题。
 
@@ -389,7 +389,7 @@ clinic bubbleprof -- node server.js
 ```
 
 再次进行压测后，我们得到了新的报告：
-![](https://pic2.zhimg.com/80/v2-89ea69c8ac771740ddac5a06a9dce4e5_hd.jpg)
+![](img/node-per7.jpg)
 
 这个报告中，我们可以看到，`http.Server` 在整个程序运行期间，96% 的时间都处于 pending 状态，点开后，我们会发现调用栈中存在大量的 empty frame，也就是说，由于网络 I/O 的限制，CPU 存在大量的空转，这在中间件业务中非常常见，也为我们指明了优化方向不在服务内部，而在服务器的网关和依赖的服务响应速度上。
 
@@ -416,7 +416,7 @@ module.exports = (ctx, next) => {
 ```
 
 然后使用 `clinic doctor`，重复上面的步骤，生成性能报告：
-![](https://pic4.zhimg.com/80/v2-abdb3d75c001116f9e1879d9e740a783_hd.jpg)
+![](img/node-per8.jpg)
 
 这就是一个非常典型的**同步计算阻塞了异步队列**的“病例”，即主线程上进行了大量的计算，导致 JavaScript 的异步回调没法及时触发，Event Loop 的延迟极高。
 
@@ -427,6 +427,6 @@ clinic flame -- node app.js
 ```
 
 压测后，我们得到了火焰图（这里把空转次数减少到了 100 万次，让火焰图看起来不至于那么极端）：
-![](https://pic1.zhimg.com/80/v2-63f97958115b4efe9d6c972e2fa3acf4_hd.jpg)
+![](img/node-per9.jpg)
 
 从这张图里，我们可以明显看到顶部的那个大白条，它代表了 sleep 函数空转所消耗的 CPU 时间。根据这样的火焰图，我们可以非常轻松地看出 CPU 资源的消耗情况，从而定位代码中哪里有密集的计算，找到性能瓶颈。

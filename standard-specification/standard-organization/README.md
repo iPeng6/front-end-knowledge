@@ -1,4 +1,4 @@
 # 标准组织
 
-- [W3C](standard-specification/standard-organization/w3c.md)
-- [TC39](standard-specification/standard-organization/tc39.md)
+- [W3C](/standard-specification/standard-organization/w3c.md)
+- [TC39](/standard-specification/standard-organization/tc39.md)
