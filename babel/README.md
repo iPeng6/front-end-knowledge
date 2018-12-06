@@ -53,7 +53,7 @@ var fn = function fn() {
 **Preset**
 
 但是 ES2015+ 还有很多特性，不可能都一个个添加，这时我们就可以使用预置 `preset`, 一组提前确定了的插件集合。
-你可以创建自己的  预置插件集， 这个例子里我们使用  比较优秀的预置 `env`.
+你可以创建自己的预置插件集， 这个例子里我们使用了比较优秀的预置 `env`.
 
 ```bash
 npm install --save-dev @babel/preset-env
@@ -61,6 +61,91 @@ npm install --save-dev @babel/preset-env
 ./node_modules/.bin/babel src --out-dir lib --presets=@babel/env
 ```
 
-零配置，这个 preset 将包括所有插件来支持现代 JavaScript（ES2015,ES2016,etc.），但是 preset 也是有配置选项的，我们来看看配置文件。
+零配置这个 preset 将包括所有插件来支持现代 JavaScript（ES2015,ES2016,etc.），但是 preset 也是有配置选项的，我们来看看配置文件。
 
 ## Configuration
+
+babel 有多种配置方案 [configure Babel](https://babeljs.io/docs/en/configuration)
+
+1. babel.config.js
+
+   如果需要一些编程能力
+
+   ```js
+   module.exports = function () {
+   const presets = [ ... ];
+   const plugins = [ ... ];
+
+   return {
+     presets,
+     plugins
+   };
+   }
+   ```
+
+2. .babelrc
+
+   只需要简单的静态配置
+
+   ```json
+   {
+     "presets": [...],
+     "plugins": [...]
+   }
+   ```
+
+3. .babelrc.js
+
+   跟 .babelrc 一样 只不过可以用 JavaScript 写法
+
+   ```js
+   const presets = [ ... ];
+   const plugins = [ ... ];
+
+   module.exports = { presets, plugins };
+   ```
+
+4. package.json
+
+   直接 package.json 中配置 babel key
+
+   ```json
+   {
+     "name": "my-package",
+     "version": "1.0.0",
+     "babel": {
+       "presets": [ ... ],
+       "plugins": [ ... ],
+     }
+   }
+   ```
+
+**Plugin 和 Preset 配置**
+
+每个插件或预置有下面几种结构
+
+- EntryTarget -  插件
+- [EntryTarget, EntryOptions] - 插件加选项
+- [EntryTarget, EntryOptions, string] - 插件加选项加名称
+- ConfigItem - babel.createConfigItem() 生成的插件配置项
+
+**EntryTarget**: string | {} | Function\
+**EntryOptions**: undefined | {} | false
+
+```js
+plugins: [
+  // EntryTarget
+  '@babel/plugin-transform-classes',
+
+  // [EntryTarget, EntryOptions]
+  ['@babel/plugin-transform-arrow-functions', { spec: true }],
+
+  // [EntryTarget, EntryOptions, string]
+  ['@babel/plugin-transform-for-of', { loose: true }, "some-name"],
+
+  // ConfigItem
+  babel.createConfigItem(require("@babel/plugin-transform-spread")),
+],
+```
+
+## Polyfill
