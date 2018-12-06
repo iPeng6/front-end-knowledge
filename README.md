@@ -14,3 +14,4 @@
 - [前端技术清单](https://github.com/alienzhou/frontend-tech-list)
 - [前端精读](https://github.com/dt-fe/weekly)
 - [从零开始做 Vue 前端架构](https://github.com/CodeLittlePrince/blog)
+- [learnGitBranching](https://github.com/pcottle/learnGitBranching)
