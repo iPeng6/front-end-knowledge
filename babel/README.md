@@ -149,3 +149,7 @@ plugins: [
 ```
 
 ## Polyfill
+
+[@babel/polyfill](https://babeljs.io/docs/en/babel-polyfill)模块包含了[core-js](https://github.com/zloirock/core-js) 和自定义的[ regenerator runtime](https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js)来模拟全部的 ES2015+的环境。
+
+这么我们就可以使用内建的 Promise 或者 WeakMap、generrator  函数
