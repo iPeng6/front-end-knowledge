@@ -1,6 +1,6 @@
 # what is book
 
-前端知识图谱，便于系统得学习、复习、查漏补缺
+前端知识整理，便于系统得学习、复习、查漏补缺
 
 - [how-javascript-works](https://github.com/Troland/how-javascript-works)
 - [JavaScript Algorithms and Data Structures](https://github.com/trekhleb/javascript-algorithms)
