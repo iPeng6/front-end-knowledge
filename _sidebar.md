@@ -12,6 +12,7 @@
   - [常用模块](node/common-module.md)
   - [npm](node/npm/README.md)
     - [发布包](node/npm/publish.md)
+    - [package.json](node/npm/package.json)
   - [性能优化](node/performance/README.md)
     - [你不知道的 node.js 性能优化](node/performance/node-performance.md)
 
