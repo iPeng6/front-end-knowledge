@@ -46,7 +46,7 @@ World Wide Web Consortium \([W3C](https://www.w3.org/)\) 的缩写，一个专�
 
 ![](img/w3c-process.png)
 
-## 哪些标准
+## 标准
 
 W3C 的[标准](https://www.w3.org/TR/)主要涉及以下方面
 

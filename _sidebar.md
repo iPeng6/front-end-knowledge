@@ -2,8 +2,9 @@
 - [标准规范](standard-specification/README.md)
   - [标准组织](standard-specification/standard-organization/README.md)
     - [W3C](standard-specification/standard-organization/w3c.md)
+    - [ECMA](standard-specification/standard-organization/ecma.md)
     - [TC39](standard-specification/standard-organization/tc39.md)
-  - [ECMAScript](standard-specification/ecma.md)
+  - [ECMAScript](standard-specification/ecmascript.md)
 - [Node](node/README.md)
 
   - [基础架构](node/infrastructure.md)

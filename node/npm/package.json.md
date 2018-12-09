@@ -16,7 +16,7 @@
 
 **必填项 name 和 version**
 
-`name` 字段包含了你的包名，必须小写可以有连字符或者下划线
+`name` 字段包含了你的包名，必须小写可以有连字符或者下划线\
 `version` 字段形如 x.x.x，必须遵循[语义化版本控制](https://docs.npmjs.com/about-semantic-versioning)规范
 
 **Author 字段**
