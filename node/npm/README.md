@@ -41,7 +41,7 @@ npm install npm@latest -g
     npm config set registry https://registry.your-company-registry.npme.io/
     ```
 
-    这个会在用户根目录下新建.npmrcs 文件夹里面会有生成一个 work 文件， 然后将用户目录下的.npmrc link 到这个文件
+    这个会在用户根目录下新建.npmrcs 文件夹里面会有生成一个 work 文件，然后将用户目录下的.npmrc link 到这个文件
 
   - 创建公用的 npm registry
 
@@ -50,7 +50,7 @@ npm install npm@latest -g
     npm config set registry https://registry.npmjs.com/
     ```
 
-    这个会在 npmrcs 文件夹里面会有生成一个 name-of-profile 文件， 然后将用户目录下的.npmrc link 到这个文件
+    这个会在 npmrcs 文件夹里面会有生成一个 name-of-profile 文件，然后将用户目录下的.npmrc link 到这个文件
 
   - 切换 registry
 
@@ -58,9 +58,9 @@ npm install npm@latest -g
     npmrc profile-name
     ```
 
-    本质是将~/.npmrc link 到  ~/.npmrcs/profile-name
+    本质是将~/.npmrc link 到 ~/.npmrcs/profile-name
 
-  - ~/.npmrc  文件类似这样
+  - ~/.npmrc 文件类似这样
 
     ```bash
     registry=https://registry.npm.taobao.org/

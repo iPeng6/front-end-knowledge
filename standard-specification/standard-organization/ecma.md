@@ -33,4 +33,4 @@ ECMA 负责多项标准，包括
 - ECMA-408 – Dart language specification
 - ECMA-412 – Access Systems
 
-作为前端，我们最关注的就是 [ECMA-262](https://tc39.github.io/ecma262/) 也就是现在 ECMAScript 语言标准， 简称 ES
+作为前端，我们最关注的就是 [ECMA-262](https://tc39.github.io/ecma262/) 也就是现在 ECMAScript 语言标准，简称 ES

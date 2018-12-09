@@ -58,7 +58,7 @@ W3C 的[标准](https://www.w3.org/TR/)主要涉及以下方面
 - Web of Services
 - Browsers and Authoring Tools
 
- 目前所有标准在[这里](https://www.w3.org/TR/)，下面列出最新的比较关注的一些
+目前所有标准在[这里](https://www.w3.org/TR/)，下面列出最新的比较关注的一些
 
 - [HTML](https://www.w3.org/TR/?tag=html)
   - [HTML 5.2(REC)](https://www.w3.org/TR/2017/REC-html52-20171214/)

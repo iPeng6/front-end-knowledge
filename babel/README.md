@@ -19,7 +19,7 @@ babel.parse(code, optionsObject, callbackFunction);
 
 ## CLI tool
 
-[@babel/cli](https://babeljs.io/docs/en/babel-cli) 可以在命令行里使用 Babel 工具，安装和基本使用的  例子：
+[@babel/cli](https://babeljs.io/docs/en/babel-cli) 可以在命令行里使用 Babel 工具，安装和基本使用的例子：
 
 ```bash
 npm install --save-dev @babel/core @babel/cli
@@ -27,7 +27,7 @@ npm install --save-dev @babel/core @babel/cli
 ./node_modules/.bin/babel src --out-dir lib
 ```
 
-这会将 src 的所有 JavaScript 文件转换到 lib 中，并应用任何给定的转换 transformations，但这里还没指定，所以 lib 里的代码会跟 src 里的一样， 我们可以在选项里明确指定哪些转换。上面我们使用  了 `--out-dir` 选项， 使用 `--help` 可以查看所有选项， 但现在对于我们最重要的两个选项是`--plugins`和 `--presets`.
+这会将 src 的所有 JavaScript 文件转换到 lib 中，并应用任何给定的转换 transformations，但这里还没指定，所以 lib 里的代码会跟 src 里的一样，我们可以在选项里明确指定哪些转换。上面我们使用了 `--out-dir` 选项，使用 `--help`可以查看所有选项，但现在对于我们最重要的两个选项是`--plugins`和 `--presets`.
 
 ## Plugins & Presets
 
@@ -54,7 +54,7 @@ var fn = function fn() {
 **Preset**
 
 但是 ES2015+ 还有很多特性，不可能都一个个添加，这时我们就可以使用预置 `preset`, 一组提前确定了的插件集合。
-你可以创建自己的预置插件集， 这个例子里我们使用了比较优秀的预置 [@babel/preset-env](https://babeljs.io/docs/en/babel-preset-env).
+你可以创建自己的预置插件集，这个例子里我们使用了比较优秀的预置 [@babel/preset-env](https://babeljs.io/docs/en/babel-preset-env).
 
 ```bash
 npm install --save-dev @babel/preset-env
@@ -62,7 +62,7 @@ npm install --save-dev @babel/preset-env
 ./node_modules/.bin/babel src --out-dir lib --presets=@babel/env
 ```
 
-无需其他配置这个 preset 就将包含所有支持现代 JavaScript（ES2015,ES2016,etc.）的插件，但 presets 也有配置选项，我们来看看配置文件。
+无需其他配置这个 preset 就将包含所有支持现代 JavaScript（ES2015,ES2016,etc.）的插件，但 presets 也有配置选项，我们来看看配置文件。
 
 ## Configuration
 
@@ -125,7 +125,7 @@ babel 有多种配置方案 [configure Babel](https://babeljs.io/docs/en/configu
 
 每个插件或预置有下面几种结构
 
-- EntryTarget -  插件
+- EntryTarget - 插件
 - [EntryTarget, EntryOptions] - 插件加选项
 - [EntryTarget, EntryOptions, string] - 插件加选项加名称
 - ConfigItem - babel.createConfigItem() 生成的插件配置项
