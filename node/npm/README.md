@@ -64,8 +64,8 @@ npm install npm@latest -g
 
     ```bash
     registry=https://registry.npm.taobao.org/
-    @lls:registry=http://reg-npmjs.llsstaging.com/
-    @llx:registry=https://registry-npm.liulishuo.work
+    @coms:registry=http://reg-npmjs.staging.com/
+    @comw:registry=https://registry-npm.company.work
     ```
 
 - 使用淘宝镜像

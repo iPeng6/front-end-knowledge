@@ -28,4 +28,4 @@
     - [Debug with Devtools](react/performance/debug-react-performance.md)
 - [Babel](babel/README.md)
   - [the-super-tiny-compiler](babel/the-super-tiny-compiler.md)
-- [git](git/README.md)
+- [Git](git/README.md)
