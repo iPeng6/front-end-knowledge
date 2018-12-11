@@ -77,4 +77,27 @@ mkdir -p demo/test1
 
 ```bash
 rm -r build
+rm *
+```
+
+## uname
+
+查看系统相关信息（内核版本号、硬件架构、主机名称和操作系统类型等）
+
+> uname [-amnrsv]
+
+**参数**
+
+- -a 或--all 　显示全部的信息。
+- -m 或--machine 　显示电脑类型。
+- -n 或--nodename 　显示在网络上的主机名称。
+- -r 或--release 　显示操作系统的发行编号。
+- -s 或--sysname 　显示操作系统名称。
+- -v 　显示操作系统的版本。
+
+**实例**
+
+```bash
+uname -a
+#> Darwin yuliang.peng 16.7.0 Darwin Kernel Version 16.7.0: Wed Oct 10 20:06:00 PDT 2018; root:xnu-3789.73.24~1/RELEASE_X86_64 x86_64
 ```

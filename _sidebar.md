@@ -27,5 +27,6 @@
   - [性能调优](react/performance/README.md)
     - [Debug with Devtools](react/performance/debug-react-performance.md)
 - [Babel](babel/README.md)
-  - [the-super-tiny-compiler](babel/the-super-tiny-compiler.md)
+  - [the super tiny compiler](babel/the-super-tiny-compiler.md)
+  - [loose mode](babel/loose-mode.md)
 - [Git](git/README.md)
