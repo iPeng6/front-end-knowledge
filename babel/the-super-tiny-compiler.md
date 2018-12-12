@@ -1,6 +1,6 @@
 # the-super-tiny-compiler
 
-> 原文：https://github.com/jamiebuilds/the-super-tiny-compiler/blob/master/the-super-tiny-compiler.js 2017-10-13\
+> 源码：https://github.com/jamiebuilds/the-super-tiny-compiler/blob/master/the-super-tiny-compiler.js
 > 翻译：https://github.com/starkwang/the-super-tiny-compiler-cn/blob/master/super-tiny-compiler-chinese.js
 
 ```js
@@ -260,7 +260,7 @@ function tokenizer(input) {
       // 如果是，那么我们 push 一个 type 为 `paren`，value 为左圆括号的对象。
       tokens.push({
         type: 'paren',
-        value: '('
+        value: '(',
       });
 
       // 自增 `current`
@@ -275,7 +275,7 @@ function tokenizer(input) {
     if (char === ')') {
       tokens.push({
         type: 'paren',
-        value: ')'
+        value: ')',
       });
       current++;
       continue;
@@ -315,7 +315,7 @@ function tokenizer(input) {
       // 然后我们把类型为 `number` 的 token 放入 `tokens` 数组中。
       tokens.push({
         type: 'number',
-        value: value
+        value: value,
       });
 
       // 进入下一次循环。
@@ -370,7 +370,7 @@ function tokenizer(input) {
       // 然后添加一个类型为 `name` 的 token，然后进入下一次循环。
       tokens.push({
         type: 'name',
-        value: value
+        value: value,
       });
 
       continue;
@@ -416,7 +416,7 @@ function parser(tokens) {
       // 然后我们会返回一个新的 AST 节点 `NumberLiteral`，并且把它的值设为 token 的值。
       return {
         type: 'NumberLiteral',
-        value: token.value
+        value: token.value,
       };
     }
 
@@ -426,7 +426,7 @@ function parser(tokens) {
 
       return {
         type: 'StringLiteral',
-        value: token.value
+        value: token.value,
       };
     }
 
@@ -440,7 +440,7 @@ function parser(tokens) {
       var node = {
         type: 'CallExpression',
         name: token.value,
-        params: []
+        params: [],
       };
 
       // 我们再次自增 `current` 变量，跳过当前的 token
@@ -500,7 +500,7 @@ function parser(tokens) {
   // 现在，我们创建 AST，根节点是一个类型为 `Program` 的节点。
   var ast = {
     type: 'Program',
-    body: []
+    body: [],
   };
 
   // 现在我们开始 `walk` 函数，把节点放入 `ast.body` 中。
@@ -647,7 +647,7 @@ function transformer(ast) {
   // 创建 `newAST`，它与我们之前的 AST 类似，有一个类型为 Program 的根节点。
   var newAst = {
     type: 'Program',
-    body: []
+    body: [],
   };
 
   // 下面的代码会有些奇技淫巧，我们在父节点上使用一个属性 `context`（上下文），这样我们就
@@ -664,7 +664,7 @@ function transformer(ast) {
       // 我们创建一个新节点，名字叫 `NumberLiteral`，并把它放入父节点的 context 中。
       parent._context.push({
         type: 'NumberLiteral',
-        value: node.value
+        value: node.value,
       });
     },
     // 下一个， `StringLiteral`
@@ -672,9 +672,9 @@ function transformer(ast) {
       enter(node, parent) {
         parent._context.push({
           type: 'StringLiteral',
-          value: node.value
+          value: node.value,
         });
-      }
+      },
     },
 
     // 接下来，`CallExpressions`。
@@ -684,9 +684,9 @@ function transformer(ast) {
         type: 'CallExpression',
         callee: {
           type: 'Identifier',
-          name: node.name
+          name: node.name,
         },
-        arguments: []
+        arguments: [],
       };
 
       // 下面我们在原来的 `CallExpression` 节点上定义一个新的 context，它是 expression
@@ -703,13 +703,13 @@ function transformer(ast) {
         // 可以作为一个独立的语句存在。
         expression = {
           type: 'ExpressionStatement',
-          expression: expression
+          expression: expression,
         };
       }
 
       // 最后我们把 `CallExpression`（可能是被包起来的） 放入父节点的 context 中。
       parent._context.push(expression);
-    }
+    },
   });
 
   // 最后返回创建好的新 AST。
@@ -811,6 +811,6 @@ module.exports = {
   parser: parser,
   transformer: transformer,
   codeGenerator: codeGenerator,
-  compiler: compiler
+  compiler: compiler,
 };
 ```

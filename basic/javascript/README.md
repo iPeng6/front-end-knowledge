@@ -8,6 +8,7 @@
 参考手册
 
 - [MDN Javascript](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript)
+- [The Complete JavaScript Handbook](https://medium.freecodecamp.org/the-complete-javascript-handbook-f26b2c71719c) [[中文]](https://juejin.im/entry/5c0f1790e51d45780317b7ad?utm_source=gold_browser_extension)
 
 学习教程
 
