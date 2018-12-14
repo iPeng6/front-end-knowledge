@@ -2,6 +2,8 @@
 
 前端知识整理，便于系统得学习、复习、查漏补缺
 
+- [MDN Web technology for developers](https://developer.mozilla.org/en-US/docs/Web)
+- [33-js-concepts](https://github.com/leonardomso/33-js-concepts)
 - [how-javascript-works](https://github.com/Troland/how-javascript-works)
 - [JavaScript Algorithms and Data Structures](https://github.com/trekhleb/javascript-algorithms)
 - [Learn ES2015](https://babeljs.io/docs/en/learn)

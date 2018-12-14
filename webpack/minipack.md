@@ -4,9 +4,9 @@
 
 ```js
 /**
- * Module bundlers 模块打包器可以将一小段代码编译成一些更大更复杂的代码使之可以在浏览器中运行
- * 这些小代码段就是一些JavaScript文件，通过模块系统(https://webpack.js.org/concepts/modules)
- * 来建立依赖关系
+ * Module bundlers 模块打包器可以将一些小段代码编译成一些更大更复杂的代码使之可以在浏览器中运行
+ * 这些小代码段就是一些 JavaScript 文件，通过模块系统(https://webpack.js.org/concepts/modules)
+ * 建立依赖关系
  *
  * 模块打包器有个 entry file 入口文件的概念，不像在浏览器里通过插入script标签来运行js, 打包器需要
  * 知道我们应用的主文件是哪个来启动我们整个应用
@@ -199,4 +199,173 @@ const graph = createGraph('./example/entry.js');
 const result = bundle(graph);
 
 console.log(result);
+```
+
+**实例**
+
+entry.js
+
+```js
+import message from './message.js';
+
+console.log(message);
+```
+
+message.js
+
+```js
+import { name } from './name.js';
+
+export default `hello ${name}!`;
+```
+
+name.js
+
+```js
+export const name = 'world';
+```
+
+**运行结果**
+
+graph
+
+```js
+[
+  {
+    id: 0,
+    filename: './example/entry.js',
+    dependencies: ['./message.js'],
+    code:
+      '"use strict";\n\nvar _message = require("./message.js");\n\nvar _message2 = _interopRequireDefault(_message);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconsole.log(_message2.default);',
+    mapping: { './message.js': 1 },
+  },
+  {
+    id: 1,
+    filename: 'example/message.js',
+    dependencies: ['./name.js'],
+    code:
+      '"use strict";\n\nObject.defineProperty(exports, "__esModule", {\n  value: true\n});\n\nvar _name = require("./name.js");\n\nexports.default = "hello " + _name.name + "!";',
+    mapping: { './name.js': 2 },
+  },
+  {
+    id: 2,
+    filename: 'example/name.js',
+    dependencies: [],
+    code:
+      '"use strict";\n\nObject.defineProperty(exports, "__esModule", {\n  value: true\n});\nvar name = exports.name = \'world\';',
+    mapping: {},
+  },
+];
+```
+
+modules
+
+```js
+{
+  0: [
+    function(require, module, exports) {
+      'use strict';
+
+      var _message = require('./message.js');
+
+      var _message2 = _interopRequireDefault(_message);
+
+      function _interopRequireDefault(obj) {
+        return obj && obj.__esModule ? obj : { default: obj };
+      }
+
+      console.log(_message2.default);
+    },
+    { './message.js': 1 },
+  ],
+  1: [
+    function(require, module, exports) {
+      'use strict';
+
+      Object.defineProperty(exports, '__esModule', {
+        value: true,
+      });
+
+      var _name = require('./name.js');
+
+      exports.default = 'hello ' + _name.name + '!';
+    },
+    { './name.js': 2 },
+  ],
+  2: [
+    function(require, module, exports) {
+      'use strict';
+
+      Object.defineProperty(exports, '__esModule', {
+        value: true,
+      });
+      var name = (exports.name = 'world');
+    },
+    {},
+  ],
+}
+```
+
+bundle
+
+```js
+(function(modules) {
+  function require(id) {
+    const [fn, mapping] = modules[id];
+
+    function localRequire(name) {
+      return require(mapping[name]);
+    }
+
+    const module = { exports: {} };
+
+    fn(localRequire, module, module.exports);
+
+    return module.exports;
+  }
+
+  require(0);
+})({
+  0: [
+    function(require, module, exports) {
+      'use strict';
+
+      var _message = require('./message.js');
+
+      var _message2 = _interopRequireDefault(_message);
+
+      function _interopRequireDefault(obj) {
+        return obj && obj.__esModule ? obj : { default: obj };
+      }
+
+      console.log(_message2.default);
+    },
+    { './message.js': 1 },
+  ],
+  1: [
+    function(require, module, exports) {
+      'use strict';
+
+      Object.defineProperty(exports, '__esModule', {
+        value: true,
+      });
+
+      var _name = require('./name.js');
+
+      exports.default = 'hello ' + _name.name + '!';
+    },
+    { './name.js': 2 },
+  ],
+  2: [
+    function(require, module, exports) {
+      'use strict';
+
+      Object.defineProperty(exports, '__esModule', {
+        value: true,
+      });
+      var name = (exports.name = 'world');
+    },
+    {},
+  ],
+});
 ```
