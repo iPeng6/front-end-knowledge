@@ -34,5 +34,6 @@
   - [编译原理](babel/the-super-tiny-compiler.md)
   - [loose mode](babel/loose-mode.md)
 - [Git](git/README.md)
+  - [git 提交规范](git/conventional-commit.md)
 - [Webpack](webpack/README.md)
   - [编译原理](webpack/minipack.md)
