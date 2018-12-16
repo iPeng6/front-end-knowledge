@@ -7,6 +7,7 @@
   - [编码风格](standard-specification/code-style/README.md)
 - [语言基础](basic/README.md)
   - [Javascript](basic/javascript/README.md)
+    - [手册](basic/javascript/handbook.md)
   - [CSS](basic/css/README.md)
   - [HTML](basic/html/README.md)
 - [Node](node/README.md)

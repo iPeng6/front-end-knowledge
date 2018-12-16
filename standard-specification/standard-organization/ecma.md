@@ -17,7 +17,7 @@ ECMA 负责多项标准，包括
 - ECMA-107 – FAT12/FAT16 file system
 - ECMA-119 – CD-ROM volume and filestructure (later known as ISO 9660)
 - ECMA-130 – CD-ROM "Yellow Book" format
-- [ECMA-262 – ECMAScript Language Specification (based on JavaScript)](https://tc39.github.io/ecma262/)
+- [ECMA-262 – ECMAScript Language Specification (based on JavaScript)](http://www.ecma-international.org/ecma-262/)
 - ECMA-334 – C# Language Specification
 - ECMA-335 – Common Language Infrastructure (CLI)
 - ECMA-341 – Environmental design considerations for electronic products
@@ -33,4 +33,4 @@ ECMA 负责多项标准，包括
 - ECMA-408 – Dart language specification
 - ECMA-412 – Access Systems
 
-作为前端，我们最关注的就是 [ECMA-262](https://tc39.github.io/ecma262/) 也就是现在 ECMAScript 语言标准，简称 ES
+作为前端，我们最关注的就是 [ECMA-262](http://www.ecma-international.org/ecma-262/) 也就是现在 ECMAScript 语言标准，简称 ES
