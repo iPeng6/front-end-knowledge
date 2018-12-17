@@ -42,7 +42,7 @@ ECMAScript 2015、ECMAScript 2016、ECMAScript 2017、ECMAScript 2018
 
 [Ecma International](/standard-specification/standard-organization/ecma) 是瑞士标准协会，负责制定国际标准。当 JavaScript 被创建时，它由 Netscape 和 Sun Microsystems 呈给 Ecma，Ecma 的标准很多会起个编号，正好编号到 262 号，就把基于 JavaScript 的标准编为 ECMA-262 ，别名 ECMAScript。
 
-**版本号为何有时数字有时年份？**
+**为何版本号有时数字有时年份？**
 
 在 ES2015 之前，ECMAScript 规范通常按其版本号命名。 如 ES5 其实是 2009 年更新发布的 ECMAScript 规范的官方名称。
 
