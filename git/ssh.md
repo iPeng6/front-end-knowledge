@@ -54,15 +54,19 @@ Host gitlab
 > mac 每次重启都要 ssh-add 一次，解决方案：创建 Automator 任务加载私钥，然后放到开机启动中。
 
 1. 找到系统应用程序 Automator
-   ![](img/automator1.jpg)
+
+   ![](img/automator1.jpg ':size=500')
 
 2. 选择 应用程序 -> 选取
+
    ![](img/automator2.jpg)
 
 3. 选择 运行 Shell 脚本，点击标题可重命名，保存
+
    ![](img/automator3.jpg)
 
 4. 打开 系统偏好 -> 用户与群组 -> 选择登录项 -> 选择保存的.app 文件为开机自启
-   ![](img/automator4.jpg)
 
-然后开机运行 ssh-add -l 就可以看到 shell script 里面添加的 key 已经在缓存列表中。
+   ![](img/automator4.jpg ':size=500')
+
+然后开机运行 `ssh-add -l` 就可以看到 shell 脚本里添加的 key 已经在缓存列表中了。
