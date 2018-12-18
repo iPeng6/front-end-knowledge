@@ -1,4 +1,4 @@
-# Javascript 手册
+# JavaScript 手册
 
 ## 简介
 
@@ -56,3 +56,59 @@ ES.Next 始终指向 JavaScript 的下一个版本。
 
 最新发布版本：[ECMA-262](http://www.ecma-international.org/ecma-262/)，ECMAScript 2018，2018 年 6 月发布。\
 最新草稿版本：[tc39 ECMA-262](https://tc39.github.io/ecma262/)
+
+## ES2015
+
+### 简介
+
+> ECMAScript 2015 是 2015 年 6 月被批准的 ECMAScript 标准
+
+ES2015 是该语言的一次重大更新，自 2009 年被标准化的 ES5 以来的一次最主要更新。主要的 JavaScript 引擎也在实现这些特性。
+
+查看[ES2015 标准](http://www.ecma-international.org/ecma-262/6.0/index.html)的所有规格
+
+### ECMAScript 2015 特性
+
+#### Arrows and Lexical This
+
+箭头函数是使用 => 语法的简写函数，支持表达式和带函数体的写法，与普通函数不同的是，箭头函数与上下文共享同一个词法 this, 如果箭头函数在另一个函数里面那么它将共享它父级函数的“arguments”变量
+
+```js
+// Expression bodies
+var odds = evens.map(v => v + 1);
+var nums = evens.map((v, i) => v + i);
+
+// Statement bodies
+nums.forEach(v => {
+  if (v % 5 === 0) fives.push(v);
+});
+
+// Lexical this
+var bob = {
+  _name: 'Bob',
+  _friends: [1],
+  printFriends() {
+    this._friends.forEach(f =>
+      console.log(this._name + ' knows ' + f, this === bob)
+    );
+  }
+};
+bob.printFriends(); // returns: Bob knows 1 true
+
+// Lexical arguments
+function square() {
+  let example = () => {
+    let numbers = [];
+    for (let number of arguments) {
+      numbers.push(number * number);
+    }
+
+    return numbers;
+  };
+
+  return example();
+}
+square(2, 4, 7.5, 8, 11.5, 21); // returns: [4, 16, 56.25, 64, 132.25, 441]
+```
+
+#### Classes
