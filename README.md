@@ -13,6 +13,7 @@
 - [30-seconds-of-code](https://github.com/30-seconds/30-seconds-of-code)
   - [30-seconds-of-css](https://30-seconds.github.io/30-seconds-of-css/)
   - [30 Seconds of Interviews](https://30secondsofinterviews.org/)
+- [frontend-cheatsheets](https://medium.freecodecamp.org/modern-frontend-hacking-cheatsheets-df9c2566c72a)
 - [前端技术清单](https://github.com/alienzhou/frontend-tech-list)
 - [前端精读](https://github.com/dt-fe/weekly)
 - [从零开始做 Vue 前端架构](https://github.com/CodeLittlePrince/blog)
