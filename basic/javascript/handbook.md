@@ -75,13 +75,13 @@ ES2015 是该语言的一次重大更新，自 2009 年被标准化的 ES5 以�
 
 ```js
 // Expression bodies
-var odds = evens.map(v => v + 1);
-var nums = evens.map((v, i) => v + i);
+var odds = evens.map(v => v + 1)
+var nums = evens.map((v, i) => v + i)
 
 // Statement bodies
 nums.forEach(v => {
-  if (v % 5 === 0) fives.push(v);
-});
+  if (v % 5 === 0) fives.push(v)
+})
 
 // Lexical this
 var bob = {
@@ -89,26 +89,26 @@ var bob = {
   _friends: [1],
   printFriends() {
     this._friends.forEach(f =>
-      console.log(this._name + ' knows ' + f, this === bob)
-    );
-  }
-};
-bob.printFriends(); // returns: Bob knows 1 true
+      console.log(this._name + ' knows ' + f, this === bob),
+    )
+  },
+}
+bob.printFriends() // returns: Bob knows 1 true
 
 // Lexical arguments
 function square() {
   let example = () => {
-    let numbers = [];
+    let numbers = []
     for (let number of arguments) {
-      numbers.push(number * number);
+      numbers.push(number * number)
     }
 
-    return numbers;
-  };
+    return numbers
+  }
 
-  return example();
+  return example()
 }
-square(2, 4, 7.5, 8, 11.5, 21); // returns: [4, 16, 56.25, 64, 132.25, 441]
+square(2, 4, 7.5, 8, 11.5, 21) // returns: [4, 16, 56.25, 64, 132.25, 441]
 ```
 
 #### Classes
@@ -118,28 +118,28 @@ ES2015 classes 只是一种基于原型的面向对象模式的语法糖，简�
 ```js
 class Person {
   constructor(name) {
-    this.name = name;
+    this.name = name
   }
   hello() {
-    return 'Hello, I am ' + this.name + '.';
+    return 'Hello, I am ' + this.name + '.'
   }
 }
 class Actor extends Person {
   hello() {
-    return super.hello() + ' I am an actor.';
+    return super.hello() + ' I am an actor.'
   }
   static birth() {
-    return new Person();
+    return new Person()
   }
   get fullName() {
-    return `${this.firstName} ${this.lastName}`;
+    return `${this.firstName} ${this.lastName}`
   }
   set age(years) {
-    this.theAge = years;
+    this.theAge = years
   }
 }
-var tomCruise = new Actor('Tom Cruise');
-tomCruise.hello();
+var tomCruise = new Actor('Tom Cruise')
+tomCruise.hello()
 ```
 
 #### Enhanced Object Literals
@@ -158,11 +158,11 @@ var obj = {
   // 3. Methods
   toString() {
     // Super calls
-    return 'd ' + super.toString();
+    return 'd ' + super.toString()
   },
   // 4. Computed (dynamic) property names
-  ['prop_' + (() => 42)()]: 42
-};
+  ['prop_' + (() => 42)()]: 42,
+}
 ```
 
 #### Template Strings
@@ -171,27 +171,30 @@ var obj = {
 
 ```js
 // Basic literal string creation
-`This is a pretty little template string.``In ES5 this is // Multiline strings //
- not legal.`;
+const basic = `This is a pretty little template string.`
+
+// Multiline strings
+const multi = `In ES5 this is 
+ not legal.`
 
 // Interpolate variable bindings
 var name = 'Bob',
-  time = 'today';
-`Hello ${name}, how are you ${time}?`;
+  time = 'today'
+;`Hello ${name}, how are you ${time}?`
 
 // Unescaped template strings
-String.raw`In ES5 "\n" is a line-feed.`;
+String.raw`In ES5 "\n" is a line-feed.`
 
 // tag template
 
 // Construct an HTTP request prefix is used to interpret the replacements and construction
-tag`Hello ${a + b} world ${a * b}`;
+tag`Hello ${a + b} world ${a * b}`
 // the same as
-tag(['Hello ', ' world ', ''], a + b, a * b);
+tag(['Hello ', ' world ', ''], a + b, a * b)
 
 GET`http://foo.org/bar?a=${a}&b=${b}
     Content-Type: application/json
     X-Credentials: ${credentials}
     { "foo": ${foo},
-      "bar": ${bar}}`(myOnReadyStateChangeHandler);
+      "bar": ${bar}}`(myOnReadyStateChangeHandler)
 ```
