@@ -116,21 +116,82 @@ square(2, 4, 7.5, 8, 11.5, 21); // returns: [4, 16, 56.25, 64, 132.25, 441]
 ES2015 classes 只是一种基于原型的面向对象模式的语法糖，简单方便的声明形式使得类模式更易使用，也增加了互操作性。类支持基于原型的继承、super 调用、实例方法、静态方法和构造函数。
 
 ```js
-class SkinnedMesh extends THREE.Mesh {
-  constructor(geometry, materials) {
-    super(geometry, materials);
-
-    this.idMatrix = SkinnedMesh.defaultMatrix();
-    this.bones = [];
-    this.boneMatrices = [];
-    //...
+class Person {
+  constructor(name) {
+    this.name = name;
   }
-  update(camera) {
-    //...
-    super.update();
-  }
-  static defaultMatrix() {
-    return new THREE.Matrix4();
+  hello() {
+    return 'Hello, I am ' + this.name + '.';
   }
 }
+class Actor extends Person {
+  hello() {
+    return super.hello() + ' I am an actor.';
+  }
+  static birth() {
+    return new Person();
+  }
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+  set age(years) {
+    this.theAge = years;
+  }
+}
+var tomCruise = new Actor('Tom Cruise');
+tomCruise.hello();
+```
+
+#### Enhanced Object Literals
+
+增强的对象字面量，支持构造时指定原型`__proto__`, 属性`handle: handle`赋值简写，方法定义及 super 调用，使用计算属性名。这些加起来使得字面量跟类声明更相近，基于对象的设计也从这种便利中获益。
+
+```js
+var obj = {
+  // 1. Sets the prototype. "__proto__" or '__proto__' would also work.
+  __proto__: theProtoObj,
+  // Computed property name does not set prototype or trigger early error for
+  // duplicate __proto__ properties.
+  ['__proto__']: somethingElse,
+  // 2. Shorthand for ‘handler: handler’
+  handler,
+  // 3. Methods
+  toString() {
+    // Super calls
+    return 'd ' + super.toString();
+  },
+  // 4. Computed (dynamic) property names
+  ['prop_' + (() => 42)()]: 42
+};
+```
+
+#### Template Strings
+
+模板字符串提供了构建字符串的语法糖。这类似于 Perl、Python 和其他语言中的字符串插值特性。此外，作为可选项，使用标签可以自定义字符串的构建行为，避免注入攻击，或者基于字符串构建高阶的数据结构。
+
+```js
+// Basic literal string creation
+`This is a pretty little template string.``In ES5 this is // Multiline strings //
+ not legal.`;
+
+// Interpolate variable bindings
+var name = 'Bob',
+  time = 'today';
+`Hello ${name}, how are you ${time}?`;
+
+// Unescaped template strings
+String.raw`In ES5 "\n" is a line-feed.`;
+
+// tag template
+
+// Construct an HTTP request prefix is used to interpret the replacements and construction
+tag`Hello ${a + b} world ${a * b}`;
+// the same as
+tag(['Hello ', ' world ', ''], a + b, a * b);
+
+GET`http://foo.org/bar?a=${a}&b=${b}
+    Content-Type: application/json
+    X-Credentials: ${credentials}
+    { "foo": ${foo},
+      "bar": ${bar}}`(myOnReadyStateChangeHandler);
 ```
