@@ -80,33 +80,33 @@ var nums = evens.map((v, i) => v + i)
 
 // Statement bodies
 nums.forEach(v => {
-  if (v % 5 === 0) fives.push(v)
+	if (v % 5 === 0) fives.push(v)
 })
 
 // Lexical this
 var bob = {
-  _name: 'Bob',
-  _friends: [1],
-  printFriends() {
-    this._friends.forEach(f =>
-      console.log(this._name + ' knows ' + f, this === bob),
-    )
-  },
+	_name: 'Bob',
+	_friends: [1],
+	printFriends() {
+		this._friends.forEach(f =>
+			console.log(this._name + ' knows ' + f, this === bob)
+		)
+	}
 }
 bob.printFriends() // returns: Bob knows 1 true
 
 // Lexical arguments
 function square() {
-  let example = () => {
-    let numbers = []
-    for (let number of arguments) {
-      numbers.push(number * number)
-    }
+	let example = () => {
+		let numbers = []
+		for (let number of arguments) {
+			numbers.push(number * number)
+		}
 
-    return numbers
-  }
+		return numbers
+	}
 
-  return example()
+	return example()
 }
 square(2, 4, 7.5, 8, 11.5, 21) // returns: [4, 16, 56.25, 64, 132.25, 441]
 ```
@@ -117,26 +117,26 @@ ES2015 classes 只是一种基于原型的面向对象模式的语法糖，简�
 
 ```js
 class Person {
-  constructor(name) {
-    this.name = name
-  }
-  hello() {
-    return 'Hello, I am ' + this.name + '.'
-  }
+	constructor(name) {
+		this.name = name
+	}
+	hello() {
+		return 'Hello, I am ' + this.name + '.'
+	}
 }
 class Actor extends Person {
-  hello() {
-    return super.hello() + ' I am an actor.'
-  }
-  static birth() {
-    return new Person()
-  }
-  get fullName() {
-    return `${this.firstName} ${this.lastName}`
-  }
-  set age(years) {
-    this.theAge = years
-  }
+	hello() {
+		return super.hello() + ' I am an actor.'
+	}
+	static birth() {
+		return new Person()
+	}
+	get fullName() {
+		return `${this.firstName} ${this.lastName}`
+	}
+	set age(years) {
+		this.theAge = years
+	}
 }
 var tomCruise = new Actor('Tom Cruise')
 tomCruise.hello()
@@ -148,20 +148,20 @@ tomCruise.hello()
 
 ```js
 var obj = {
-  // 1. Sets the prototype. "__proto__" or '__proto__' would also work.
-  __proto__: theProtoObj,
-  // Computed property name does not set prototype or trigger early error for
-  // duplicate __proto__ properties.
-  ['__proto__']: somethingElse,
-  // 2. Shorthand for ‘handler: handler’
-  handler,
-  // 3. Methods
-  toString() {
-    // Super calls
-    return 'd ' + super.toString()
-  },
-  // 4. Computed (dynamic) property names
-  ['prop_' + (() => 42)()]: 42,
+	// 1. Sets the prototype. "__proto__" or '__proto__' would also work.
+	__proto__: theProtoObj,
+	// Computed property name does not set prototype or trigger early error for
+	// duplicate __proto__ properties.
+	['__proto__']: somethingElse,
+	// 2. Shorthand for ‘handler: handler’
+	handler,
+	// 3. Methods
+	toString() {
+		// 4. Super calls
+		return 'd ' + super.toString()
+	},
+	// 5. Computed (dynamic) property names
+	['prop_' + (() => 42)()]: 42
 }
 ```
 
@@ -174,12 +174,12 @@ var obj = {
 const basic = `This is a pretty little template string.`
 
 // Multiline strings
-const multi = `In ES5 this is 
+const multi = `In ES5 this is
  not legal.`
 
 // Interpolate variable bindings
 var name = 'Bob',
-  time = 'today'
+	time = 'today'
 ;`Hello ${name}, how are you ${time}?`
 
 // Unescaped template strings
@@ -197,4 +197,95 @@ GET`http://foo.org/bar?a=${a}&b=${b}
     X-Credentials: ${credentials}
     { "foo": ${foo},
       "bar": ${bar}}`(myOnReadyStateChangeHandler)
+```
+
+#### Destructuring
+
+解构允许使用模式匹配赋值，支持数组和对象。解构是会失败弱化的，类似对象查找过程 `foo['bar']`，如果未找到则置为 undefined 也可以指定默认值。
+
+```js
+// list matching
+var [a, , b] = [1, 2, 3]
+a === 1
+b === 3
+
+// object matching
+var {
+	op: a,
+	lhs: { op: b },
+	rhs: c
+} = getASTNode()
+
+// object matching shorthand
+// binds `op`, `lhs` and `rhs` in scope
+var { op, lhs, rhs } = getASTNode()
+
+// Can be used in parameter position
+function g({ name: x }) {
+	console.log(x)
+}
+g({ name: 5 })
+
+// Fail-soft destructuring
+var [a] = []
+a === undefined
+
+// Fail-soft destructuring with defaults
+var [a = 1] = []
+a === 1
+
+// Destructuring + defaults arguments
+function r({ x, y, w = 10, h = 10 }) {
+	return x + y + w + h
+}
+r({ x: 1, y: 2 }) === 23
+```
+
+#### Default + Rest + Spread
+
+被调函数支持设置参数默认值，`...` 运算符可以将数组展开成连续的参数给函数调用，`...` 在定义函数时也可以将剩余的参数收集成一个数组，剩余参数 Rest 代替了`arguments`的使用，更直接的解决常见问题。
+
+```js
+// Default
+function f(x, y = 12) {
+	// y is 12 if not passed (or passed as undefined)
+	return x + y
+}
+f(3) == 15
+
+// Rest
+function f(x, ...y) {
+	// y is an Array
+	return x * y.length
+}
+f(3, 'hello', true) == 6
+
+// Spread
+function f(x, y, z) {
+	return x + y + z
+}
+// Pass each elem of array as argument
+f(...[1, 2, 3]) == 6
+```
+
+#### Let + Const
+
+let 和 const 都是绑定构造的块级作用域。let 是新的 var。const 是单次赋值的。const 的静态限制禁止变量在赋值前使用。
+
+```js
+function f() {
+	{
+		let x
+		{
+			// this is ok since it's a block scoped name
+			const x = 'sneaky'
+			// error, was just defined with `const` above
+			x = 'foo'
+		}
+		// this is ok since it was declared with `let`
+		x = 'bar'
+		// error, already declared above in this block
+		let x = 'inner'
+	}
+}
 ```
