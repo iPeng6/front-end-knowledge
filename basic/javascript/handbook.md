@@ -289,3 +289,55 @@ function f() {
 	}
 }
 ```
+
+#### Iterators + For..Of
+
+Iterator 对象让 javascript 拥有了像 CLR IEnumerable 和 Java Iterable 一样自定义迭代器的能力。将 for..in 转换成基于迭代器的自定义遍历的 for..of 形式。不需要实现一个类似 LINQ 中惰性设计模式的数组。
+
+```js
+let fibonacci = {
+	[Symbol.iterator]() {
+		let pre = 0,
+			cur = 1
+		return {
+			next() {
+				;[pre, cur] = [cur, pre + cur]
+				return { done: false, value: cur }
+			}
+		}
+	}
+}
+
+for (var n of fibonacci) {
+	// truncate the sequence at 1000
+	if (n > 1000) break
+	console.log(n)
+}
+
+// Getting the iterator from an array returns an iterator of values
+const a = [1, 2, 3]
+let it = a[Symbol.iterator]()
+console.log(it.next().value) //1
+console.log(it.next().value) //2
+console.log(it.next().value) //3
+
+//get the index as well, using `entries()`
+for (const [i, v] of ['a', 'b', 'c'].entries()) {
+	console.log(i, v)
+}
+```
+
+Iteration 基于 [duck-typed](https://en.wikipedia.org/wiki/Duck_typing) 的接口(以下使用 TypeScript 的语法，仅供解释用)
+
+```js
+interface IteratorResult {
+  done: boolean;
+  value: any;
+}
+interface Iterator {
+  next(): IteratorResult;
+}
+interface Iterable {
+  [Symbol.iterator](): Iterator
+}
+```
