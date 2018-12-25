@@ -107,7 +107,15 @@
 	height: 175px;
 	margin-top: -5px;
 	width: 200px;
-	z-index: 3;
+    z-index: 3;
+    font-size: 12px;
+}
+.apple-body-inside p {
+    color: #fff;
+    margin-left: 20px;
+}
+.apple-body-inside p:first-child {
+    margin-top: 35px;
 }
 
 .apple-body-bottom {

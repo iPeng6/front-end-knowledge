@@ -1,6 +1,6 @@
 # what is book
 
-前端知识整理，便于系统得学习、复习、查漏补缺
+前端知识整理，便于系统得学习、复习、查漏补缺，最终形成一个前端 wiki。（内容均来自互联网，尽量保留索引，如有侵权请告知）
 
 - [MDN Web technology for developers](https://developer.mozilla.org/en-US/docs/Web)
 - [33-js-concepts](https://github.com/leonardomso/33-js-concepts)

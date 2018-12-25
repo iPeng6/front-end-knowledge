@@ -6,7 +6,7 @@ World Wide Web Consortium \([W3C](https://www.w3.org/)\) 的缩写，一个专�
 
 领导者: 万维网发明人 [Tim Berners-Lee](https://www.w3.org/People/Berners-Lee) 和 CEO [Dr. Jeffrey Jaffe](https://www.w3.org/People/Jeff/).
 
-员工：目前有 62 人，主要来自 [MIT](https://www.csail.mit.edu/)（麻省理工学院）, [ERCIM](https://www.ercim.eu/)（欧洲信息学和数学研究联合会）, [Keio](https://www.keio.ac.jp/) （庆应义塾大学），[Beihang](http://ev.buaa.edu.cn/)（北京航空航天大学），包括来自 10 多个不同国家的工程师。
+员工：目前有 62 人，主要来自 [MIT](https://www.csail.mit.edu/)（麻省理工学院）, [ERCIM](https://www.ercim.eu/)（欧洲信息学和数学研究联合会）, [Keio](https://www.keio.ac.jp/) （庆应义塾大学），[Beihang](http://ev.buaa.edu.cn/)（北京航空航天大学），包括至少来自 10 多个不同国家的工程师。
 
 [会员公司](https://www.w3.org/Consortium/Member/List)：浏览器厂商、主流网站、研究机构、常规技术公司等，目前有 475 个会员，如：
 
