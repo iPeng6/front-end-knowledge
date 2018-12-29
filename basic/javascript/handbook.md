@@ -80,40 +80,40 @@ ES2015 是该语言的一次重大更新，自 2009 年被标准化的 ES5 以�
 
 ```js
 // Expression bodies
-var odds = evens.map(v => v + 1)
-var nums = evens.map((v, i) => v + i)
+var odds = evens.map(v => v + 1);
+var nums = evens.map((v, i) => v + i);
 
 // Statement bodies
 nums.forEach(v => {
-	if (v % 5 === 0) fives.push(v)
-})
+  if (v % 5 === 0) fives.push(v);
+});
 
 // Lexical this
 var bob = {
-	_name: 'Bob',
-	_friends: [1],
-	printFriends() {
-		this._friends.forEach(f =>
-			console.log(this._name + ' knows ' + f, this === bob)
-		)
-	}
-}
-bob.printFriends() // returns: Bob knows 1 true
+  _name: 'Bob',
+  _friends: [1],
+  printFriends() {
+    this._friends.forEach(f =>
+      console.log(this._name + ' knows ' + f, this === bob),
+    );
+  },
+};
+bob.printFriends(); // returns: Bob knows 1 true
 
 // Lexical arguments
 function square() {
-	let example = () => {
-		let numbers = []
-		for (let number of arguments) {
-			numbers.push(number * number)
-		}
+  let example = () => {
+    let numbers = [];
+    for (let number of arguments) {
+      numbers.push(number * number);
+    }
 
-		return numbers
-	}
+    return numbers;
+  };
 
-	return example()
+  return example();
 }
-square(2, 4, 7.5, 8, 11.5, 21) // returns: [4, 16, 56.25, 64, 132.25, 441]
+square(2, 4, 7.5, 8, 11.5, 21); // returns: [4, 16, 56.25, 64, 132.25, 441]
 ```
 
 #### Classes
@@ -122,29 +122,29 @@ ES2015 classes 只是一种基于原型的面向对象模式的语法糖，简�
 
 ```js
 class Person {
-	constructor(name) {
-		this.name = name
-	}
-	hello() {
-		return 'Hello, I am ' + this.name + '.'
-	}
+  constructor(name) {
+    this.name = name;
+  }
+  hello() {
+    return 'Hello, I am ' + this.name + '.';
+  }
 }
 class Actor extends Person {
-	hello() {
-		return super.hello() + ' I am an actor.'
-	}
-	static birth() {
-		return new Person()
-	}
-	get fullName() {
-		return `${this.firstName} ${this.lastName}`
-	}
-	set age(years) {
-		this.theAge = years
-	}
+  hello() {
+    return super.hello() + ' I am an actor.';
+  }
+  static birth() {
+    return new Person();
+  }
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+  set age(years) {
+    this.theAge = years;
+  }
 }
-var tomCruise = new Actor('Tom Cruise')
-tomCruise.hello()
+var tomCruise = new Actor('Tom Cruise');
+tomCruise.hello();
 ```
 
 #### Enhanced Object Literals
@@ -153,21 +153,21 @@ tomCruise.hello()
 
 ```js
 var obj = {
-	// 1. Sets the prototype. "__proto__" or '__proto__' would also work.
-	__proto__: theProtoObj,
-	// Computed property name does not set prototype or trigger early error for
-	// duplicate __proto__ properties.
-	['__proto__']: somethingElse,
-	// 2. Shorthand for ‘handler: handler’
-	handler,
-	// 3. Methods
-	toString() {
-		// 4. Super calls
-		return 'd ' + super.toString()
-	},
-	// 5. Computed (dynamic) property names
-	['prop_' + (() => 42)()]: 42
-}
+  // 1. Sets the prototype. "__proto__" or '__proto__' would also work.
+  __proto__: theProtoObj,
+  // Computed property name does not set prototype or trigger early error for
+  // duplicate __proto__ properties.
+  ['__proto__']: somethingElse,
+  // 2. Shorthand for ‘handler: handler’
+  handler,
+  // 3. Methods
+  toString() {
+    // 4. Super calls
+    return 'd ' + super.toString();
+  },
+  // 5. Computed (dynamic) property names
+  ['prop_' + (() => 42)()]: 42,
+};
 ```
 
 #### Template Strings
@@ -176,32 +176,32 @@ var obj = {
 
 ```js
 // Basic literal string creation
-const basic = `This is a pretty little template string.`
+const basic = `This is a pretty little template string.`;
 
 // Multiline strings
 const multi = `In ES5 this is
- not legal.`
+ not legal.`;
 
 // Interpolate variable bindings
 var name = 'Bob',
-	time = 'today'
-;`Hello ${name}, how are you ${time}?`
+  time = 'today';
+`Hello ${name}, how are you ${time}?`;
 
 // Unescaped template strings
-String.raw`In ES5 "\n" is a line-feed.`
+String.raw`In ES5 "\n" is a line-feed.`;
 
 // tag template
 
 // Construct an HTTP request prefix is used to interpret the replacements and construction
-tag`Hello ${a + b} world ${a * b}`
+tag`Hello ${a + b} world ${a * b}`;
 // the same as
-tag(['Hello ', ' world ', ''], a + b, a * b)
+tag(['Hello ', ' world ', ''], a + b, a * b);
 
 GET`http://foo.org/bar?a=${a}&b=${b}
     Content-Type: application/json
     X-Credentials: ${credentials}
     { "foo": ${foo},
-      "bar": ${bar}}`(myOnReadyStateChangeHandler)
+      "bar": ${bar}}`(myOnReadyStateChangeHandler);
 ```
 
 #### Destructuring
@@ -210,40 +210,40 @@ GET`http://foo.org/bar?a=${a}&b=${b}
 
 ```js
 // list matching
-var [a, , b] = [1, 2, 3]
-a === 1
-b === 3
+var [a, , b] = [1, 2, 3];
+a === 1;
+b === 3;
 
 // object matching
 var {
-	op: a,
-	lhs: { op: b },
-	rhs: c
-} = getASTNode()
+  op: a,
+  lhs: { op: b },
+  rhs: c,
+} = getASTNode();
 
 // object matching shorthand
 // binds `op`, `lhs` and `rhs` in scope
-var { op, lhs, rhs } = getASTNode()
+var { op, lhs, rhs } = getASTNode();
 
 // Can be used in parameter position
 function g({ name: x }) {
-	console.log(x)
+  console.log(x);
 }
-g({ name: 5 })
+g({ name: 5 });
 
 // Fail-soft destructuring
-var [a] = []
-a === undefined
+var [a] = [];
+a === undefined;
 
 // Fail-soft destructuring with defaults
-var [a = 1] = []
-a === 1
+var [a = 1] = [];
+a === 1;
 
 // Destructuring + defaults arguments
 function r({ x, y, w = 10, h = 10 }) {
-	return x + y + w + h
+  return x + y + w + h;
 }
-r({ x: 1, y: 2 }) === 23
+r({ x: 1, y: 2 }) === 23;
 ```
 
 #### Default + Rest + Spread
@@ -253,24 +253,24 @@ r({ x: 1, y: 2 }) === 23
 ```js
 // Default
 function f(x, y = 12) {
-	// y is 12 if not passed (or passed as undefined)
-	return x + y
+  // y is 12 if not passed (or passed as undefined)
+  return x + y;
 }
-f(3) == 15
+f(3) == 15;
 
 // Rest
 function f(x, ...y) {
-	// y is an Array
-	return x * y.length
+  // y is an Array
+  return x * y.length;
 }
-f(3, 'hello', true) == 6
+f(3, 'hello', true) == 6;
 
 // Spread
 function f(x, y, z) {
-	return x + y + z
+  return x + y + z;
 }
 // Pass each elem of array as argument
-f(...[1, 2, 3]) == 6
+f(...[1, 2, 3]) == 6;
 ```
 
 #### Let + Const
@@ -279,19 +279,19 @@ let 和 const 都是绑定构造的块级作用域。let 是新的 var。const �
 
 ```js
 function f() {
-	{
-		let x
-		{
-			// this is ok since it's a block scoped name
-			const x = 'sneaky'
-			// error, was just defined with `const` above
-			x = 'foo'
-		}
-		// this is ok since it was declared with `let`
-		x = 'bar'
-		// error, already declared above in this block
-		let x = 'inner'
-	}
+  {
+    let x;
+    {
+      // this is ok since it's a block scoped name
+      const x = 'sneaky';
+      // error, was just defined with `const` above
+      x = 'foo';
+    }
+    // this is ok since it was declared with `let`
+    x = 'bar';
+    // error, already declared above in this block
+    let x = 'inner';
+  }
 }
 ```
 
@@ -301,34 +301,34 @@ Iterator 对象让 javascript 拥有了像 CLR IEnumerable 和 Java Iterable 一
 
 ```js
 let fibonacci = {
-	[Symbol.iterator]() {
-		let pre = 0,
-			cur = 1
-		return {
-			next() {
-				;[pre, cur] = [cur, pre + cur]
-				return { done: false, value: cur }
-			}
-		}
-	}
-}
+  [Symbol.iterator]() {
+    let pre = 0,
+      cur = 1;
+    return {
+      next() {
+        [pre, cur] = [cur, pre + cur];
+        return { done: false, value: cur };
+      },
+    };
+  },
+};
 
 for (var n of fibonacci) {
-	// truncate the sequence at 1000
-	if (n > 1000) break
-	console.log(n)
+  // truncate the sequence at 1000
+  if (n > 1000) break;
+  console.log(n);
 }
 
 // Getting the iterator from an array returns an iterator of values
-const a = [1, 2, 3]
-let it = a[Symbol.iterator]()
-console.log(it.next().value) //1
-console.log(it.next().value) //2
-console.log(it.next().value) //3
+const a = [1, 2, 3];
+let it = a[Symbol.iterator]();
+console.log(it.next().value); //1
+console.log(it.next().value); //2
+console.log(it.next().value); //3
 
 //get the index as well, using `entries()`
 for (const [i, v] of ['a', 'b', 'c'].entries()) {
-	console.log(i, v)
+  console.log(i, v);
 }
 ```
 
@@ -355,22 +355,22 @@ Generators 使用 `function*` 和 `yield` 的语法简化了迭代器的书写�
 
 ```js
 var fibonacci = {
-	[Symbol.iterator]: function*() {
-		var pre = 0,
-			cur = 1
-		for (;;) {
-			var temp = pre
-			pre = cur
-			cur += temp
-			yield cur
-		}
-	}
-}
+  [Symbol.iterator]: function*() {
+    var pre = 0,
+      cur = 1;
+    for (;;) {
+      var temp = pre;
+      pre = cur;
+      cur += temp;
+      yield cur;
+    }
+  },
+};
 
 for (var n of fibonacci) {
-	// truncate the sequence at 1000
-	if (n > 1000) break
-	console.log(n)
+  // truncate the sequence at 1000
+  if (n > 1000) break;
+  console.log(n);
 }
 ```
 
@@ -378,8 +378,8 @@ for (var n of fibonacci) {
 
 ```ts
 interface Generator extends Iterator {
-	next(value?: any): IteratorResult
-	throw(exception: any)
+  next(value?: any): IteratorResult;
+  throw(exception: any);
 }
 ```
 
@@ -390,20 +390,20 @@ Unicode
 
 ```js
 // same as ES5.1
-'𠮷'.length == 2
+'𠮷'.length == 2;
 
 // new RegExp behaviour, opt-in ‘u’
-'𠮷'.match(/./u)[0].length == 2
+'𠮷'.match(/./u)[0].length == 2;
 
 // new form
-;('\u{20BB7}' == '𠮷') == '\uD842\uDFB7'
+('\u{20BB7}' == '𠮷') == '\uD842\uDFB7';
 
 // new String ops
-'𠮷'.codePointAt(0) == 0x20bb7
+'𠮷'.codePointAt(0) == 0x20bb7;
 
 // for-of iterates code points
 for (var c of '𠮷') {
-	console.log(c)
+  console.log(c);
 }
 ```
 
@@ -420,38 +420,38 @@ ES2015 将这些标准化为通用的格式，在语言层面上得到了支持�
 ```js
 // lib/math.js
 export function sum(x, y) {
-	return x + y
+  return x + y;
 }
-export var pi = 3.141593
+export var pi = 3.141593;
 ```
 
 ```js
 // app.js
-import * as math from 'lib/math'
-console.log('2π = ' + math.sum(math.pi, math.pi))
+import * as math from 'lib/math';
+console.log('2π = ' + math.sum(math.pi, math.pi));
 ```
 
 ```js
 // otherApp.js
-import { sum, pi } from 'lib/math'
-console.log('2π = ' + sum(pi, pi))
+import { sum, pi } from 'lib/math';
+console.log('2π = ' + sum(pi, pi));
 ```
 
 一些额外的新特性，包括 `export default` 以及 `export *`
 
 ```js
 // lib/mathplusplus.js
-export * from 'lib/math'
-export var e = 2.71828182846
+export * from 'lib/math';
+export var e = 2.71828182846;
 export default function(x) {
-	return Math.exp(x)
+  return Math.exp(x);
 }
 ```
 
 ```js
 // app.js
-import exp, { pi, e } from 'lib/mathplusplus'
-console.log('e^π = ' + exp(pi))
+import exp, { pi, e } from 'lib/mathplusplus';
+console.log('e^π = ' + exp(pi));
 ```
 
 #### Map + Set + WeakMap + WeakSet
@@ -470,27 +470,27 @@ WeekMap 与 Map 区别：
 
 ```js
 // Sets
-var s = new Set()
+var s = new Set();
 s.add('hello')
-	.add('goodbye')
-	.add('hello')
-s.size === 2
-s.has('hello') === true
+  .add('goodbye')
+  .add('hello');
+s.size === 2;
+s.has('hello') === true;
 
 // Maps
-var m = new Map()
-m.set('hello', 42)
-m.set(s, 34)
-m.get(s) == 34
+var m = new Map();
+m.set('hello', 42);
+m.set(s, 34);
+m.get(s) == 34;
 
 // Weak Maps
-var wm = new WeakMap()
-wm.set(s, { extra: 42 })
-wm.size === undefined
+var wm = new WeakMap();
+wm.set(s, { extra: 42 });
+wm.size === undefined;
 
 // Weak Sets
-var ws = new WeakSet()
-ws.add({ data: 42 })
+var ws = new WeakSet();
+ws.add({ data: 42 });
 // Because the added object has no other references, it will not be held in the set
 // 因为加入的对象没有任何引用，它将不被保留在集合中，也就是可能会消失
 ```
@@ -501,30 +501,30 @@ ws.add({ data: 42 })
 
 ```js
 // Proxying a normal object
-var target = {}
+var target = {};
 var handler = {
-	get: function(receiver, name) {
-		return `Hello, ${name}!`
-	}
-}
+  get: function(receiver, name) {
+    return `Hello, ${name}!`;
+  },
+};
 
-var p = new Proxy(target, handler)
-p.world === 'Hello, world!'
+var p = new Proxy(target, handler);
+p.world === 'Hello, world!';
 ```
 
 ```js
 // Proxying a function object
 var target = function() {
-	return 'I am the target'
-}
+  return 'I am the target';
+};
 var handler = {
-	apply: function(receiver, ...args) {
-		return 'I am the proxy'
-	}
-}
+  apply: function(receiver, ...args) {
+    return 'I am the proxy';
+  },
+};
 
-var p = new Proxy(target, handler)
-p() === 'I am the proxy'
+var p = new Proxy(target, handler);
+p() === 'I am the proxy';
 ```
 
 所有运行时级别的元操作都有对应的陷阱（使得这些操作都可以被代理）
@@ -566,7 +566,7 @@ var handler =
 
 #### Symbols
 
-Symbol 能够实现对象状态的访问控制，允许使用 string(与 ES5 相同)或 symbol 作为键来访问属性。Symbol 是一个新的原语类型，可选的 name 参数可以用于调试——但并不是用于区分 Symbol 的（哪怕一样 name 的两个 Symbol 也是不等的）。Symbol 是独一无二的(如同 gensym（所产生的符号)，但不是私有的，因为它们可以通过类似 Object.getOwnPropertySymbols 的反射特性暴露出来。
+Symbol 能够实现对象状态的访问控制，允许使用 string(与 ES5 相同)或 symbol 作为键来访问属性。Symbol 是一个新的原语类型，可选的 name 参数可以用于调试——但并不是标识符的一部分（哪怕一样的 name 的两个 Symbol 也是不等的）。Symbol 是独一无二的(如同 gensym（所产生的符号)，但不是私有的，因为它们可以通过类似 Object.getOwnPropertySymbols 的反射特性暴露出来。
 
 ```js
 (function() {
@@ -590,4 +590,114 @@ Symbol 能够实现对象状态的访问控制，允许使用 string(与 ES5 相
 
 var c = new MyClass("hello")
 c["key"] === undefined
+```
+
+#### Subclassable Built-ins
+
+ES2015 内建对象如 `Array`、`Date` 和 DOM `Elements` 可被子类化
+
+```js
+// User code of Array subclass
+class MyArray extends Array {
+  constructor(...args) {
+    super(...args);
+  }
+}
+
+var arr = new MyArray();
+arr[1] = 12;
+arr.length == 2;
+```
+
+#### Math + Number + String + Object APIs
+
+许多新加库包括 Math 库， Array 转换 helpers 和用于拷贝的 Object.assign
+
+```js
+Number.EPSILON;
+Number.isInteger(Infinity); // false
+Number.isNaN('NaN'); // false
+
+Math.acosh(3); // 1.762747174039086
+Math.hypot(3, 4); // 5
+Math.imul(Math.pow(2, 32) - 1, Math.pow(2, 32) - 2); // 2
+
+'abcde'.includes('cd'); // true
+'abc'.repeat(3); // "abcabcabc"
+
+Array.from(document.querySelectorAll('*')); // Returns a real Array
+Array.of(1, 2, 3); // Similar to new Array(...), but without special one-arg behavior
+[0, 0, 0].fill(7, 1); // [0,7,7]
+[1, 2, 3].findIndex(x => x == 2); // 1
+['a', 'b', 'c'].entries(); // iterator [0, "a"], [1,"b"], [2,"c"]
+['a', 'b', 'c'].keys(); // iterator 0, 1, 2
+['a', 'b', 'c'].values(); // iterator "a", "b", "c"
+
+Object.assign(Point, { origin: new Point(0, 0) });
+```
+
+#### Binary and Octal Literals
+
+加入了对二进制(b)和八进制(o)字面量的支持
+
+```js
+0b111110111 === 503; // true
+0o767 === 503; // true
+```
+
+#### Promises
+
+Promise 是用来进行异步编程的库，Promise 是对一个“将来可能会变得可用”的值的第一类表示，Promise 在现有的许多 JavaScript 库中使用
+
+```js
+function timeout(duration = 0) {
+  return new Promise((resolve, reject) => {
+    setTimeout(resolve, duration);
+  });
+}
+
+var p = timeout(1000)
+  .then(() => {
+    return timeout(2000);
+  })
+  .then(() => {
+    throw new Error('hmm');
+  })
+  .catch(err => {
+    return Promise.all([timeout(100), timeout(200)]);
+  });
+```
+
+#### Reflect API
+
+整个反射 API 暴露了对象运行时级别的元操作，这实际上与 Proxy API 刚好相反，它允许在 proxy 捕获时调用与 Proxy 接口相对应的元操作。在实现 proxies 时尤其有用。
+
+```js
+var O = { a: 1 };
+Object.defineProperty(O, 'b', { value: 2 });
+O[Symbol('c')] = 3;
+
+Reflect.ownKeys(O); // ['a', 'b', Symbol(c)]
+
+function C(a, b) {
+  this.c = a + b;
+}
+var instance = Reflect.construct(C, [20, 22]);
+instance.c; // 42
+```
+
+#### Tail Calls
+
+尾调用确保堆栈不会无限增长，在面对无限制输入时确保递归算法的安全。
+
+```js
+function factorial(n, acc = 1) {
+    "use strict";
+    if (n <= 1) return acc;
+    return factorial(n - 1, n * acc);
+}
+
+// Stack overflow in most implementations today,
+// but safe on arbitrary inputs in ES2015
+factorial(100000)
 ```
