@@ -41,7 +41,7 @@
   - [Api 技术](network/api/README.md)
     - [REST](network/api/rest.md)
     - [GraphQL](network/api/graphql.md)
-    - [gRPC](network/api/gRPC.md)
+    - [gRPC](network/api/grpc.md)
   - [nginx](network/nginx.md)
 - [安全](security/README.md)
   - [CORS](security/cors.md)
