@@ -1,4 +1,4 @@
-# 提交规范
+# Git commit 提交规范
 
 ## Why
 
