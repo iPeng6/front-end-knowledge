@@ -86,6 +86,7 @@
       - [Debug with Devtools](frame/react/performance/debug-react-performance.md)
   - [Vue](frame/vue/README.md)
 - [性能优化](performance/README.md)
+- [监控](monitor/README.md)
 - [调试](debug/README.md)
 - [测试](test/README.md)
   - [单元测试](test/unit-test.md)
