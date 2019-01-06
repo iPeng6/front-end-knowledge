@@ -2,8 +2,9 @@
 
 参考
 
-- https://medium.freecodecamp.org/the-complete-javascript-handbook-f26b2c71719c [[中文]](https://www.css88.com/archives/9922)
-- https://babeljs.io/docs/en/learn [[中文 1]](https://github.com/fengzilong/es6features-zhCN) [[中文 2]](http://caibaojian.com/es6.html)
+- [the-complete-javascript-handbook](https://medium.freecodecamp.org/the-complete-javascript-handbook-f26b2c71719c) [[中文 1]](https://www.css88.com/archives/9922) [[中文 2]](https://juejin.im/post/5bff57fee51d45021a167991)
+- [Learn ES2015](https://babeljs.io/docs/en/learn) [[中文 1]](https://github.com/fengzilong/es6features-zhCN) [[中文 2]](http://caibaojian.com/es6.html)
+- [here-are-examples-of-everything-new-in-ecmascript-2016-2017-and-2018](https://medium.freecodecamp.org/here-are-examples-of-everything-new-in-ecmascript-2016-2017-and-2018-d52fa3b5a70e)
 
 ## 简介
 
