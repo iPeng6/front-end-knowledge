@@ -86,33 +86,33 @@ var nums = evens.map((v, i) => v + i)
 
 // Statement bodies
 nums.forEach(v => {
-	if (v % 5 === 0) fives.push(v)
+  if (v % 5 === 0) fives.push(v)
 })
 
 // Lexical this
 var bob = {
-	_name: 'Bob',
-	_friends: [1],
-	printFriends() {
-		this._friends.forEach(f =>
-			console.log(this._name + ' knows ' + f, this === bob)
-		)
-	}
+  _name: 'Bob',
+  _friends: [1],
+  printFriends() {
+    this._friends.forEach(f =>
+      console.log(this._name + ' knows ' + f, this === bob),
+    )
+  },
 }
 bob.printFriends() // returns: Bob knows 1 true
 
 // Lexical arguments
 function square() {
-	let example = () => {
-		let numbers = []
-		for (let number of arguments) {
-			numbers.push(number * number)
-		}
+  let example = () => {
+    let numbers = []
+    for (let number of arguments) {
+      numbers.push(number * number)
+    }
 
-		return numbers
-	}
+    return numbers
+  }
 
-	return example()
+  return example()
 }
 square(2, 4, 7.5, 8, 11.5, 21) // returns: [4, 16, 56.25, 64, 132.25, 441]
 ```
@@ -123,26 +123,26 @@ ES2015 classes 只是一种基于原型的面向对象模式的语法糖，简�
 
 ```js
 class Person {
-	constructor(name) {
-		this.name = name
-	}
-	hello() {
-		return 'Hello, I am ' + this.name + '.'
-	}
+  constructor(name) {
+    this.name = name
+  }
+  hello() {
+    return 'Hello, I am ' + this.name + '.'
+  }
 }
 class Actor extends Person {
-	hello() {
-		return super.hello() + ' I am an actor.'
-	}
-	static birth() {
-		return new Person()
-	}
-	get fullName() {
-		return `${this.firstName} ${this.lastName}`
-	}
-	set age(years) {
-		this.theAge = years
-	}
+  hello() {
+    return super.hello() + ' I am an actor.'
+  }
+  static birth() {
+    return new Person()
+  }
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`
+  }
+  set age(years) {
+    this.theAge = years
+  }
 }
 var tomCruise = new Actor('Tom Cruise')
 tomCruise.hello()
@@ -154,20 +154,20 @@ tomCruise.hello()
 
 ```js
 var obj = {
-	// 1. Sets the prototype. "__proto__" or '__proto__' would also work.
-	__proto__: theProtoObj,
-	// Computed property name does not set prototype or trigger early error for
-	// duplicate __proto__ properties.
-	['__proto__']: somethingElse,
-	// 2. Shorthand for ‘handler: handler’
-	handler,
-	// 3. Methods
-	toString() {
-		// 4. Super calls
-		return 'd ' + super.toString()
-	},
-	// 5. Computed (dynamic) property names
-	['prop_' + (() => 42)()]: 42
+  // 1. Sets the prototype. "__proto__" or '__proto__' would also work.
+  __proto__: theProtoObj,
+  // Computed property name does not set prototype or trigger early error for
+  // duplicate __proto__ properties.
+  ['__proto__']: somethingElse,
+  // 2. Shorthand for ‘handler: handler’
+  handler,
+  // 3. Methods
+  toString() {
+    // 4. Super calls
+    return 'd ' + super.toString()
+  },
+  // 5. Computed (dynamic) property names
+  ['prop_' + (() => 42)()]: 42,
 }
 ```
 
@@ -185,7 +185,7 @@ const multi = `In ES5 this is
 
 // Interpolate variable bindings
 var name = 'Bob',
-	time = 'today'
+  time = 'today'
 ;`Hello ${name}, how are you ${time}?`
 
 // Unescaped template strings
@@ -217,9 +217,9 @@ b === 3
 
 // object matching
 var {
-	op: a,
-	lhs: { op: b },
-	rhs: c
+  op: a,
+  lhs: { op: b },
+  rhs: c,
 } = getASTNode()
 
 // object matching shorthand
@@ -228,7 +228,7 @@ var { op, lhs, rhs } = getASTNode()
 
 // Can be used in parameter position
 function g({ name: x }) {
-	console.log(x)
+  console.log(x)
 }
 g({ name: 5 })
 
@@ -242,7 +242,7 @@ a === 1
 
 // Destructuring + defaults arguments
 function r({ x, y, w = 10, h = 10 }) {
-	return x + y + w + h
+  return x + y + w + h
 }
 r({ x: 1, y: 2 }) === 23
 ```
@@ -254,21 +254,21 @@ r({ x: 1, y: 2 }) === 23
 ```js
 // Default
 function f(x, y = 12) {
-	// y is 12 if not passed (or passed as undefined)
-	return x + y
+  // y is 12 if not passed (or passed as undefined)
+  return x + y
 }
 f(3) == 15
 
 // Rest
 function f(x, ...y) {
-	// y is an Array
-	return x * y.length
+  // y is an Array
+  return x * y.length
 }
 f(3, 'hello', true) == 6
 
 // Spread
 function f(x, y, z) {
-	return x + y + z
+  return x + y + z
 }
 // Pass each elem of array as argument
 f(...[1, 2, 3]) == 6
@@ -280,19 +280,19 @@ let 和 const 都是绑定构造的块级作用域。let 是新的 var。const �
 
 ```js
 function f() {
-	{
-		let x
-		{
-			// this is ok since it's a block scoped name
-			const x = 'sneaky'
-			// error, was just defined with `const` above
-			x = 'foo'
-		}
-		// this is ok since it was declared with `let`
-		x = 'bar'
-		// error, already declared above in this block
-		let x = 'inner'
-	}
+  {
+    let x
+    {
+      // this is ok since it's a block scoped name
+      const x = 'sneaky'
+      // error, was just defined with `const` above
+      x = 'foo'
+    }
+    // this is ok since it was declared with `let`
+    x = 'bar'
+    // error, already declared above in this block
+    let x = 'inner'
+  }
 }
 ```
 
@@ -302,22 +302,22 @@ Iterator 对象让 javascript 拥有了像 CLR IEnumerable 和 Java Iterable 一
 
 ```js
 let fibonacci = {
-	[Symbol.iterator]() {
-		let pre = 0,
-			cur = 1
-		return {
-			next() {
-				;[pre, cur] = [cur, pre + cur]
-				return { done: false, value: cur }
-			}
-		}
-	}
+  [Symbol.iterator]() {
+    let pre = 0,
+      cur = 1
+    return {
+      next() {
+        ;[pre, cur] = [cur, pre + cur]
+        return { done: false, value: cur }
+      },
+    }
+  },
 }
 
 for (var n of fibonacci) {
-	// truncate the sequence at 1000
-	if (n > 1000) break
-	console.log(n)
+  // truncate the sequence at 1000
+  if (n > 1000) break
+  console.log(n)
 }
 
 // Getting the iterator from an array returns an iterator of values
@@ -329,11 +329,11 @@ console.log(it.next().value) //3
 
 //get the index as well, using `entries()`
 for (const [i, v] of ['a', 'b', 'c'].entries()) {
-	console.log(i, v)
+  console.log(i, v)
 }
 
 for ([key, val] of Object.entries({ a: 1, b: 2 })) {
-	console.log(key, val)
+  console.log(key, val)
 }
 ```
 
@@ -360,22 +360,22 @@ Generators 使用 `function*` 和 `yield` 的语法简化了迭代器的书写�
 
 ```js
 var fibonacci = {
-	[Symbol.iterator]: function*() {
-		var pre = 0,
-			cur = 1
-		for (;;) {
-			var temp = pre
-			pre = cur
-			cur += temp
-			yield cur
-		}
-	}
+  [Symbol.iterator]: function*() {
+    var pre = 0,
+      cur = 1
+    for (;;) {
+      var temp = pre
+      pre = cur
+      cur += temp
+      yield cur
+    }
+  },
 }
 
 for (var n of fibonacci) {
-	// truncate the sequence at 1000
-	if (n > 1000) break
-	console.log(n)
+  // truncate the sequence at 1000
+  if (n > 1000) break
+  console.log(n)
 }
 ```
 
@@ -383,8 +383,8 @@ for (var n of fibonacci) {
 
 ```ts
 interface Generator extends Iterator {
-	next(value?: any): IteratorResult
-	throw(exception: any)
+  next(value?: any): IteratorResult
+  throw(exception: any)
 }
 ```
 
@@ -408,7 +408,7 @@ Unicode
 
 // for-of iterates code points
 for (var c of '𠮷') {
-	console.log(c)
+  console.log(c)
 }
 ```
 
@@ -425,7 +425,7 @@ ES2015 将这些标准化为通用的格式，在语言层面上得到了支持�
 ```js
 // lib/math.js
 export function sum(x, y) {
-	return x + y
+  return x + y
 }
 export var pi = 3.141593
 ```
@@ -449,7 +449,7 @@ console.log('2π = ' + sum(pi, pi))
 export * from 'lib/math'
 export var e = 2.71828182846
 export default function(x) {
-	return Math.exp(x)
+  return Math.exp(x)
 }
 ```
 
@@ -477,8 +477,8 @@ WeekMap 与 Map 区别：
 // Sets
 var s = new Set()
 s.add('hello')
-	.add('goodbye')
-	.add('hello')
+  .add('goodbye')
+  .add('hello')
 s.size === 2
 s.has('hello') === true
 
@@ -508,9 +508,9 @@ ws.add({ data: 42 })
 // Proxying a normal object
 var target = {}
 var handler = {
-	get: function(receiver, name) {
-		return `Hello, ${name}!`
-	}
+  get: function(receiver, name) {
+    return `Hello, ${name}!`
+  },
 }
 
 var p = new Proxy(target, handler)
@@ -520,12 +520,12 @@ p.world === 'Hello, world!'
 ```js
 // Proxying a function object
 var target = function() {
-	return 'I am the target'
+  return 'I am the target'
 }
 var handler = {
-	apply: function(receiver, ...args) {
-		return 'I am the proxy'
-	}
+  apply: function(receiver, ...args) {
+    return 'I am the proxy'
+  },
 }
 
 var p = new Proxy(target, handler)
@@ -604,9 +604,9 @@ ES2015 内建对象如 `Array`、`Date` 和 DOM `Elements` 可被子类化
 ```js
 // User code of Array subclass
 class MyArray extends Array {
-	constructor(...args) {
-		super(...args)
-	}
+  constructor(...args) {
+    super(...args)
+  }
 }
 
 var arr = new MyArray()
@@ -656,21 +656,21 @@ Promise 是用来进行异步编程的库，Promise 是对一个“将来可能�
 
 ```js
 function timeout(duration = 0) {
-	return new Promise((resolve, reject) => {
-		setTimeout(resolve, duration)
-	})
+  return new Promise((resolve, reject) => {
+    setTimeout(resolve, duration)
+  })
 }
 
 var p = timeout(1000)
-	.then(() => {
-		return timeout(2000)
-	})
-	.then(() => {
-		throw new Error('hmm')
-	})
-	.catch(err => {
-		return Promise.all([timeout(100), timeout(200)])
-	})
+  .then(() => {
+    return timeout(2000)
+  })
+  .then(() => {
+    throw new Error('hmm')
+  })
+  .catch(err => {
+    return Promise.all([timeout(100), timeout(200)])
+  })
 ```
 
 #### Reflect API
@@ -685,7 +685,7 @@ O[Symbol('c')] = 3
 Reflect.ownKeys(O) // ['a', 'b', Symbol(c)]
 
 function C(a, b) {
-	this.c = a + b
+  this.c = a + b
 }
 var instance = Reflect.construct(C, [20, 22])
 instance.c // 42
@@ -723,12 +723,12 @@ ECMAScript 2016 ，于 2016 年 6 月完成。
 ```js
 // ES2015
 if ([1, 2].indexOf(3) === -1) {
-	console.log('Not found')
+  console.log('Not found')
 }
 
 // ES2016
 if (![1, 2].includes(3)) {
-	console.log('Not found')
+  console.log('Not found')
 }
 ```
 
@@ -801,7 +801,7 @@ const people = ['Fred', 'Tony']
 Object.entries(people) // [['0', 'Fred'], ['1', 'Tony']]
 
 for ([key, val] of Object.entries({ a: 1, b: 2 })) {
-	console.log(key, val)
+  console.log(key, val)
 }
 ```
 
@@ -848,9 +848,9 @@ ES2015 提供了 `Object.assign()` 用来浅拷贝一个对象的所有可枚举
 
 ```js
 const person1 = {
-	set name(newName) {
-		console.log(newName)
-	}
+  set name(newName) {
+    console.log(newName)
+  },
 }
 // This won’t work:
 const person2 = {}
@@ -912,20 +912,20 @@ console.log('After')
 
 ```js
 function promiseToDoSomething() {
-	return new Promise(resolve => {
-		setTimeout(() => resolve('I did something'), 10000)
-	})
+  return new Promise(resolve => {
+    setTimeout(() => resolve('I did something'), 10000)
+  })
 }
 async function watchOverSomeoneDoingSomething() {
-	const something = await promiseToDoSomething()
-	return something + ' and I watched'
+  const something = await promiseToDoSomething()
+  return something + ' and I watched'
 }
 async function watchOverSomeoneWatchingSomeoneDoingSomething() {
-	const something = await watchOverSomeoneDoingSomething()
-	return something + ' and I watched as well'
+  const something = await watchOverSomeoneDoingSomething()
+  return something + ' and I watched as well'
 }
 watchOverSomeoneWatchingSomeoneDoingSomething().then(res => {
-	console.log(res)
+  console.log(res)
 })
 ```
 
@@ -962,11 +962,11 @@ ES2018 为对象引入了类似的功能。
 
 ```js
 const { first, second, ...others } = {
-	first: 1,
-	second: 2,
-	third: 3,
-	fourth: 4,
-	fifth: 5
+  first: 1,
+  second: 2,
+  third: 3,
+  fourth: 4,
+  fifth: 5,
 }
 first // 1
 second // 2
@@ -996,9 +996,9 @@ for await (const line of readLines(filePath)) {
 
 ```js
 fetch('file.json')
-	.then(data => data.json())
-	.catch(error => console.error(error))
-	.finally(() => console.log('finished'))
+  .then(data => data.json())
+  .catch(error => console.error(error))
+  .finally(() => console.log('finished'))
 ```
 
 ### Regular Expression improvements
@@ -1052,7 +1052,7 @@ fetch('file.json')
 
 在正则表达式模式中，您可以使用 `\d` 匹配任何数字，`\s` 匹配任何空白字符，\w 匹配任何字母数字字符，依此类推。
 
-这个新功能将扩展此概念到引入 `\p{}` 匹配所有 Unicode 字符，否定形式为 `\P{}` 。
+这个新功能将扩展此概念引入 `\p{}` 匹配所有 Unicode 字符，否定形式为 `\P{}` 。
 
 任何 Unicode 字符都有一组属性。 例如，`Script` 确定语言系列，`ASCII` 是一个布尔值， 对于 `ASCII` 字符，值为 true，依此类推。 您可以将此属性放在花括号中，正则表达式将检查是否为真：
 
