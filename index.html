@@ -14,47 +14,9 @@
     <link rel="stylesheet" href="assets/css/vue.css" />
     <!-- <link rel="stylesheet" href="assets/sidebar/style.css" /> -->
     <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="stylesheet" href="assets/css/apple.css" />
     <link rel="stylesheet" href="//unpkg.com/gitalk/dist/gitalk.css" />
   </head>
   <body>
-    <div
-      id="apple"
-      style="display:none;"
-      class="apple-container pos-r m-hoz-auto"
-    >
-      <div class="apple-leaf pos-a m-hoz-auto bacc-red"></div>
-      <div class="apple-body-top pos-r m-hoz-auto">
-        <div class="apple-body-top-left oh pos-r pull-left">
-          <div class="apple-body-top-left-inside bacc-red"></div>
-        </div>
-        <div class="apple-body-top-right oh pos-r pull-left">
-          <div class="apple-body-top-right-inside bacc-red"></div>
-        </div>
-        <div class="apple-body-top-center oh pos-a pull-left">
-          <div class="apple-body-top-center-inside bacc-white"></div>
-        </div>
-      </div>
-      <div class="apple-body pos-r oh m-hoz-auto">
-        <div class="apple-body-inside pull-left  bacc-red">
-          <p>平安夜可以送你一个<br />🍎吗？</p>
-          <p>不用了。要不你画一个吧</p>
-          <p>用css画一个，哈哈！</p>
-        </div>
-        <div class="heart-body"><div class="heart-shape"></div></div>
-      </div>
-      <div class="apple-body-bottom pos-r m-hoz-auto">
-        <div class="apple-body-bottom-left oh pos-r pull-left">
-          <div class="apple-body-bottom-left-inside bacc-red"></div>
-        </div>
-        <div class="apple-body-bottom-right oh pos-r pull-left">
-          <div class="apple-body-bottom-right-inside bacc-red"></div>
-        </div>
-        <div class="apple-body-bottom-center oh pos-a pull-left">
-          <div class="apple-body-bottom-center-inside bacc-white"></div>
-        </div>
-      </div>
-    </div>
     <div id="app"></div>
 
     <script>
@@ -73,15 +35,6 @@
           placeholder: '🔍 Search',
         },
       }
-      function appleToggle() {
-        if (location.hash === '#/' || location.hash === '#/README') {
-          document.getElementById('apple').style.display = 'block'
-        } else {
-          document.getElementById('apple').style.display = 'none'
-        }
-      }
-      window.addEventListener('hashchange', appleToggle, false)
-      appleToggle()
     </script>
     <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
 
@@ -103,7 +56,7 @@
         owner: 'ipeng6',
         admin: ['ipeng6'],
         // facebook-like distraction free mode
-        distractionFreeMode: false,
+        distractionFreeMode: true,
       })
     </script>
   </body>
