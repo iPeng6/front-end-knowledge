@@ -1,95 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<title>Front-End knowledge</title>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<meta name="description" content="前端知识图谱" />
-		<meta
-			name="viewport"
-			content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-		/>
-		<link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
-		<link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
-		<link rel="stylesheet" href="assets/css/vue.css" />
-		<!-- <link rel="stylesheet" href="assets/sidebar/style.css" /> -->
-		<link rel="stylesheet" href="assets/css/style.css" />
-		<link rel="stylesheet" href="assets/css/apple.css" />
-	</head>
-	<body>
-		<div
-			id="apple"
-			style="display:none;"
-			class="apple-container pos-r m-hoz-auto"
-		>
-			<div class="apple-leaf pos-a m-hoz-auto bacc-red"></div>
-			<div class="apple-body-top pos-r m-hoz-auto">
-				<div class="apple-body-top-left oh pos-r pull-left">
-					<div class="apple-body-top-left-inside bacc-red"></div>
-				</div>
-				<div class="apple-body-top-right oh pos-r pull-left">
-					<div class="apple-body-top-right-inside bacc-red"></div>
-				</div>
-				<div class="apple-body-top-center oh pos-a pull-left">
-					<div class="apple-body-top-center-inside bacc-white"></div>
-				</div>
-			</div>
-			<div class="apple-body pos-r oh m-hoz-auto">
-				<div class="apple-body-inside pull-left  bacc-red">
-					<p>平安夜可以送你一个<br />🍎吗？</p>
-					<p>不用了。要不你画一个吧</p>
-					<p>用css画一个，哈哈！</p>
-				</div>
-				<div class="heart-body"><div class="heart-shape"></div></div>
-			</div>
-			<div class="apple-body-bottom pos-r m-hoz-auto">
-				<div class="apple-body-bottom-left oh pos-r pull-left">
-					<div class="apple-body-bottom-left-inside bacc-red"></div>
-				</div>
-				<div class="apple-body-bottom-right oh pos-r pull-left">
-					<div class="apple-body-bottom-right-inside bacc-red"></div>
-				</div>
-				<div class="apple-body-bottom-center oh pos-a pull-left">
-					<div class="apple-body-bottom-center-inside bacc-white"></div>
-				</div>
-			</div>
-		</div>
-		<div id="app"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Front-End knowledge</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="前端知识图谱" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/vue.css" />
+    <!-- <link rel="stylesheet" href="assets/sidebar/style.css" /> -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/apple.css" />
+    <link rel="stylesheet" href="//unpkg.com/gitalk/dist/gitalk.css" />
+  </head>
+  <body>
+    <div
+      id="apple"
+      style="display:none;"
+      class="apple-container pos-r m-hoz-auto"
+    >
+      <div class="apple-leaf pos-a m-hoz-auto bacc-red"></div>
+      <div class="apple-body-top pos-r m-hoz-auto">
+        <div class="apple-body-top-left oh pos-r pull-left">
+          <div class="apple-body-top-left-inside bacc-red"></div>
+        </div>
+        <div class="apple-body-top-right oh pos-r pull-left">
+          <div class="apple-body-top-right-inside bacc-red"></div>
+        </div>
+        <div class="apple-body-top-center oh pos-a pull-left">
+          <div class="apple-body-top-center-inside bacc-white"></div>
+        </div>
+      </div>
+      <div class="apple-body pos-r oh m-hoz-auto">
+        <div class="apple-body-inside pull-left  bacc-red">
+          <p>平安夜可以送你一个<br />🍎吗？</p>
+          <p>不用了。要不你画一个吧</p>
+          <p>用css画一个，哈哈！</p>
+        </div>
+        <div class="heart-body"><div class="heart-shape"></div></div>
+      </div>
+      <div class="apple-body-bottom pos-r m-hoz-auto">
+        <div class="apple-body-bottom-left oh pos-r pull-left">
+          <div class="apple-body-bottom-left-inside bacc-red"></div>
+        </div>
+        <div class="apple-body-bottom-right oh pos-r pull-left">
+          <div class="apple-body-bottom-right-inside bacc-red"></div>
+        </div>
+        <div class="apple-body-bottom-center oh pos-a pull-left">
+          <div class="apple-body-bottom-center-inside bacc-white"></div>
+        </div>
+      </div>
+    </div>
+    <div id="app"></div>
 
-		<script>
-			window.$docsify = {
-				loadSidebar: true,
-				alias: {
-					'/.*/_sidebar.md': '/_sidebar.md'
-				},
-				name: 'Front-End knowledge',
-				repo: 'https://github.com/iPeng6/ipeng6.github.io',
-				auto2top: true,
-				themeColor: '#348FE5',
-				subMaxLevel: 3,
-				autoHeader: true,
-				search: {
-					placeholder: '🔍 Search'
-				}
-			}
-			function appleToggle() {
-				if (location.hash === '#/' || location.hash === '#/README') {
-					document.getElementById('apple').style.display = 'block'
-				} else {
-					document.getElementById('apple').style.display = 'none'
-				}
-			}
-			window.addEventListener('hashchange', appleToggle, false)
-			appleToggle()
-		</script>
-		<script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+    <script>
+      window.$docsify = {
+        loadSidebar: true,
+        alias: {
+          '/.*/_sidebar.md': '/_sidebar.md',
+        },
+        name: 'Front-End knowledge',
+        repo: 'https://github.com/iPeng6/ipeng6.github.io',
+        auto2top: true,
+        themeColor: '#348FE5',
+        subMaxLevel: 3,
+        autoHeader: true,
+        search: {
+          placeholder: '🔍 Search',
+        },
+      }
+      function appleToggle() {
+        if (location.hash === '#/' || location.hash === '#/README') {
+          document.getElementById('apple').style.display = 'block'
+        } else {
+          document.getElementById('apple').style.display = 'none'
+        }
+      }
+      window.addEventListener('hashchange', appleToggle, false)
+      appleToggle()
+    </script>
+    <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
 
-		<!-- plugins -->
-		<script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
-		<script src="//unpkg.com/docsify/lib/plugins/zoom-image.min.js"></script>
-		<script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
-		<!-- <script src="assets/sidebar/index.js"></script> -->
-		<script src="//unpkg.com/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
-		<script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
-	</body>
+    <!-- plugins -->
+    <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
+    <script src="//unpkg.com/docsify/lib/plugins/zoom-image.min.js"></script>
+    <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
+    <!-- <script src="assets/sidebar/index.js"></script> -->
+    <script src="//unpkg.com/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+    <script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
+    <script src="//unpkg.com/docsify/lib/plugins/gitalk.min.js"></script>
+
+    <script src="//unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+      const gitalk = new Gitalk({
+        clientID: 'd3b6e877e9d486499968',
+        clientSecret: 'abe9d6da76a0070a108e4caaac0dda1a8ead2bd7',
+        repo: 'git@github.com:iPeng6/ipeng6.github.io.git',
+        owner: 'ipeng6@qq.com',
+        admin: ['ipeng6@qq.com'],
+        // facebook-like distraction free mode
+        distractionFreeMode: false,
+      })
+    </script>
+  </body>
 </html>
