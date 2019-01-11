@@ -77,6 +77,7 @@
     - [常用命令](workflow-infra/git/command.md)
     - [提交规范](workflow-infra/git/conventional-commit.md)
     - [ssh](workflow-infra/git/ssh.md)
+    - [gitflow](workflow-infra/git/gitflow.md)
     - [常见问题](workflow-infra/git/qa.md)
   - [Webpack](workflow-infra/webpack/README.md)
     - [编译原理](workflow-infra/webpack/minipack.md)

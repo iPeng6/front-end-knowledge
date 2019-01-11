@@ -24,18 +24,20 @@ git config user.name # 查看某一项的值
 # 直接编辑配置文件
 git config -e [--global]  # 显示Git配置文件
 
-# 配置
+# 配置用户信息
 git config [--global] user.name "[name]"  # 设置提交代码时的用户名
 git config [--global] user.email "[email address]"  # 设置提交代码时的用户邮箱
 
 # 设置alias别名
 
+# 设置pull默认rebase模式
+git config --global pull.rebase true
 ```
 
 ## 三、增加/删除/修改文件
 
 ```bash
-git add [file1][file2] ... # 添加指定文件到暂存区
+git add [file1] [file2] ... # 添加指定文件到暂存区
 git add [dir] # 添加指定目录到暂存区，包括子目录
 git add . # 添加当前目录的所有文件到暂存区
 git add -p # 添加每个变化前，都会要求确认，对于同一个文件的多处变化，可以实现分次提交
@@ -81,9 +83,9 @@ git tag <tagname> # 基于最新提交创建标签
 git tag -d <tagname> # 删除标签
 git push origin :refs/tags/[tagName] # 删除远程 tag
 git show [tag] # 查看 tag 信息
-git push [remote][tag] # 提交指定 tag
+git push [remote] [tag] # 提交指定 tag
 git push [remote] --tags # 提交所有 tag
-git checkout -b [branch][tag] # 新建一个分支，指向某个 tag
+git checkout -b [branch] [tag] # 新建一个分支，指向某个 tag
 ```
 
 ## 七、查看信息

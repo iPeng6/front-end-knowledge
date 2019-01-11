@@ -15,3 +15,7 @@
    git commit -m 'first commit'
    git push --set-upstream origin master # 首次提交需要 set-upstream 一下 --set-upstream 缩写 -u
    ```
+
+## 如果使提交到 gitlab 与 github 上的 commit author 是不同的?
+
+- [Can I specify multiple users for myself in .gitconfig?](https://stackoverflow.com/questions/4220416/can-i-specify-multiple-users-for-myself-in-gitconfig/43654115#43654115)
