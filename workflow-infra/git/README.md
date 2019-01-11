@@ -33,6 +33,8 @@
 ```bash
 git config --global user.name "John Doe"
 git config --global user.email johndoe@example.com
+
+git config --global pull.rebase true
 ```
 
 检查配置项
