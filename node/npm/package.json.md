@@ -1,5 +1,10 @@
 # package.json
 
+参考
+
+- https://docs.npmjs.com/creating-a-package-json-file
+- https://docs.npmjs.com/files/package.json
+
 ## 作用
 
 在你的包中创建 package.json 文件可以方便他人更好的管理安装你的包，包发布必须包含 package.json 文件。
@@ -22,6 +27,14 @@
 **Author 字段**
 
 格式：`Your Name <email@example.com> (http://example.com)`
+
+**engines**
+
+指定node兼容版本
+
+```
+{ "engines" : { "node" : ">=0.10.3 <0.12" } }
+```
 
 ## 创建
 

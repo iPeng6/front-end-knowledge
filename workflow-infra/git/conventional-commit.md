@@ -30,7 +30,7 @@
 - style: 代码格式化如去除空格分号等
 - test: 测试代码增加或修改
 - build: 打包构建工具的修改或者改变外部依赖如 webpack、npm
-- chore: 修改既不是 src 文件也不是 test 文件入了 chore(release): v1.1.0
+- chore: 修改既不是 src 文件也不是 test 文件，如 chore(release): v1.1.0
 - ci: 改变 CI 配置文件
 
 ### scope
