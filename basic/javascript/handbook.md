@@ -1225,3 +1225,6 @@ protected
 static
 yield
 ```
+
+## 变量
+
