@@ -1,9 +1,9 @@
 # 编码风格
 
-参考： https://www.css88.com/archives/9992
+参考：
 
-编码风格指南有很多，这里是 JavaScript 社区中最常见的两个：
-
+- https://www.css88.com/archives/9992
+- [clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript)
 - [The Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
 - [The AirBnb JavaScript Style Guide](https://github.com/airbnb/javascript) [[中文]](https://www.css88.com/archives/8345)
 
@@ -33,19 +33,19 @@ GitHub 上的一个开源项目可能遵循一系列规则，您与团队合作�
 
   ```js
   if (condition) {
-  	statements
+    statements
   }
   if (condition) {
-  	statements
+    statements
   } else {
-  	statements
+    statements
   }
   if (condition) {
-  	statements
+    statements
   } else if (condition) {
-  	statements
+    statements
   } else {
-  	statements
+    statements
   }
   ```
 
@@ -53,7 +53,7 @@ GitHub 上的一个开源项目可能遵循一系列规则，您与团队合作�
 
   ```js
   for (initialization; condition; update) {
-  	statements
+    statements
   }
   ```
 
@@ -61,7 +61,7 @@ GitHub 上的一个开源项目可能遵循一系列规则，您与团队合作�
 
   ```js
   while (condition) {
-  	statements
+    statements
   }
   ```
 
@@ -69,7 +69,7 @@ GitHub 上的一个开源项目可能遵循一系列规则，您与团队合作�
 
   ```js
   do {
-  	statements
+    statements
   } while (condition)
   ```
 
@@ -77,10 +77,10 @@ GitHub 上的一个开源项目可能遵循一系列规则，您与团队合作�
 
   ```js
   switch (expression) {
-  	case expression:
-  		statements
-  	default:
-  		statements
+    case expression:
+      statements
+    default:
+      statements
   }
   ```
 
@@ -88,16 +88,16 @@ GitHub 上的一个开源项目可能遵循一系列规则，您与团队合作�
 
   ```js
   try {
-  	statements
+    statements
   } catch (variable) {
-  	statements
+    statements
   }
   try {
-  	statements
+    statements
   } catch (variable) {
-  	statements
+    statements
   } finally {
-  	statements
+    statements
   }
   ```
 
