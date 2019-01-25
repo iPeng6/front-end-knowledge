@@ -23,7 +23,7 @@ $docsify.plugins = [
 
 window.addEventListener('hashchange', e => {
   requestAnimationFrame(() => {
-    let el = document.querySelector('.sidebar-nav .active')
+    const el = document.querySelector('.sidebar-nav .active')
     if (el) {
       el.parentElement.parentElement
         .querySelectorAll('.app-sub-sidebar')
@@ -39,25 +39,49 @@ window.addEventListener('hashchange', e => {
   })
 })
 
+document.addEventListener(
+  'scroll',
+  e => {
+    requestAnimationFrame(() => {
+      let el = document.querySelector('.app-sub-sidebar > .active')
+      if (el) {
+        el.parentElement.parentElement
+          .querySelectorAll('.app-sub-sidebar')
+          .forEach(dom => dom.classList.remove('open'))
+        while (el.parentElement.classList.contains('app-sub-sidebar')) {
+          el.parentElement.classList.add('open')
+          el = el.parentElement
+        }
+      }
+    })
+  },
+  false
+)
+
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('.sidebar-nav').addEventListener(
     'click',
     e => {
-      console.log(e)
-      // if (e.target.tagName === 'A') {
-      //   const elp = e.target.parentElement
-      //   if (elp.tagName === 'LI') {
-      //     if (elp.classList.contains('active')) {
-      //       elp.classList.remove('active')
-      //     } else {
-      //       elp.classList.add('active')
-      //     }
-      //     if (elp.classList.contains('open')) {
-      //       elp.classList.remove('open')
-      //     }
-      //   }
-      // }
+      if (e.target.tagName === 'A') {
+        const elp = e.target.parentElement
+        if (elp.tagName === 'LI') {
+          if (elp.classList.contains('active')) {
+            requestAnimationFrame(() => {
+              elp.classList.remove('active')
+              elp.classList.remove('open')
+              elp.classList.add('hold')
+            })
+          } else {
+            requestAnimationFrame(() => {
+              if (elp.classList.contains('hold')) {
+                elp.classList.add('active')
+                elp.classList.remove('hold')
+              }
+            })
+          }
+        }
+      }
     },
-    false
+    true
   )
 })
