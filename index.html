@@ -10,10 +10,30 @@
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="assets/css/vue.css" />
+    <link rel="dns-prefetch" href="https://unpkg.com" />
+    <link
+      rel="preload"
+      as="style"
+      href="assets/css/vue.css"
+      onload="this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="assets/css/style.css"
+      as="style"
+      onload="this.rel='stylesheet'"
+    />
     <!-- <link rel="stylesheet" href="assets/sidebar/style.css" /> -->
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link
+      rel="preload"
+      as="script"
+      href="https://unpkg.com/docsify@4.8.6/lib/docsify.min.js"
+    />
+    <link
+      rel="preload"
+      as="script"
+      href="https://unpkg.com/docsify-sidebar-collapse@1.1.1/dist/docsify-sidebar-collapse.min.js"
+    />
   </head>
   <body>
     <div id="app"></div>
@@ -25,7 +45,7 @@
           '/.*/_sidebar.md': '/_sidebar.md'
         },
         name: 'Front-End knowledge',
-        repo: 'https://github.com/iPeng6/ipeng6.github.io',
+        // repo: 'https://github.com/iPeng6/ipeng6.github.io',
         auto2top: true,
         themeColor: '#348FE5',
         subMaxLevel: 4,
@@ -35,14 +55,20 @@
         }
       }
     </script>
-    <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+    <script src="https://unpkg.com/docsify@4.8.6/lib/docsify.min.js"></script>
 
     <!-- plugins -->
-    <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
-    <script src="//unpkg.com/docsify/lib/plugins/zoom-image.min.js"></script>
-    <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
+
     <!-- <script src="assets/sidebar/index.js"></script> -->
-    <script src="//unpkg.com/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
-    <script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
+    <script src="https://unpkg.com/docsify-sidebar-collapse@1.1.1/dist/docsify-sidebar-collapse.min.js"></script>
+    <script src="https://unpkg.com/docsify@4.8.6/lib/plugins/search.min.js"></script>
+    <script src="https://unpkg.com/docsify@4.8.6/lib/plugins/zoom-image.min.js"></script>
+
+    <link rel="prefetch" as="script"
+      href="https://unpkg.com/prismjs@1.15.0/components/prism-bash.min.js"
+      onload="requestAnimationFrame(()=>{
+        var script = document.createElement('script'); script.src = this.href; document.body.appendChild(script);
+      })"
+    ></link>
   </body>
 </html>
