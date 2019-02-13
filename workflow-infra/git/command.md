@@ -29,6 +29,19 @@ git config [--global] user.name "[name]"  # 设置提交代码时的用户名
 git config [--global] user.email "[email address]"  # 设置提交代码时的用户邮箱
 
 # 设置alias别名
+git config --global alias.co checkout
+git config --global alias.master checkout master
+git config --global alias.develop checkout develop
+git config --global alias.s status
+git config --global alias.a !git add . && git status
+git config --global alias.au !git add -u . && git status
+git config --global alias.aa !git add . && git add -u . && git status
+git config --global alias.c commit
+git config --global alias.cm commit -m
+git config --global alias.ca commit --amend
+git config --global alias.ac !git add . && git commit
+git config --global alias.acm !git add . && git commit -m
+git config --global alias.l log --all --decorate --oneline --graph
 
 # 设置pull默认rebase模式
 git config --global pull.rebase true
