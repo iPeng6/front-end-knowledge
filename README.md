@@ -19,6 +19,7 @@
 - [从零开始做 Vue 前端架构](https://github.com/CodeLittlePrince/blog)
 - [learnGitBranching](https://github.com/pcottle/learnGitBranching)
 - [前端九部](https://github.com/frontend9/fe9-library)
+- [developer-roadmap](https://github.com/kamranahmedse/developer-roadmap)
 
 ## Table Of Content
 

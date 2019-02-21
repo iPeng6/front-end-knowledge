@@ -57,6 +57,7 @@
   - [CSRF](security/csrf.md)
   - [跨域](security/cross-domain.md)
 - [浏览器](browser/README.md)
+  - [how browser work](browser/how-browsers-work.md)
 - [适配](adapter/README.md)
 - [可视化](graphic/README.md)
   - [canvas](graphic/canvas.md)
