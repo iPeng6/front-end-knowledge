@@ -57,6 +57,12 @@
 .markdown-section h3 {
   font-size: 1.25rem;
 }
+.markdown-section h4 {
+  font-size: 1.1rem;
+}
+.markdown-section h5 {
+  font-size: 1rem;
+}
 .markdown-section pre > code {
   padding: 1.2em 5px;
 }

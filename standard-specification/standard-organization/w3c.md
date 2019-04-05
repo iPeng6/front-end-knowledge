@@ -33,7 +33,7 @@ World Wide Web Consortium \([W3C](https://www.w3.org/)\) 的缩写，一个专�
 - Internationalization
 - ...
 
-## 标准成熟过程
+## 标准过程
 
 [Process Document](https://www.w3.org/2018/Process-20180201/)
 
