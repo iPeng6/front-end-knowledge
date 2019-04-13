@@ -8,13 +8,16 @@
 
 2. `<script defer src="example.js"></script>`
 
-有了 defer 属性，加载后续文档的过程和 js 脚本的加载(此时仅加载不执行)是并行进行的(异步)，js 脚本的执行需要等到文档所有元素解析完成之后，DOMContentLoaded 事件触发执行之前。
+有了 defer 属性，加载后续文档的过程和 js 脚本的加载(此时仅加载不执行)是并行进行的(异步)，js 脚本的执行需要等到文档所有元素解析完成之后，DOMContentLoaded 事件触发执行之前。另外，defer脚本是有顺序的
 
 3. `<script async src="example.js"></script>`
 
-有了 async 属性，表示后续文档的加载和渲染与 js 脚本的加载和执行是并行进行的，即异步执行；
+有了 async 属性，表示后续文档的加载和渲染与 js 脚本的加载和执行是并行进行的，但一定在onload之前，DOMContentLoaded前后不定，async脚本之间是没有顺序的
 
 ![](./img/defer-async.jpeg)
+
+绿色表示文档解析，蓝色表示下载，红色表示脚本执行
+
 也就是说 下载都是并行的，执行都是阻塞的，但是 defer 会放在文档解析完之后执行，async 是下好立即执行
 
 ## preload vs prefetch

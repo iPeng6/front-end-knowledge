@@ -6,6 +6,7 @@
 - [clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript)
 - [The Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
 - [The AirBnb JavaScript Style Guide](https://github.com/airbnb/javascript) [[中文]](https://www.css88.com/archives/8345)
+- [standard](https://github.com/standard/standard)
 
 您可以按照其中一份指南编码，或创建自己的编码风格。
 
