@@ -47,13 +47,48 @@
 .markdown-section h2 {
   font-size: 1.5rem;
   border-bottom: 1px solid #eaecef;
-  padding-bottom: 0.3em;
+  padding-bottom: 0.2em;
+
+  border-left: 4px solid #0f7de4;
+  padding-left: 8px;
+  line-height: 1.2;
 }
-.markdown-section h2::before {
-  content: '# ';
+
+.markdown-section h2 span {
+  color: #0f7de4;
+}
+
+.markdown-section h3 span {
+  color: #ec5757;
+}
+
+.markdown-section h3::before {
+  content: '➤ ';
   font-size: 1.3rem;
-  color: var(--theme-color, #42b983);
+  color: #ec5757;
+
 }
+
+.markdown-section h4 span {
+  color: #12a844;
+}
+
+.markdown-section h4::before {
+  content: '✦ ';
+  font-size: 1.3rem;
+  color: #12a844;
+}
+
+.markdown-section h5 span {
+  color:orange;
+}
+
+.markdown-section h5::before {
+  content: '✭ ';
+  font-size: 1.3rem;
+  color:orange;
+}
+
 .markdown-section h3 {
   font-size: 1.25rem;
 }
@@ -65,4 +100,8 @@
 }
 .markdown-section pre > code {
   padding: 1.2em 5px;
+}
+
+.sidebar-nav .app-sub-sidebar a {
+  padding-left: 2px;
 }

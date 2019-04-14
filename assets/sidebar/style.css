@@ -6,6 +6,7 @@
   text-decoration: none;
   padding-left: 8px;
 }
+
 .sidebar-nav > ul > li > ul a::before {
   content: '';
   display: block;
