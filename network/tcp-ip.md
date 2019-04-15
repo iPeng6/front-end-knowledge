@@ -3,6 +3,7 @@
 参考
 
 - [漫谈网络通信——从 OSI 网络模型到 TCP/IP 协议族](https://juejin.im/entry/584f9c04b123db00662890de)
+- [网络传输之TCP/IP协议族](https://juejin.im/post/5a7c7a396fb9a0634514aae9)
 
 ## 什么是 TCP/IP 协议？
 
@@ -77,7 +78,7 @@ TCP 报文结构：
 
 ![](img/tcp-header.jpg)
 
-TCP 是面向字节流的，通过 TCP 传送的字节流中的每个字节都按顺序编号，而报头中的 Sequence Number 字段值则指的是本报文段数据的第一个字节的序号。Acknowledgment Number 是期望收到对方下个报文段的第一个数据字节的序号。
+TCP 是`面向字节流的`，通过 TCP 传送的字节流中的每个字节都按顺序编号，而报头中的 Sequence Number 字段值则指的是本报文段数据的第一个字节的序号。Acknowledgment Number 是期望收到对方下个报文段的第一个数据字节的序号。
 
 - Offset：占 4 位，指 TCP 报文段的报头长度，包括固定的 20 字节和 TCP Options 字段。
 - Reserved：占 6 位，保留为今后使用，目前为 0。
