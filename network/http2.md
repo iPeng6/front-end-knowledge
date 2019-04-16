@@ -3,6 +3,7 @@
 参考
 
 - [标准规范 RFC 7540](https://httpwg.org/specs/rfc7540.html)
+- [HTTP2 详解](https://juejin.im/post/5b88a4f56fb9a01a0b31a67e)
 
 ## HTTP/1.1 存在的问题
 

@@ -11,7 +11,7 @@ Babel 大多插件分两种模式 `normal mode` 和 `loose mode`.
 
 比如 class 的转换，就可以切换模式
 
-```
+```json
 {
   "plugins": [
     ["@babel/plugin-transform-classes", {
