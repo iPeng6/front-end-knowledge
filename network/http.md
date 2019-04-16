@@ -182,21 +182,77 @@ HTTP 的请求和响应的消息协议是一样的，分为三个部分，起始
 
 ![](img/HTTP_Request.png)
 
+#### URL的结构
+
+使用HTTP协议访问资源是通过URL（Uniform Resource Locator）统一资源定位符来实现的。URL的格式如下：
+
+```
+scheme://host:port/path?query#a
+
+scheme: 协议头，譬如有http，ftp等
+host: 主机域名或IP地址
+port: 端口号
+path: 目录路径
+query: 查询参数
+fragment: #后的hash值，一般用来定位到某个位置
+```
+
 #### 请求方法
 
-- GET 请求获取 Request-URI 所标识的资源
-- POST 在 Request-URI 所标识的资源后附加新的数据
-- HEAD 请求获取由 Request-URI 所标识的资源的响应消息报头
-- PUT 请求服务器存储一个资源，并用 Request-URI 作为其标识
-- DELETE 请求服务器删除 Request-URI 所标识的资源
-- TRACE 请求服务器回送收到的请求信息，主要用于测试或诊断
-- CONNECT HTTP/1.1 协议中预留给能够将连接改为管道方式的代理服务器。
-- OPTIONS 请求查询服务器的性能，或者查询与资源相关的选项和需求
+- GET: 获取URL指定的资源
+- POST：传输实体信息附加新数据
+- PUT：上传资源更新数据
+- DELETE：删除资源
+- HEAD：获取报文首部，与GET相比，不返回报文主体部分
+- OPTIONS：询问支持的方法、CORS 中的预检
+- TRACE：请求服务器回送收到的请求信息，主要用于测试debug
+- CONNECT：要求在与代理服务器通信时建立隧道，使用隧道进行TCP通信。主要使用SSL和TLS将数据加密后通过网络隧道进行传输
+- PATCH：用于对资源进行部分修改
 
 #### 请求头
+
+| 名称              | 作用                                                                                                                                 |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| Accept            | 接收类型，表示浏览器支持的MIME类型（对标服务端返回的Content-Type）多个值逗号分割如：`Accept: text/html, application/xml; q=0.9, */*` |
+| Content-Encoding  | 浏览器支持的压缩类型，如：gzip, deflate                                                                                              |
+| Content-Type      | 客户端发送出去实体内容的类型                                                                                                         |
+| Cache-Control     | 指定请求和响应遵循的缓存机制，如no-cache                                                                                             |
+| If-Modified-Since | 对应服务端的Last-Modified，用来匹配看文件是否变动，只能精确到秒，http1.0中                                                           |
+| Expires           | 缓存控制，在这个时间内不会请求，直接使用缓存，http1.0，而且是服务端时间，用客户端时间与之比对                                        |
+| If-None-Match     | 对应服务端的ETag，用来匹配文件内容是否改变（非常精确），http1.1中                                                                    |
+| Cookie            | 有cookie并且同域访问时会自动带上                                                                                                     |
+| Connection        | 当浏览器与服务器通信时对于长连接如何进行处理,如keep-alive                                                                            |
+| Host              | 请求的服务器URL                                                                                                                      |
+| Origin            | 最初的请求是从哪里发起的（只会精确到端口）,Origin比Referer更尊重隐私                                                                 |
+| Referer           | 该页面的来源URL(适用于所有类型的请求，会精确到详细页面地址，csrf拦截常用到这个字段)                                                  |
+| User-Agent        | 用户客户端的一些必要信息，如UA头部等                                                                                                 |
 
 ### 响应
 
 状态行、响应头和响应体
 
 ![](img/HTTP_Response.png)
+
+#### 状态码
+
+#### 响应头
+
+| 名称                         | 作用                                                                |
+| ---------------------------- | ------------------------------------------------------------------- |
+| Access-Control-Allow-Headers | 服务器端允许的请求Headers                                           |
+| Access-Control-Allow-Method  | 服务器端允许的请求方法                                              |
+| Access-Control-Allow-Origin  | 服务器端允许的请求Origin头部（譬如为*）                             |
+| Content-Type                 | 服务端返回的实体内容的类型，与请求头Accept相对应                    |
+| Date                         | 数据从服务器发送的时间                                              |
+| Cache-Control                | 告诉浏览器或其他客户，什么环境可以安全的缓存文档                    |
+| Last-Modified                | 请求资源的最后修改时间，对应请求头If-Modified-Since                 |
+| Expires                      | 应该在什么时候认为文档已经过期,从而不再缓存它                       |
+| ETag                         | 请求变量的实体标签的当前值，资源的唯一标识，对应请求头If-None-Match |
+| Set-Cookie                   | 设置和页面关联的cookie，服务器通过这个头部把cookie传给客户端        |
+| Keep-Alive                   | 如果客户端有keep-alive，服务端也会有响应（如timeout=38）            |
+| Server                       | 服务器的一些相关信息                                                |
+
+
+看个实际例子
+
+![](img/http-headers.jpeg)
