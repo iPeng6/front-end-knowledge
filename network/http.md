@@ -137,12 +137,23 @@ Host: www.example.com
 
 2015 年，HTTP/2 发布。它不叫 HTTP/2.0，是因为标准委员会不打算再发布子版本了。 HTTP/2 带来了下列改进
 
-- 二进制协议 Binary Format
-- 多路复用 MultiPlexing
-- 头信息压缩
-- 服务端推送 server push
+- Binary Format，使用二进制格式 传输，更高效、更紧凑 Binary Format
+- MultiPlexing，多路复用，一个网络连接实现并行请求
+- 对报头压缩，降低开销
+- server push，服务端推送，减少请求
+- 默认使用加密
+
+### HTTP/3
+
+- 由 google 创造 原名叫 HTTP-over-QUIC
+- 基于 QUIC 协议，基于 UDP
+- HTTP3 不是 HTTP2 的扩展
+- HTTP3 将是一个全新的协议 目前处于测试阶段
 
 ## HTTP 的基本性质
+
+<details>
+<summary>CLICK ME</summary>
 
 ### HTTP 是简单的
 
@@ -168,6 +179,8 @@ HTTP/1.0 为每一个请求/响应都打开一个 TCP 连接，导致了 2 个�
 
 为了更好的适合 HTTP，设计一种更好传输协议的进程一直在进行。Google 就研发了一种以 UDP 为基础，能提供更可靠更高效的传输协议 QUIC。
 
+</details>
+
 ## HTTP 协议格式
 
 HTTP/1.1 以及更早的 HTTP 协议报文都是语义可读的。在 HTTP/2 中，这些报文被嵌入到了一个新的二进制结构，帧。帧允许实现很多优化，比如报文头部的压缩和复用。即使只有原始 HTTP 报文的一部分以 HTTP/2 发送出来，每条报文的语义依旧不变，客户端会重组原始 HTTP/1.1 请求。因此用 HTTP/1.1 格式来理解 HTTP/2 报文仍旧有效。
@@ -182,9 +195,9 @@ HTTP 的请求和响应的消息协议是一样的，分为三个部分，起始
 
 ![](img/HTTP_Request.png)
 
-#### URL的结构
+#### URL 结构
 
-使用HTTP协议访问资源是通过URL（Uniform Resource Locator）统一资源定位符来实现的。URL的格式如下：
+使用 HTTP 协议访问资源是通过 URL（Uniform Resource Locator）统一资源定位符来实现的。URL 的格式如下：
 
 ```
 scheme://host:port/path?query#a
@@ -199,33 +212,33 @@ fragment: #后的hash值，一般用来定位到某个位置
 
 #### 请求方法
 
-- GET: 获取URL指定的资源
+- GET: 获取 URL 指定的资源
 - POST：传输实体信息附加新数据
 - PUT：上传资源更新数据
 - DELETE：删除资源
-- HEAD：获取报文首部，与GET相比，不返回报文主体部分
+- HEAD：获取报文首部，与 GET 相比，不返回报文主体部分
 - OPTIONS：询问支持的方法、CORS 中的预检
-- TRACE：请求服务器回送收到的请求信息，主要用于测试debug
-- CONNECT：要求在与代理服务器通信时建立隧道，使用隧道进行TCP通信。主要使用SSL和TLS将数据加密后通过网络隧道进行传输
+- TRACE：请求服务器回送收到的请求信息，主要用于测试 debug
+- CONNECT：要求在与代理服务器通信时建立隧道，使用隧道进行 TCP 通信。主要使用 SSL 和 TLS 将数据加密后通过网络隧道进行传输
 - PATCH：用于对资源进行部分修改
 
 #### 请求头
 
-| 名称              | 作用                                                                                                                                 |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| Accept            | 接收类型，表示浏览器支持的MIME类型（对标服务端返回的Content-Type）多个值逗号分割如：`Accept: text/html, application/xml; q=0.9, */*` |
-| Content-Encoding  | 浏览器支持的压缩类型，如：gzip, deflate                                                                                              |
-| Content-Type      | 客户端发送出去实体内容的类型                                                                                                         |
-| Cache-Control     | 指定请求和响应遵循的缓存机制，如no-cache                                                                                             |
-| If-Modified-Since | 对应服务端的Last-Modified，用来匹配看文件是否变动，只能精确到秒，http1.0中                                                           |
-| Expires           | 缓存控制，在这个时间内不会请求，直接使用缓存，http1.0，而且是服务端时间，用客户端时间与之比对                                        |
-| If-None-Match     | 对应服务端的ETag，用来匹配文件内容是否改变（非常精确），http1.1中                                                                    |
-| Cookie            | 有cookie并且同域访问时会自动带上                                                                                                     |
-| Connection        | 当浏览器与服务器通信时对于长连接如何进行处理,如keep-alive                                                                            |
-| Host              | 请求的服务器URL                                                                                                                      |
-| Origin            | 最初的请求是从哪里发起的（只会精确到端口）,Origin比Referer更尊重隐私                                                                 |
-| Referer           | 该页面的来源URL(适用于所有类型的请求，会精确到详细页面地址，csrf拦截常用到这个字段)                                                  |
-| User-Agent        | 用户客户端的一些必要信息，如UA头部等                                                                                                 |
+| 名称              | 作用                                                                                                                                                                                                                   |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Accept            | 接收类型，表示浏览器支持的 [MIME](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types) 类型（对标服务端返回的 Content-Type）多个值逗号分割如：`Accept: text/html, application/xml; q=0.9, */*` |
+| Content-Encoding  | 浏览器支持的压缩类型，如：gzip, deflate                                                                                                                                                                                |
+| Content-Type      | 客户端发送出去实体内容的类型                                                                                                                                                                                           |
+| Cache-Control     | 指定请求和响应遵循的缓存机制，如 no-cache                                                                                                                                                                              |
+| If-Modified-Since | 对应服务端的 Last-Modified，用来匹配看文件是否变动，只能精确到秒，http1.0 中                                                                                                                                           |
+| Expires           | 缓存控制，在这个时间内不会请求，直接使用缓存，http1.0，而且是服务端时间，用客户端时间与之比对                                                                                                                          |
+| If-None-Match     | 对应服务端的 ETag，用来匹配文件内容是否改变（非常精确），http1.1 中                                                                                                                                                    |
+| Cookie            | 有 cookie 并且同域访问时会自动带上                                                                                                                                                                                     |
+| Connection        | 当浏览器与服务器通信时对于长连接如何进行处理,如 keep-alive                                                                                                                                                             |
+| Host              | 请求的服务器 URL                                                                                                                                                                                                       |
+| Origin            | 最初的请求是从哪里发起的（只会精确到端口）,Origin 比 Referer 更尊重隐私                                                                                                                                                |
+| Referer           | 该页面的来源 URL(适用于所有类型的请求，会精确到详细页面地址，csrf 拦截常用到这个字段)                                                                                                                                  |
+| User-Agent        | 用户客户端的一些必要信息，如 UA 头部等                                                                                                                                                                                 |
 
 ### 响应
 
@@ -235,23 +248,84 @@ fragment: #后的hash值，一般用来定位到某个位置
 
 #### 状态码
 
+| 状态码 | 类别                        | 描述                                     |
+| ------ | --------------------------- | ---------------------------------------- |
+| 1xx    | Informational(信息性状态码) | 指示信息，表示请求已接收，继续处理       |
+| 2xx    | Success(成功状态码)         | 成功，表示请求已被成功接收、理解、接受   |
+| 3xx    | Redirection(重定向状态码)   | 重定向，要完成请求必须进行更进一步的操作 |
+| 4xx    | Client Error(客户端状态码)  | 客户端错误，请求有语法错误或请求无法实现 |
+| 5xx    | Server Error(服务端状态码)  | 服务器端错误，服务器未能实现合法的请求   |
+
+具体如下：
+
+| CODE | MESSAGE                         | 描述                                                                                          |
+| ---- | ------------------------------- | --------------------------------------------------------------------------------------------- |
+| 100  | Continue                        |                                                                                               |
+| 101  | Switching Protocol              |                                                                                               |
+| 200  | OK                              | 请求成功                                                                                      |
+| 201  | Created                         |                                                                                               |
+| 202  | Accepted                        |                                                                                               |
+| 203  | Non-Authoritative Information   |                                                                                               |
+| 204  | No Content                      | 请求成功，但客户端不需要更新其现有页面，如PUT、OPTIONS                                        |
+| 205  | Reset Content                   |                                                                                               |
+| 206  | Partial Content                 | 请求成功，返回部分内容，配合 Content-Range 使用，如: `Content-Range：bytes 21010-47021/47022` |
+| 300  | Multiple Choices                |                                                                                               |
+| 301  | Moved Permanently               | 永久重定向                                                                                    |
+| 302  | Found                           | 临时重定向                                                                                    |
+| 303  | See Other                       |                                                                                               |
+| 304  | Not Modified                    | 请求资源未修改，请使用本地缓存                                                                |
+| 307  | Temporary Redirect              |                                                                                               |
+| 308  | Permanent Redirect              |                                                                                               |
+| 400  | Bad Request                     | 客户端请求语法错误，服务器无法理解该请求                                                      |
+| 401  | Unauthorized                    | 客户端错误，缺少身份认证凭证                                                                  |
+| 403  | Forbidden                       | 禁止访问，如授权验证没通过，密码不对等                                                        |
+| 404  | Not Found                       | 资源未找到                                                                                    |
+| 405  | Method Not Allowed              |                                                                                               |
+| 406  | Not Acceptable                  |                                                                                               |
+| 407  | Proxy Authentication Required   |                                                                                               |
+| 408  | Request Timeout                 |                                                                                               |
+| 409  | Conflict                        |                                                                                               |
+| 410  | Gone                            |                                                                                               |
+| 411  | Length Required                 |                                                                                               |
+| 412  | Precondition Failed             |                                                                                               |
+| 413  | Payload Too Large               |                                                                                               |
+| 414  | URI Too Long                    |                                                                                               |
+| 415  | Unsupported Media Type          |                                                                                               |
+| 416  | Range Not Satisfiable           |                                                                                               |
+| 417  | Expectation Failed              |                                                                                               |
+| 418  | I'm a teapot                    |                                                                                               |
+| 422  | Unprocessable Entity            |                                                                                               |
+| 425  | Too Early                       |                                                                                               |
+| 426  | Upgrade Required                |                                                                                               |
+| 428  | Precondition Required           |                                                                                               |
+| 429  | Too Many Requests               |                                                                                               |
+| 431  | Request Header Fields Too Large |                                                                                               |
+| 451  | Unavailable For Legal Reasons   |                                                                                               |
+| 500  | Internal Server Error           | 服务器内部错误                                                                                |
+| 501  | Not Implemented                 |                                                                                               |
+| 502  | Bad Gateway                     | 表示作为网关或代理角色的服务器，从上游服务器中接收到的响应是无效的                            |
+| 503  | Service Unavailable             | 服务不可用，如服务器停机维护或者已超载                                                        |
+| 504  | Gateway Timeout                 | 网关超时                                                                                      |
+| 505  | HTTP Version Not Supported      |                                                                                               |
+| 511  | Network Authentication Required |                                                                                               |
+
+
 #### 响应头
 
-| 名称                         | 作用                                                                |
-| ---------------------------- | ------------------------------------------------------------------- |
-| Access-Control-Allow-Headers | 服务器端允许的请求Headers                                           |
-| Access-Control-Allow-Method  | 服务器端允许的请求方法                                              |
-| Access-Control-Allow-Origin  | 服务器端允许的请求Origin头部（譬如为*）                             |
-| Content-Type                 | 服务端返回的实体内容的类型，与请求头Accept相对应                    |
-| Date                         | 数据从服务器发送的时间                                              |
-| Cache-Control                | 告诉浏览器或其他客户，什么环境可以安全的缓存文档                    |
-| Last-Modified                | 请求资源的最后修改时间，对应请求头If-Modified-Since                 |
-| Expires                      | 应该在什么时候认为文档已经过期,从而不再缓存它                       |
-| ETag                         | 请求变量的实体标签的当前值，资源的唯一标识，对应请求头If-None-Match |
-| Set-Cookie                   | 设置和页面关联的cookie，服务器通过这个头部把cookie传给客户端        |
-| Keep-Alive                   | 如果客户端有keep-alive，服务端也会有响应（如timeout=38）            |
-| Server                       | 服务器的一些相关信息                                                |
-
+| 名称                         | 作用                                                                 |
+| ---------------------------- | -------------------------------------------------------------------- |
+| Access-Control-Allow-Headers | 服务器端允许的请求 Headers                                           |
+| Access-Control-Allow-Method  | 服务器端允许的请求方法                                               |
+| Access-Control-Allow-Origin  | 服务器端允许的请求 Origin 头部（譬如为\*）                           |
+| Content-Type                 | 服务端返回的实体内容的类型，与请求头 Accept 相对应                   |
+| Date                         | 数据从服务器发送的时间                                               |
+| Cache-Control                | 告诉浏览器或其他客户，什么环境可以安全的缓存文档                     |
+| Last-Modified                | 请求资源的最后修改时间，对应请求头 If-Modified-Since                 |
+| Expires                      | 应该在什么时候认为文档已经过期,从而不再缓存它                        |
+| ETag                         | 请求变量的实体标签的当前值，资源的唯一标识，对应请求头 If-None-Match |
+| Set-Cookie                   | 设置和页面关联的 cookie，服务器通过这个头部把 cookie 传给客户端      |
+| Keep-Alive                   | 如果客户端有 keep-alive，服务端也会有响应（如 timeout=38）           |
+| Server                       | 服务器的一些相关信息                                                 |
 
 看个实际例子
 
