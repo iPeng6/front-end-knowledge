@@ -1,13 +1,16 @@
 # HTTP
 
-参考
+<details>
+<summary>参考 - 2019年04月17日</summary>
 
-- [标准规范](https://httpwg.org/specs/)
+- [标准规范文档](https://httpwg.org/specs/)
+- [MDN HTTP 的发展](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP)
 - [MDN HTTP 概述](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Overview)
 - [HTTP 协议入门](http://www.ruanyifeng.com/blog/2016/08/http.html)
 - [HTTP 和 HTTPS 详解](https://juejin.im/post/5af557a3f265da0b9265a498)
+  </details>
 
-**HTTP（HyperText Transfer Protocol）** 是一种能够获取如 HTML 这样的网络资源的通讯协议。它是在 Web 上进行数据交换的基础，是一种 client-server 协议，也就是说，请求通常是由像浏览器这样的接受方发起的。一个完整的 Web 文档通常是由不同的子文档拼接而成的，像是文本、布局描述、图片、视频、脚本等等。
+**HTTP（HyperText Transfer Protocol）超文本传输协议** 是一种能够获取如 HTML 这样的网络资源的通讯协议。它是在 Web 上进行数据交换的基础，是一种 client-server 协议，也就是说，请求通常是由像浏览器这样的接受方发起的。一个完整的 Web 文档通常是由不同的子文档拼接而成的，像是文本、布局描述、图片、视频、脚本等等。
 
 ![](img/client-server.png ':size=700')
 
@@ -39,7 +42,7 @@ HTTP 是基于 TCP/IP 协议的应用层协议。它不涉及数据包（packet�
 GET /index.html
 ```
 
-协议规定，服务器只能回应 HTML 格式的字符串，不能回应别的格式。也没有HTTP头，状态码或错误码
+协议规定，服务器只能回应 HTML 格式的字符串，不能回应别的格式。也没有 HTTP 头，状态码或错误码
 
 ```html
 <html>
@@ -56,9 +59,9 @@ GET /index.html
 1996 年 5 月，HTTP/1.0 版本发布，内容大大增加。
 
 - 引入了`HTTP头`的概念，无论是对于请求还是响应，允许传输元数据，使协议变得非常灵活，更具扩展性。
-- `协议版本`信息现在会随着每个请求发送（HTTP/1.0被追加到了GET行）
+- `协议版本`信息现在会随着每个请求发送（HTTP/1.0 被追加到了 GET 行）
 - `状态码`会在响应开始时发送，使浏览器能了解请求执行成功或失败，并相应调整行为（如更新或使用本地缓存）
-- 在新HTTP头`Content-Type`的帮助下，任何格式的内容都可以发送。这使得互联网不仅可以传输文字，还能传输图像、视频、二进制文件。这为互联网的大发展奠定了基础。
+- 在新 HTTP 头`Content-Type`的帮助下，任何格式的内容都可以发送。这使得互联网不仅可以传输文字，还能传输图像、视频、二进制文件。这为互联网的大发展奠定了基础。
 - 除了 GET 命令，还引入了`POST`命令和`HEAD`命令，丰富了浏览器与服务器的互动手段。
 - 其他的新增功能还包括 多字符集支持、多部分发送（multi-part type）、权限（authorization）、缓存（cache）、内容编码（content encoding）等。
 
@@ -70,11 +73,11 @@ HTTP/1.0 版的主要缺点是，每个 TCP 连接只能发送一个请求。发
 
 ### HTTP/1.1 - 标准化的协议
 
-1997 年 1 月，HTTP/1.1 版本发布，就在HTTP/1.0 发布的几个月后。
+1997 年 1 月，HTTP/1.1 版本发布，就在 HTTP/1.0 发布的几个月后。
 
 #### 持久连接
 
-1.1 版的最大变化，就是引入了持久连接（persistent connection），即 TCP 连接默认不关闭，可以被多个请求复用，不用声明 Connection: keep-alive。
+1.1 版的最大变化，就是引入了持久连接（`persistent connection`），即 TCP 连接默认不关闭，可以被多个请求复用，不用声明 Connection: keep-alive。
 
 目前，对于同一个域名，大多数浏览器允许同时建立 6~8 个持久连接。
 
@@ -83,10 +86,6 @@ HTTP/1.0 版的主要缺点是，每个 TCP 连接只能发送一个请求。发
 1.1 版还引入了管道机制（`pipelining`），即在同一个 TCP 连接里面，客户端可以同时发送多个请求。这样就进一步改进了 HTTP 协议的效率。
 
 举例来说，客户端需要请求两个资源。以前的做法是，在同一个 TCP 连接里面，先发送 A 请求，然后等待服务器做出回应，收到后再发出 B 请求。管道机制则是允许浏览器同时发出 A 请求和 B 请求，但是服务器还是按照顺序，先回应 A 请求，完成后再回应 B 请求。
-
-#### Content-Length 字段
-
-一个 TCP 连接现在可以传送多个回应，势必就要有一种机制，区分数据包是属于哪一个回应的。这就是 Content-length 字段的作用，声明本次回应的数据长度。
 
 #### 分块传输
 
@@ -99,7 +98,6 @@ HTTP/1.0 版的主要缺点是，每个 TCP 连接只能发送一个请求。发
 每个非空的数据块之前，会有一个 16 进制的数值，表示这个块的长度。最后是一个大小为 0 的块，就表示本次回应的数据发送完了。下面是一个例子。
 
 ```
-
 HTTP/1.1 200 OK
 Content-Type: text/plain
 Transfer-Encoding: chunked
@@ -116,11 +114,13 @@ sequence
 0
 ```
 
-#### 其他功能
+#### Content-Length 字段
 
-1.1 版还新增了许多动词方法：PUT、PATCH、HEAD、 OPTIONS、DELETE。
+一个 TCP 连接现在可以传送多个回应，势必就要有一种机制，区分数据包是属于哪一个回应的。这就是 Content-length 字段的作用，声明本次回应的数据长度。
 
-另外，客户端请求的头信息新增了 `Host` 字段，用来指定服务器的域名。
+#### Host 字段
+
+客户端请求的头信息新增了 `Host` 字段，用来指定服务器的域名。
 
 ```
 Host: www.example.com
@@ -128,13 +128,19 @@ Host: www.example.com
 
 有了 Host 字段，就可以将请求发往同一台服务器上的不同网站，为虚拟主机的兴起打下了基础。
 
+#### 其他功能
+
+新增了许多动词方法：PUT、PATCH、 OPTIONS、DELETE、CONNECT
+
+引入更多缓存控制机制：如 Etag，cache-control
+
 #### 缺点
 
 虽然 1.1 版允许复用 TCP 连接，但是同一个 TCP 连接里面，所有的数据通信是`按次序`进行的。服务器只有处理完一个回应，才会进行下一个回应。要是前面的回应特别慢，后面就会有许多请求排队等着。这称为"`队头堵塞`"（Head-of-line blocking）。
 
 为了避免这个问题，只有两种方法：一是减少请求数，二是同时多开持久连接。这导致了很多的网页优化技巧，比如合并脚本和样式表、将图片嵌入 CSS 代码、域名分片（domain sharding）等等。
 
-### HTTP/2
+### HTTP/2 - 性能提升
 
 2015 年，HTTP/2 发布。它不叫 HTTP/2.0，是因为标准委员会不打算再发布子版本了。 HTTP/2 带来了下列改进
 
@@ -142,9 +148,10 @@ Host: www.example.com
 - MultiPlexing，多路复用，一个网络连接实现并行请求
 - 对报头压缩，降低开销
 - server push，服务端推送，允许服务器在客户端缓存中填充数据，减少请求
+- 请求优先级
 - 默认使用加密
 
-### HTTP/3
+### HTTP/3 - 完全颠覆
 
 - 由 google 创造 原名叫 HTTP-over-QUIC
 - 基于 QUIC 协议，基于 UDP
@@ -267,7 +274,7 @@ fragment: #后的hash值，一般用来定位到某个位置
 | 201  | Created                         |                                                                                               |
 | 202  | Accepted                        |                                                                                               |
 | 203  | Non-Authoritative Information   |                                                                                               |
-| 204  | No Content                      | 请求成功，但客户端不需要更新其现有页面，如PUT、OPTIONS                                        |
+| 204  | No Content                      | 请求成功，但客户端不需要更新其现有页面，如 PUT、OPTIONS                                       |
 | 205  | Reset Content                   |                                                                                               |
 | 206  | Partial Content                 | 请求成功，返回部分内容，配合 Content-Range 使用，如: `Content-Range：bytes 21010-47021/47022` |
 | 300  | Multiple Choices                |                                                                                               |
@@ -309,7 +316,6 @@ fragment: #后的hash值，一般用来定位到某个位置
 | 504  | Gateway Timeout                 | 网关超时                                                                                      |
 | 505  | HTTP Version Not Supported      |                                                                                               |
 | 511  | Network Authentication Required |                                                                                               |
-
 
 #### 响应头
 
