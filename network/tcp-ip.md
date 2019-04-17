@@ -1,9 +1,12 @@
 # TCP/IP
 
-参考
+<details>
+<summary>参考 - 2019年04月15日</summary>
 
 - [漫谈网络通信——从 OSI 网络模型到 TCP/IP 协议族](https://juejin.im/entry/584f9c04b123db00662890de)
-- [网络传输之TCP/IP协议族](https://juejin.im/post/5a7c7a396fb9a0634514aae9)
+- [网络传输之 TCP/IP 协议族](https://juejin.im/post/5a7c7a396fb9a0634514aae9)
+
+</details>
 
 ## 什么是 TCP/IP 协议？
 
@@ -96,33 +99,33 @@ TCP 是`面向字节流的`，通过 TCP 传送的字节流中的每个字节都
 - CheckSum：占 2 个字节。和 UDP 报文一样，有一个检验和，用于检查报文是否在传输过程中出差错。
 - Urgent Pointer：占 2 字节。当 URG=1 时才有效，指出本报文段紧急数据的字节数。
 
-#### TCP建立连接的三次握手：
+#### TCP 建立连接的三次握手：
 
 ![](img/tcp-3hands.jpg)
 
-(1) Client首先向Server发送连接请求报文段，同步自己的seq(x)，Client进入SYN_SENT状态。
+(1) Client 首先向 Server 发送连接请求报文段，同步自己的 seq(x)，Client 进入 SYN_SENT 状态。
 
-(2) Server收到Client的连接请求报文段，返回给Client自己的seq(y)以及ack(x+1)，Server进入SYN_REVD状态。
+(2) Server 收到 Client 的连接请求报文段，返回给 Client 自己的 seq(y)以及 ack(x+1)，Server 进入 SYN_REVD 状态。
 
-(3) Client收到Server的返回确认，再次向服务器发送确认报文段ack(y+1)，这个报文段已经可以携带数据了。Client进入ESTABLISHED状态。
+(3) Client 收到 Server 的返回确认，再次向服务器发送确认报文段 ack(y+1)，这个报文段已经可以携带数据了。Client 进入 ESTABLISHED 状态。
 
-(4) Server再次收到Client的确认信息后，进入ESTABLISHED状态。
+(4) Server 再次收到 Client 的确认信息后，进入 ESTABLISHED 状态。
 
-#### TCP断开连接的四次挥手：
+#### TCP 断开连接的四次挥手：
 
 ![](img/tcp-4hands.jpg)
 
-(1) Client向Server发送断开连接请求的报文段，seq=m(m为Client最后一次向Server发送报文段的最后一个字节序号加1)，Client进入FIN-WAIT-1状态。
+(1) Client 向 Server 发送断开连接请求的报文段，seq=m(m 为 Client 最后一次向 Server 发送报文段的最后一个字节序号加 1)，Client 进入 FIN-WAIT-1 状态。
 
-(2) Server收到断开报文段后，向Client发送确认报文段，seq=n(n为Server最后一次向Client发送报文段的最后一个字节序号加1)，ack=m+1，Server进入CLOSE-WAIT状态。此时这个TCP连接处于半开半闭状态，Server发送数据的话，Client仍然可以接收到。
+(2) Server 收到断开报文段后，向 Client 发送确认报文段，seq=n(n 为 Server 最后一次向 Client 发送报文段的最后一个字节序号加 1)，ack=m+1，Server 进入 CLOSE-WAIT 状态。此时这个 TCP 连接处于半开半闭状态，Server 发送数据的话，Client 仍然可以接收到。
 
-(3) Server向Client发送断开确认报文段，seq=u(u为半开半闭状态下Server最后一次向Client发送报文段的最后一个字节序号加1)，ack=m+1，Server进入LAST-ACK状态。
+(3) Server 向 Client 发送断开确认报文段，seq=u(u 为半开半闭状态下 Server 最后一次向 Client 发送报文段的最后一个字节序号加 1)，ack=m+1，Server 进入 LAST-ACK 状态。
 
-(4) Client收到Server的断开确认报文段后，向Server发送确认断开报文，seq=m+1，ack=u+1，Client进入TIME-WAIT状态。
+(4) Client 收到 Server 的断开确认报文段后，向 Server 发送确认断开报文，seq=m+1，ack=u+1，Client 进入 TIME-WAIT 状态。
 
-(5) Server收到Client的确认断开报文，进入CLOSED状态，断开了TCP连接。
+(5) Server 收到 Client 的确认断开报文，进入 CLOSED 状态，断开了 TCP 连接。
 
-(6) Client在TIME-WAIT状态等待一段时间(时间为2*MSL((Maximum Segment Life))，确认Client向Server发送的最后一次断开确认到达(如果没有到达，Server会重发步骤(3)中的断开确认报文段给Client，告诉Client你的最后一次确认断开没有收到)。如果Client在TIME-WAIT过程中没有再次收到Server的报文段，就进入CLOSES状态。TCP连接至此断开。
+(6) Client 在 TIME-WAIT 状态等待一段时间(时间为 2\*MSL((Maximum Segment Life))，确认 Client 向 Server 发送的最后一次断开确认到达(如果没有到达，Server 会重发步骤(3)中的断开确认报文段给 Client，告诉 Client 你的最后一次确认断开没有收到)。如果 Client 在 TIME-WAIT 过程中没有再次收到 Server 的报文段，就进入 CLOSES 状态。TCP 连接至此断开。
 
 #### 完整的流程如下
 

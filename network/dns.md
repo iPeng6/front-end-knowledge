@@ -1,11 +1,14 @@
 # DNS
 
-参考
+<details>
+<summary>参考 - 2019年04月14日</summary>
 
 - [DNS: Why It’s Important and How It Works](https://dyn.com/blog/dns-why-its-important-how-it-works/)
 - [What is DNS](https://aws.amazon.com/cn/route53/what-is-dns/)
 
-域名系统(又称 DNS)被用来解析像 www.dyn.com 这样的可读主机名, 将其转换为机器可读的 IP 地址, 如 204.13.248.115。 DNS 也是关于域名的重要信息的目录，例如电子邮件服务器（MX 记录）和发送验证（DKIM，SPF，DMARC），域名所有权的 TXT 记录验证，甚至 SSH 指纹（SSHFP）。
+</details>
+
+**域名系统(又称 DNS)** 被用来解析像 www.dyn.com 这样的可读主机名, 将其转换为机器可读的 IP 地址, 如 204.13.248.115。 DNS 也是关于域名的重要信息的目录，例如电子邮件服务器（MX 记录）和发送验证（DKIM，SPF，DMARC），域名所有权的 TXT 记录验证，甚至 SSH 指纹（SSHFP）。
 
 智能 DNS 服务还可以操纵 DNS 响应，决定返回哪些 IP 以确保客户端的最佳性能和可靠性。但是为什么 DNS 这么重要呢？ 它是如何工作的？ 你还应该知道什么？
 
