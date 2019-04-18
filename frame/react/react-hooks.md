@@ -1,9 +1,9 @@
 # React Hooks
 
-## 状态管理
+## 实现状态管理
 
 ```js
-// context.tsx
+// store/context.tsx
 import React, { useReducer, createContext, FC, useContext } from 'react'
 import { ActionType } from './types'
 import { initialState, reducer } from './reducer'
@@ -28,7 +28,7 @@ export const useStore = () => {
 ```
 
 ```js
-// reducer.ts
+// store/reducer.ts
 import { Types, ActionType } from './types'
 import { Plans, PlanWithDetail, TaskWithDetail } from '../List/model'
 import { getPlans, getTasks } from '../List/model'
@@ -52,17 +52,49 @@ export const reducer = (state: State, { type, payload }: ActionType): State => {
 ```
 
 ```js
-// types.ts
+// store/types.ts
 export enum Types {
   SetGroupId,
-  SetPlanData,
-  SetPlanTasks,
-  FetchPlanData,
-  FetchPlanTasks,
 }
 
 export type ActionType = {
   type: Types
   payload: any
+}
+```
+
+**使用**
+
+```js
+// index.tsx
+import React from 'react'
+import { Provider } from './store'
+import StudyPlan from './StudyPlan'
+
+const Container = () => {
+  return (
+    <Provider>
+      <StudyPlan />
+    </Provider>
+  )
+}
+export default Container
+```
+
+```js
+const StudyPlan: FC<RouteComponentProps<PathParamsType>> = props => {
+  const { state, dispatch } = useStore()
+  return (
+    <div
+      onClick={() => {
+        dispatch({
+          type: Types.SetGroupId,
+          payload: { groupId: 1 }
+        })
+      }}
+    >
+      {state.groupId}
+    </div>
+  )
 }
 ```
