@@ -1,12 +1,16 @@
 # 编码规范
 
-参考：
+<details>
+<summary>参考 - 2019年04月19日</summary>
 
-- https://www.css88.com/archives/9992
+- [JavaScript 编码风格指南 – JavaScript 完全手册（2018 版）](https://www.css88.com/archives/9992)
 - [clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript)
 - [The Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
 - [The AirBnb JavaScript Style Guide](https://github.com/airbnb/javascript) [[中文]](https://www.css88.com/archives/8345)
 - [standard](https://github.com/standard/standard)
+- [前端代码质量管理（一）](https://juejin.im/post/5cb5c3445188256c83279255)
+
+</details>
 
 您可以按照其中一份指南编码，或创建自己的编码风格。
 
