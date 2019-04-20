@@ -19,3 +19,33 @@
 ## 如何使提交到 gitlab 与 github 上的 commit author 是不同的?
 
 - [Can I specify multiple users for myself in .gitconfig?](https://stackoverflow.com/questions/4220416/can-i-specify-multiple-users-for-myself-in-gitconfig/43654115#43654115)
+
+## 改提交人信息
+
+### 修改一条
+
+```bash
+git commit --amend --author='ipeng6<ipeng6@qq.com>'
+```
+
+### 批量
+
+复制脚本控制台里粘贴回车，其中`OLD_EMAIL`为需要替换的旧邮箱， `CORRECT_NAME\CORRECT_EMAIL`为新的用户名邮箱
+
+```bash
+git filter-branch --env-filter '
+OLD_EMAIL="yuliang.peng@liulishuo.com"
+CORRECT_NAME="ipeng6"
+CORRECT_EMAIL="ipeng6@qq.com"
+if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]
+then
+    export GIT_COMMITTER_NAME="$CORRECT_NAME"
+    export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
+fi
+if [ "$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]
+then
+    export GIT_AUTHOR_NAME="$CORRECT_NAME"
+    export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
+fi
+' --tag-name-filter cat -- --branches --tags
+```
