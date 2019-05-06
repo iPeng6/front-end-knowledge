@@ -22,55 +22,64 @@ npm install npm@latest -g
 
 ## 配置 registry
 
-- 将公司的 npm 设置成默认的 Enterprise registry
+### 将公司的 npm 设置成默认的 Enterprise registry
+
+```bash
+npm config set registry https://registry.your-registry.npme.io/
+```
+
+### 使用 npmrc 管理多个 registry
+
+- 安装
+  ```bash
+  npm i npmrc -g
+  ```
+- 创建 npm 企业配置文件
 
   ```bash
-  npm config set registry https://registry.your-registry.npme.io/
+  npmrc -c work
+  npm config set registry https://registry.your-company-registry.npme.io/
   ```
 
-- 使用 npmrc 管理多个 registry
+  这个会在用户根目录下新建.npmrcs 文件夹里面会有生成一个 work 文件，然后将用户目录下的.npmrc link 到这个文件
 
-  - 安装
-    ```bash
-    npm i npmrc -g
-    ```
-  - 创建 npm 企业配置文件
-
-    ```bash
-    npmrc -c work
-    npm config set registry https://registry.your-company-registry.npme.io/
-    ```
-
-    这个会在用户根目录下新建.npmrcs 文件夹里面会有生成一个 work 文件，然后将用户目录下的.npmrc link 到这个文件
-
-  - 创建公用的 npm registry
-
-    ```bash
-    npmrc -c name-of-profile
-    npm config set registry https://registry.npmjs.com/
-    ```
-
-    这个会在 npmrcs 文件夹里面会有生成一个 name-of-profile 文件，然后将用户目录下的.npmrc link 到这个文件
-
-  - 切换 registry
-
-    ```bash
-    npmrc profile-name
-    ```
-
-    本质是将~/.npmrc link 到 ~/.npmrcs/profile-name
-
-  - ~/.npmrc 文件类似这样
-
-    ```bash
-    registry=https://registry.npm.taobao.org/
-    @coms:registry=http://reg-npmjs.staging.com/
-    @comw:registry=https://registry-npm.company.work
-    ```
-
-- 使用淘宝镜像
+- 创建公用的 npm registry
 
   ```bash
-   npm install -g cnpm --registry=https://registry.npm.taobao.org
-   cnpm install [name]
+  npmrc -c name-of-profile
+  npm config set registry https://registry.npmjs.com/
   ```
+
+  这个会在 npmrcs 文件夹里面会有生成一个 name-of-profile 文件，然后将用户目录下的.npmrc link 到这个文件
+
+- 切换 registry
+
+  ```bash
+  npmrc profile-name
+  ```
+
+  本质是将~/.npmrc link 到 ~/.npmrcs/profile-name
+
+- ~/.npmrc 文件类似这样
+
+  ```bash
+  registry=https://registry.npm.taobao.org/
+  @coms:registry=http://reg-npmjs.staging.com/
+  @comw:registry=https://registry-npm.company.work
+  ```
+
+### 使用淘宝镜像
+
+```bash
+
+# 全局配置
+
+npm config set registry https://registry.npm.taobao.org --global
+npm config set disturl https://npm.taobao.org/dist --global
+
+# 使用 cnpm
+
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+cnpm install [name]
+
+```
