@@ -1,4 +1,11 @@
 # React Native
+<details>
+<summary>参考 - 2019年05月21日</summary>
+
+- [打包APK](https://reactnative.cn/docs/signed-apk-android/)
+- [签署您的应用](https://developer.android.com/studio/publish/app-signing)
+
+</details>
 
 ## 安装环境
 
