@@ -1,1 +1,119 @@
 # React Native
+
+## 安装环境
+
+1、 node
+
+```bash
+brew install node # > v10
+
+# 推荐使用 nvm 管理 node
+
+# 淘宝镜像 加速
+
+npm config set registry https://registry.npm.taobao.org --global
+npm config set disturl https://npm.taobao.org/dist --global
+
+```
+
+2、 watchman
+
+```bash
+brew install watchman # 热更新 文件监听
+```
+
+3、 命令行工具
+
+```bash
+npm install -g react-native-cli
+```
+
+## 创建项目
+
+```bash
+mkdir [dir] && cd [dir]
+react-native init AwesomeProject
+```
+
+## 开发调试
+
+package.json中先添加几个脚本
+```js
+  "scripts": {
+    "start": "react-native start", // 启动 Metro JavaScript bundler server
+    "android": "react-native run-android", // 启动安卓模拟器或设备
+    "ios": "react-native run-ios", // 启动iOS模拟器
+    "bundle-android": "react-native bundle --entry-file index.js --platform android --dev false --bundle-output ./android/app/src/main/assets/index.android.bundle --assets-dest ./android/app/src/main/res/", // 打包 bundle 离线包
+    "bundle-ios": "react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ./ios/bundle/main.jsbundle --assets-dest ./ios/bundle", // // 打包 bundle 离线包
+		"build-android": "cd android && rm -drf ./app/src/main/res/drawable-* && ./gradlew assembleRelease", // 生存 apk release包
+  },
+```
+
+1. npm start // 启动服务
+2. npm run bundle-{android,ios} // 打包bundle 如果目录不存在手动建一个
+3. npm run {android,ios} // 启动模拟器或设备
+
+## 部署
+
+** Android **
+
+1、 生成离线bundle包 npm run bundle-android
+2、 生成签名文件
+
+```bash
+# ./android/app
+keytool -genkey -v -keystore my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
+```
+
+3、 修改 ./android/gradle.properties
+
+```
+MYAPP_RELEASE_STORE_FILE=my-release-key.keystore
+MYAPP_RELEASE_KEY_ALIAS=my-key-alias
+MYAPP_RELEASE_STORE_PASSWORD=*****
+MYAPP_RELEASE_KEY_PASSWORD=*****
+```
+
+4、 修改 ./android/app/build.gradle
+
+```json
+
+android {
+		...
+    defaultConfig { ... }
+    signingConfigs {
+        release {
+          storeFile file(MYAPP_RELEASE_STORE_FILE)
+          storePassword MYAPP_RELEASE_STORE_PASSWORD
+          keyAlias MYAPP_RELEASE_KEY_ALIAS
+          keyPassword MYAPP_RELEASE_KEY_PASSWORD
+        }
+    }
+    buildTypes {
+        release {
+            ...
+            signingConfig signingConfigs.release
+        }
+    }
+}
+```
+
+5、 生成签名apk
+
+```bash
+# ./android/
+./gradlew assembleRelease # 生产包
+./gradlewassembleDebug # 测试包
+
+# 生成路径 android/app/build/outputs/apk/app-release.
+
+# 如果 package.json里配置了 build-android
+npm run build-android
+```
+
+6、 安装到手机
+
+前提确保连上手机，开启调试模式，华为需要连续点击 关于手机 里的 版本号 才出开发人员选项
+```
+adb install [your path]/android/app/build/outputs/apk/release/app-release.apk.apk
+```
