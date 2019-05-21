@@ -39,14 +39,14 @@ react-native init AwesomeProject
 
 package.json中先添加几个脚本
 ```js
-  "scripts": {
-    "start": "react-native start", // 启动 Metro JavaScript bundler server
-    "android": "react-native run-android", // 启动安卓模拟器或设备
-    "ios": "react-native run-ios", // 启动iOS模拟器
-    "bundle-android": "react-native bundle --entry-file index.js --platform android --dev false --bundle-output ./android/app/src/main/assets/index.android.bundle --assets-dest ./android/app/src/main/res/", // 打包 bundle 离线包
-    "bundle-ios": "react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ./ios/bundle/main.jsbundle --assets-dest ./ios/bundle", // // 打包 bundle 离线包
-		"build-android": "cd android && rm -drf ./app/src/main/res/drawable-* && ./gradlew assembleRelease", // 生存 apk release包
-  },
+"scripts": {
+	"start": "react-native start", // 启动 Metro JavaScript bundler server
+	"android": "react-native run-android", // 启动安卓模拟器或设备
+	"ios": "react-native run-ios", // 启动iOS模拟器
+	"bundle-android": "react-native bundle --entry-file index.js --platform android --dev false --bundle-output ./android/app/src/main/assets/index.android.bundle --assets-dest ./android/app/src/main/res/", // 打包 bundle 离线包
+	"bundle-ios": "react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ./ios/bundle/main.jsbundle --assets-dest ./ios/bundle", // // 打包 bundle 离线包
+	"build-android": "cd android && rm -drf ./app/src/main/res/drawable-* && ./gradlew assembleRelease", // 生存 apk release包
+},
 ```
 
 1. npm start // 启动服务
@@ -55,9 +55,10 @@ package.json中先添加几个脚本
 
 ## 部署
 
-** Android **
+### Android 打包apk
 
 1、 生成离线bundle包 npm run bundle-android
+
 2、 生成签名文件
 
 ```bash
@@ -79,22 +80,22 @@ MYAPP_RELEASE_KEY_PASSWORD=*****
 ```json
 
 android {
-		...
-    defaultConfig { ... }
-    signingConfigs {
-        release {
-          storeFile file(MYAPP_RELEASE_STORE_FILE)
-          storePassword MYAPP_RELEASE_STORE_PASSWORD
-          keyAlias MYAPP_RELEASE_KEY_ALIAS
-          keyPassword MYAPP_RELEASE_KEY_PASSWORD
-        }
-    }
-    buildTypes {
-        release {
-            ...
-            signingConfig signingConfigs.release
-        }
-    }
+	...
+	defaultConfig { ... }
+	signingConfigs {
+			release {
+				storeFile file(MYAPP_RELEASE_STORE_FILE)
+				storePassword MYAPP_RELEASE_STORE_PASSWORD
+				keyAlias MYAPP_RELEASE_KEY_ALIAS
+				keyPassword MYAPP_RELEASE_KEY_PASSWORD
+			}
+	}
+	buildTypes {
+			release {
+					...
+					signingConfig signingConfigs.release
+			}
+	}
 }
 ```
 
@@ -117,3 +118,9 @@ npm run build-android
 ```
 adb install [your path]/android/app/build/outputs/apk/release/app-release.apk.apk
 ```
+
+### iOS archive
+
+先选择一个iOS设备，否则 archive 菜单灰色不可点
+
+xcode -> product -> archive -> distribute
