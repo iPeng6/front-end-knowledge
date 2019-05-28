@@ -1,8 +1,9 @@
 # React Native
+
 <details>
 <summary>参考 - 2019年05月21日</summary>
 
-- [打包APK](https://reactnative.cn/docs/signed-apk-android/)
+- [打包 APK](https://reactnative.cn/docs/signed-apk-android/)
 - [签署您的应用](https://developer.android.com/studio/publish/app-signing)
 
 </details>
@@ -44,7 +45,8 @@ react-native init AwesomeProject
 
 ## 开发调试
 
-package.json中先添加几个脚本
+package.json 中先添加几个脚本
+
 ```js
 "scripts": {
 	"start": "react-native start", // 启动 Metro JavaScript bundler server
@@ -57,14 +59,22 @@ package.json中先添加几个脚本
 ```
 
 1. npm start // 启动服务
-2. npm run bundle-{android,ios} // 打包bundle 如果目录不存在手动建一个
+2. npm run bundle-{android,ios} // 打包 bundle 如果目录不存在手动建一个
 3. npm run {android,ios} // 启动模拟器或设备
+
+测试 release 版
+
+```bash
+react-native run-android --variant=release
+```
+
+> 注意`--variant=release`参数只能在完成了下面的签名配置之后才可以使用。因为 release 相当于一个线上版本需要所有签名依赖打包到 apk 中并可离线运行
 
 ## 部署
 
-### Android 打包apk
+### Android 打包 apk
 
-1、 生成离线bundle包 npm run bundle-android
+1、 生成离线 bundle 包 npm run bundle-android
 
 2、 生成签名文件
 
@@ -106,7 +116,7 @@ android {
 }
 ```
 
-5、 生成签名apk
+5、 生成签名 apk
 
 ```bash
 # ./android/
@@ -122,12 +132,13 @@ npm run build-android
 6、 安装到手机
 
 前提确保连上手机，开启调试模式，华为需要连续点击 关于手机 里的 版本号 才出开发人员选项
+
 ```
 adb install [your path]/android/app/build/outputs/apk/release/app-release.apk.apk
 ```
 
 ### iOS archive
 
-先选择一个iOS设备，否则 archive 菜单灰色不可点
+先选择一个 iOS 设备，否则 archive 菜单灰色不可点
 
 xcode -> product -> archive -> distribute
