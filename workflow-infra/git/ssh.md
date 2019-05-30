@@ -51,6 +51,14 @@ Host gitlab
     IdentityFile /Users/you/.ssh/id_rsa
 ```
 
+4. 重启 ssh 服务
+
+```bash
+# mac
+sudo launchctl unload /System/Library/LaunchDaemons/ssh.plist
+sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist
+```
+
 > mac 每次重启都要 ssh-add 一次，解决方案：创建 Automator 任务加载私钥，然后放到开机启动中。
 
 1. 找到系统应用程序 Automator
