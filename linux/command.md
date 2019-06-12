@@ -101,6 +101,16 @@ rm *
 cp -a demo1 demo2
 ```
 
+## pbcopy
+
+复制到剪切板
+
+eg
+
+```bash
+pbcopy < ~/.ssh/id_rsa.pub
+```
+
 ## scp
 
 > scp [options] file_source file_target

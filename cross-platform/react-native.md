@@ -70,6 +70,19 @@ react-native run-android --variant=release
 
 > 注意`--variant=release`参数只能在完成了下面的签名配置之后才可以使用。因为 release 相当于一个线上版本需要所有签名依赖打包到 apk 中并可离线运行
 
+### 调试菜单
+
+- Android 快捷键 cmd + M
+- iOS 快捷键 cmd + D
+- 真机 摇一摇
+
+### 安卓真机调试
+
+```bash
+npm start
+adb reverse tcp:8081 tcp:8081
+```
+
 ## 部署
 
 ### Android 打包 apk
@@ -142,3 +155,11 @@ adb install [your path]/android/app/build/outputs/apk/release/app-release.apk.ap
 先选择一个 iOS 设备，否则 archive 菜单灰色不可点
 
 xcode -> product -> archive -> distribute
+
+### 常见问题
+
+1、 Solve the error `No bundle URL present`
+
+```bash
+rm -rf ios/build/; kill $(lsof -t -i:8081); react-native run-ios
+```
