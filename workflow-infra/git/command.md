@@ -41,7 +41,8 @@ git config --global alias.cm 'commit -m'
 git config --global alias.ca 'commit --amend'
 git config --global alias.ac '!git add . && git commit'
 git config --global alias.acm '!git add . && git commit -m'
-git config --global alias.l 'log --all --decorate --oneline --graph'
+git config --global alias.la 'log --all --decorate --oneline --graph'
+git config --global alias.l 'log --decorate --oneline --graph'
 
 # 设置pull默认rebase模式
 git config --global pull.rebase true
