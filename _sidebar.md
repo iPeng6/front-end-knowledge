@@ -88,7 +88,7 @@
   - [Vue](frame/vue/README.md)
 - [跨平台](cross-platform/README.md)
   - [小程序](cross-platform/wxlite.md)
-  - [React Native](cross-platform/react-native.md)
+  - [React Native](cross-platform/rn/start.md)
   - [Flutter](cross-platform/flutter.md)
   - [PWA](cross-platform/pwa.md)
   - [Electron](cross-platform/electron.md)
