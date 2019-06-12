@@ -60,7 +60,8 @@ package.json 中先添加几个脚本
 
 1. npm start // 启动服务
 2. npm run bundle-{android,ios} // 打包 bundle 如果目录不存在手动建一个
-3. npm run {android,ios} // 启动模拟器或设备
+3. adb reverse tcp:8081 tcp:8081 // android 反向端口映射
+4. npm run {android,ios} // 启动模拟器或设备
 
 测试 release 版
 
@@ -75,13 +76,6 @@ react-native run-android --variant=release
 - Android 快捷键 cmd + M
 - iOS 快捷键 cmd + D
 - 真机 摇一摇
-
-### 安卓真机调试
-
-```bash
-npm start
-adb reverse tcp:8081 tcp:8081
-```
 
 ## 部署
 
@@ -107,8 +101,7 @@ MYAPP_RELEASE_KEY_PASSWORD=*****
 
 4、 修改 ./android/app/build.gradle
 
-```json
-
+```
 android {
 	...
 	defaultConfig { ... }
@@ -156,7 +149,7 @@ adb install [your path]/android/app/build/outputs/apk/release/app-release.apk.ap
 
 xcode -> product -> archive -> distribute
 
-### 常见问题
+## 常见问题
 
 1、 Solve the error `No bundle URL present`
 
