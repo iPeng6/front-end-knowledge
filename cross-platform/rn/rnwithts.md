@@ -29,6 +29,7 @@ touch rn-cli.config.js
     "lib": ["esnext"] /* Specify library files to be included in the compilation. */,
     "allowJs": true /* Allow javascript files to be compiled. */,
     "jsx": "react" /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */,
+	  "noEmit": true /* Do not emit outputs. */,
     "strict": true /* Enable all strict type-checking options. */,
     "noImplicitAny": false /* Raise error on expressions and declarations with an implied 'any' type. */,
     "baseUrl": "./" /* Base directory to resolve non-absolute module names. */,
