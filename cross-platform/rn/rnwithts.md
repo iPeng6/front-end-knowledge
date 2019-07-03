@@ -10,9 +10,7 @@
 1、 安装依赖生成配置
 
 ```bash
-yarn add --dev typescript
-yarn add --dev react-native-typescript-transformer
-yarn add --dev @types/react @types/react-native
+yarn add --dev typescript react-native-typescript-transformer @types/react @types/react-native
 yarn tsc --init --pretty --jsx react
 touch rn-cli.config.js
 ```
@@ -29,7 +27,7 @@ touch rn-cli.config.js
     "lib": ["esnext"] /* Specify library files to be included in the compilation. */,
     "allowJs": true /* Allow javascript files to be compiled. */,
     "jsx": "react" /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */,
-	  "noEmit": true /* Do not emit outputs. */,
+    "noEmit": true /* Do not emit outputs. */,
     "strict": true /* Enable all strict type-checking options. */,
     "noImplicitAny": false /* Raise error on expressions and declarations with an implied 'any' type. */,
     "baseUrl": "./" /* Base directory to resolve non-absolute module names. */,
@@ -37,8 +35,8 @@ touch rn-cli.config.js
       "src/*": ["./src/*"]
     } /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */,
     "allowSyntheticDefaultImports": true /* Allow default imports from modules with no default export. This does not affect code emit,
-		 just typechecking. */,
-    "esModuleInterop": true /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for
+         just typechecking. */,
+    "esModuleInterop": true /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
   },
   "include": ["src/**/*"]
 }
