@@ -53,23 +53,18 @@ package.json 中先添加几个脚本
 	"android": "react-native run-android", // 启动安卓模拟器或设备
 	"ios": "react-native run-ios", // 启动iOS模拟器
 	"bundle-android": "react-native bundle --entry-file index.js --platform android --dev false --bundle-output ./android/app/src/main/assets/index.android.bundle --assets-dest ./android/app/src/main/res/", // 打包 bundle 离线包
-	"bundle-ios": "react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ./ios/bundle/main.jsbundle --assets-dest ./ios/bundle", // // 打包 bundle 离线包
-	"build-android": "cd android && rm -drf ./app/src/main/res/drawable-* && ./gradlew assembleRelease", // 生存 apk release包
+	"bundle-ios": "react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ./ios/bundle/main.jsbundle --assets-dest ./ios/bundle", // 打包 bundle 离线包
+	"build-android": "react-native run-android --variant=release", // 生存 apk release包
 },
 ```
 
 1. npm start // 启动服务
 2. npm run bundle-{android,ios} // 打包 bundle 如果目录不存在手动建一个
-3. adb reverse tcp:8081 tcp:8081 // android 反向端口映射
+3. adb reverse tcp:8081 tcp:8081 // android 端口映射
 4. npm run {android,ios} // 启动模拟器或设备
+5. npm run build-android // 测试 release 版
 
-测试 release 版
-
-```bash
-react-native run-android --variant=release
-```
-
-> 注意`--variant=release`参数只能在完成了下面的签名配置之后才可以使用。因为 release 相当于一个线上版本需要所有签名依赖打包到 apk 中并可离线运行
+> 注意`--variant=release`参数只能在完成了下面的签名配置之后才可以使用。因为 release 相当于一个线上版本需要所有签名依赖打包到 apk 中才可离线运行
 
 ### 调试菜单
 
@@ -127,7 +122,7 @@ android {
 ```bash
 # ./android/
 ./gradlew assembleRelease # 生产包
-./gradlewassembleDebug # 测试包
+./gradlew assembleDebug # 测试包
 
 # 生成路径 android/app/build/outputs/apk/app-release.
 
@@ -137,10 +132,13 @@ npm run build-android
 
 6、 安装到手机
 
-前提确保连上手机，开启调试模式，华为需要连续点击 关于手机 里的 版本号 才出开发人员选项
+前提确保连上手机，开启 USB 调试模式，（部分手机需要连续点击 关于手机 里的 版本号 才出开发人员选项->USB 调试模式）
 
 ```
-adb install [your path]/android/app/build/outputs/apk/release/app-release.apk.apk
+# 查看已连接设备
+adb devices
+
+adb install {your path}/android/app/build/outputs/apk/release/app-release.apk.apk
 ```
 
 ### iOS archive
