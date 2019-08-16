@@ -19,8 +19,9 @@ package.json
 
 build.js
 
-```ts
+```js
 #!/usr/bin/env node
+
 const cmd = require('commander')
 const sh = require('shelljs')
 const fs = require('fs')
