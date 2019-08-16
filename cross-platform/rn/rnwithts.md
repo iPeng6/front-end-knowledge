@@ -22,23 +22,23 @@ touch rn-cli.config.js
 ```json
 {
   "compilerOptions": {
-    "target": "ES2015" /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019' or 'ESNEXT'. */,
-    "module": "commonjs" /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */,
-    "lib": ["esnext"] /* Specify library files to be included in the compilation. */,
-    "allowJs": true /* Allow javascript files to be compiled. */,
-    "jsx": "react" /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */,
-    "noEmit": true /* Do not emit outputs. */,
-    "strict": true /* Enable all strict type-checking options. */,
-    "noImplicitAny": false /* Raise error on expressions and declarations with an implied 'any' type. */,
-    "baseUrl": "./" /* Base directory to resolve non-absolute module names. */,
+    "target": "ES2015",
+    "module": "commonjs",
+    "lib": ["esnext"],
+    "allowJs": true,
+    "jsx": "react",
+    "noEmit": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "baseUrl": "./",
     "paths": {
       "src/*": ["./src/*"]
-    } /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */,
-    "allowSyntheticDefaultImports": true /* Allow default imports from modules with no default export. This does not affect code emit,
-         just typechecking. */,
-    "esModuleInterop": true /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
+    },
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true
   },
-  "include": ["src/**/*"]
+  "include": ["src*"]
 }
 ```
 
