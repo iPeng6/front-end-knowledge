@@ -54,7 +54,7 @@ package.json 中先添加几个脚本
 	"ios": "react-native run-ios", // 启动iOS模拟器
 	"bundle-android": "react-native bundle --entry-file index.js --platform android --dev false --bundle-output ./android/app/src/main/assets/index.android.bundle --assets-dest ./android/app/src/main/res/", // 打包 bundle 离线包
 	"bundle-ios": "react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ./ios/bundle/main.jsbundle --assets-dest ./ios/bundle", // 打包 bundle 离线包
-	"build-android": "react-native run-android --variant=release", // 生存 apk release包
+	"build-android": "react-native run-android --variant=release", // 生成 apk release包
 },
 ```
 
