@@ -1,58 +1,9 @@
-/* global */
-.content {
-  padding-top: 30px;
-}
-
-.sidebar-nav li img {
-  width: 14px;
-  width: 14px;
-  position: absolute;
-  top: 8px;
-  left: -8px;
-  z-index: 1;
-}
-
-.sidebar-nav li a:hover {
-  text-decoration: none !important;
+:root {
+  --sidebar-width: 20rem;
 }
 
 .markdown-section {
-  max-width: 960px;
-}
-.markdown-section a {
-  text-decoration: none;
-  font-weight: normal;
-}
-.markdown-section a:hover {
-  text-decoration: underline;
-}
-
-.markdown-section blockquote {
-  background: #f1f4ff;
-  padding: 1px 20px;
-}
-
-.markdown-section blockquote p {
-  font-weight: 500;
-}
-
-.markdown-section h1 a,
-.markdown-section h2 a,
-.markdown-section h3 a,
-.markdown-section h4 a,
-.markdown-section h5 a {
-  text-decoration: none !important;
-  color: #1a1a1a;
-  font-weight: 500;
-}
-.markdown-section h2 {
-  font-size: 1.5rem;
-  border-bottom: 1px solid #eaecef;
-  padding-bottom: 0.2em;
-
-  border-left: 4px solid #0f7de4;
-  padding-left: 8px;
-  line-height: 1.2;
+  max-width: 1024px;
 }
 
 .markdown-section h2 span {
@@ -63,50 +14,22 @@
   color: #ec5757;
 }
 
-.markdown-section h3::before {
-  content: '➤ ';
-  font-size: 1.3rem;
-  color: #ec5757;
-
-}
-
 .markdown-section h4 span {
   color: #12a844;
 }
 
-.markdown-section h4::before {
-  content: '✦ ';
-  font-size: 1.3rem;
-  color: #12a844;
-}
-
 .markdown-section h5 span {
-  color:orange;
+  color: orange;
 }
 
-.markdown-section h5::before {
-  content: '✭ ';
-  font-size: 1.3rem;
-  color:orange;
-}
-
-.markdown-section h3 {
-  font-size: 1.25rem;
-}
-.markdown-section h4 {
-  font-size: 1.1rem;
-}
-.markdown-section h5 {
-  font-size: 1rem;
-}
-.markdown-section pre > code {
-  padding: 1.2em 5px;
-}
-
-.sidebar-nav .app-sub-sidebar a {
-  padding-left: 2px;
-}
-
-table td {
+.markdown-section table td {
   white-space: nowrap;
+}
+
+.markdown-section a {
+  color: #b572b5;
+}
+
+.markdown-section code:not([class*='lang-']):not([class*='language-']) {
+  color: #c78202;
 }

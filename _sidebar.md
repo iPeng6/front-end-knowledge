@@ -118,6 +118,6 @@
   - [单元测试](test/unit-test.md)
 - [系统](system/README.md)
   - [Linux](system/linux/README.md)
-    - [命令](system/inux/command.md)
+    - [命令](system/linux/command.md)
     - [vi](system/linux/vi.md)
   - [Mac](system/mac/README.md)
