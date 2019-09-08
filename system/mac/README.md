@@ -47,45 +47,44 @@
 
       ![](img/zsh-git.png ':size=500')
 
+      ```bash
+      g=git
 
-        ```bash
-        g=git
+      gst='git status'
+      gsb='git status -sb'
 
-        gst='git status'
-        gsb='git status -sb'
+      glg='git log --stat'
+      glo='git log --oneline --decorate'
+      glod='git log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset'\'
+      glog='git log --oneline --decorate --graph'
+      gloga='git log --oneline --decorate --graph --all'
 
-        gf='git fetch'
-        gl='git pull'
-        gup='git pull --rebase'
-        ggpull='git pull origin "$(git_current_branch)"'
-        ggpush='git push origin "$(git_current_branch)"'
+      gf='git fetch'
+      gl='git pull'
+      gup='git pull --rebase'
+      ggpull='git pull origin "$(git_current_branch)"'
+      ggpush='git push origin "$(git_current_branch)"'
 
-        glg='git log --stat'
-        glo='git log --oneline --decorate'
-        glod='git log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset'\'
-        glog='git log --oneline --decorate --graph'
-        gloga='git log --oneline --decorate --graph --all'
+      ga='git add'
+      gaa='git add --all'
 
-        ga='git add'
-        gaa='git add --all'
+      gb='git branch'
+      gba='git branch -a'
+      gbr='git branch --remote'
 
-        gb='git branch'
-        gba='git branch -a'
-        gbr='git branch --remote'
+      gcmsg='git commit -m'
+      gcam='git commit -a -m'
+      'gc!'='git commit -v --amend' # 修改commit信息
+      'gca!'='git commit -v -a --amend' # 追加到上一个commit
 
-        gcmsg='git commit -m'
-        gcam='git commit -a -m'
-        'gc!'='git commit -v --amend' # 修改commit信息
-        'gca!'='git commit -v -a --amend' # 追加到上一个commit
+      gco='git checkout'
+      gcb='git checkout -b' # 切出新分支
+      gcd='git checkout develop'
+      gcm='git checkout master'
 
-        gco='git checkout'
-        gcb='git checkout -b' # 切出新分支
-        gcd='git checkout develop'
-        gcm='git checkout master'
-
-        gd='git diff'
-        gclean='git clean -id'
-        ```
+      gd='git diff'
+      gclean='git clean -id'
+      ```
 
     - tig
 
