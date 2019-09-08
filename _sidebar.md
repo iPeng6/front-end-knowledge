@@ -121,3 +121,4 @@
     - [命令](system/linux/command.md)
     - [vi](system/linux/vi.md)
   - [Mac](system/mac/README.md)
+    - [软件工具](system/mac/tools.md)
