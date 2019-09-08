@@ -8,13 +8,26 @@
 
     `cmd + d` 水平分屏，`cmd + shift + d` 垂直分屏，`cmd + w` 关闭当前分屏， `cmd + option + 方向键` 切换分屏
 
-    `cmd + t` 新建标签，`cmd + <- / ->` 切换tab，或者 `cmd + 数字` 直接定位到 tab
+    `cmd + t` 新建标签，`cmd + <- / ->` 切换 tab，或者 `cmd + 数字` 直接定位到 tab
 
     `cmd + r` = `clear` 清空屏幕，`ctrl + u` 清除当前行，`ctrl + w` 删除单词
 
     `ctrl + a` 回到行首，`ctrl + e` 回到行末
 
     `cmd + ;` 自动提示，`cmd + shift + h` 列出剪切板历史
+
+    - 终端中使用代理
+
+      配置 `~/.zshrc` 连到 shadowsocks 为例
+
+      ```bash
+      # proxy
+      alias proxy='export all_proxy=socks5://127.0.0.1:1086'
+      alias unproxy='unset all_proxy'
+      alias ip='curl cip.cc'
+      ```
+
+      ![](img/proxy.png ':size=350')
 
 2.  [Hyper](https://hyper.is) 另一个酷炫的终端 GUI
 
@@ -38,82 +51,84 @@
 
      ![](img/tig.gif)
 
-     在 Repo 下 `tig` + `enter` 进入tig模式 此时展现在面前的将会是本地所有的 commit 记录以及分支的演化。
+     在 Repo 下 `tig` + `enter` 进入 tig 模式 此时展现在面前的将会是本地所有的 commit 记录以及分支的演化。
 
-      `j` `k` 可上下切换选中的行，`Enter` 可分屏查看当前 commit 记录详情，`ctrl + d/u` 半屏浏览，`空格` 翻页
+     `j` `k` 可上下切换选中的行，`Enter` 可分屏查看当前 commit 记录详情，`ctrl + d/u` 半屏浏览，`空格` 翻页
 
-      `r` 进入 refs view  模式，查看所有分支，使用 `j/k` 上下切换， `Enter` 查看分支演化。
+     `r` 进入 refs view 模式，查看所有分支，使用 `j/k` 上下切换， `Enter` 查看分支演化。
 
-      `s` 进入 status view，效果同 git status 命令，会展示所有 Untracked 和 UnStaged 文件。 选中 Unstaged 的文件键入 `u` 效果同 git add ，选中 staged 的文件键入 `u` 效果同 git reset，即撤销 add 操作。`Enter` 查看分屏查看当前文件的修改记录。
+     `s` 进入 status view，效果同 git status 命令，会展示所有 Untracked 和 UnStaged 文件。 选中 Unstaged 的文件键入 `u` 效果同 git add ，选中 staged 的文件键入 `u` 效果同 git reset，即撤销 add 操作。`Enter` 分屏查看当前文件的修改记录。
 
-      *status view 模式下键入 `C` 进入 vim 编辑器，`i` 进入编辑模式，在第一行输入 commit 信息，`:x` 退出并保存。`m` 查看 commit 记录。*
+     _status view 模式下键入 `C` 进入 vim 编辑器，`i` 进入编辑模式，在第一行输入 commit 信息，`:x` 退出并保存。`m` 查看 commit 记录。_
 
-      `y` 进入 stash view 模式
+     `y` 进入 stash view 模式
 
-      `t` 进入 tree view 模式，git 目录会以文件夹的形式展示。`Enter` 进入子目录，`,` 返回上一级目录。
+     `t` 进入 tree view 模式，git 目录会以文件夹的形式展示。`Enter` 进入子目录，`,` 返回上一级目录。
 
-      `m` 进入 main view 查看当前分支的所有 commit 记录，使用 `j/k` 上下切换，`Enter` 可分屏查看 commit 详情。
+     `m` 进入 main view 查看当前分支的所有 commit 记录，使用 `j/k` 上下切换，`Enter` 可分屏查看 commit 详情。
 
-      main view 可以认为是主页。
+     main view 可以认为是主页。
 
-      `/` 输入关键字可进行搜索。`n` 下一个 `N` 上一个
+     `/` 输入关键字可进行搜索。`n` 下一个 `N` 上一个
 
-      `Q` 退出 tig。
+     `Q` 退出 tig。
 
-      `h` 查看快捷键帮助。
+     `h` 查看快捷键帮助。
 
+- [autojump](https://github.com/wting/autojump)
 
-   - [autojump](https://github.com/wting/autojump)
+  快速跳转到常用目录，不用总是 `cd` 切换目录了，只需要 `j + <dirname>` 支持模糊匹配
 
-     快速跳转到常用目录，不用总是 `cd` 切换目录了，只需要 `j + <dirname>` 支持模糊匹配
+  ![](img/autojump.gif)
 
-     ![](img/autojump.gif)
+  ```bash
+  # 1. 安装
+  brew install autojump
 
-     ```bash
-     # 1. 安装
-     brew install autojump
+  # 2. 配置 ～/.zshrc
+  # 插件列表添加 autojump
+  plugins=(git autojump)
+  # 继续添加 autojump 配置
+  [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
-     # 2. 配置 ～/.zshrc
-     # 插件列表添加 autojump
-     plugins=(git autojump)
-     # 继续添加 autojump 配置
-     [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+  # 3. 立即生效
+  source ~/.zshrc
+  ```
 
-     # 3. 立即生效
-     source ~/.zshrc
-     ```
-    - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) 语法高亮
+  - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) 语法高亮
 
-      ![](img/highlight.png ':size=300')
+    ![](img/highlight.png ':size=300')
 
-      安装
-      ```bash
-      cd .oh-my-zsh/plugins
+    安装
 
-      git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    ```bash
+    cd .oh-my-zsh/plugins
 
-      # 配置 ~/.zshrc 必须在所有插件自后
-      plugins=( [plugins...] zsh-syntax-highlighting)
-      ```
-    - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) 自动提示
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-      方向键补齐
+    # 配置 ~/.zshrc 必须在所有插件自后
+    plugins=( [plugins...] zsh-syntax-highlighting)
+    ```
 
-      安装
-      ```bash
-      cd ~/.oh-my-zsh/custom/plugins
-      git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+  - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) 自动提示
 
-      # 配置 ~/.zshrc
-      plugins=(zsh-autosuggestions)
-      ```
+    方向键补齐
+
+    安装
+
+    ```bash
+    cd ~/.oh-my-zsh/custom/plugins
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+    # 配置 ~/.zshrc
+    plugins=(zsh-autosuggestions)
+    ```
 
 2. 主题
 
-    默认 [主题](https://github.com/robbyrussell/oh-my-zsh/wiki/Themes)， robbyrussell
+   默认 [主题](https://github.com/robbyrussell/oh-my-zsh/wiki/Themes)， robbyrussell
 
-    ![](https://cloud.githubusercontent.com/assets/2618447/6316876/710cbb8c-ba03-11e4-90b3-0315d72f270c.jpg)
-
+   ![](https://cloud.githubusercontent.com/assets/2618447/6316876/710cbb8c-ba03-11e4-90b3-0315d72f270c.jpg)
 
 ### 三、应用切换器
 
@@ -131,6 +146,15 @@
 
 ![](img/shiftlt.gif)
 
+`ctrl + option + cmd` + `方向键` 调整位置
+
+`ctrl + option + cmd` + `+/-` 调整大小
+
+`ctrl + option + cmd` + `m` 最大化
+
+`ctrl + option + cmd` + `c` 居中
+
+`ctrl + option + cmd` + `f/z` 全屏
 
 ### 五、Finder
 
@@ -150,13 +174,15 @@
   ![](img/openvscode.png)
 
   - 输入脚本
+
   ```shell
   for f in "$@"
   do
       open -a "Visual Studio Code" "$f"
   done
   ```
-  - 保存为 从vscode打开
+
+  - 保存为 从 vscode 打开
 
   ![](img/openvscode2.png)
 
@@ -164,11 +190,11 @@
 
 - [Itsycal](https://www.mowglii.com/itsycal/) 时间日历小工具
 
-    ![](img/itsycal.png ':size=300')
+  ![](img/itsycal.png ':size=300')
 
-### 七、Touch Bar工具
+### 七、Touch Bar 工具
 
-- [Pock](https://pock.dev/) 可以将 Dock移入 Touch Bar，触摸切换应用
+- [Pock](https://pock.dev/) 可以将 Dock 移入 Touch Bar，触摸切换应用
 
   ![](https://pock.dev/assets/img/preview/pock_widgets.png)
 
@@ -178,4 +204,4 @@
 
   ![](img/jietu.png ':size=300')
 
-- [LICEcap](https://www.cockos.com/licecap/) 录制 GIF，可选区域、可调节FPS
+- [LICEcap](https://www.cockos.com/licecap/) 录制 GIF，可选区域、可调节 FPS
