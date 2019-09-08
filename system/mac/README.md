@@ -16,6 +16,8 @@
 
     `cmd + ;` 自动提示，`cmd + shift + h` 列出剪切板历史
 
+    `option + click` 移动光标到鼠标点击处
+
     - 终端中使用代理
 
       配置 `~/.zshrc` 连到 shadowsocks 为例
@@ -37,43 +39,50 @@
 
 [oh my zsh](https://ohmyz.sh/) 提供了丰富的插件和主题
 
-1. 插件
+1.  插件
 
-   - git
+    - git
 
-     默认已经自带，git 仓库目录下会显示 git:(分支)样式， 还定义了很多 git [alias](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/git)
+      默认已经自带，git 仓库目录下会显示 git:(分支)样式， 还定义了很多 git [alias](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/git)
 
-     ![](img/zsh-git.png ':size=500')
+      ![](img/zsh-git.png ':size=500')
 
-   - tig
 
-     [tig](https://jonas.github.io/tig/) 命令行中查看浏览 git
+        ```bash
+        ga='git add'
+        gaa='git add --all'
 
-     ![](img/tig.gif)
+        ```
 
-     在 Repo 下 `tig` + `enter` 进入 tig 模式 此时展现在面前的将会是本地所有的 commit 记录以及分支的演化。
+    - tig
 
-     `j` `k` 可上下切换选中的行，`Enter` 可分屏查看当前 commit 记录详情，`ctrl + d/u` 半屏浏览，`空格` 翻页
+      [tig](https://jonas.github.io/tig/) 命令行中查看浏览 git
 
-     `r` 进入 refs view 模式，查看所有分支，使用 `j/k` 上下切换， `Enter` 查看分支演化。
+      ![](img/tig.gif)
 
-     `s` 进入 status view，效果同 git status 命令，会展示所有 Untracked 和 UnStaged 文件。 选中 Unstaged 的文件键入 `u` 效果同 git add ，选中 staged 的文件键入 `u` 效果同 git reset，即撤销 add 操作。`Enter` 分屏查看当前文件的修改记录。
+      在 Repo 下 `tig` + `enter` 进入 tig 模式 此时展现在面前的将会是本地所有的 commit 记录以及分支的演化。
 
-     _status view 模式下键入 `C` 进入 vim 编辑器，`i` 进入编辑模式，在第一行输入 commit 信息，`:x` 退出并保存。`m` 查看 commit 记录。_
+      `j` `k` 可上下切换选中的行，`Enter` 可分屏查看当前 commit 记录详情，`ctrl + d/u` 半屏浏览，`空格` 翻页
 
-     `y` 进入 stash view 模式
+      `r` 进入 refs view 模式，查看所有分支，使用 `j/k` 上下切换， `Enter` 查看分支演化。
 
-     `t` 进入 tree view 模式，git 目录会以文件夹的形式展示。`Enter` 进入子目录，`,` 返回上一级目录。
+      `s` 进入 status view，效果同 git status 命令，会展示所有 Untracked 和 UnStaged 文件。 选中 Unstaged 的文件键入 `u` 效果同 git add ，选中 staged 的文件键入 `u` 效果同 git reset，即撤销 add 操作。`Enter` 分屏查看当前文件的修改记录。
 
-     `m` 进入 main view 查看当前分支的所有 commit 记录，使用 `j/k` 上下切换，`Enter` 可分屏查看 commit 详情。
+      _status view 模式下键入 `C` 进入 vim 编辑器，`i` 进入编辑模式，在第一行输入 commit 信息，`:x` 退出并保存。`m` 查看 commit 记录。_
 
-     main view 可以认为是主页。
+      `y` 进入 stash view 模式
 
-     `/` 输入关键字可进行搜索。`n` 下一个 `N` 上一个
+      `t` 进入 tree view 模式，git 目录会以文件夹的形式展示。`Enter` 进入子目录，`,` 返回上一级目录。
 
-     `Q` 退出 tig。
+      `m` 进入 main view 查看当前分支的所有 commit 记录，使用 `j/k` 上下切换，`Enter` 可分屏查看 commit 详情。
 
-     `h` 查看快捷键帮助。
+      main view 可以认为是主页。
+
+      `/` 输入关键字可进行搜索。`n` 下一个 `N` 上一个
+
+      `Q` 退出 tig。
+
+      `h` 查看快捷键帮助。
 
 - [autojump](https://github.com/wting/autojump)
 
