@@ -49,9 +49,15 @@
 
 
         ```bash
+        g=git
         ga='git add'
         gaa='git add --all'
-
+        gb='git branch'
+        gba='git branch -a'
+        gbr='git branch --remote'
+        gcam='git commit -a -m'
+        'gc!'='git commit -v --amend' # 修改commit信息
+        'gca!'='git commit -v -a --amend' # 追加到上一个commit
         ```
 
     - tig
@@ -133,7 +139,7 @@
     plugins=(zsh-autosuggestions)
     ```
 
-2. 主题
+1. 主题
 
    默认 [主题](https://github.com/robbyrussell/oh-my-zsh/wiki/Themes)， robbyrussell
 
