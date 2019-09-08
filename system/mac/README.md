@@ -2,7 +2,25 @@
 
 ## 软件工具
 
-### 一、shell 增强
+### 一、终端
+
+1.  [iTerm2](https://www.iterm2.com/)
+
+    `cmd + d` 水平分屏，`cmd + shift + d` 垂直分屏，`cmd + w` 关闭当前分屏， `cmd + option + 方向键` 切换分屏
+
+    `cmd + t` 新建标签，`cmd + <- / ->` 切换tab，或者 `cmd + 数字` 直接定位到 tab
+
+    `cmd + r` = `clear` 清空屏幕，`ctrl + u` 清除当前行，`ctrl + w` 删除单词
+
+    `ctrl + a` 回到行首，`ctrl + e` 回到行末
+
+    `cmd + ;` 自动提示，`cmd + shift + h` 列出剪切板历史
+
+2.  [Hyper](https://hyper.is) 另一个酷炫的终端 GUI
+
+    ![](https://cloud.githubusercontent.com/assets/13041/16820268/13c9bfe6-4905-11e6-8fe4-baf8fc8d9293.gif)
+
+### 二、shell 增强
 
 [oh my zsh](https://ohmyz.sh/) 提供了丰富的插件和主题
 
@@ -47,7 +65,7 @@
 
    - [autojump](https://github.com/wting/autojump)
 
-     快速跳转到常用目录，不用总是 `cd` 切换目录了，只需要 `j + <dirname>`
+     快速跳转到常用目录，不用总是 `cd` 切换目录了，只需要 `j + <dirname>` 支持模糊匹配
 
      ![](img/autojump.gif)
 
@@ -64,6 +82,31 @@
      # 3. 立即生效
      source ~/.zshrc
      ```
+    - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) 语法高亮
+
+      ![](img/highlight.png ':size=300')
+
+      安装
+      ```bash
+      cd .oh-my-zsh/plugins
+
+      git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+      # 配置 ~/.zshrc 必须在所有插件自后
+      plugins=( [plugins...] zsh-syntax-highlighting)
+      ```
+    - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) 自动提示
+
+      方向键补齐
+
+      安装
+      ```bash
+      cd ~/.oh-my-zsh/custom/plugins
+      git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+      # 配置 ~/.zshrc
+      plugins=(zsh-autosuggestions)
+      ```
 
 2. 主题
 
@@ -71,17 +114,6 @@
 
     ![](https://cloud.githubusercontent.com/assets/2618447/6316876/710cbb8c-ba03-11e4-90b3-0315d72f270c.jpg)
 
-
-### 二、终端
-
-1.  [iTerm2](https://www.iterm2.com/)
-
-    `cmd + d` 横向分屏，`shift + cmd + d` 纵向分屏，`cmd + w` 关闭当前分屏，`cmd + t` 新建标签
-
-
-2.  [Hyper](https://hyper.is) 另一个酷炫的终端 GUI
-
-    ![](https://cloud.githubusercontent.com/assets/13041/16820268/13c9bfe6-4905-11e6-8fe4-baf8fc8d9293.gif)
 
 ### 三、应用切换器
 
@@ -128,7 +160,19 @@
 
   ![](img/openvscode2.png)
 
-### 六、截图录制
+### 六、菜单栏工具
+
+- [Itsycal](https://www.mowglii.com/itsycal/) 时间日历小工具
+
+    ![](img/itsycal.png ':size=300')
+
+### 七、Touch Bar工具
+
+- [Pock](https://pock.dev/) 可以将 Dock移入 Touch Bar，触摸切换应用
+
+  ![](https://pock.dev/assets/img/preview/pock_widgets.png)
+
+### 七、截图录制
 
 - [截图(Jietu)](https://apps.apple.com/cn/app/jie-tu-jietu/id1059334054?mt=12)，腾讯出品的截图录屏工具，可以选取区域 可标注 马赛克等
 

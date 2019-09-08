@@ -24,6 +24,12 @@ npm config set disturl https://npm.taobao.org/dist --global
 
 ```
 
+2、yarn
+
+yarn vs npm
+
+issue: [react-native-cli is not compatible with npm@5](https://github.com/facebook/react-native/issues/14767)
+
 2、 watchman
 
 ```bash
