@@ -10,30 +10,72 @@
   max-width: 1024px;
 }
 
+/* color: #0f7de4; */
 .markdown-section h2 span {
-  color: #0f7de4;
+  color: #4facf1;
 }
 
+/* color: #ec5757; */
 .markdown-section h3 span {
-  color: #ec5757;
+  color: #eb436a;
 }
 
+/* color: #12a844; */
 .markdown-section h4 span {
-  color: #12a844;
+  color: #6bd35f;
 }
 
+/* color: orange; */
 .markdown-section h5 span {
-  color: orange;
+  color: #f19937;
 }
 
 .markdown-section table td {
   white-space: nowrap;
 }
 
+/* color: #b572b5; */
 .markdown-section a {
-  color: #b572b5;
+  color: #c079db;
 }
 
+/* color: #c78202; */
 .markdown-section code:not([class*='lang-']):not([class*='language-']) {
-  color: #c78202;
+  color: #f19937;
+}
+
+/* fix black theme fold arrow */
+
+.sidebar-nav li > a[href^='#/']:not([href*='?id=']):not(:only-child) {
+  background-image: var(
+    --sidebar-nav-pagelink-background-image--collapse,
+    var(
+      --sidebar-nav-pagelink-background-image--loaded,
+      var(--sidebar-nav-pagelink-background-image)
+    )
+  );
+  background-position: var(
+    --sidebar-nav-pagelink-background-position--collapse,
+    var(
+      --sidebar-nav-pagelink-background-position--loaded,
+      var(--sidebar-nav-pagelink-background-image)
+    )
+  );
+}
+
+.sidebar-nav li.open > a[href^='#/']:not([href*='?id=']):not(:only-child) {
+  background-image: var(
+    --sidebar-nav-pagelink-background-image--active,
+    var(
+      --sidebar-nav-pagelink-background-image--loaded,
+      var(--sidebar-nav-pagelink-background-image)
+    )
+  );
+  background-position: var(
+    --sidebar-nav-pagelink-background-position--active,
+    var(
+      --sidebar-nav-pagelink-background-position--loaded,
+      var(--sidebar-nav-pagelink-background-image)
+    )
+  );
 }

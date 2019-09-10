@@ -92,7 +92,7 @@
     - [开始](cross-platform/rn/start.md)
     - [RN with TS](cross-platform/rn/rnwithts.md)
     - [RN with WeChat](cross-platform/rn/rnwithwechat.md)
-    - [RN autobuild](cross-platform/rn/build.md)
+    - [RN autobuild](cross-platform/rn/autobuild.md)
   - [Flutter](cross-platform/flutter.md)
   - [PWA](cross-platform/pwa.md)
   - [Electron](cross-platform/electron.md)

@@ -81,6 +81,7 @@
       gcm='git checkout master'
 
       gd='git diff'
+      gcl='git clone --recurse-submodules'
       gclean='git clean -id'
       ```
 

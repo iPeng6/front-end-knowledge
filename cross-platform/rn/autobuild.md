@@ -1,6 +1,6 @@
-# 打包脚本
+# 自动打包脚本
 
-package.json
+./scripts/package.json
 
 ```json
 {
@@ -17,7 +17,7 @@ package.json
 }
 ```
 
-build.js
+./scripts/build.js
 
 ```js
 #!/usr/bin/env node
@@ -58,7 +58,10 @@ sh.exec(`echo '{ "env": "${env}" }' > ./src/env.json`)
 
 const NewFileName = getNewFileName()
 
-const ApkReleaseDir = path.resolve(__dirname, '../android/app/build/outputs/apk/release')
+const ApkReleaseDir = path.resolve(
+  __dirname,
+  '../android/app/build/outputs/apk/release'
+)
 const ReleaseApkName = 'app-release.apk'
 const ReleaseApkFullPath = path.resolve(ApkReleaseDir, ReleaseApkName)
 const NewApkFullPath = path.resolve(ApkReleaseDir, NewFileName)
@@ -101,7 +104,9 @@ async function buildAndroid() {
 async function buildIos() {
   const bundleDir = path.resolve(__dirname, '../ios/bundle')
   const mainBundle = path.resolve(bundleDir, 'main.jsbundle')
-  const isWorkspace = fs.existsSync(path.resolve(__dirname, `../ios/${packageJson.name}.xcworkspace`))
+  const isWorkspace = fs.existsSync(
+    path.resolve(__dirname, `../ios/${packageJson.name}.xcworkspace`)
+  )
 
   console.log('>>> iOS打包开始')
 
@@ -122,7 +127,9 @@ async function buildIos() {
   console.log('>>> 生成离线 bundle 包')
   cdRoot()
   sh.mkdir('-p', bundleDir)
-  sh.exec(`react-native bundle --entry-file index.js  --platform ios --dev false --bundle-output ${mainBundle} --assets-dest ${bundleDir}`)
+  sh.exec(
+    `react-native bundle --entry-file index.js  --platform ios --dev false --bundle-output ${mainBundle} --assets-dest ${bundleDir}`
+  )
 
   if (isWorkspace) {
     console.log('>>> archive workspace')
@@ -164,7 +171,9 @@ function getNewFileName() {
   const platform = cmd.android ? 'android' : 'ios'
   const hash = sh.exec('git describe --always', { silent: true }).stdout.trim()
   const ext = cmd.android ? 'apk' : 'ipa'
-  return `${packageJson.name}_${platform}_${env}_v${packageJson.version}_${getDate()}_${hash}.${ext}`
+  return `${packageJson.name}_${platform}_${env}_v${
+    packageJson.version
+  }_${getDate()}_${hash}.${ext}`
 }
 
 function getDate() {
@@ -172,7 +181,9 @@ function getDate() {
   function pad(num) {
     return String(num).padStart(2, '0')
   }
-  return `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}${pad(now.getHours())}${pad(now.getMinutes())}`
+  return `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(
+    now.getDate()
+  )}${pad(now.getHours())}${pad(now.getMinutes())}`
 }
 
 function bundleRelease() {
@@ -191,13 +202,16 @@ function bundleRelease() {
 async function upload(path) {
   loading.start()
   await new Promise(resolve => {
-    sh.exec(`rsync ${path} {user}@{host}:/{path}/${packageJson.name}/`, (code, stdout, stderr) => {
-      if (code === 0) {
-        resolve()
-      } else {
-        console.log(stderr)
+    sh.exec(
+      `rsync ${path} {user}@{host}:/{path}/${packageJson.name}/`,
+      (code, stdout, stderr) => {
+        if (code === 0) {
+          resolve()
+        } else {
+          console.log(stderr)
+        }
       }
-    })
+    )
   })
   loading.stop()
   console.log(`done! open {download domain}${packageJson.name}/`)
@@ -218,8 +232,14 @@ function androidSyncVersion() {
 }
 
 function iosSyncVersion() {
-  const infoPlistPath = path.resolve(__dirname, `../ios/${packageJson.name}/Info.plist`)
-  const serviceInfoPlistPath = path.resolve(__dirname, '../ios/NotificationService/Info.plist')
+  const infoPlistPath = path.resolve(
+    __dirname,
+    `../ios/${packageJson.name}/Info.plist`
+  )
+  const serviceInfoPlistPath = path.resolve(
+    __dirname,
+    '../ios/NotificationService/Info.plist'
+  )
 
   syncPlistVersion(infoPlistPath)
   syncPlistVersion(serviceInfoPlistPath)
@@ -237,8 +257,12 @@ function syncPlistVersion(infoPlistPath) {
 
 function cleanProject() {
   cdIos()
-  sh.exec(`xcodebuild clean -project ${packageJson.name}.xcodeproj -scheme ${packageJson.name} -configuration Debug`)
-  sh.exec(`xcodebuild clean -project ${packageJson.name}.xcodeproj -scheme ${packageJson.name} -configuration Release`)
+  sh.exec(
+    `xcodebuild clean -project ${packageJson.name}.xcodeproj -scheme ${packageJson.name} -configuration Debug`
+  )
+  sh.exec(
+    `xcodebuild clean -project ${packageJson.name}.xcodeproj -scheme ${packageJson.name} -configuration Release`
+  )
 }
 
 function archiveXcodeproj() {
@@ -261,17 +285,19 @@ function archiveXcodeproj() {
 function cleanWorkspace() {
   console.log('>>> clean workspace')
   cdIos()
-  sh.exec(`xcodebuild clean -workspace ${packageJson.name}.workspace -scheme ${packageJson.name} -configuration Debug`)
-  sh.exec(`xcodebuild clean -workspace ${packageJson.name}.workspace -scheme ${packageJson.name} -configuration Release`)
+  sh.exec(
+    `xcodebuild clean -workspace ${packageJson.name}.workspace -scheme ${packageJson.name} -configuration Debug`
+  )
+  sh.exec(
+    `xcodebuild clean -workspace ${packageJson.name}.workspace -scheme ${packageJson.name} -configuration Release`
+  )
 }
 
 function archiveWorkspace() {
   return new Promise(resolve => {
     cdIos()
     sh.exec(
-      `xcodebuild archive -workspace ${packageJson.name}.xcworkspace -scheme ${packageJson.name} -archivePath ./${
-        packageJson.name
-      }.xcarchive`,
+      `xcodebuild archive -workspace ${packageJson.name}.xcworkspace -scheme ${packageJson.name} -archivePath ./${packageJson.name}.xcarchive`,
       { silent: true },
       (code, stdout, stderr) => {
         if (code === 0) {
@@ -285,13 +311,14 @@ function archiveWorkspace() {
 }
 
 function exportArchive() {
-  const exportOptionsPlistPath = path.resolve(__dirname, `../ios/${packageJson.name}/ExportOptions.plist`)
+  const exportOptionsPlistPath = path.resolve(
+    __dirname,
+    `../ios/${packageJson.name}/ExportOptions.plist`
+  )
 
   cdIos()
   sh.exec(
-    `xcodebuild -exportArchive -exportOptionsPlist ${exportOptionsPlistPath} -archivePath ./${
-      packageJson.name
-    }.xcarchive -exportPath ${IpaReleaseDir} -allowProvisioningUpdates`
+    `xcodebuild -exportArchive -exportOptionsPlist ${exportOptionsPlistPath} -archivePath ./${packageJson.name}.xcarchive -exportPath ${IpaReleaseDir} -allowProvisioningUpdates`
   )
 }
 

@@ -107,11 +107,16 @@ package.json 中先添加几个常用脚本
 >   adb devices // 查看手机是否连上<br/>
 >   adb reverse tcp:8081 tcp:8081 // android 端口映射
 
-### 调试菜单
+调试菜单
 
 - Android 快捷键 cmd + M
 - iOS 快捷键 cmd + D
 - 真机 摇一摇
+
+调试工具
+
+- [debugging](https://reactnative.cn/docs/debugging/)
+- [react-native-debugger](https://github.com/jhen0409/react-native-debugger)
 
 ## 打包
 
@@ -180,12 +185,3 @@ adb install <your path>/android/app/build/outputs/apk/release/app-release.apk
 先选择一个 iOS 设备，否则 archive 菜单灰色不可点
 
 xcode -> product -> archive -> distribute
-
-## 常见问题
-
-1、 ios solve the error `No bundle URL present`
-
-```
-# 清缓存重启
-rm -rf ios/build/; kill $(lsof -t -i:8081); react-native run-ios
-```
