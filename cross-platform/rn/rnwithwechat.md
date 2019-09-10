@@ -2,6 +2,7 @@
 
 <details>
 <summary>参考 - 2019年6月19日</summary>
+
 - [链接原生库](https://reactnative.cn/docs/linking-libraries-ios/)
 - [react-native-wechat](https://github.com/yorkie/react-native-wechat)
 - [使用react-native-wechat完成微信登录、分享和支付](https://juejin.im/entry/5b65baffe51d45348a3011b9)
@@ -21,7 +22,7 @@
 安装 `react-native-wechat` 库
 
 ```bash
-//yarn 安装
+# yarn 安装
 yarn add react-native-wechat
 react-native link react-native-wechat
 ```

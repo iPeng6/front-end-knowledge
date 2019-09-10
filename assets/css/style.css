@@ -10,17 +10,14 @@
   max-width: 1024px;
 }
 
-/* color: #0f7de4; */
 .markdown-section h2 span {
   color: #4facf1;
 }
 
-/* color: #ec5757; */
 .markdown-section h3 span {
-  color: #eb436a;
+  color: #ec5545;
 }
 
-/* color: #12a844; */
 .markdown-section h4 span {
   color: #6bd35f;
 }
@@ -34,12 +31,12 @@
   white-space: nowrap;
 }
 
-/* color: #b572b5; */
+
 .markdown-section a {
   color: #c079db;
 }
 
-/* color: #c78202; */
+
 .markdown-section code:not([class*='lang-']):not([class*='language-']) {
   color: #f19937;
 }
