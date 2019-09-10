@@ -85,14 +85,14 @@
       gclean='git clean -id'
       ```
 
-      issue: 默认的 gcam 不会自动提交untracked文件
+      !> issue: git plugin 默认的 gcam 不会自动提交untracked文件
 
       ```bash
       > git add —all // includes untracked files
       > git commit —all // does not include untracked files
       ```
 
-      修改下默认alias
+      修改下 ~/.zshrc
 
       ```bash
       alias gcam='git add . && git commit -a -m'
@@ -235,9 +235,17 @@
   done
   ```
 
-  - 保存为 从 vscode 打开
+  - 保存为 `从 vscode 打开`
 
   ![](img/openvscode2.png)
+
+- 配置
+
+  - `cmd + shift + .` 显示隐藏文件
+  - 偏好设置 -> 高级 -> 显示所有文件扩展名
+  - 显示 -> 显示路径栏 & 显示状态栏
+  - 显示 -> 自定义工具栏 添加常用的 `新建文件夹` `删除` `显示简介` 按钮
+
 
 ## 六、菜单栏工具
 
@@ -251,7 +259,7 @@
 
   ![](https://pock.dev/assets/img/preview/pock_widgets.png)
 
-## 七、截图录制
+## 八、截图录制
 
 - [截图(Jietu)](https://apps.apple.com/cn/app/jie-tu-jietu/id1059334054?mt=12)，腾讯出品的截图录屏工具，可以选取区域 可标注 马赛克等
 
@@ -259,7 +267,7 @@
 
 - [LICEcap](https://www.cockos.com/licecap/) 录制 GIF，可选区域、可调节 FPS
 
-## 八、Chrome 插件
+## 九、Chrome 插件
 
 - Smart TOC
 

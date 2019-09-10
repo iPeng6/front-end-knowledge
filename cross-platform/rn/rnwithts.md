@@ -17,7 +17,7 @@ touch rn-cli.config.js
 
 2、配置
 
-`tsconfig.json`
+`./tsconfig.json`
 
 ```json
 {
@@ -38,11 +38,11 @@ touch rn-cli.config.js
     "esModuleInterop": true,
     "resolveJsonModule": true
   },
-  "include": ["src*"]
+  "include": ["src/**/*"]
 }
 ```
 
-`rn-cli.config.js`
+`./rn-cli.config.js`
 
 ```js
 module.exports = {
