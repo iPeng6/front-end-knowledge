@@ -85,6 +85,19 @@
       gclean='git clean -id'
       ```
 
+      issue: 默认的 gcam 不会自动提交untracked文件
+
+      ```bash
+      > git add —all // includes untracked files
+      > git commit —all // does not include untracked files
+      ```
+
+      修改下默认alias
+
+      ```bash
+      alias gcam='git add . && git commit -a -m'
+      ```
+
     - tig
 
       [tig](https://jonas.github.io/tig/) 命令行中查看浏览 git
