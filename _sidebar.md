@@ -122,5 +122,6 @@
   - [Linux](system/linux/README.md)
     - [命令](system/linux/command.md)
     - [vi](system/linux/vi.md)
+    - [环境变量](system/linux/env.md)
   - [Mac](system/mac/README.md)
     - [软件工具](system/mac/tools.md)

@@ -252,6 +252,61 @@
 - [Itsycal](https://www.mowglii.com/itsycal/) 时间日历小工具
 
   ![](img/itsycal.png ':size=300')
+  
+- [Shuttle](http://fitztrev.github.io/shuttle/)
+
+  可以将常用的命令保存成一个快捷菜单
+
+  ![](img/shuttle.png)
+
+  设置->编辑 可以修改配置
+
+  ```json
+  {
+    "_comments": [
+      "Valid terminals include: 'Terminal.app' or 'iTerm'",
+      "In the editor value change 'default' to 'nano', 'vi', or another terminal based editor.",
+      "Hosts will also be read from your ~/.ssh/config or /etc/ssh_config file, if available",
+      "For more information on how to configure, please see http://fitztrev.github.io/shuttle/"
+    ],
+    "editor": "default",
+    "launch_at_login": true,
+    "terminal": "iTerm",
+    "iTerm_version": "nightly",
+    "default_theme": "Homebrew",
+    "open_in": "tab",
+    "show_ssh_config_hosts": false,
+    "ssh_config_ignore_hosts": [  ],
+    "ssh_config_ignore_keywords": [  ],
+    "hosts": [
+        {
+            "HTTP(S) Proxy to Whistle": [
+                {
+                    "name": "✅Wi-Fi Proxy",
+                    "cmd": "w2 start && echo p | sudo -S networksetup -setautoproxystate 'Wi-Fi' off && sudo networksetup -setwebproxy 'Wi-Fi' 127.0.0.1 8899 && sudo networksetup -setsecurewebproxy 'Wi-Fi' 127.0.0.1 8899 && exit"
+                },
+                {
+                    "name": "❌Wi-Fi Proxy",
+                    "cmd": "echo p | sudo -S networksetup -setwebproxystate 'Wi-Fi' off && sudo networksetup -setsecurewebproxystate 'Wi-Fi' off && sudo networksetup -setautoproxyurl 'Wi-Fi' http://127.0.0.1:8090/proxy.pac && exit"
+                }
+            ],
+            "SSH": [
+                {
+                    "name": "开发 ssh xxx@12.34.56.7",
+                    "cmd": "ssh ssh xxx@12.34.56.7",
+                },
+                {
+                    "name": "我的阿里云 ssh root@12.34.56.7",
+                    "cmd": "ssh root@12.34.56.7",
+                }
+            ]
+        }
+    ]
+  }
+  
+  ```
+
+  
 
 ## 七、Touch Bar 工具
 
