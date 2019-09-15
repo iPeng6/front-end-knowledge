@@ -108,6 +108,8 @@ cp -a demo1 demo2
 
 ## pbcopy
 
+这是 MAC 上的命令，[如何在 Linux 上使用 pbcopy 和 pbpaste 命令](https://linux.cn/article-9917-1.html)
+
 复制到剪切板
 
 eg
@@ -118,7 +120,7 @@ pbcopy < ~/.ssh/id_rsa.pub
 
 ## scp
 
-scp是 secure copy的缩写, scp是linux系统下基于ssh登陆进行安全的远程文件拷贝命令
+scp 是 secure copy 的缩写, scp 是 linux 系统下基于 ssh 登陆进行安全的远程文件拷贝命令
 
 > scp [options] <source> <target>
 
@@ -220,6 +222,7 @@ tree -L 2 -I node_modules
 查看命令行输入历史
 
 eg:
+
 ```bash
 history
 history | tail -10

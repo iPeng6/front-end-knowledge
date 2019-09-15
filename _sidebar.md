@@ -91,6 +91,7 @@
   - [React Native](cross-platform/rn/README.md)
     - [开始](cross-platform/rn/start.md)
     - [RN autobuild](cross-platform/rn/autobuild.md)
+    - [Linux Build](cross-platform/rn/linuxbuild.md)
     - [RN with TS](cross-platform/rn/rnwithts.md)
     - [ESLint & Prettier](cross-platform/rn/lint.md)
     - [Snippets](cross-platform/rn/snippets.md)
