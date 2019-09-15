@@ -182,4 +182,12 @@ Manage Jenkins -> Global Tool Configuration 系统管理 -> 全局工具配置
 ![](img/jenkins_task_build.jpg ':size=600')
 ![](img/jenkins_task_after.jpg ':size=600')
 
+不记得路径 可以通过 `which` 查看
+
+```bash
+which java
+which git
+which gradle
+```
+
 !> 开始构建时发现内存泄漏问题，将服务器内存从 1G 升级到 2G 解决

@@ -85,11 +85,11 @@
       gclean='git clean -id'
       ```
 
-      !> issue: git plugin 默认的 gcam 不会自动提交untracked文件
+      !> issue: git plugin 默认的 gcam 不会自动提交 untracked 文件
 
       ```bash
-      > git add —all // includes untracked files
-      > git commit —all // does not include untracked files
+      > git add --all # includes untracked files
+      > git commit --all # does not include untracked files
       ```
 
       修改下 ~/.zshrc
@@ -246,13 +246,12 @@
   - 显示 -> 显示路径栏 & 显示状态栏
   - 显示 -> 自定义工具栏 添加常用的 `新建文件夹` `删除` `显示简介` 按钮
 
-
 ## 六、菜单栏工具
 
 - [Itsycal](https://www.mowglii.com/itsycal/) 时间日历小工具
 
   ![](img/itsycal.png ':size=300')
-  
+
 - [Shuttle](http://fitztrev.github.io/shuttle/)
 
   可以将常用的命令保存成一个快捷菜单
@@ -276,37 +275,34 @@
     "default_theme": "Homebrew",
     "open_in": "tab",
     "show_ssh_config_hosts": false,
-    "ssh_config_ignore_hosts": [  ],
-    "ssh_config_ignore_keywords": [  ],
+    "ssh_config_ignore_hosts": [],
+    "ssh_config_ignore_keywords": [],
     "hosts": [
-        {
-            "HTTP(S) Proxy to Whistle": [
-                {
-                    "name": "✅Wi-Fi Proxy",
-                    "cmd": "w2 start && echo p | sudo -S networksetup -setautoproxystate 'Wi-Fi' off && sudo networksetup -setwebproxy 'Wi-Fi' 127.0.0.1 8899 && sudo networksetup -setsecurewebproxy 'Wi-Fi' 127.0.0.1 8899 && exit"
-                },
-                {
-                    "name": "❌Wi-Fi Proxy",
-                    "cmd": "echo p | sudo -S networksetup -setwebproxystate 'Wi-Fi' off && sudo networksetup -setsecurewebproxystate 'Wi-Fi' off && sudo networksetup -setautoproxyurl 'Wi-Fi' http://127.0.0.1:8090/proxy.pac && exit"
-                }
-            ],
-            "SSH": [
-                {
-                    "name": "开发 ssh xxx@12.34.56.7",
-                    "cmd": "ssh ssh xxx@12.34.56.7",
-                },
-                {
-                    "name": "我的阿里云 ssh root@12.34.56.7",
-                    "cmd": "ssh root@12.34.56.7",
-                }
-            ]
-        }
+      {
+        "HTTP(S) Proxy to Whistle": [
+          {
+            "name": "✅Wi-Fi Proxy",
+            "cmd": "w2 start && echo p | sudo -S networksetup -setautoproxystate 'Wi-Fi' off && sudo networksetup -setwebproxy 'Wi-Fi' 127.0.0.1 8899 && sudo networksetup -setsecurewebproxy 'Wi-Fi' 127.0.0.1 8899 && exit"
+          },
+          {
+            "name": "❌Wi-Fi Proxy",
+            "cmd": "echo p | sudo -S networksetup -setwebproxystate 'Wi-Fi' off && sudo networksetup -setsecurewebproxystate 'Wi-Fi' off && sudo networksetup -setautoproxyurl 'Wi-Fi' http://127.0.0.1:8090/proxy.pac && exit"
+          }
+        ],
+        "SSH": [
+          {
+            "name": "开发 ssh xxx@12.34.56.7",
+            "cmd": "ssh ssh xxx@12.34.56.7"
+          },
+          {
+            "name": "我的阿里云 ssh root@12.34.56.7",
+            "cmd": "ssh root@12.34.56.7"
+          }
+        ]
+      }
     ]
   }
-  
   ```
-
-  
 
 ## 七、Touch Bar 工具
 
