@@ -1,5 +1,16 @@
 # 自动打包脚本
 
+## 这个脚本要做哪些事情
+
+- 检查必要的环境变量
+- 检查必要的工具版本
+- 根据 lock 缓存 node_modules
+- 版本号同步 构建号自增
+- 统一的 apk、ipa 包名
+- 环境区分
+- bundle & build
+- ~~commit 构建产物~~ (需要 git push 权限)
+
 ./scripts/package.json
 
 ```json

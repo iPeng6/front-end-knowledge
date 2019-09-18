@@ -41,7 +41,7 @@ yum install -y java-1.8.0-openjdk-devel.x86_64 # 安装目录为 `/usr/lib/jvm`
 
    解压 `tar zxvf jdk-8u221-linux-x64.tar.gz`
 
-   建一个 soft link `ln -s /home/java/jdk1.8.0_221/bin/java /usr/bin/java`
+   建一个 symbolic link 软链接 `ln -s /home/java/jdk1.8.0_221/bin/java /usr/bin/java`
 
 3. 配置环境变量
 
@@ -83,6 +83,8 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 使用 [sdkmanager](https://developer.android.com/studio/command-line/sdkmanager) 安装 build-tools、platform-tools、android-29
 
 ```bash
+# 查看可安装包
+sdkmanager --list
 sdkmanager "build-tools;29.0.1" "platform-tools" "platforms;android-29"
 ```
 
@@ -115,8 +117,10 @@ nvm ls
 nvm install --lts
 nvm use <version>
 node -v
-npm i -g yarn
-yarn -v
+
+# 全局安装 yarn， 当 nvm 切换 node 时也不影响
+curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
+sudo yum install yarn
 
 npm i -g react-native-cli
 ```
@@ -165,14 +169,14 @@ Manage Jenkins -> Global Tool Configuration 系统管理 -> 全局工具配置
   ...
   "scripts": {
     ...
-    "bundle:android": "react-native bundle --entry-file index.js --platform android --dev false --bundle-output ./android/app/src/main/assets/index.android.bundle --assets-dest ./android/app/src/main/res/",
-    "build:android": "yarn bundle:android && cd android && ./gradlew clean && ./gradlew assembleRelease -x bundleReleaseJsAndAssets --stacktrace"
+    "bundle:android": "react-native bundle --entry-file index.js --platform android --dev false --bundle-output ./android/app/src/main/assets/index.android.bundle",
+    "build:android": "yarn bundle:android && cd android && ./gradlew clean --stacktrace && ./gradlew assembleRelease -x bundleReleaseJsAndAssets --stacktrace"
   },
   ...
 }
 ```
 
-!> 由于安装过程中 bundleReleaseJsAndAssets 这个任务存在问题，所以选择先自行打 bundle，然后 -x 排除掉此任务
+!> 由于安装过程中 bundleReleaseJsAndAssets 这个任务存在问题，所以选择先自行打 bundle，然后 -x 排除掉此任务, 参考[issue](https://stackoverflow.com/questions/49513047/react-native-assemblerelease-fails-for-task-appbundlereleasejsandassets)
 
 ### 创建任务
 
@@ -190,4 +194,10 @@ which git
 which gradle
 ```
 
-!> 开始构建时发现内存泄漏问题，将服务器内存从 1G 升级到 2G 解决
+## 遇到的一些问题
+
+1. 开始构建时发现内存泄漏问题，将服务器内存从 1G 升级到 2G 解决
+2. source /etc/profile 也是必要的，否则缺环境变量
+3. 有些依赖 build-tools;23.0.1 android-23 的库，也要通过 sdkmanager 都安装上
+4. 由于版本问题有的库不得不将 build.gradle `compileSdkVersion` `buildToolsVersion` 升级至 28，但是修改的是 node_moudles 下的代码，这里的方案是 fork 出来
+   然后 package.json 修改 dependencies 依赖为 fork 库 `"react-native-orientation": "git://github.com/iPeng6/react-native-orientation.git"`

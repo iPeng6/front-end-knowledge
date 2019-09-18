@@ -1,10 +1,11 @@
-# 代码规范  ESLint & Prettier
+# 代码规范 ESLint & Prettier
 
 ## 安装
 
 rn >= 0.60 版 已经集成了 eslint 且 @react-native-community/eslint-config 也集成了 prettier, typescript
 
 如果是老项目需要手动安装下基础库
+
 ```
 yarn add --dev eslint
 yarn add --dev @react-native-community/eslint-config
@@ -20,9 +21,10 @@ module.exports = {
   extends: '@react-native-community',
   rules: {
     semi: ['error', 'never'], // react社区 默认喜欢添加尾部分号
-    quotes:['error', 'single'],
+    quotes: ['error', 'single'],
     'comma-dangle': ['error', 'always-multiline'],
     'max-len': ['error', { code: 140 }],
+    'keyword-spacing': 'off', // 避免与 prettier 同时加了两个空格
     'prettier/prettier': [
       'error',
       {
@@ -30,10 +32,10 @@ module.exports = {
         singleQuote: true, // prettier 默认是双引号
         trailingComma: 'all',
         jsxBracketSameLine: true, // jsx 头标签右 > 括号不折行
-        printWidth: 140,
-      },
-    ],
-  },
+        printWidth: 140
+      }
+    ]
+  }
 }
 ```
 
@@ -53,8 +55,8 @@ module.exports = {
   "eslint.validate": [
     "javascript",
     "javascriptreact",
-    {"language":  "typescript",  "autoFix":  true  },
-    {"language":  "typescriptreact",  "autoFix":  true  }
-  ],
+    { "language": "typescript", "autoFix": true },
+    { "language": "typescriptreact", "autoFix": true }
+  ]
 }
 ```
