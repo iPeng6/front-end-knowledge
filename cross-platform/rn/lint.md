@@ -22,9 +22,10 @@ module.exports = {
   rules: {
     semi: ['error', 'never'], // react社区 默认喜欢添加尾部分号
     quotes: ['error', 'single'],
-    'comma-dangle': ['error', 'always-multiline'],
+    'comma-dangle': 'off', // 避免与 prettier 同时加了两个逗号
     'max-len': ['error', { code: 140 }],
     'keyword-spacing': 'off', // 避免与 prettier 同时加了两个空格
+    'space-infix-ops': 'off', // 操作符 避免与 prettier 同时加了两个空格
     'prettier/prettier': [
       'error',
       {

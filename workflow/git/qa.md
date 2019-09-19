@@ -56,3 +56,7 @@ then
 fi
 ' --tag-name-filter cat -- --branches --tags
 ```
+
+## 合并两个本地仓库并保留各自的提交历史
+
+https://blog.csdn.net/gouboft/article/details/8450696

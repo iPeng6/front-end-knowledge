@@ -88,24 +88,29 @@ package.json 中先添加几个常用脚本
 
 ```js
 "scripts": {
-	"start": "react-native start", // 启动 Metro JavaScript bundler server
-	"android": "react-native run-android", // 启动安卓模拟器或设备
-	"ios": "react-native run-ios", // 启动iOS模拟器
-	"bundle:android": "react-native bundle --entry-file index.js --platform android --dev false --bundle-output ./android/app/src/main/assets/index.android.bundle --assets-dest ./android/app/src/main/res/", // 打包 bundle 离线包
-	"bundle:ios": "react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ./ios/bundle/main.jsbundle --assets-dest ./ios/bundle", // 打包 bundle 离线包
-	"build:android": "react-native run-android --variant=release", // 生成 apk release包
+	"start": "react-native start",
+	"android": "react-native run-android",
+	"ios": "react-native run-ios",
+	"bundle:android": "react-native bundle --entry-file index.js --platform android --dev false --bundle-output ./android/app/src/main/assets/index.android.bundle",
+	"bundle:ios": "react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ./ios/bundle/main.jsbundle --assets-dest ./ios/bundle",
+	"build:android": "yarn bundle:android && cd android && ./gradlew clean --stacktrace && ./gradlew assembleRelease -x bundleReleaseJsAndAssets --stacktrace",
+	"cli":"cd scripts && yarn"
 },
 ```
 
 1. yarn start // 启动服务
-2. yarn bundle:{android,ios} // 打包 bundle 如果目录不存在手动建一个
+2. yarn bundle:{android,ios} // 打包 js bundle 如果目录不存在手动建一个
 3. yarn {android,ios} // 启动模拟器或设备运行 app
 4. yarn build:android // 打包 apk
 
-> - 注意`--variant=release`参数只能在完成了下面的签名配置之后才可以使用。因为 release 相当于一个线上版本需要所有签名依赖打包到 apk 中才可离线运行
-> - 如果安卓手机连不上电脑<br>
->   adb devices // 查看手机是否连上<br/>
->   adb reverse tcp:8081 tcp:8081 // android 端口映射
+!> 安卓打包需要完成了下面的签名配置之后才可以使用。因为 release 相当于一个线上版本需要所有签名依赖打包到 apk 中才可离线运行
+
+如果安卓手机连不上电脑
+
+```bash
+adb devices # 查看手机是否连上
+adb reverse tcp:8081 tcp:8081 # android 端口映射
+```
 
 调试菜单
 
