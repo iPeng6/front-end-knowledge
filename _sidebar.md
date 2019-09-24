@@ -95,6 +95,7 @@
     - [RN with TS](cross-platform/rn/rnwithts.md)
     - [ESLint & Prettier](cross-platform/rn/lint.md)
     - [Snippets](cross-platform/rn/snippets.md)
+    - [Splash & Icon](cross-platform/rn/splash.md)
     - [RN with WeChat](cross-platform/rn/rnwithwechat.md)
   - [Flutter](cross-platform/flutter.md)
   - [PWA](cross-platform/pwa.md)
