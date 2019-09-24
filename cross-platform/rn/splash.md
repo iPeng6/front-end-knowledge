@@ -239,8 +239,8 @@ iOS 启动屏分两种，使用 `Launch Screen File` xib 动态布局，或者�
   <application
       android:name=".MainApplication"
       android:label="@string/app_name"
-      android:icon="@mipmap/ic_launcher"
-      android:roundIcon="@mipmap/ic_launcher_round"
+      android:icon="@drawable/icon"
+      android:roundIcon="@drawable/icon"
       android:allowBackup="false"
       android:theme="@style/AppTheme">
       <activity
@@ -258,7 +258,7 @@ iOS 启动屏分两种，使用 `Launch Screen File` xib 动态布局，或者�
 
 ```
 
-手动配置
+**图形化配置**
 
 首先将工程目录切换成 Android 视图，定位到 app 上右击 New -> Image Asset
 
@@ -273,6 +273,8 @@ Background Layer
 
 ### iOS 换图标
 
-默认复制资源即已替换，手动需配置 Images.xcassets 中的 AppIcon，拖入素材
+默认替换资源即已替换，手动需配置 Images.xcassets 中的 AppIcon，拖入素材
 
 检查下 Targets -> General -> App Icons and Launch Images -> App Icons Source 选择 AppIcon
+
+换图标启动屏如果没有立即生效尝试卸载重装
