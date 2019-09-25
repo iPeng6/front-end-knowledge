@@ -207,17 +207,44 @@ public class MainActivity extends ReactActivity {
 
 6. 启动后 画面会一直停留在启动屏 这时候 在 js 端 加载完成时需要隐藏启动屏
 
-eg: App.tsx
-
 ```javascript
+// src/NativeModules/index.ts
 import { NativeModules } from 'react-native'
 
-useEffect(() => {
-  NativeModules.SplashScreen.hide()
-}, [])
+export const Splash = NativeModules.SplashScreen
+
+export default {
+  Splash,
+}
+
+// src/hooks/useSplash.ts
+import { useEffect } from 'react'
+import { Platform } from 'react-native'
+import { Splash } from 'src/NativeModules'
+
+export default function useSplash() {
+  useEffect(() => {
+    let st: any
+    if (Platform.OS === 'android') {
+      st = setTimeout(() => {
+        Splash.hide()
+      }, 100)
+    }
+    return () => {
+      st && clearTimeout(st)
+    }
+  }, [])
+}
+
+// App.tsx
+const App = () => {
+  useSplash()
+
+  return <View/>
+}
 ```
 
-根据逻辑 可以适当 延迟隐藏
+根据逻辑可以适当延迟隐藏，避免白屏闪烁问题
 
 ### iOS 启动屏
 

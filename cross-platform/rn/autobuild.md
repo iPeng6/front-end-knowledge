@@ -36,10 +36,12 @@
 const cmd = require('commander')
 const sh = require('shelljs')
 const fs = require('fs')
+const crypto = require('crypto')
 const path = require('path')
-const packageJson = require('../package.json')
 const ora = require('ora')
 const loading = ora()
+
+const packageJson = require('../package.json')
 const plist = require('plist')
 
 cmd
@@ -52,44 +54,103 @@ cmd
   .option('-p, --prod', 'build production')
   .parse(process.argv)
 
-if (!cmd.ios && !cmd.android) {
-  console.log('你需要指定打包平台 eg: --ios or --android')
-  return
-}
-
-if (!cmd.dev && !cmd.test && !cmd.prod) {
-  console.log('你需要指定环境参数 eg: --dev or --test or --prod')
-  return
-}
-
 const env = cmd.dev ? 'dev' : cmd.test ? 'test' : 'prod'
-cdRoot()
-sh.mkdir('-p', './src')
-sh.exec(`echo '{ "env": "${env}" }' > ./src/env.json`)
 
 const NewFileName = getNewFileName()
 
-const ApkReleaseDir = path.resolve(
-  __dirname,
-  '../android/app/build/outputs/apk/release'
-)
+const ApkReleaseDir = path.resolve(__dirname, '../android/app/build/outputs/apk/release')
 const ReleaseApkName = 'app-release.apk'
 const ReleaseApkFullPath = path.resolve(ApkReleaseDir, ReleaseApkName)
 const NewApkFullPath = path.resolve(ApkReleaseDir, NewFileName)
 
-const IpaReleaseDir = path.resolve(__dirname, '../ios/autoPackage')
+const IpaReleaseDir = path.resolve(__dirname, '../ios/build/autoPackage')
 const ReleaseIpaName = `${packageJson.name}.ipa`
 const ReleaseIpaFullPath = path.resolve(IpaReleaseDir, ReleaseIpaName)
 const NewIpaFullPath = path.resolve(IpaReleaseDir, NewFileName)
 
-if (cmd.android) {
-  console.time('android build:')
-  buildAndroid()
-  console.timeEnd('android build:')
-} else if (cmd.ios) {
-  console.time('ios build:')
-  buildIos()
-  console.timeEnd('ios build:')
+start()
+
+function start() {
+  if (!checkCmdInput()) {
+    return
+  }
+
+  if (!checkCmdInstall()) {
+    return
+  }
+
+  sh.exec('yarn')
+
+  createSrcEnv()
+  if (cmd.android) {
+    if (!checkAndroidEnvVar()) {
+      return
+    }
+
+    console.time('android build:')
+    buildAndroid().then(() => {
+      // sh.exec(`git add . && git commit -a -m "build ${NewFileName}" && git push`)
+      console.timeEnd('android build:')
+    })
+  } else if (cmd.ios) {
+    console.time('ios build:')
+    buildIos().then(() => {
+      // sh.exec(`git add . && git commit -a -m "build ${NewFileName}" && git push`)
+      console.timeEnd('ios build:')
+    })
+  }
+}
+
+function checkCmdInput() {
+  if (!cmd.ios && !cmd.android) {
+    console.log('你需要指定打包平台 eg: --ios or --android')
+    return false
+  }
+
+  if (!cmd.dev && !cmd.test && !cmd.prod) {
+    console.log('你需要指定环境参数 eg: --dev or --test or --prod')
+    return false
+  }
+  return true
+}
+
+function checkAndroidEnvVar() {
+  if (!sh.which('java')) {
+    console.log('缺少java命令，请安装jdk')
+    return false
+  }
+
+  if (!sh.env.ANDROID_HOME) {
+    console.log('缺少环境变量 ANDROID_HOME，请配置 android sdk')
+    return false
+  }
+
+  sh.exec('echo "java -version" && java -version')
+  sh.exec('echo ANDROID_HOME $ANDROID_HOME')
+
+  return true
+}
+
+function checkCmdInstall() {
+  if (!sh.which('node')) {
+    console.log('缺少node命令，请安装node')
+    return false
+  }
+  if (!sh.which('yarn')) {
+    console.log('缺少yarn命令，请安装yarn')
+    return false
+  }
+
+  sh.exec('echo "node -v" && node -v')
+  sh.exec('echo "yarn -v" && yarn -v')
+
+  return true
+}
+
+function createSrcEnv() {
+  cdRoot()
+  sh.mkdir('-p', './src')
+  sh.exec(`echo '{ "env": "${env}" }' > ./src/env.json`)
 }
 
 async function buildAndroid() {
@@ -102,12 +163,13 @@ async function buildAndroid() {
   androidSyncVersion()
 
   console.log('>>> 打包开始')
-  await bundleRelease()
+  await buildApkRelease()
 
   sh.mv(ReleaseApkFullPath, NewApkFullPath)
 
-  console.log(`>>> 上传文件 ${NewApkFullPath}`)
-  await upload(NewApkFullPath)
+  // console.log(`>>> 上传文件 ${NewApkFullPath}`)
+
+  // await upload(NewApkFullPath)
 
   console.log('<<< 安卓打包结束')
 }
@@ -115,9 +177,7 @@ async function buildAndroid() {
 async function buildIos() {
   const bundleDir = path.resolve(__dirname, '../ios/bundle')
   const mainBundle = path.resolve(bundleDir, 'main.jsbundle')
-  const isWorkspace = fs.existsSync(
-    path.resolve(__dirname, `../ios/${packageJson.name}.xcworkspace`)
-  )
+  const isWorkspace = fs.existsSync(path.resolve(__dirname, `../ios/${packageJson.name}.xcworkspace`))
 
   console.log('>>> iOS打包开始')
 
@@ -138,9 +198,7 @@ async function buildIos() {
   console.log('>>> 生成离线 bundle 包')
   cdRoot()
   sh.mkdir('-p', bundleDir)
-  sh.exec(
-    `react-native bundle --entry-file index.js  --platform ios --dev false --bundle-output ${mainBundle} --assets-dest ${bundleDir}`
-  )
+  sh.exec(`react-native bundle --entry-file index.js  --platform ios --dev false --bundle-output ${mainBundle} --assets-dest ${bundleDir}`)
 
   if (isWorkspace) {
     console.log('>>> archive workspace')
@@ -158,8 +216,8 @@ async function buildIos() {
 
   sh.mv(ReleaseIpaFullPath, NewIpaFullPath)
 
-  console.log(`>>> 上传文件 ${NewIpaFullPath}`)
-  await upload(NewIpaFullPath)
+  // console.log(`>>> 上传文件 ${NewIpaFullPath}`)
+  // await upload(NewIpaFullPath)
 
   console.log('<<< iOS打包结束')
 }
@@ -182,9 +240,7 @@ function getNewFileName() {
   const platform = cmd.android ? 'android' : 'ios'
   const hash = sh.exec('git describe --always', { silent: true }).stdout.trim()
   const ext = cmd.android ? 'apk' : 'ipa'
-  return `${packageJson.name}_${platform}_${env}_v${
-    packageJson.version
-  }_${getDate()}_${hash}.${ext}`
+  return `${packageJson.name}_${platform}_${env}_v${packageJson.version}_${getDate()}_${hash}.${ext}`
 }
 
 function getDate() {
@@ -192,40 +248,21 @@ function getDate() {
   function pad(num) {
     return String(num).padStart(2, '0')
   }
-  return `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(
-    now.getDate()
-  )}${pad(now.getHours())}${pad(now.getMinutes())}`
+  return `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}${pad(now.getHours())}${pad(now.getMinutes())}`
 }
 
-function bundleRelease() {
+function buildApkRelease() {
   return new Promise(resolve => {
     const wt = fs.watch(ApkReleaseDir, (event, filename) => {
-      if (filename && filename === ReleaseApkName) {
+      if (fs.existsSync(ReleaseApkFullPath)) {
         wt.close()
         resolve()
       }
     })
     cdRoot()
-    sh.exec('react-native run-android --variant=release')
+    // sh.exec('react-native run-android --variant=release')
+    sh.exec('yarn build:android')
   })
-}
-
-async function upload(path) {
-  loading.start()
-  await new Promise(resolve => {
-    sh.exec(
-      `rsync ${path} {user}@{host}:/{path}/${packageJson.name}/`,
-      (code, stdout, stderr) => {
-        if (code === 0) {
-          resolve()
-        } else {
-          console.log(stderr)
-        }
-      }
-    )
-  })
-  loading.stop()
-  console.log(`done! open {download domain}${packageJson.name}/`)
 }
 
 function androidSyncVersion() {
@@ -233,8 +270,13 @@ function androidSyncVersion() {
   let fileStr = fs.readFileSync(gradlePath).toString()
   // versionCode 1
   // versionName "1.0"
+  // fileStr = fileStr.replace(/(versionCode )(.+)/, (match, $1, buidlNo) => {
+  //   return $1 + (parseInt(buidlNo, 10) + 1)
+  // })
+  const count = sh.exec('git rev-list HEAD --count').trim()
+
   fileStr = fileStr.replace(/(versionCode )(.+)/, (match, $1, buidlNo) => {
-    return $1 + (parseInt(buidlNo) + 1)
+    return $1 + count
   })
 
   fileStr = fileStr.replace(/(versionName )(.+)/, `$1"${packageJson.version}"`)
@@ -243,37 +285,28 @@ function androidSyncVersion() {
 }
 
 function iosSyncVersion() {
-  const infoPlistPath = path.resolve(
-    __dirname,
-    `../ios/${packageJson.name}/Info.plist`
-  )
-  const serviceInfoPlistPath = path.resolve(
-    __dirname,
-    '../ios/NotificationService/Info.plist'
-  )
+  const infoPlistPath = path.resolve(__dirname, `../ios/${packageJson.name}/Info.plist`)
+  const serviceInfoPlistPath = path.resolve(__dirname, '../ios/NotificationService/Info.plist')
 
   syncPlistVersion(infoPlistPath)
   syncPlistVersion(serviceInfoPlistPath)
 }
 
 function syncPlistVersion(infoPlistPath) {
-  if (!fs.existsSync(infoPlistPath)) return
+  if (!fs.existsSync(infoPlistPath)) {
+    return
+  }
 
   const info = plist.parse(fs.readFileSync(infoPlistPath, 'utf8'))
-  info['CFBundleShortVersionString'] = packageJson.version
-  info['CFBundleVersion'] = String(parseInt(info['CFBundleVersion']) + 1)
+  info.CFBundleShortVersionString = packageJson.version
+  info.CFBundleVersion = String(parseInt(info.CFBundleVersion) + 1)
   const xml = plist.build(info)
   fs.writeFileSync(infoPlistPath, xml)
 }
 
 function cleanProject() {
   cdIos()
-  sh.exec(
-    `xcodebuild clean -project ${packageJson.name}.xcodeproj -scheme ${packageJson.name} -configuration Debug`
-  )
-  sh.exec(
-    `xcodebuild clean -project ${packageJson.name}.xcodeproj -scheme ${packageJson.name} -configuration Release`
-  )
+  sh.exec(`xcodebuild clean -project ${packageJson.name}.xcodeproj -scheme ${packageJson.name} -configuration Release`)
 }
 
 function archiveXcodeproj() {
@@ -288,27 +321,23 @@ function archiveXcodeproj() {
         } else {
           console.log(stderr)
         }
-      }
+      },
     )
   })
 }
 
 function cleanWorkspace() {
-  console.log('>>> clean workspace')
   cdIos()
-  sh.exec(
-    `xcodebuild clean -workspace ${packageJson.name}.workspace -scheme ${packageJson.name} -configuration Debug`
-  )
-  sh.exec(
-    `xcodebuild clean -workspace ${packageJson.name}.workspace -scheme ${packageJson.name} -configuration Release`
-  )
+  sh.exec(`xcodebuild clean -workspace ${packageJson.name}.xcworkspace -scheme ${packageJson.name} -configuration Release`)
 }
 
 function archiveWorkspace() {
   return new Promise(resolve => {
     cdIos()
     sh.exec(
-      `xcodebuild archive -workspace ${packageJson.name}.xcworkspace -scheme ${packageJson.name} -archivePath ./${packageJson.name}.xcarchive`,
+      `xcodebuild archive -workspace ${packageJson.name}.xcworkspace -scheme ${packageJson.name} -archivePath ./${
+        packageJson.name
+      }.xcarchive`,
       { silent: true },
       (code, stdout, stderr) => {
         if (code === 0) {
@@ -316,20 +345,19 @@ function archiveWorkspace() {
         } else {
           console.log(stderr)
         }
-      }
+      },
     )
   })
 }
 
 function exportArchive() {
-  const exportOptionsPlistPath = path.resolve(
-    __dirname,
-    `../ios/${packageJson.name}/ExportOptions.plist`
-  )
+  const exportOptionsPlistPath = path.resolve(__dirname, `../ios/${packageJson.name}/ExportOptions.plist`)
 
   cdIos()
   sh.exec(
-    `xcodebuild -exportArchive -exportOptionsPlist ${exportOptionsPlistPath} -archivePath ./${packageJson.name}.xcarchive -exportPath ${IpaReleaseDir} -allowProvisioningUpdates`
+    `xcodebuild -exportArchive -exportOptionsPlist ${exportOptionsPlistPath} -archivePath ./${
+      packageJson.name
+    }.xcarchive -exportPath ${IpaReleaseDir} -allowProvisioningUpdates`,
   )
 }
 
@@ -342,12 +370,33 @@ function cdAndroid() {
 function cdIos() {
   sh.cd(path.resolve(__dirname, '../ios'))
 }
+
 ```
+
+package.json 加上 cli 脚本
+
+```json
+"script": {
+    "cli:install":"cd scripts && yarn",
+    "cli":"node ./scripts/build.js"
+}
+```
+
+usage:
 
 ```bash
-npm install
-npm link
+yarn cli:install
 
 # eg:
-build-cli --dev --android # 打包安卓开发 build-cli -da
+yarn cli --dev --android # 打包安卓开发版 build-cli -da
 ```
+
+## 安卓手动打包
+
+android studio -> build -> Generate Signed Bundle / APK -> next -> release v2 build
+
+## iOS 手动 archive
+
+先选择设备 Generic iOS Device，否则 archive 菜单灰色不可点
+
+xcode -> product -> archive -> distribute

@@ -1,13 +1,5 @@
 # React Native
 
-<details>
-<summary>参考 - 2019年05月21日</summary>
-
-- [打包 APK](https://reactnative.cn/docs/signed-apk-android/)
-- [签署您的应用](https://developer.android.com/studio/publish/app-signing)
-
-</details>
-
 ## 安装环境
 
 1、 node
@@ -88,13 +80,13 @@ package.json 中先添加几个常用脚本
 
 ```js
 "scripts": {
-	"start": "react-native start",
-	"android": "react-native run-android",
-	"ios": "react-native run-ios",
-	"bundle:android": "react-native bundle --entry-file index.js --platform android --dev false --bundle-output ./android/app/src/main/assets/index.android.bundle",
-	"bundle:ios": "react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ./ios/bundle/main.jsbundle --assets-dest ./ios/bundle",
-	"build:android": "yarn bundle:android && cd android && ./gradlew clean --stacktrace && ./gradlew assembleRelease -x bundleReleaseJsAndAssets --stacktrace",
-	"cli":"cd scripts && yarn"
+  "react-native": "node ./node_modules/react-native/local-cli/cli.js",
+  "start": "yarn react-native start",
+  "android": "yarn react-native run-android",
+  "ios": "yarn react-native run-ios",
+  "bundle:android": "yarn react-native bundle --entry-file index.js --platform android --dev false --bundle-output ./android/app/src/main/assets/index.android.bundle",
+  "bundle:ios": "yarn react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ./ios/bundle/main.jsbundle --assets-dest ./ios/bundle",
+  "build:android": "yarn bundle:android && cd android && ./gradlew clean --stacktrace && ./gradlew assembleRelease -x bundleReleaseJsAndAssets --stacktrace",
 },
 ```
 
@@ -103,9 +95,9 @@ package.json 中先添加几个常用脚本
 3. yarn {android,ios} // 启动模拟器或设备运行 app
 4. yarn build:android // 打包 apk
 
-!> 安卓打包需要完成了下面的签名配置之后才可以使用。因为 release 相当于一个线上版本需要所有签名依赖打包到 apk 中才可离线运行
+!> 安卓打包需要完成了签名配置之后才可以使用。因为 release 相当于一个线上版本需要所有签名依赖打包到 apk 中才可离线运行
 
-如果安卓手机连不上电脑
+如果安卓手机连不上脚本 packager 服务
 
 ```bash
 adb devices # 查看手机是否连上
@@ -122,71 +114,3 @@ adb reverse tcp:8081 tcp:8081 # android 端口映射
 
 - [debugging](https://reactnative.cn/docs/debugging/)
 - [react-native-debugger](https://github.com/jhen0409/react-native-debugger)
-
-## 打包
-
-### Android 打包 apk
-
-1、 生成离线 bundle 包 yarn bundle:android
-
-2、 生成签名文件
-
-```bash
-# ./android/app
-keytool -genkey -v -keystore my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
-```
-
-3、 修改 ./android/gradle.properties
-
-```
-MYAPP_RELEASE_STORE_FILE=my-release-key.keystore
-MYAPP_RELEASE_KEY_ALIAS=my-key-alias
-MYAPP_RELEASE_STORE_PASSWORD=*****
-MYAPP_RELEASE_KEY_PASSWORD=*****
-```
-
-4、 修改 ./android/app/build.gradle
-
-```gradle
-android {
-	...
-	defaultConfig { ... }
-	signingConfigs {
-			release {
-				storeFile file(MYAPP_RELEASE_STORE_FILE)
-				storePassword MYAPP_RELEASE_STORE_PASSWORD
-				keyAlias MYAPP_RELEASE_KEY_ALIAS
-				keyPassword MYAPP_RELEASE_KEY_PASSWORD
-			}
-	}
-	buildTypes {
-			release {
-					...
-					signingConfig signingConfigs.release
-			}
-	}
-}
-```
-
-5、 生成签名 apk
-
-```bash
-# 如果 package.json里配置了 build:android
-# 生成路径 android/app/build/outputs/apk/release/app-release.apk
-yarn build:android
-```
-
-6、 安装到手机
-
-前提确保连上手机，开启 USB 调试模式，（部分手机需要连续点击 关于手机->版本号 才出开发人员选项->USB 调试模式）
-
-```bash
-adb devices # 确保手机连上电脑
-adb install <your path>/android/app/build/outputs/apk/release/app-release.apk
-```
-
-### iOS archive
-
-先选择一个 iOS 设备，否则 archive 菜单灰色不可点
-
-xcode -> product -> archive -> distribute

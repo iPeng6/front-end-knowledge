@@ -3,11 +3,14 @@
 <h3>Quick Start a new React Native App</h3>
 
 1. [安装配置](cross-platform/rn/start.md)
-2. [自动打包](cross-platform/rn/autobuild.md)
-3. [集成 Typescript](cross-platform/rn/rnwithts.md)
-4. [代码规范 ESLint & Prettier](cross-platform/rn/lint.md)
-5. [代码片段 Snippets](cross-platform/rn/snippets.md)
-6. [启动屏 & 应用图标](cross-platform/rn/splash.md)
+2. [安卓签名](cross-platform/rn/androidsign.md)
+3. [苹果账号证书](cross-platform/rn/iossign.md)
+4. [自动打包](cross-platform/rn/autobuild.md)
+5. [安卓 Linux 打包](cross-platform/rn/linuxbuild.md)
+6. [集成 Typescript](cross-platform/rn/rnwithts.md)
+7. [代码规范 ESLint & Prettier](cross-platform/rn/lint.md)
+8. [代码片段 Snippets](cross-platform/rn/snippets.md)
+9. [启动屏 & 应用图标](cross-platform/rn/splash.md)
 - [ ] 状态管理
 - [ ] 国际化
 - [ ] 主题
