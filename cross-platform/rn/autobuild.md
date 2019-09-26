@@ -1,15 +1,18 @@
-# 自动打包脚本
+# React Native 打包发布
 
-## 这个脚本要做哪些事情
+## 自动脚本打包
+
+### 这个脚本要做哪些事情？
 
 - 检查必要的环境变量
 - 检查必要的工具版本
-- ~~根据 lock 缓存 node_modules~~
+- ~~根据 lock 缓存 node_modules~~(jenkins 拉取安装一次就会一直存在不需要额外的缓存操作)
 - 版本号同步 构建号自增
 - 统一的 apk、ipa 包名
 - 环境区分
 - bundle & build
 - ~~commit 构建产物~~ (需要 git push 权限)
+- ~~上传 release 包~~(团队个性化业务)
 
 ./scripts/package.json
 
@@ -373,7 +376,7 @@ function cdIos() {
 
 ```
 
-package.json 加上 cli 脚本
+package.json scripts 中加上 cli 安装执行脚本
 
 ```json
 "script": {
@@ -388,7 +391,9 @@ usage:
 yarn cli:install
 
 # eg:
-yarn cli --dev --android # 打包安卓开发版 build-cli -da
+yarn cli --dev --android # 打包安卓开发版
+or
+yarn cli -da
 ```
 
 ## 安卓手动打包
