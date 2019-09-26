@@ -5,7 +5,7 @@
 1. [安装配置](cross-platform/rn/start.md)
 2. [安卓签名](cross-platform/rn/androidsign.md)
 3. [苹果账号证书](cross-platform/rn/iossign.md)
-4. [自动打包](cross-platform/rn/autobuild.md)
+4. [打包发布](cross-platform/rn/autobuild.md)
 5. [安卓 Linux 打包](cross-platform/rn/linuxbuild.md)
 6. [集成 Typescript](cross-platform/rn/rnwithts.md)
 7. [代码规范 ESLint & Prettier](cross-platform/rn/lint.md)
