@@ -84,7 +84,7 @@ package.json 中先添加几个常用脚本
   "start": "yarn react-native start",
   "android": "yarn react-native run-android",
   "ios": "yarn react-native run-ios",
-  "bundle:android": "yarn react-native bundle --entry-file index.js --platform android --dev false --bundle-output ./android/app/src/main/assets/index.android.bundle",
+  "bundle:android": "yarn react-native bundle --entry-file index.js --platform android --dev false --bundle-output ./android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/",
   "bundle:ios": "yarn react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ./ios/bundle/main.jsbundle --assets-dest ./ios/bundle",
   "build:android": "yarn bundle:android && cd android && ./gradlew clean --stacktrace && ./gradlew assembleRelease -x bundleReleaseJsAndAssets --stacktrace",
 },
