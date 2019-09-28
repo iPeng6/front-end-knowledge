@@ -97,6 +97,7 @@
     - [ESLint & Prettier](cross-platform/rn/lint.md)
     - [Snippets](cross-platform/rn/snippets.md)
     - [Splash & Icon](cross-platform/rn/splash.md)
+    - [State with Hooks](/cross-platform/rn/statemgr.md)
     - [RN with WeChat](cross-platform/rn/rnwithwechat.md)
   - [Flutter](cross-platform/flutter.md)
   - [小程序](cross-platform/wxlite.md)
