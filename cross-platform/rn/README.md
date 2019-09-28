@@ -11,7 +11,7 @@
 7. [代码规范 ESLint & Prettier](cross-platform/rn/lint.md)
 8. [代码片段 Snippets](cross-platform/rn/snippets.md)
 9. [启动屏 & 应用图标](cross-platform/rn/splash.md)
-10. [状态管理 Hooks + Context Api](statemgr.md)
+10. [状态管理 Hooks + Context Api](/cross-platform/rn/statemgr.md)
 - [ ] 国际化
 - [ ] 主题
 - [ ] 图标
