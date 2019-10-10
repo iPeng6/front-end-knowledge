@@ -99,6 +99,7 @@
     - [Splash & Icon](/cross-platform/rn/splash.md)
     - [State with Hooks](//cross-platform/rn/statemgr.md)
     - [RN with WeChat](/cross-platform/rn/rnwithwechat.md)
+    - [App Groups](/cross-platform/rn/appgroups.md)
   - [Flutter](/cross-platform/flutter.md)
   - [小程序](/cross-platform/wxlite.md)
   - [PWA](/cross-platform/pwa.md)
