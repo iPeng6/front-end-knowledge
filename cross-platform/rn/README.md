@@ -12,7 +12,7 @@
 8. [代码片段 Snippets](/cross-platform/rn/snippets.md)
 9. [启动屏 & 应用图标](/cross-platform/rn/splash.md)
 10. [状态管理 Hooks + Context Api](/cross-platform/rn/statemgr.md)
-- [ ] 国际化
+11. [国际化](/cross-platform/rn/i18n.md)
 - [ ] 主题
 - [ ] 图标
 - [ ] 路由管理
@@ -33,5 +33,5 @@
   - [ ] 数据打点
   - [ ] 异常监控
   - [ ] 性能监控
-- [ ] 应用升级
+- [ ] 应用升级热更新
 - [ ] 诊断反馈

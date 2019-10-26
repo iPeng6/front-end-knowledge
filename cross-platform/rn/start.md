@@ -114,3 +114,5 @@ adb reverse tcp:8081 tcp:8081 # android 端口映射
 
 - [debugging](https://reactnative.cn/docs/debugging/)
 - [react-native-debugger](https://github.com/jhen0409/react-native-debugger)
+
+[Android NDK Tombstone/Crash 分析](https://woshijpf.github.io/android/2016/06/14/Android-NDK-Tombstone-Crash-%E5%88%86%E6%9E%90.html)
