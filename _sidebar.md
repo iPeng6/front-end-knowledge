@@ -7,7 +7,7 @@
   - [编码规范](/standard-specification/code-style/README.md)
     - [ESLint](/standard-specification/eslint.md)
     - [Prettier](/standard-specification/prettier.md)
-- [语言基础](/basic/README.md)
+- 语言基础
   - [HTML](/basic/html/README.md)
     - [手册](/basic/html/handbook.md)
     - [语义化](/basic/html/semantization.md)
