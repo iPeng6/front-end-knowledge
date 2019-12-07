@@ -405,3 +405,5 @@ android studio -> build -> Generate Signed Bundle / APK -> next -> release v2 bu
 先选择设备 Generic iOS Device，否则 archive 菜单灰色不可点
 
 xcode -> product -> archive -> distribute
+
+[Xcode 11 使用xcrun altool 密钥上传ipa包](https://juejin.im/post/5da3cae951882555a84302f7)

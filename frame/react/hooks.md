@@ -10,3 +10,4 @@
 - [State Management with React Hooks — No Redux or Context API](https://medium.com/javascript-in-plain-english/state-management-with-react-hooks-no-redux-or-context-api-8b3035ceecf8)
 - [State Management with React Hooks and Context API in 10 lines of code!](https://medium.com/simply/state-management-with-react-hooks-and-context-api-at-10-lines-of-code-baf6be8302c)
 - [Using Hooks to Replace Redux](https://medium.com/better-programming/using-hooks-to-replace-redux-392f98ca61b7)
+- [TypeScript and React: Hooks](https://fettblog.eu/typescript-react/hooks/)
