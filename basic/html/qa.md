@@ -12,13 +12,13 @@
 
 3. `<script async src="example.js"></script>`
 
-有了 async 属性，表示后续文档的加载和渲染与 js 脚本的加载和执行是并行进行的，但一定在onload之前，DOMContentLoaded前后不定，async脚本之间是没有顺序的
+有了 async 属性，表示后续文档的加载和渲染与 js 脚本的加载和执行是并行进行的，但一定在onload之前，DOMContentLoaded 前后不定，async脚本之间是没有顺序的
 
 ![](./img/defer-async.jpeg)
 
 绿色表示文档解析，蓝色表示下载，红色表示脚本执行
 
-也就是说 下载都是并行的，执行都是阻塞的，但是 defer 会放在文档解析完之后执行，async 是下好立即执行
+也就是说 下载都是并行的，执行都是阻塞的，但是 `defer` 会放在文档解析完之后 DOMContentLoaded 之前执行，`async` 是下好立即执行，所以有可能文档过程中就下好阻塞执行，也可能文档解析结束后才下好执行
 
 ## preload vs prefetch
 
@@ -38,7 +38,7 @@
 `prefetch` 提示浏览器这个资源将来可能需要，但是把什么时间加载这个资源的决定权交给浏览器，并以较低的优先级获取，然后缓存到 disk 上，当页面上遇到 script 引用了这个资源可以快速的从 disk 缓存中获取。
 
 ```html
-<!-- 预先加载一个将来可能会用到资源，但不一定会用到 -->
+<!-- 预先加载一个将来可能会用到的资源，但不一定会用到 -->
 <link rel="prefetch" as="script" href="next.js" />
 
 <!-- 以较低的优先级加载一个不是那么重要的资源 -->
