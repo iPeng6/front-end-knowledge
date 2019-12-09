@@ -54,7 +54,7 @@ const name = 'ipeng6'
 
 #### ** Dart **
 
-dart 针对这两个特性出现了两个关键字 `final` `const`
+dart 针对这两个特性出现了两个关键字 `final` `const`，分别表示
 
 ### (1) `const` 用在等号左边
 
