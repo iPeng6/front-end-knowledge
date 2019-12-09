@@ -30,6 +30,8 @@ number++; // 变量自增运算
 printInteger(number); // 调用函数
 
 ```
+-  注释：`//` `/* */`
+-  分号可选
 
 #### ** Dart **
 
@@ -46,5 +48,8 @@ main() {
   printInteger(number); // 调用函数
 }
 ```
+
+-  注释：`//` `/* */`
+-  分号结尾
 
 <!-- tabs:end -->

@@ -1040,3 +1040,84 @@ const result = re.exec('2015-01-02')
 ;/hi.welcome/.test('hi\nwelcome') // false
 ;/hi.welcome/s.test('hi\nwelcome') // true
 ```
+
+## ES2019
+
+### Array.flat()
+
+`Array.flat()` 会将所有子数组展平返回一个新数组，`Array.flat()`如果不传参数默认展平一级
+
+```js
+let arr = [1, 2, 3, [4, 5, 6, [7, 8, 9, [10, 11, 12]]]];
+
+arr.flat(); // [1, 2, 3, 4, 5, 6, Array(4)];
+
+arr.flat().flat(); // [1, 2, 3, 4, 5, 6, 7, 8, 9, Array(3)];
+
+arr.flat(3); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+
+// 全部展平
+arr.flat(Infinity); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+```
+
+### Array.flatMap()
+
+`Array.flatMap()` 有点类似于 `map().flat()` 对结合
+
+```js
+let arr = [1, 2, 3, 4, 5];
+
+arr.map(x => [x, x * 2]);
+// [[1, 2], [2, 4], [3, 6]]
+
+arr.flatMap(v => [v, v * 2]);
+// [1, 2, 2, 4, 3, 6, 4, 8, 5, 10]
+```
+
+### String.trimStart() & String.trimEnd()
+
+去除前后空白符
+
+```js
+let  greeting =  "    Hello everyone";
+console.log(greeting.trimStart()); // "Hello everyone"
+
+let greeting = "Hello world    ";
+console.log(greeting.trimEnd()); // "Hello world"
+
+```
+
+### Optional Catch Binding
+
+可选 catch 绑定，允许 try/catch 不写 catch 参数
+
+```js
+// before
+try {
+  // some code
+}
+catch (err) {
+  // error handling code
+}
+
+// after
+try  {
+  // some code
+}
+catch {
+  // error handling code
+}
+```
+
+### Object.fromEntries()
+
+`Object.entries` 的反向操作，将键值对数组转成对象，只接受实现迭代器的参数 e.g: `Object.fromEntries(someIterable)`.
+
+```js
+let o = {a: 1, b: 2}
+Object.entries(o) // [['a',1], ['b',2]]
+
+Object.fromEntries([['a',1],['b',2]]) // {a: 1, b: 2}
+```
+
+### Symbol.description
