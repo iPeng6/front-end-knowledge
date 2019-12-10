@@ -1121,3 +1121,65 @@ Object.fromEntries([['a',1],['b',2]]) // {a: 1, b: 2}
 ```
 
 ### Symbol.description
+
+用于返回 Symbol 对象描述的一个只读属性
+
+```js
+let mySymbol = `My Symbol`;
+
+let symObj = Symbol(mySymbol);
+
+console.log(symObj) // Symbol(mySymbol);
+
+console.log(String(symObj) === `Symbol(${mySymbol})`); // true
+
+console.log(symObj.description); // "My Symbol"
+```
+
+### Function.toString()
+
+`toString()` 会原来返回 function 的源码，但会剔除换行、注释，新的修订保持了源码格式
+
+```js
+function /* comment */ foo(text) {
+	// new line
+	console.log(text)
+}
+
+console.log(foo.toString())
+// before
+// function foo(text) { console.log(text) }
+
+// after
+// function /* comment */ foo(text) {
+// 	// new line
+// 	console.log(text)
+// }
+
+```
+
+### JSON Superset
+
+JSON 超集, 此提议的动机是 JSON 字符串可以包含未转义的 U + 2028 LINE SEPARATOR 和 U + 2029 PARAGRAPH SEPARATOR 字符，而 ECMAScript 字符串则不能。在 ES2019 之前，它会产生错误SyntaxError: Invalid or unexpected token
+
+```js
+// if ECMA is superset of JSON, these must be true
+eval('"\u2028"') === "\u2028"  // true
+eval('"\u2029"') === "\u2029"  // true
+```
+
+### Well Formed JSON.Stringify()
+
+格式良好的 JSON.stringify, 这也是由同一个人提出的，并且与 JSON 超集特征有关 。ES2019 不是将未配对的代理代码点作为单个 UTF-16 代码单元返回，而是用 JSON 转义序列表示它们
+
+```js
+// Before
+console.log(JSON.stringify("\uD800")); // "�"
+
+// Now ES2019
+console.log(JSON.stringify("\uD800")); // "\ud800"
+```
+
+### Array.prototype.sort() stability
+
+`Array.prototype.sort()` 当元素超过10个时使用了一个不稳定的快排算法, 为了保证数组设置正确，ECMAScript 2019 使用了 [Timsort](https://en.wikipedia.org/wiki/Timsort) 算法.
