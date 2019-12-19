@@ -93,7 +93,6 @@ Number.isFinite(number)
 // 实例方法
 Number.prototype.toFixed(?fractionDigits) // 保留几位小数，会四舍五入
 Number.prototype.toExponential(?fractionDigits)  // 科学记数法 100 => "1e+2"
-Number.prototype.toPrecision(?precision) // 保留有效数字
 ```
 
 #### ** Dart **
@@ -122,16 +121,57 @@ floorToDouble() → double
 remainder(num other) → num // 取余数
 truncate() → int // 取整数部分
 truncateToDouble() → double
-round() → int
+round() → int // 会四舍五入 保留整数
 roundToDouble() → double
 toDouble() → double
 toInt() → int
+toStringAsFixed(int fractionDigits) → String // 会四舍五入 保留指定小数
+toStringAsPrecision(int precision) → String // 科学记数法
 ```
 
 - [int](https://api.dart.dev/stable/2.7.0/dart-core/int-class.html)
 
 ```dart
+// 属性
+isEven → bool // 是否偶数
+isOdd → bool
 
+// 方法
+toRadixString(int radix) → String // 进制转换
+```
+
+- [double](https://api.dart.dev/stable/2.7.0/dart-core/double-class.html)
+
+<!-- tabs:end -->
+
+### 字符串
+
+<!-- tabs:start -->
+
+#### ** Javascript **
+
+```js
+let name = 'ipeng6'
+let say = `${name}'s age`
+// 多行
+let muti = `
+  a
+  b
+`
+```
+
+#### ** Dart **
+
+```dart
+var name = 'ipeng6';
+var say = '$name\'s age is ${10+10}';
+// 多行
+var s1 = '''
+You can create
+multi-line strings like this one.
+''';
+// raw
+var s = r'In a raw string, not even \n gets special treatment.'; // \n不会被转义换行
 ```
 
 <!-- tabs:end -->
