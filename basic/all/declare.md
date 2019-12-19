@@ -16,7 +16,30 @@ var name = 'ipeng6'
 let name
 ```
 
-let,var 区别？
+`let` `var` 区别？
+
+1. 作用域不同， var 只有函数级作用域，let 具有块级作用域（花括号内），如果在全局声明 var，则会挂在全局变量下，let 不会
+   ```js
+   var a = 1
+   window.a //   1
+   let b = 2
+   window.b //   undefined
+   ```
+2. var 会有变量提升 (hoisting)，即使在函数尾部声明整个作用域任意位置都能访问，而 let 声明之前使用会报 `ReferenceError` 错误
+
+   ```js
+   function foo() {
+     console.log(c)
+     let c = 1
+   }
+   foo() // Uncaught ReferenceError: Cannot access 'c' before initialization
+   ```
+
+3. var 可以重复声明，let 不可以
+   ```js
+   let d = 1
+   let d = 1 // Uncaught SyntaxError: Identifier 'd' has already been declared
+   ```
 
 #### ** Dart **
 

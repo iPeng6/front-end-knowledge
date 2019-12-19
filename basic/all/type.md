@@ -6,15 +6,16 @@
 
 #### ** Javascript **
 
-最新的 ECMAScript 标准定义了 7 种数据类型:
+最新的 ECMAScript 标准定义了 8 种数据类型:
 
-- 6 种原始类型:
+- 7 种原始类型:
   - Undefined
   - Null
   - Number
   - String
   - Boolean
   - Symbol
+  - BigInt(stage3)
 - 和 Object
 
 #### ** Dart **
@@ -31,8 +32,6 @@ Dart 对以下类型提供了特殊支持：
 - symbols
 
 Dart 没有 byte、char 和 float，int、double 都是 64 位
-
-###
 
 <!-- tabs:end -->
 
@@ -57,29 +56,6 @@ num.constructor === Number // true
 num.__proto__ === Number.prototype // true
 ```
 
-### 常用属性方法
-
-| 静态方法               | 描述                                            |
-| ---------------------- | ----------------------------------------------- |
-| Number.isNaN()         | 是否是 NaN                                      |
-| Number.isFinite()      | 是否是有限数                                    |
-| Number.isInteger()     | 是否是整数                                      |
-| Number.isSafeInteger() | 是否为安全整数 ( -`(253 - 1)` 至 `253 - 1之间`) |
-| Number.parseFloat()    | Number.parseFloat === parseFloat                |
-| Number.parseInt()      | Number.parseInt === parseInt                    |
-
-| 实例方法                         | 描述                   |
-| -------------------------------- | ---------------------- |
-| Number.prototype.toExponential() | 指数记法 100 => "1e+2" |
-| Number.prototype.toFixed()       | 保留小数，会四舍五入   |
-|                                  |                        |
-|                                  |                        |
-|                                  |                        |
-|                                  |                        |
-|                                  |                        |
-
-
-
 #### ** Dart **
 
 dart 数字类型有 int、double，都是 [num](https://api.dart.dev/stable/dart-core/num-class.html) 的子类型
@@ -95,6 +71,67 @@ var exponents = 1.42e5;
 
 // int 会自动转换成 double
 double z = 1; // Equivalent to double z = 1.0.
+```
+
+<!-- tabs:end -->
+
+#### 常用属性方法
+
+<!-- tabs:start -->
+
+#### ** Javascript **
+
+```js
+// 静态属性方法
+Number.MAX_VALUE
+Number.parseFloat(number) // 等于全局的 parseFloat
+Number.parseInt(number)
+Number.isInteger(number)
+Number.isNaN(number)
+Number.isFinite(number)
+
+// 实例方法
+Number.prototype.toFixed(?fractionDigits) // 保留几位小数，会四舍五入
+Number.prototype.toExponential(?fractionDigits)  // 科学记数法 100 => "1e+2"
+Number.prototype.toPrecision(?precision) // 保留有效数字
+```
+
+#### ** Dart **
+
+- [num](https://api.dart.dev/stable/2.7.0/dart-core/num-class.html)
+
+```dart
+// 静态方法
+parse(String input, [ num onError(String input) ]) → num
+tryParse(String input) → num
+
+// 属性
+isFinite → bool
+isFinite → bool
+isInfinite → bool
+isNaN → bool
+isNegative → bool // 是否是负数
+
+// 方法
+abs() → num
+ceil() → int
+ceilToDouble() → double
+clamp(num lowerLimit num upperLimit) → num // 超过最大值取最大值，超过最小值取最小值
+compareTo(num other) → int
+floorToDouble() → double
+remainder(num other) → num // 取余数
+truncate() → int // 取整数部分
+truncateToDouble() → double
+round() → int
+roundToDouble() → double
+toDouble() → double
+toInt() → int
+```
+
+- [int](https://api.dart.dev/stable/2.7.0/dart-core/int-class.html)
+
+```dart
+
 ```
 
 <!-- tabs:end -->
