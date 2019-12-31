@@ -20,3 +20,4 @@
 - [How javascript works](https://github.com/Troland/how-javascript-works)
 - [JavaScript Algorithms and Data Structures](https://github.com/trekhleb/javascript-algorithms)
 - [You-Dont-Know-JS](https://github.com/getify/You-Dont-Know-JS) [[中文]](https://github.com/yyh1102/You-Dont-Know-JS-Notebook)
+- [[译]JavaScript 引擎可视化](https://juejin.im/post/5e0899a35188254959366fbf?utm_source=gold_browser_extension)
