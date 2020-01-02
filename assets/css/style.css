@@ -2,6 +2,10 @@ body {
   background: #f6f7f9;
 }
 
+table {
+  font-size: 16px;
+}
+
 .content {
   padding-top: 16px;
   font-size: 18px;
@@ -12,6 +16,11 @@ body {
   line-height: 32px;
   text-align: justify;
 }
+
+.content li {
+  margin: 8px 0;
+}
+
 .markdown-section {
   background: #fff;
   padding: 54px 100px;
@@ -21,8 +30,12 @@ body {
   max-width: 1024px;
 }
 
+.markdown-section h1 span {
+  font-weight: 600;
+}
+
 .markdown-section h2 span {
-  color: #4facf1;
+  color: #938846;
 }
 
 .markdown-section h3 span {
@@ -30,24 +43,19 @@ body {
 }
 
 .markdown-section h4 span {
-  color: #6bd35f;
+  color: #357b2d;
 }
 
 .markdown-section h5 span {
-  color: #f19937;
+  color: #c079db;
 }
 
 .markdown-section table td {
   white-space: nowrap;
 }
 
-.markdown-section a {
-  font-weight: 400;
-  /* color: #c079db; */
-}
-
 .markdown-section code {
-  font-size: 1em;
+  font-size: 0.9em;
 }
 
 /* .markdown-section code:not([class*='lang-']):not([class*='language-']) {
