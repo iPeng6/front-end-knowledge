@@ -62,9 +62,13 @@ table {
   color: #f19937;
 } */
 
+.sidebar-nav li {
+  cursor: pointer;
+}
+
 /* fix black theme fold arrow */
 
-.sidebar-nav li > a[href^='#/']:not([href*='?id=']):not(:only-child) {
+/* .sidebar-nav li > a[href^='#/']:not([href*='?id=']):not(:only-child) {
   background-image: var(
     --sidebar-nav-pagelink-background-image--collapse,
     var(
@@ -96,4 +100,4 @@ table {
       var(--sidebar-nav-pagelink-background-image)
     )
   );
-}
+} */

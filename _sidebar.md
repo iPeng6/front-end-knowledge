@@ -40,6 +40,8 @@
     - [linked-list](/algorithm/data-structures/linked-list/README.zh-CN.md)
     - [doubly-linked-list](/algorithm/data-structures/doubly-linked-list/README.zh-CN.md)
     - [tree](/algorithm/data-structures/tree/README.zh-CN.md)
+      - [binary search tree](/algorithm/data-structures/tree/binary-search-tree/README.md)
+      - [red black tree](/algorithm/data-structures/tree/red-black-tree/README.md)
     - [heap](/algorithm/data-structures/heap/README.zh-CN.md)
     - [hash-table](/algorithm/data-structures/hash-table/README.zh-CN.md)
     - [graph](/algorithm/data-structures/graph/README.zh-CN.md)

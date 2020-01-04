@@ -1,6 +1,6 @@
 # W3C
 
-World Wide Web Consortium \([W3C](https://www.w3.org/)\) 的缩写，一个专门研发[Web 标准](https://www.w3.org/TR/)的国际组织，使命就是通过制定协议规范激发万维网所有潜能以保持 Web 的长足发展。
+万维网联盟（World Wide Web Consortium，[W3C](https://www.w3.org/)），一个专门研发[Web 标准](https://www.w3.org/TR/)的国际组织，使命是通过创建技术标准和指南来充分发挥 Web 的潜力，以确保 Web 对全球所有人都保持开放性、可访问性和可互操作性。
 
 ## 组成人员
 

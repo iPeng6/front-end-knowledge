@@ -2,8 +2,8 @@
 
 在计算机科学中, 一个 **栈(stack)** 是一种抽象数据类型,用作表示元素的集合,具有两种主要操作:
 
-* **push**, 添加元素到栈的顶端(末尾);
-* **pop**, 移除栈最顶端(末尾)的元素.
+- **push**, 添加元素到栈的顶端(末尾);
+- **pop**, 移除栈最顶端(末尾)的元素.
 
 以上两种操作可以简单概括为“后进先出(LIFO = last in, first out)”。
 
@@ -15,7 +15,83 @@
 
 ![Stack](https://upload.wikimedia.org/wikipedia/commons/b/b4/Lifo_stack.png)
 
-## 参考
+## 实现
 
-- [Wikipedia](https://en.wikipedia.org/wiki/Stack_(abstract_data_type))
-- [YouTube](https://www.youtube.com/watch?v=wjI1WNcIntg&list=PLLXdhg_r2hKA7DPDsunoDZ-Z769jWn4R8&index=3&)
+1. 数组实现
+
+```js
+class Stack {
+  items = []
+
+  isEmpty() {
+    return this.items.length == 0
+  }
+
+  size() {
+    return this.items.length
+  }
+
+  push(value) {
+    return this.items.push(value)
+  }
+
+  pop() {
+    if (this.isEmpty()) {
+      return null
+    }
+    return this.items.pop()
+  }
+
+  peek() {
+    if (this.isEmpty()) {
+      return null
+    }
+    return this.items[this.items.length - 1]
+  }
+
+  clear() {
+    this.items = []
+  }
+}
+```
+
+2. 链表实现
+
+```js
+import LinkedList from '../linked-list/LinkedList'
+
+class Stack {
+  constructor() {
+    this.linkedList = new LinkedList()
+  }
+
+  isEmpty() {
+    return !this.linkedList.head
+  }
+
+  peek() {
+    if (this.isEmpty()) {
+      return null
+    }
+
+    return this.linkedList.head.value
+  }
+
+  push(value) {
+    this.linkedList.prepend(value)
+  }
+
+  pop() {
+    const removedHead = this.linkedList.deleteHead()
+    return removedHead ? removedHead.value : null
+  }
+
+  toArray() {
+    return this.linkedList.toArray().map(linkedListNode => linkedListNode.value)
+  }
+
+  toString(callback) {
+    return this.linkedList.toString(callback)
+  }
+}
+```

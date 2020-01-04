@@ -10,138 +10,205 @@
 
 ![Linked List](https://upload.wikimedia.org/wikipedia/commons/6/6d/Singly-linked-list.svg)
 
-## 基本操作的伪代码
+## 实现
 
-### 插入
+```js
+class LinkedListNode {
+  constructor(value, next = null) {
+    this.value = value
+    this.next = next
+  }
 
-```text
-Add(value)
-  Pre: value is the value to add to the list
-  Post: value has been placed at the tail of the list
-  n ← node(value)
-  if head = ø
-    head ← n
-    tail ← n
-  else
-    tail.next ← n
-    tail ← n
-  end if
-end Add
-```
+  toString(callback) {
+    return callback ? callback(this.value) : `${this.value}`
+  }
+}
 
-```
-Prepend(value)
- Pre: value is the value to add to the list
- Post: value has been placed at the head of the list
- n ← node(value)
- n.next ← head
- head ← n
- if tail = ø
-   tail ← n
- end
-end Prepend
-```
+class LinkedList {
+  constructor(comparatorFunction) {
+    this.head = null
+    this.tail = null
+  }
 
-### 搜索
+  prepend(value) {
+    const newNode = new LinkedListNode(value, this.head)
+    this.head = newNode
 
-```text
-Contains(head, value)
-  Pre: head is the head node in the list
-       value is the value to search for
-  Post: the item is either in the linked list, true; otherwise false
-  n ← head
-  while n != ø and n.value != value
-    n ← n.next
-  end while
-  if n = ø
-    return false
-  end if
-  return true
-end Contains
-```
-    
-### 删除
+    if (!this.tail) {
+      this.tail = newNode
+    }
 
-```text
-Remove(head, value)
-  Pre: head is the head node in the list
-       value is the value to remove from the list
-  Post: value is removed from the list, true, otherwise false
-  if head = ø
-    return false
-  end if
-  n ← head
-  if n.value = value
-    if head = tail
-      head ← ø
-      tail ← ø
-    else
-      head ← head.next
-    end if
-    return true
-  end if
-  while n.next != ø and n.next.value != value
-    n ← n.next
-  end while
-  if n.next != ø
-    if n.next = tail
-      tail ← n
-    end if
-    n.next ← n.next.next
-    return true
-  end if
-  return false
-end Remove
-```
+    return this
+  }
 
-### 遍历
+  append(value) {
+    const newNode = new LinkedListNode(value)
 
-```text
-Traverse(head)
-  Pre: head is the head node in the list
-  Post: the items in the list have been traversed
-  n ← head
-  while n != 0
-    yield n.value
-    n ← n.next
-  end while
-end Traverse
-```
-    
-### 反向遍历
+    if (!this.head) {
+      this.head = newNode
+      this.tail = newNode
 
-```text
-ReverseTraversal(head, tail)
-  Pre: head and tail belong to the same list
-  Post: the items in the list have been traversed in reverse order
-  if tail != ø
-    curr ← tail
-    while curr != head
-      prev ← head
-      while prev.next != curr
-        prev ← prev.next
-      end while
-      yield curr.value
-      curr ← prev
-    end while
-   yield curr.value
-  end if
-end ReverseTraversal
+      return this
+    }
+
+    this.tail.next = newNode
+    this.tail = newNode
+
+    return this
+  }
+
+  delete(value) {
+    if (!this.head) {
+      return null
+    }
+
+    let deletedNode = null
+
+    // If the head must be deleted then make next node that is differ
+    // from the head to be a new head.
+    while (this.head && this.head.value === value) {
+      deletedNode = this.head
+      this.head = this.head.next
+    }
+
+    let currentNode = this.head
+
+    if (currentNode !== null) {
+      // If next node must be deleted then make next node to be a next next one.
+      while (currentNode.next) {
+        if (currentNode.next.value === value) {
+          deletedNode = currentNode.next
+          currentNode.next = currentNode.next.next
+        } else {
+          currentNode = currentNode.next
+        }
+      }
+    }
+
+    // Check if tail must be deleted.
+    if (this.tail.value === value) {
+      this.tail = currentNode
+    }
+
+    return deletedNode
+  }
+
+  find({ value = undefined, callback = undefined }) {
+    if (!this.head) {
+      return null
+    }
+
+    let currentNode = this.head
+
+    while (currentNode) {
+      if (callback && callback(currentNode.value)) {
+        return currentNode
+      }
+
+      if (value !== undefined && currentNode.value === value) {
+        return currentNode
+      }
+
+      currentNode = currentNode.next
+    }
+
+    return null
+  }
+
+  deleteTail() {
+    const deletedTail = this.tail
+
+    if (this.head === this.tail) {
+      this.head = null
+      this.tail = null
+
+      return deletedTail
+    }
+
+    let currentNode = this.head
+    while (currentNode.next) {
+      if (!currentNode.next.next) {
+        currentNode.next = null
+      } else {
+        currentNode = currentNode.next
+      }
+    }
+
+    this.tail = currentNode
+
+    return deletedTail
+  }
+
+  deleteHead() {
+    if (!this.head) {
+      return null
+    }
+
+    const deletedHead = this.head
+
+    if (this.head.next) {
+      this.head = this.head.next
+    } else {
+      this.head = null
+      this.tail = null
+    }
+
+    return deletedHead
+  }
+
+  fromArray(values) {
+    values.forEach(value => this.append(value))
+
+    return this
+  }
+
+  toArray() {
+    const nodes = []
+
+    let currentNode = this.head
+    while (currentNode) {
+      nodes.push(currentNode)
+      currentNode = currentNode.next
+    }
+
+    return nodes
+  }
+
+  toString(callback) {
+    return this.toArray()
+      .map(node => node.toString(callback))
+      .toString()
+  }
+
+  reverse() {
+    let currNode = this.head
+    let prevNode = null
+    let nextNode = null
+
+    while (currNode) {
+      nextNode = currNode.next
+      currNode.next = prevNode
+
+      prevNode = currNode
+      currNode = nextNode
+    }
+
+    this.tail = this.head
+    this.head = prevNode
+
+    return this
+  }
+}
 ```
 
 ## 复杂度
 
 ### 时间复杂度
 
-| Access    | Search    | Insertion | Deletion  |
-| :-------: | :-------: | :-------: | :-------: |
-| O(n)      | O(n)      | O(1)      | O(1)      |
+| Access | Search | Insertion | Deletion |
+| :----: | :----: | :-------: | :------: |
+|  O(n)  |  O(n)  |   O(1)    |   O(1)   |
 
 ### 空间复杂度
 
 O(n)
-
-## 参考
-
-- [Wikipedia](https://en.wikipedia.org/wiki/Linked_list)
-- [YouTube](https://www.youtube.com/watch?v=njTh_OwMljA&index=2&t=1s&list=PLLXdhg_r2hKA7DPDsunoDZ-Z769jWn4R8)
