@@ -7,27 +7,31 @@ table {
 }
 
 .content {
-  padding-top: 16px;
-  font-size: 18px;
-  color: #191d21;
+  padding: 16px 0;
 }
 
-.content p {
+.markdown-section {
+  font-size: 18px;
+  color: #191d21;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
+  margin-bottom: 16px;
+  background: #fff;
+  padding: 54px 100px;
+  max-width: 1024px;
+}
+
+@media screen and (max-width: 768px) {
+  .markdown-section {
+    padding: 24px;
+  }
+}
+.markdown-section p {
   line-height: 32px;
   text-align: justify;
 }
 
-.content li {
+.markdown-section li {
   margin: 8px 0;
-}
-
-.markdown-section {
-  background: #fff;
-  padding: 54px 100px;
-}
-
-.markdown-section {
-  max-width: 1024px;
 }
 
 .markdown-section h1 span {
