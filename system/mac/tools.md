@@ -177,7 +177,7 @@
     plugins=(zsh-autosuggestions)
     ```
 
-1. 主题
+2. 主题
 
    默认 [主题](https://github.com/robbyrussell/oh-my-zsh/wiki/Themes)， robbyrussell
 
@@ -335,6 +335,8 @@
 
   ![](img/oct.png)
 
-最后，
+- FeHelper
 
-欢迎补充 👏！
+  前端工具集合
+
+  ![](img/fehelper.png ':size=300')
