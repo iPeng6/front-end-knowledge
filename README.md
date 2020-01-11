@@ -28,6 +28,7 @@
 
 ## 博客
 
+- [科技爱好者周刊](https://www.yuque.com/ruanyf/weekly)
 - [前端精读](https://github.com/dt-fe/weekly)
 - [前端九部](https://github.com/frontend9/fe9-library)
 

@@ -3,9 +3,7 @@
 - [react-typescript-cheatsheet](https://github.com/sw-yx/react-typescript-cheatsheet)
 - [深入理解 Typescript](https://jkchao.github.io/typescript-book-chinese/)
 - [Typescript 入门教程](https://ts.xcatliu.com/)
-
 - [索引类型、映射类型与条件类型](https://cloud.tencent.com/developer/article/1444693)
-
 
 ## TypeScript 是什么
 

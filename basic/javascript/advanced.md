@@ -1,18 +1,5 @@
 # 高级概念
 
-## 原型链
-
-![](img/prototypechain.png)
-
-1. 所有对象的原型都指向 Object.prototype
-2. 所有构造函数的原型指向 Function.prototype，包括 Object、Function
-3. prototype 本质也是对象，其原型都指向 Object.prototype
-4. 而 Object.prototype 的原型指向 null
-
-## 调用栈与执行上下文
-
-- [JavaScript 中的执行上下文和调用栈是什么？](https://zcfy.cc/article/what-is-the-execution-context-amp-stack-in-javascript-by-david-shariff-4007.html)
-
 ## 作用域与提升
 
 - [ES6 变量作用域与提升：变量的生命周期详解](https://zhuanlan.zhihu.com/p/28494566)
@@ -26,6 +13,19 @@
 ## 闭包
 
 - [从 JS 垃圾回收机制和词源来透视闭包](https://juejin.im/entry/5aebc7a76fb9a07acc119269)
+
+## 调用栈与执行上下文
+
+- [JavaScript 中的执行上下文和调用栈是什么？](https://zcfy.cc/article/what-is-the-execution-context-amp-stack-in-javascript-by-david-shariff-4007.html)
+
+## 原型链
+
+![](img/prototypechain.png)
+
+1. 所有对象的原型都指向 Object.prototype
+2. 所有构造函数的原型指向 Function.prototype，包括 Object、Function
+3. prototype 本质也是对象，其原型都指向 Object.prototype
+4. 而 Object.prototype 的原型指向 null
 
 ## 线程机制与事件循环
 
