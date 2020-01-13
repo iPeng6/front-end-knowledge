@@ -54,10 +54,6 @@ table {
   color: #c079db;
 }
 
-.markdown-section table td {
-  white-space: nowrap;
-}
-
 .markdown-section code {
   font-size: 0.9em;
 }

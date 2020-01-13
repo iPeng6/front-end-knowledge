@@ -10,7 +10,7 @@
 - [基础拾遗](/basic/README.md)
   - [HTML](/basic/html/README.md)
     - [语义化](/basic/html/semantization.md)
-    - [常见问题](/basic/html/qa.md)
+    - [QA](/basic/html/qa.md)
   - [CSS](/basic/css/README.md)
     - [布局](/basic/css/layout.md)
     - [动画](/basic/css/animation.md)

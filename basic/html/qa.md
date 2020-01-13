@@ -1,6 +1,16 @@
 # 常见问题
 
-## defer vs async
+<details>
+<summary>参考</summary>
+
+- https://zhuanlan.zhihu.com/p/33759023
+- https://juejin.im/post/58e8acf10ce46300585a7a42
+- http://www.alloyteam.com/2016/05/preload-what-is-it-good-for-part1/
+- https://segmentfault.com/a/1190000011577248
+
+</details>
+
+## defer VS async
 
 1. `<script src="example.js"></script>`
 
@@ -8,11 +18,11 @@
 
 2. `<script defer src="example.js"></script>`
 
-有了 defer 属性，加载后续文档的过程和 js 脚本的加载(此时仅加载不执行)是并行进行的(异步)，js 脚本的执行需要等到文档所有元素解析完成之后，DOMContentLoaded 事件触发执行之前。另外，defer脚本是有顺序的
+有了 defer 属性，加载后续文档的过程和 js 脚本的加载(此时仅加载不执行)是并行进行的(异步)，js 脚本的执行需要等到文档所有元素解析完成之后，DOMContentLoaded 事件触发执行之前。另外，defer 脚本是有顺序的
 
 3. `<script async src="example.js"></script>`
 
-有了 async 属性，表示后续文档的加载和渲染与 js 脚本的加载和执行是并行进行的，但一定在onload之前，DOMContentLoaded 前后不定，async脚本之间是没有顺序的
+有了 async 属性，表示后续文档的加载和渲染与 js 脚本的加载和执行是并行进行的，但一定在 onload 之前，DOMContentLoaded 前后不定，async 脚本之间是没有顺序的
 
 ![](./img/defer-async.jpeg)
 
@@ -20,7 +30,7 @@
 
 也就是说 下载都是并行的，执行都是阻塞的，但是 `defer` 会放在文档解析完之后 DOMContentLoaded 之前执行，`async` 是下好立即执行，所以有可能文档过程中就下好阻塞执行，也可能文档解析结束后才下好执行
 
-## preload vs prefetch
+## preload VS prefetch
 
 `preload` 是一种声明式的获取（fetch）指令，可以强制浏览器请求资源，提高资源优先级，将加载与执行分离，不阻塞文档解析，同时不阻塞文档 onload 事件。
 
@@ -58,11 +68,18 @@
 2. preload 可提高资源优先级，prefetch 可以降低资源优先级
 3. 用 preload 加载较晚发现的资源，可以较早的加载字体等
 4. 如果从一个页面切换到另一个页面，preload 会立即中断，prefetch 不会，可解决跨页打点请求丢失问题
-5. 为了提高下一页加载速度而不是当前页的使用 prefetch
+5. 为了提高下一页加载速度而不是当前页的资源使用 prefetch
 
-参考：
+## canvas VS svg
 
-- https://zhuanlan.zhihu.com/p/33759023
-- https://juejin.im/post/58e8acf10ce46300585a7a42
-- http://www.alloyteam.com/2016/05/preload-what-is-it-good-for-part1/
-- https://segmentfault.com/a/1190000011577248
+| Canvas                                                                                                                                                 | SVG                                                                                                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 通过 JavaScript 来绘制 2D 图形                                                                                                                         | 是一种使用 XML 描述 2D 图形的语言                                                                                                                                                     |
+| 是 HTML5 提供的新元素                                                                                                                                  | 历史久远，并不是 HTML5 转悠的标签                                                                                                                                                     |
+| 位图（标量图），放大或改变尺寸会失真；逐像素进行渲染，依赖分辨率                                                                                       | 矢量图，放大或改变尺寸不会失真；不依赖分辨率                                                                                                                                          |
+| 弱的文本渲染能力（因为放大会失真）                                                                                                                     | 最适合带有大型渲染区域的应用程序，比如谷歌地图（因为放大不会失真）                                                                                                                    |
+| 能够以 .png 或 .jpg 格式保存结果图像；能够引入 .png 或 .jpg 格式的图片                                                                                 | 不能以 .png 或 .jpg 格式保存结果图像；不能引入 .png 或 .jpg 格式的图片                                                                                                                |
+| 不支持事件处理器（一旦图形被绘制完成，它就不会继续得到浏览器的关注。如果其位置发生变化，那么整个场景也需要重新绘制，包括任何或许已被图形覆盖的对象。） | 支持事件处理器（SVG DOM 中的每个元素都是可用的。您可以为某个元素附加 JavaScript 事件处理器。每个被绘制的图形均被视为对象。如果 SVG 对象的属性发生变化，那么浏览器能够自动重现图形。） |
+| 不能被引擎抓取                                                                                                                                         | 可以被引擎抓取                                                                                                                                                                        |
+| ---                                                                                                                                                    | 复杂度高会减慢渲染速度（任何过度使用 DOM 的应用都不快）                                                                                                                               |
+| 最适合图像密集型的游戏，其中的许多对象会被频繁重绘                                                                                                     | 不适合游戏应用                                                                                                                                                                        |
