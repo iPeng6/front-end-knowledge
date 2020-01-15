@@ -61,3 +61,11 @@ table {
 .sidebar-nav li {
   cursor: pointer;
 }
+
+.demo-block .description {
+  display: none;
+}
+
+.demo-block .highlight {
+  width: 100% !important;
+}
