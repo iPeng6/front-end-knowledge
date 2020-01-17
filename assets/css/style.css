@@ -69,3 +69,39 @@ table {
 .demo-block .highlight {
   width: 100% !important;
 }
+
+/* fix black theme fold arrow */
+
+.sidebar-nav li > a[href^='#/']:not([href*='?id=']):not(:only-child) {
+  background-image: var(
+    --sidebar-nav-pagelink-background-image--collapse,
+    var(
+      --sidebar-nav-pagelink-background-image--loaded,
+      var(--sidebar-nav-pagelink-background-image)
+    )
+  );
+  background-position: var(
+    --sidebar-nav-pagelink-background-position--collapse,
+    var(
+      --sidebar-nav-pagelink-background-position--loaded,
+      var(--sidebar-nav-pagelink-background-image)
+    )
+  );
+}
+
+.sidebar-nav li.open > a[href^='#/']:not([href*='?id=']):not(:only-child) {
+  background-image: var(
+    --sidebar-nav-pagelink-background-image--active,
+    var(
+      --sidebar-nav-pagelink-background-image--loaded,
+      var(--sidebar-nav-pagelink-background-image)
+    )
+  );
+  background-position: var(
+    --sidebar-nav-pagelink-background-position--active,
+    var(
+      --sidebar-nav-pagelink-background-position--loaded,
+      var(--sidebar-nav-pagelink-background-image)
+    )
+  );
+}
