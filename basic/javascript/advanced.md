@@ -79,7 +79,7 @@ function foo() {
 
 ```js
 function Foo() {
-  this.name = name
+  this.name = 'name'
 }
 
 const a = new Foo()

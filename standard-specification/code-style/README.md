@@ -9,14 +9,10 @@
 - [The AirBnb JavaScript Style Guide](https://github.com/airbnb/javascript) [[中文]](https://www.css88.com/archives/8345)
 - [standard](https://github.com/standard/standard)
 - [前端代码质量管理（一）](https://juejin.im/post/5cb5c3445188256c83279255)
+- [Javascript Linting and Formatting with ESLint, Prettier, and Airbnb](https://medium.com/@joshuacrass/javascript-linting-and-formatting-with-eslint-prettier-and-airbnb-30eb746db862)
+- [Write cleaner code using Prettier and ESLint in VSCode](https://medium.com/@pgivens/write-cleaner-code-using-prettier-and-eslint-in-vscode-d04f63805dcd)
 
 </details>
-
-您可以按照其中一份指南编码，或创建自己的编码风格。
-
-GitHub 上的一个开源项目可能遵循一系列规则，您与团队合作的另一个项目可能会遵循完全不同的规则。
-
-[Prettier](https://flaviocopes.com/prettier/) 是一个强大的工具，可以强制执行代码格式化，因此您应该使用它。
 
 - **缩进**：使用空格而不是制表符，使用 2 个空格缩进。
 - **分号**：不要使用分号。
