@@ -1,13 +1,13 @@
 - [What is book](/README.md)
-- 标准规范
-  - 标准组织
-    - [W3C](/standard-specification/standard-organization/w3c.md)
-    - [ECMA](/standard-specification/standard-organization/ecma.md)
-    - [TC39](/standard-specification/standard-organization/tc39.md)
-  - [编码规范](/standard-specification/code-style/README.md)
-    - [ESLint](/standard-specification/eslint.md)
-    - [Prettier](/standard-specification/prettier.md)
 - [基础拾遗](/basic/README.md)
+  - 标准规范
+    - 标准组织
+      - [W3C](/basic/standard-specification/standard-organization/w3c.md)
+      - [ECMA](/basic/standard-specification/standard-organization/ecma.md)
+      - [TC39](/basic/standard-specification/standard-organization/tc39.md)
+    - [编码规范](/basic/standard-specification/code-style/README.md)
+      - [ESLint](/basic/standard-specification/eslint.md)
+      - [Prettier](/basic/standard-specification/prettier.md)
   - [HTML](/basic/html/README.md)
     - [语义化](/basic/html/semantization.md)
     - [QA](/basic/html/qa.md)
