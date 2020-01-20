@@ -76,6 +76,7 @@ CSS Houdini 是一组底层 API，它们公开了 CSS 引擎的各个部分，�
 ## CSS Typed Object Model
 
 - [更高效、更安全地操作 CSSOM ：CSS Typed OM](https://juejin.im/post/5bc712245188255c352d8c5a)
+- [Working with the new CSS Typed Object Model](https://developers.google.com/web/updates/2018/03/cssom)
 
 ```html
 /*vue*/

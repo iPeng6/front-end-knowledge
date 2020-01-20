@@ -34,6 +34,10 @@ table {
   margin: 8px 0;
 }
 
+.markdown-section strong {
+  color: black;
+}
+
 .markdown-section h1 span {
   font-weight: 600;
 }
@@ -62,6 +66,7 @@ table {
   cursor: pointer;
 }
 
+/* vue plugin */
 .demo-block .description {
   display: none;
 }
