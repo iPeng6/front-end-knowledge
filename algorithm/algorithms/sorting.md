@@ -80,7 +80,7 @@ function insertionSort(arr) {
 }
 ```
 
-## 性对数阶 O(nlogn)
+## 线性对数阶 O(nlogn)
 
 ### 1. 归并排序
 

@@ -4,10 +4,11 @@
 <summary>参考 - 2020年01月06日</summary>
 
 - [漫画：什么是 HashMap？](https://zhuanlan.zhihu.com/p/31610616)
+- [HashMap 和 HashTable 到底哪不同？](https://www.cnblogs.com/xinzhao/p/5644175.html)
 
 </details>
 
-HashMap 是一个用于存储 Key-Value 键值对的集合，每一个键值对也叫做 Entry。这些个键值对（Entry）分散存储在一个数组当中，这个数组就是 HashMap 的主干。HashMap 数组每一个元素的初始值都是 Null。
+HashMap 或者 HashTable 都是一个用于存储 Key-Value 键值对的集合，每一个键值对也叫做 Entry。这些个键值对（Entry）分散存储在一个数组当中，这个数组就是 HashMap 的主干。HashMap 数组每一个元素的初始值都是 Null。
 
 ![](https://pic1.zhimg.com/80/v2-9ca7e8eb5ecf7a7c2e45f90177d785f0_hd.jpg)
 
@@ -93,3 +94,12 @@ HashMap 的默认初始长度是 16，并且每次自动扩展或是手动初始
 **3. 在 Java8 当中，HashMap 的结构有什么样的优化？**
 
 数据结构使用了 红黑树
+
+**4. Java 中 HashMap vs HashTable**
+
+![](http://zhaox.github.io/assets/images/HashMap.png)
+![](http://zhaox.github.io/assets/images/HashTable.png)
+
+1. HashMap 不是同步的，非线程安全的，没有同步代码处理不能跨线程共享，而 HashTable 是同步，是线程安全的。
+2. HashMap 是支持 null 键和 null 值的，而 HashTable 在遇到 null 时，会抛出 NullPointerException 异常。
+3. HashTable 初始大小 11， 之后每次扩容为原来的 2n+1，而 HashMap 默认的初始化大小为 16，之后 HashMap 每次以 2 的幂次方扩容。
