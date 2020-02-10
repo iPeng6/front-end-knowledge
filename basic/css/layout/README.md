@@ -180,3 +180,5 @@ FFC（flex formatting context）和 GFC（grid formatting context），分别是
 
 - line-height
 - vertical-align
+
+## 层叠原理
