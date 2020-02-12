@@ -1,6 +1,7 @@
 # 浏览器是如何工作的
 
-参考：
+<details>
+<summary>参考</summary>
 
 - [how browsers work](https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork)
 - [认识 V8 引擎](https://zhuanlan.zhihu.com/p/27628685)
@@ -9,6 +10,8 @@
 - [DOM 操作成本到底高在哪儿？](https://juejin.im/post/5c1069a16fb9a049e0632fb6)
 - [无线性能优化：Composite](http://taobaofed.org/blog/2016/04/25/performance-composite/)
 - [详谈层合成（composite）](https://juejin.im/entry/59dc9aedf265da43200232f9)
+
+</details>
 
 ## 浏览器结构
 
