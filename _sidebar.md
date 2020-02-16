@@ -49,7 +49,7 @@
       - [环境变量](/general/system/linux/env.md)
     - [Mac](/general/system/mac/README.md)
       - [软件工具](/general/system/mac/tools.md)
-- [基础拾遗](/basic/README.md)
+- [语言基础](/basic/README.md)
   - 标准规范
     - 标准组织
       - [W3C](/basic/standard-specification/standard-organization/w3c.md)
