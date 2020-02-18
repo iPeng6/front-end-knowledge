@@ -19,4 +19,4 @@
 
 - [How javascript works](https://github.com/Troland/how-javascript-works)
 - [You-Dont-Know-JS](https://github.com/getify/You-Dont-Know-JS)
-- [[译]JavaScript 引擎可视化](https://juejin.im/post/5e0899a35188254959366fbf?utm_source=gold_browser_extension)
+- [[译]JavaScript 引擎可视化](https://juejin.im/post/5e0899a35188254959366fbf)
