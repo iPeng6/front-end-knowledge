@@ -108,7 +108,7 @@ HTTP/1.x 是一个文本协议，而 HTTP/2 是一个彻彻底底的二进制协
 
 #### HTTP/2 的多路复用和 HTTP/1.1 中的长连接复用有什么区别？
 
-![](img/pipeliningvsmultiplexing.png)
+![](img/pipeliningvsmultiplexing.png ':size=700')
 
 - HTTP/1.0 一次请求-响应，建立一个连接，用完关闭；每一个请求都要建立一个连接；
 - HTTP/1.1 pipelining 实现了一次性发送多个请求，然而，这种技术在接收响应时，要求必须按照发送请求的顺序返回。一旦有某请求超时等，后续请求只能被阻塞，毫无办法，也就是队头阻塞；
