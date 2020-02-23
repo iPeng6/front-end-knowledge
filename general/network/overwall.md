@@ -1,8 +1,8 @@
 # 翻墙
 
-app: ShadowsocksX-NG-R8
+vpn: [零点云](https://www.dyuns.top/)
 
-vpn: 零点云
+app: ShadowsocksX-NG-R8
 
 ## 自定义 pac 列表规则
 
