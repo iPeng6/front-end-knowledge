@@ -106,29 +106,45 @@ TCP 是`面向字节流的`，通过 TCP 传送的字节流中的每个字节都
 
 ![](img/tcp-3hands.jpg)
 
-(1) Client 首先向 Server 发送连接请求报文段，同步自己的 seq(x)，Client 进入 SYN_SENT 状态。
+1. 第一次握手(SYN=1, seq=x):
 
-(2) Server 收到 Client 的连接请求报文段，返回给 Client 自己的 seq(y)以及 ack(x+1)，Server 进入 SYN_REVD 状态。
+   客户端发送一个 TCP 的 SYN 标志位置 1 的包，指明客户端打算连接的服务器的端口，以及初始序号 x,保存在包头的序列号(Sequence Number)字段里。
 
-(3) Client 收到 Server 的返回确认，再次向服务器发送确认报文段 ack(y+1)，这个报文段已经可以携带数据了。Client 进入 ESTABLISHED 状态。
+   发送完毕后，客户端进入 SYN_SEND 状态。
 
-(4) Server 再次收到 Client 的确认信息后，进入 ESTABLISHED 状态。
+2. 第二次握手(SYN=1, ACK=1, seq=y, ACKnum=x+1):
+
+   服务器发回确认包(ACK)应答。即 SYN 标志位和 ACK 标志位均为 1。服务器端选择自己 ISN 序列号，放到 Seq 域里，同时将确认序号(Acknowledgement Number)设置为客户的 ISN 加 1，即 x+1。
+
+   发送完毕后，服务器端进入 SYN_RCVD 状态。
+
+3. 第三次握手(ACK=1，ACKnum=y+1)
+
+   客户端再次发送确认包(ACK)，SYN 标志位为 0，ACK 标志位为 1，并且把服务器发来 ACK 的序号字段+1，放在确定字段中发送给对方，即 y+1。
+
+   这个报文段已经可以携带数据了。客户端进入 ESTABLISHED 状态。服务端再次收到客户端的确认信息后，也进入 ESTABLISHED 状态。
 
 #### TCP 断开连接的四次挥手：
 
 ![](img/tcp-4hands.jpg)
 
-(1) Client 向 Server 发送断开连接请求的报文段，seq=m(m 为 Client 最后一次向 Server 发送报文段的最后一个字节序号加 1)，Client 进入 FIN-WAIT-1 状态。
+(1) Client 向 Server 发送断开连接请求的报文段 FIN=1，seq=m(m 为 Client 最后一次向 Server 发送报文段的最后一个字节序号加 1)，Client 进入 FIN-WAIT-1 状态。
 
-(2) Server 收到断开报文段后，向 Client 发送确认报文段，seq=n(n 为 Server 最后一次向 Client 发送报文段的最后一个字节序号加 1)，ack=m+1，Server 进入 CLOSE-WAIT 状态。此时这个 TCP 连接处于半开半闭状态，Server 发送数据的话，Client 仍然可以接收到。
+(2) Server 收到断开报文段后，向 Client 发送确认报文段 ACK=1，seq=n(n 为 Server 最后一次向 Client 发送报文段的最后一个字节序号加 1)，ack=m+1，Server 进入 CLOSE-WAIT 状态。此时这个 TCP 连接处于半开半闭状态，Server 发送数据的话，Client 仍然可以接收到。
 
-(3) Server 向 Client 发送断开确认报文段，seq=u(u 为半开半闭状态下 Server 最后一次向 Client 发送报文段的最后一个字节序号加 1)，ack=m+1，Server 进入 LAST-ACK 状态。
+(3) Server 向 Client 发送断开确认报文段 FIN=1 ACK=1，seq=u(u 为半开半闭状态下 Server 最后一次向 Client 发送报文段的最后一个字节序号加 1)，ack=m+1，Server 进入 LAST-ACK 状态。
 
 (4) Client 收到 Server 的断开确认报文段后，向 Server 发送确认断开报文，seq=m+1，ack=u+1，Client 进入 TIME-WAIT 状态。
 
 (5) Server 收到 Client 的确认断开报文，进入 CLOSED 状态，断开了 TCP 连接。
 
 (6) Client 在 TIME-WAIT 状态等待一段时间(时间为 2\*MSL((Maximum Segment Life))，确认 Client 向 Server 发送的最后一次断开确认到达(如果没有到达，Server 会重发步骤(3)中的断开确认报文段给 Client，告诉 Client 你的最后一次确认断开没有收到)。如果 Client 在 TIME-WAIT 过程中没有再次收到 Server 的报文段，就进入 CLOSES 状态。TCP 连接至此断开。
+
+**TIME_WAIT 和 CLOSE_WAIT 的区别。**
+
+TIME_WAIT 状态就是用来重发可能丢失的 ACK 报文。
+
+TIME_WAIT 表示主动关闭，CLOSE_WAIT 表示被动关闭。
 
 #### 完整的流程如下
 
