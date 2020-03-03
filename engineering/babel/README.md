@@ -1,5 +1,7 @@
 # Babel
 
+- [前端工程师的自我修养-关于 Babel 那些事儿](https://juejin.im/post/5e5b488af265da574112089f)
+
 ## Core Library
 
 Babel 的核心功能都内置在 [@babel/core](https://babeljs.io/docs/en/babel-core) 模块中。 安装它之后：
@@ -11,10 +13,10 @@ npm install --save-dev @babel/core
 你就可以在你的 JavaScript 项目里直接 `require` 使用
 
 ```js
-const babel = require('@babel/core');
+const babel = require('@babel/core')
 
-babel.transform('code', optionsObject);
-babel.parse(code, optionsObject, callbackFunction);
+babel.transform('code', optionsObject)
+babel.parse(code, optionsObject, callbackFunction)
 ```
 
 ## CLI tool
@@ -43,12 +45,12 @@ npm install --save-dev @babel/plugin-transform-arrow-functions
 ```
 
 ```js
-const fn = () => 1;
+const fn = () => 1
 
 // converted to
 var fn = function fn() {
-  return 1;
-};
+  return 1
+}
 ```
 
 **Preset**
@@ -175,7 +177,7 @@ const presets = [
       useBuiltIns: 'usage'
     }
   ]
-];
+]
 
-module.exports = { presets };
+module.exports = { presets }
 ```
