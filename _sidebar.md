@@ -81,6 +81,8 @@
       - [es2018](/basic/javascript/esversions/es2018.md)
       - [es2019](/basic/javascript/esversions/es2019.md)
     - [进阶](/basic/javascript/advanced.md)
+    - [DOM 操作](/basic/javascript/dom.md)
+    - [Polyfill](/basic/javascript/polyfill.md)
     - [常见算法](/basic/javascript/common-algorithm.md)
     - [常见问题](/basic/javascript/qa.md)
   - [TypeScript](/basic/typescript/README.md)

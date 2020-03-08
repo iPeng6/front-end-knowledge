@@ -58,7 +58,7 @@ BFC, 全称是 block formatting context，它是一个独立封闭的渲染区�
 - 表格单元格 (元素具有 display: table-cell，HTML 表格单元格默认属性)
 - 表格标题 (元素具有 display: table-caption, HTML 表格标题默认属性)
 - `overflow` 值不为 visible 的块元素
-- display: `flow-root`
+- display: `flow-root`(没有副作用)
 - contain 为以下值的元素: layout, content, 或 strict
 - 弹性项 (display: flex 或 inline-flex 元素的子元素)
 - 网格项 (display: grid 或 inline-grid 元素的子元素)
