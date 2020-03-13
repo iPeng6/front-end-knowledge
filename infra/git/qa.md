@@ -60,3 +60,7 @@ fi
 ## 合并两个本地仓库并保留各自的提交历史
 
 https://blog.csdn.net/gouboft/article/details/8450696
+
+## git 解决远程仓库文件大小写问题
+
+https://www.jianshu.com/p/420d38913578
