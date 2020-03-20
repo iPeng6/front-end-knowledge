@@ -39,6 +39,9 @@
       - [gRPC](/general/network/api/grpc.md)
     - [Nginx](/general/network/nginx.md)
     - [翻墙](/general/network/overwall.md)
+    - 鉴权
+      - [OAuth2.0](/general/network/OAuth2.0.md)
+      - [jwt](/general/network/jwt.md)
   - [浏览器](/general/browser/README.md)
     - [how browser work](/general/browser/how-browsers-work.md)
     - [Chrome DevTools](/general/browser/chrome-devtools.md)
