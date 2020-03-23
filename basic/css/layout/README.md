@@ -1,8 +1,12 @@
 <details>
 <summary>参考 - 2020年02月08日</summary>
+
 - [前端布局基础概述](https://mp.weixin.qq.com/s/-LcNZWFFty2lWuND6uuNNA)
+- [CSS 中重要的 BFC](https://segmentfault.com/a/1190000013023485)
+- [CSS margin 合并问题](https://segmentfault.com/a/1190000013735912)
 
 </details>
+
 前端布局方案主要有三种：
 
 - 传统布局方案（借助浮动、定位等手段）
@@ -39,6 +43,38 @@ height = content-height + padding-top + padding-bottom + border-top-height + bor
 
 关于 box-sizing 的作用，还有另一种表述：告诉浏览器，是使用 W3C 盒模型(content-box)，还是使用 IE 盒模型(border-box)。
 
+## 文档流
+
+我们常说的文档流其实分为**定位流**、**浮动流**、**普通流**三种。而普通流其实就是指 BFC 中的 FC。FC(Formatting Context)，直译过来是格式化上下文，它是页面中的一块渲染区域，有一套渲染规则，决定了其子元素如何布局，以及和其他元素之间的关系和作用。常见的 FC 有 BFC、IFC，还有 GFC 和 FFC。
+
+三种文档流的定位方案
+
+### 常规流(Normal flow)
+
+- 在常规流中，盒一个接着一个排列;
+- 在块级格式化上下文里面， 它们竖着排列；
+- 在行内格式化上下文里面， 它们横着排列;
+- 当 position 为 static 或 relative，并且 float 为 none 时会触发常规流；
+- 对于静态定位(static positioning)，position: static，盒的位置是常规流布局里的位置；
+- 对于相对定位(relative positioning)，position: relative，盒偏移位置由 top、bottom、left、right 属性定义。即使有偏移，仍然保留原有的位置 ，其它常规流不能占用这个位置。
+
+### 浮动(Floats)
+
+- 左浮动元素尽量靠左、靠上，右浮动同理
+- 这导致常规流环绕在它的周边，除非设置 clear 属性
+- 浮动元素不会影响块级元素的布局
+- 但浮动元素会影响行内元素的布局，让其围绕在自己周围，撑大父级元素，从而间接影响块级元素布局
+- 最高点不会超过当前行的最高点、它前面的浮动元素的最高点
+- 不超过它的包含块，除非元素本身已经比包含块更宽
+- 行内元素出现在左浮动元素的右边和右浮动元素的左边，左浮动元素的左边和右浮动元素的右边是不会摆放浮动元素的
+
+### 绝对定位(Absolute positioning)
+
+- 绝对定位方案，盒从常规流中被移除，不影响常规流的布局；
+- 它的定位相对于它的包含块，相关 CSS 属性：top、bottom、left、right；
+- 如果元素的属性 position 为 absolute 或 fixed，它是绝对定位元素；
+- 对于 position: absolute，元素定位将相对于上级元素中最近的一个 relative、fixed、absolute，如果没有则相对于 ICB(初始包含块)，注意不是 body 也不是 html；
+
 ## 格式化上下文（Formatting Context）
 
 格式化上下文，它指的是具有某种 CSS 格式化规则（布局规则）的上下文环境，在这个上下文环境内的所有子元素，都将根据其特定的 CSS 格式化规则来进行排列。
@@ -52,16 +88,15 @@ BFC, 全称是 block formatting context，它是一个独立封闭的渲染区�
 #### 创建 BFC 元素的方式有如下几种（摘自 MDN BFC）
 
 - 根元素或其它包含它的元素
-- 浮动元素 (元素的 `float` 不是 none)
-- 绝对定位元素 (元素的 position 为 `absolute` 或 `fixed`)
-- 内联块 (元素具有 display: inline-block)
-- 表格单元格 (元素具有 display: table-cell，HTML 表格单元格默认属性)
-- 表格标题 (元素具有 display: table-caption, HTML 表格标题默认属性)
-- `overflow` 值不为 visible 的块元素
+- 浮动元素 (`float` 不为 none)
+- `overflow` 不为 visible 的块元素
+- 定位元素 (position 为 `absolute`、`fixed`)
 - display: `flow-root`(没有副作用)
+- 内联块 (display: inline-block)
+- 表格元素 (display: table、table-cell、table-caption)
+- 弹性项 (display: flex 、inline-flex )
+- 网格项 (display: grid 、 inline-grid )
 - contain 为以下值的元素: layout, content, 或 strict
-- 弹性项 (display: flex 或 inline-flex 元素的子元素)
-- 网格项 (display: grid 或 inline-grid 元素的子元素)
 - 多列容器 (元素的 column-count 或 column-width 不为 auto， 包括 column-count: 1 的元素)
 - column-span: all 应当总是会创建一个新的格式化上下文，即便具有 column-span: all 的元素并不被包裹在一个多列容器中。
 
@@ -139,6 +174,13 @@ BFC 元素
 </div>
 <div style="clear: both;"></div>
 
+简言之：
+
+1. BFC 就像一道屏障，隔离出了 BFC 内部和外部，内部和外部区域的渲染相互之间不影响。BFC 有自己的一套内部子元素渲染的规则，不影响外部渲染，也不受外部渲染影响。
+2. BFC 的区域不会和外部浮动盒子的外边距区域发生叠加。也就是说，外部任何浮动元素区域和 BFC 区域是泾渭分明的，不可能重叠。
+3. BFC 在计算高度的时候，内部浮动元素的高度也要计算在内。也就是说，即使 BFC 区域内只有一个浮动元素，BFC 的高度也不会发生塌缩，高度是大于等于浮动元素的高度的。
+4. HTML 结构中，当构建 BFC 区域的元素紧接着一个浮动盒子时，即，是该浮动盒子的兄弟节点，BFC 区域会首先尝试在浮动盒子的旁边渲染，但若宽度不够，就在浮动元素的下方渲染。
+
 ### IFC
 
 IFC, 全称是 inline formatting context，其内部的元素，在水平方向上，一个接一个地显示；在垂直方向上，每个元素可以设置不同的对齐方式；IFC 内部的元素，被一行行的矩形框所包含，这些虚拟的矩形框，我们称为行框（line box）。IFC 的作用区域，可以看成是包含其所有子元素的行框组成的矩形区域。
@@ -169,8 +211,6 @@ FFC（flex formatting context）和 GFC（grid formatting context），分别是
   - static 和 relative 定位元素的包含块，为其块级祖先元素（通常是块级父元素）的 content box；
   - absolute 定位元素的包含块，为最近的非静态定位祖先元素的 padding box，查无非静态定位祖先元素，那么它的包含块是 ICB（即根元素<html />的包含块）；
   - fix 定位元素的包含块，为当前 viewport（视窗）；
-
-## 文档流
 
 ## 浮动原理
 
