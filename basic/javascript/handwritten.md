@@ -1,6 +1,6 @@
 # 手写代码
 
-## 1、手写原生 Ajax
+## 手写原生 Ajax
 
 ```js
 var xhr = new XMLHttpRequest()
@@ -13,7 +13,7 @@ xhr.onreadystatechange = function() {
 xhr.send()
 ```
 
-## 2、手写操作 cookie
+## 手写操作 cookie
 
 ```js
 //读Cookie
@@ -45,7 +45,7 @@ function setCookie(cname, cvalue, exdays) {
 }
 ```
 
-### 3、柯里化
+## 柯里化
 
 ```js
 function curry(fn) {
@@ -82,4 +82,183 @@ function add(a) {
 }
 
 add(1)(2)(3)(3)(3)
+```
+
+## 手写 call、apply、bind
+
+```js
+/**
+ * 自定义call实现
+ * @param context   上下文this对象
+ * @param args      动态参数
+ */
+Function.prototype.myCall = function(context, ...args) {
+  context = typeof context === 'object' ? context : window
+  // 防止覆盖掉原有属性
+  const key = Symbol()
+  // 这里的this为需要执行的方法，将方法挂载到当前上下文对象上，这样当对象调用方法时内部this自动指向调用对象
+  context[key] = this
+  // 方法执行
+  const result = context[key](...args)
+  delete context[key]
+  return result
+}
+
+/**
+ * 自定义Apply实现
+ * @param context   上下文this对象
+ * @param args      参数数组
+ */
+Function.prototype.myApply = function(context, args) {
+  context = typeof context === 'object' ? context : window
+  // 防止覆盖掉原有属性
+  const key = Symbol()
+  // 这里的this为需要执行的方法
+  context[key] = this
+  // 方法执行
+  const result = context[key](...args)
+  delete context[key]
+  return result
+}
+
+/**
+ * 自定义bind实现
+ * @param context     上下文
+ * @returns {Function}
+ */
+Function.prototype.myBind = function(context) {
+  context = typeof context === 'object' ? context : window
+  return (...args) => {
+    this.call(context, ...args)
+  }
+}
+```
+
+## 防抖节流
+
+```js
+// 函数防抖实现
+function debounce(fn, delay) {
+  let timer = null
+  return function() {
+    if (timer) clearTimeout(timer)
+    timer = setTimeout(() => {
+      fn.apply(this, arguments)
+    }, delay)
+  }
+}
+
+// 函数节流实现
+function throttle(fn, cycle) {
+  let start = Date.now()
+  let now
+  let timer
+  return function() {
+    now = Date.now()
+    clearTimeout(timer)
+    if (now - start >= cycle) {
+      fn.apply(this, arguments)
+      start = now
+    } else {
+      timer = setTimeout(() => {
+        fn.apply(this, arguments)
+      }, cycle)
+    }
+  }
+}
+```
+
+## 手写 jsonp
+
+```js
+function jsonp(url: String, callback: String, params: Object) {
+  var queryString =
+    '?' +
+    Object.keys(params)
+      .map(key => `${key}=${params[key]}`)
+      .join('&')
+
+  var script = document.createElement('script')
+  script.src = url + queryString + '&callback=' + callback
+  script.onerror =
+    params.failure ||
+    function(err) {
+      //console.log(err)
+    }
+
+  window[callback] = params.success || function() {}
+  document.head.appendChild(script)
+}
+```
+
+## 用 requestAnimationFrame 模拟 setTimeout
+
+```js
+function myTimeout(callback, delay) {
+  var sum = 0
+  var raf
+  ;(function loop() {
+    var now = Date.now()
+    raf = requestAnimationFrame(function() {
+      sum += Date.now() - now
+      console.log(sum)
+      if (sum > delay) {
+        callback()
+      } else {
+        loop()
+      }
+    })
+  })()
+
+  return raf
+}
+
+function myClearTimeout(raf) {
+  cancelAnimationFrame(raf)
+}
+
+var t = myTimeout(function() {
+  console.log(1)
+}, 1000)
+```
+
+## flat 展平数组
+
+```js
+/**
+ * 多维数组展平成一维数组
+ * [1, [2, [3]], [4]] => [1, 2, 3, 4]
+ * @param data
+ */
+function flat(data) {
+  let result = []
+  function loop(arr) {
+    arr.forEach(d => {
+      if (Array.isArray(d)) {
+        loop(d)
+      } else {
+        result.push(d)
+      }
+    })
+  }
+  loop(data)
+  return result
+}
+
+const data = [1, [2, [3]], [4]]
+
+console.log(flat(data))
+```
+
+## 实现 new
+
+```js
+function myNew(fn, ...params) {
+  const a = Object.create(fn.prototype)
+  const res = fn.call(a, ...params)
+  if (res) {
+    return res
+  }
+  return a
+}
 ```

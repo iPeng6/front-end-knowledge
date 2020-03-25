@@ -1,6 +1,6 @@
 # 布局
 
-## 一、左边固定右边自适应
+## 左边固定右边自适应
 
 1.
 
@@ -142,6 +142,79 @@
 </style>
 ```
 
-## 二、右边固定左边自适应
+## 右边固定左边自适应
 
-## 三、水平垂直居中
+## 水平垂直居中
+
+## 9 宫格
+
+```css
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  width: 33%;
+}
+```
+
+```html
+/*vue*/
+<template>
+  <div class="layout-wrapper-demo6">
+    <div class="container">
+      <div class="item" v-for="n in 9">{{n}}</div>
+    </div>
+  </div>
+</template>
+<script>
+  export default {}
+</script>
+<style>
+  .layout-wrapper-demo6 .container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+    height: 300px;
+  }
+  .layout-wrapper-demo6 .item {
+    width: 33%;
+
+    outline: 1px solid black;
+  }
+</style>
+```
+
+```css
+.container {
+  display: grid;
+  grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+}
+```
+
+```html
+/*vue*/
+<template>
+  <div class="layout-wrapper-demo6_1">
+    <div class="container">
+      <div class="item" v-for="n in 9">{{n}}</div>
+    </div>
+  </div>
+</template>
+<script>
+  export default {}
+</script>
+<style>
+  .layout-wrapper-demo6_1 .container {
+    display: grid;
+    grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+
+    width: 300px;
+    height: 300px;
+  }
+  .layout-wrapper-demo6_1 .item {
+    outline: 1px solid black;
+  }
+</style>
+```

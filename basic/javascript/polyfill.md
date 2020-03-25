@@ -1,5 +1,4 @@
 # polyfill
 
-- bind
 - requestAnimationFrame
 - setTimeout
