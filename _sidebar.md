@@ -14,6 +14,7 @@
       - [graph](/general/algorithm/data-structures/graph/README.zh-CN.md)
     - 算法
       - [排序算法](/general/algorithm/algorithms/sorting.md)
+  - [设计模式](/general/design_pattern/README.md)
   - 网络
     - [安全](/general/network/security/README.md)
       - [跨域](/general/network/security/cross-domain.md)
