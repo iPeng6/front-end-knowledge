@@ -132,7 +132,7 @@ img {
 
 词法解析
 
-![](img/cssom-construction.png ':size=700')
+![](img/cssom-construction.png ':size=700xauto')
 
 会生成以下的 CSSOM 树
 

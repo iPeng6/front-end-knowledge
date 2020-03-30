@@ -63,7 +63,7 @@ sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist
 
 1. 找到系统应用程序 Automator
 
-   ![](img/automator1.jpg ':size=500')
+   ![](img/automator1.jpg ':size=500xauto')
 
 2. 选择 应用程序 -> 选取
 
@@ -75,6 +75,6 @@ sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist
 
 4. 打开 系统偏好 -> 用户与群组 -> 选择登录项 -> 选择保存的.app 文件为开机自启
 
-   ![](img/automator4.jpg ':size=500')
+   ![](img/automator4.jpg ':size=500xauto')
 
 然后开机运行 `ssh-add -l` 就可以看到 shell 脚本里添加的 key 已经在缓存列表中了。

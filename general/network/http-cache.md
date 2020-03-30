@@ -104,4 +104,4 @@ ETag 属性之间的比较采用的是弱比较算法，即两个文件除了每
 
 ## 用户行为对浏览器的影响
 
-![](img/http-cache4.png ':size=600')
+![](img/http-cache4.png ':size=600xauto')

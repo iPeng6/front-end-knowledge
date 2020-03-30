@@ -159,8 +159,8 @@ service jenkins start # stop restart
 
 Manage Jenkins -> Global Tool Configuration 系统管理 -> 全局工具配置
 
-![](img/jenkins_jdk.jpg ':size=600')
-![](img/jenkins_git_gradle.jpg ':size=600')
+![](img/jenkins_jdk.jpg ':size=600xauto')
+![](img/jenkins_git_gradle.jpg ':size=600xauto')
 
 设置 react-native package.json 打包脚本
 
@@ -182,9 +182,9 @@ Manage Jenkins -> Global Tool Configuration 系统管理 -> 全局工具配置
 
 新建一个自由风格的任务，配置
 
-![](img/jenkins_task_git.jpg ':size=600')
-![](img/jenkins_task_build.jpg ':size=600')
-![](img/jenkins_task_after.jpg ':size=600')
+![](img/jenkins_task_git.jpg ':size=600xauto')
+![](img/jenkins_task_build.jpg ':size=600xauto')
+![](img/jenkins_task_after.jpg ':size=600xauto')
 
 不记得路径 可以通过 `which` 查看
 

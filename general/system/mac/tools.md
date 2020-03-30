@@ -27,7 +27,7 @@
       alias ip='curl cip.cc'
       ```
 
-      ![](img/proxy.png ':size=350')
+      ![](img/proxy.png ':size=350xauto')
 
 2.  [Hyper](https://hyper.is) 另一个酷炫的终端 GUI
 
@@ -43,7 +43,7 @@
 
       默认已经自带，git 仓库目录下会显示 git:(分支)样式， 还定义了很多 git [alias](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/git)
 
-      ![](img/zsh-git.png ':size=500')
+      ![](img/zsh-git.png ':size=500xautoxauto')
 
       ```bash
       g=git
@@ -150,7 +150,7 @@
 
   - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) 语法高亮
 
-    ![](img/highlight.png ':size=300')
+    ![](img/highlight.png ':size=300xauto')
 
     安装
 
@@ -177,7 +177,7 @@
     plugins=(zsh-autosuggestions)
     ```
 
-2. 主题
+1. 主题
 
    默认 [主题](https://github.com/robbyrussell/oh-my-zsh/wiki/Themes)， robbyrussell
 
@@ -187,7 +187,7 @@
 
 - [Manico](https://manico.im/) 可以给常用 app 设置快速启动切换快捷键
 
-![](img/manico.png ':size=600')
+![](img/manico.png ':size=600xauto')
 
 - [HyperSwitch](https://bahoom.com/hyperswitch) 会显示切换窗口缩略图、同一应用的多窗口也会平铺切换
 
@@ -253,7 +253,7 @@
 
 - [Itsycal](https://www.mowglii.com/itsycal/) 时间日历小工具
 
-  ![](img/itsycal.png ':size=300')
+  ![](img/itsycal.png ':size=300xauto')
 
 - [Shuttle](http://fitztrev.github.io/shuttle/)
 
@@ -317,7 +317,7 @@
 
 - [截图(Jietu)](https://apps.apple.com/cn/app/jie-tu-jietu/id1059334054?mt=12)，腾讯出品的截图录屏工具，可以选取区域 可标注 马赛克等
 
-  ![](img/jietu.png ':size=300')
+  ![](img/jietu.png ':size=300xauto')
 
 - [LICEcap](https://www.cockos.com/licecap/) 录制 GIF，可选区域、可调节 FPS
 
@@ -327,7 +327,7 @@
 
   有些在线文章没有一个很好的目录，这个插件可以为文章生成一个悬浮的大纲目录
 
-  ![](img/smarttoc.png ':size=300')
+  ![](img/smarttoc.png ':size=300xauto')
 
 - Octotree
 
@@ -339,4 +339,4 @@
 
   前端工具集合
 
-  ![](img/fehelper.png ':size=300')
+  ![](img/fehelper.png ':size=300xauto')

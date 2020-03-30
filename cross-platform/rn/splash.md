@@ -214,7 +214,7 @@ import { NativeModules } from 'react-native'
 export const Splash = NativeModules.SplashScreen
 
 export default {
-  Splash,
+  Splash
 }
 
 // src/hooks/useSplash.ts
@@ -240,7 +240,7 @@ export default function useSplash() {
 const App = () => {
   useSplash()
 
-  return <View/>
+  return <View />
 }
 ```
 
@@ -252,7 +252,7 @@ iOS 启动屏分两种，使用 `Launch Screen File` xib 动态布局，或者�
 
 默认使用的 LaunchScreen, 改成 Launch Images Source, use `LanunchImage`，清空 LaunchScreen 里的设置
 
-![](img/ioslaunch@2x.png ':size=600')
+![](img/ioslaunch@2x.png ':size=600xauto')
 
 ## App 图标
 

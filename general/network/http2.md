@@ -108,7 +108,7 @@ HTTP/1.x 是一个文本协议，而 HTTP/2 是一个彻彻底底的二进制协
 
 #### HTTP/2 的多路复用和 HTTP/1.1 中的长连接复用有什么区别？
 
-![](img/pipeliningvsmultiplexing.png ':size=700')
+![](img/pipeliningvsmultiplexing.png ':size=700xauto')
 
 - HTTP/1.0 一次请求-响应，建立一个连接，用完关闭；每一个请求都要建立一个连接；
 - HTTP/1.1 pipelining 实现了一次性发送多个请求，然而，这种技术在接收响应时，要求必须按照发送请求的顺序返回。一旦有某请求超时等，后续请求只能被阻塞，毫无办法，也就是队头阻塞；
@@ -120,13 +120,13 @@ HTTP/1.x 是一个文本协议，而 HTTP/2 是一个彻彻底底的二进制协
 
 在客户端和服务器同时维护一张头信息表，所有字段都会存入这个表，生成一个索引号，以后就不发送同样字段了，只发送索引号，这样就提高速度。
 
-![](img/hpack.jpg ':size=700')
+![](img/hpack.jpg ':size=700xauto')
 
 ### 服务端推送 (Server Push)
 
 同 SPDY 一样，HTTP/2 也具有 server push 功能。允许服务器在客户端缓存中填充数据。比如请求一个网页，还有一些静态资源，服务器根据配置会在请求 html 内容时一起把其他需要的资源推送到客户端缓存中，那么当页面解析需要这个资源时可以直接从本地缓存中读取而避免了再次请求。
 
-![](img/server-push.png ':size=600')
+![](img/server-push.png ':size=600xauto')
 
 ### 请求优先级设置
 

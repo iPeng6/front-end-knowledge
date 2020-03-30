@@ -52,7 +52,7 @@ class Queue {
 
 使用两个栈反转后出队再恢复
 
-![](img/queue.png ':size=300')
+![](img/queue.png ':size=300xauto')
 
 ```js
 import Stack from '../stack/Stack'

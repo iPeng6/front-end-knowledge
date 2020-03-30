@@ -2,7 +2,7 @@
 
 ## word-break: break-all 和 word-wrap: break-word 的区别
 
-![](/img/word-break-word-wrap.png ':size=400')
+![](/img/word-break-word-wrap.png ':size=400xauto')
 
 ## word-spacing 和 white-space 区别
 
