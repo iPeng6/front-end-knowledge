@@ -81,7 +81,7 @@ height = content-height + padding-top + padding-bottom + border-top-height + bor
 
 我们可以给某个作为容器的元素指定特定的格式化上下文，也就是说我们可以定义一个具有特定布局规则的渲染区域。常见的格式化上下文有 BFC（CSS2.1 规范）、IFC（CSS2.1 规范）、 FFC（CSS3 规范新增）和 GFC（CSS3 规范新增），具体介绍如下：
 
-### BFC
+### BFC(Block Formatting Context)
 
 BFC, 全称是 block formatting context，它是一个独立封闭的渲染区域，在这个区域内的所有元素，从区域的顶部起，一个接一个地根据自身的布局特性进行排列：在这个区域内的块级元素 ，按从上到下的顺序显示，相邻的块级元素可以使用 margin 隔离，**但在垂直方向上相邻的块级元素会发生 margin 合并**；在这个区域内的 inline-level 或 inline-level-block 元素，则按从左到右的顺序显示。具有 BFC 格式化环境的元素，我们称之为 BFC 元素，可以说，BFC 定义了 BFC 元素 content 区域的渲染规则。
 
@@ -212,13 +212,40 @@ FFC（flex formatting context）和 GFC（grid formatting context），分别是
   - absolute 定位元素的包含块，为最近的非静态定位祖先元素的 padding box，查无非静态定位祖先元素，那么它的包含块是 ICB（即根元素<html />的包含块）；
   - fix 定位元素的包含块，为当前 viewport（视窗）；
 
-## 浮动原理
-
-## 定位原理
-
 ## 行框
 
 - line-height
 - vertical-align
 
-## 层叠原理
+## 浮动
+
+## 定位
+
+### Stacking Context 堆叠上下文
+
+- [层叠顺序（stacking level）与堆栈上下文（stacking context）知多少？](http://www.cnblogs.com/coco1s/p/5899089.html)
+- [不受控制的 position:fixed](https://www.cnblogs.com/coco1s/p/7358830.html)
+
+创建堆叠上下文的方式 （参考自 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context) ）：
+
+- 根元素 (HTML),
+- z-index 值不为 "auto"的 绝对/相对定位，
+- 一个 z-index 值不为 "auto"的 flex 项目 (flex item)，即：父元素 display: flex|inline-flex，
+- opacity 属性值小于 1 的元素（参考 the specification for opacity），
+- transform 属性值不为 "none"的元素，
+- mix-blend-mode 属性值不为 "normal"的元素，
+- filter 值不为“none”的元素，
+- perspective 值不为“none”的元素，
+- isolation 属性被设置为 "isolate"的元素，
+- position: fixed
+- 在 will-change 中指定了任意 CSS 属性，即便你没有直接指定这些属性的值
+- -webkit-overflow-scrolling 属性被设置 "touch"的元素
+
+4 种方式目前都会使得 position:fixed 定位的基准元素改变
+
+- transform 属性值不为 none 的元素
+- perspective 值不为 none 的元素
+- filter 值不为“none”的元素
+- 在 will-change 中指定了任意 CSS 属性
+
+面试题： 1、GPU 加速会对定位有影响吗？ 2、哀悼日全站灰度对页面会有影响吗？
