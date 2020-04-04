@@ -9,3 +9,7 @@
 
 - [Dark Mode in CSS](https://css-tricks.com/dark-modes-with-css/)
 - [prefers-color-scheme: CSS Media Query](https://davidwalsh.name/prefers-color-scheme)
+
+全站变灰
+
+- [明天全国哀悼日，一段 css 让全站变灰](https://juejin.im/post/5e86e221e51d4546ce27b99c)

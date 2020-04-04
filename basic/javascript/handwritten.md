@@ -201,7 +201,6 @@ function myTimeout(callback, delay) {
     var now = Date.now()
     raf = requestAnimationFrame(function() {
       sum += Date.now() - now
-      console.log(sum)
       if (sum > delay) {
         callback()
       } else {
@@ -262,3 +261,7 @@ function myNew(fn, ...params) {
   return a
 }
 ```
+
+## 将一维数组随机分为 m 组，使得每一组个数尽量平均，例如[1,2,3,4,5] 分成 2 组得 [[3,1],[5,2,4]]
+
+## 实现金额数字千分位表示
