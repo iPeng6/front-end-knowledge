@@ -9,17 +9,22 @@
 
 </details>
 
-## 三种状态
+## 4 个区
 
-- **已修改（modified）** 表示修改了文件，但还没保存到数据库中
-- **已暂存（staged）** 表示对一个已修改文件的当前版本做了标记，使之包含在下次提交的快照中。
-- **已提交（committed）** 表示数据已经安全的保存在本地数据库中
+- 工作区( Working Area )
+- 暂存区( Stage )
+- 本地仓库( Local Repository )
+- 远程仓库( Remote Repository )
 
-## 三种存储区
+## 5 种状态
 
-- **Git 仓库** Git 用来保存项目的元数据和对象数据库的地方，这是 Git 中最重要的部分，从其它计算机克隆仓库时，拷贝的就是这里的数据。
-- **工作目录** 是对项目的某个版本独立提取出来的内容。 这些从 Git 仓库的压缩数据库中提取出来的文件，放在磁盘上供你使用或修改。
-- **暂存区域** 是一个文件，保存了下次将提交的文件列表信息，一般在 Git 仓库目录中
+以上 4 个区，进入每一个区成功之后会产生一个状态，再加上最初始的一个状态，一共是 5 种状态。以下我们把这 5 种状态分别命名为：
+
+- 未修改( Origin )
+- 已修改( Modified )
+- 已暂存( Staged )
+- 已提交( Committed )
+- 已推送( Pushed )
 
 ## 基本的 Git 工作流程如下：
 
@@ -28,6 +33,14 @@
 3. 提交更新，找到暂存区域的文件，将快照永久性存储到 Git 仓库目录
 
 ![](https://git-scm.com/book/en/v2/images/areas.png)
+
+```bash
+git add .   # 把所有文件放入 暂存区；
+
+git commit -m "comment"  # 把所有文件从 暂存区 提交进 本地仓库；
+
+git push # 把所有文件从 本地仓库 推送进 远程仓库。
+```
 
 ## 配置
 
@@ -49,4 +62,32 @@ git config --global pull.rebase true
 ```bash
 git config --list
 git config user.name # 查看某一项的值
+```
+
+## 查看撤销修改
+
+```bash
+git diff # 已修改，未暂存
+git diff --cached # 已暂存，未提交
+git diff master origin/master # 已提交，未推送
+
+# 撤销
+# 已修改，未暂存
+git checkout .
+# 或者
+git reset --hard
+
+# 已暂存，未提交
+git reset # 先撤掉add状态
+git checkout .
+# 或者
+git reset --hard
+
+# 已提交，未推送
+git reset --hard origin/master
+
+# 已推送
+git reset --hard HEAD^
+git push -f # 慎重！
+
 ```

@@ -1,8 +1,11 @@
 # Git 常用命令
 
-参考
+<details>
+<summary>参考 - 2020年04月06日</summary>
 
-- [GIT CHEAT SHEET](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf)
+- [Git 提交历史的修改删除合并等实践](https://zhuanlan.zhihu.com/p/31989869)
+
+</details>
 
 ## 一、新建代码库
 
@@ -88,6 +91,7 @@ git branch --set-upstream [branch][remote-branch] # 建立追踪关系，在现�
 git merge [branch] # 合并指定分支到当前分支
 git rebase <branch> # 衍合指定分支到当前分支
 git cherry-pick [commit] # 选择一个 commit，合并进当前分支
+git branch -m oldBranch newBranch # 重命名分支
 ```
 
 ## 六、标签
@@ -123,7 +127,7 @@ git diff --shortstat "@{0 day agp}" # 显示今天你写了多少航代码
 git show [commit] # 显示某次提交的元数据和内容变化
 git show --name-only [commit] # 显示某次提交发生变化的文件
 git show [commit]:[filename] # 显示某次提交时，某个文件的内容
-git reflog # 显示当前分支的最近几次提交
+git reflog # 查看当前分支所有操作历史，诸如历史提交记录，撤销，合并提交等详细历史记录
 ```
 
 ## 八、远程操作
@@ -131,6 +135,7 @@ git reflog # 显示当前分支的最近几次提交
 ```bash
 git fetch [remote] # 下载远程仓库的所有变动，注意这个时候是不会修改本地文件的
 git pull [remote][branch] # 拉取远程仓库的变化，并与本地分支合并
+git pull --rebase # 以 rebase 模式拉取
 git remote -v # 显示所有远程仓库
 git remote show [remote] # 显示某个远程仓库的信息
 git remote add [shortname][url] # 增加一个新的远程仓库，并命名
@@ -157,3 +162,65 @@ git reset [commit] # 重置当前分支的指针未指定 commit，同时重置�
 git reset --hard [commit] # 重置当前分支的 HEAD 未指定 commit，同时重置暂存区和工作区，与指定 commit 一致
 git reset --keep [commit] # 重置当前 HEAD 未指定 commit，但保持暂存区和工作区不变
 ```
+
+## 十、交互式编辑提交信息 git rebase -i
+
+需要用到的指令是 git rebase -i commitHash，commitHash 是 commitID，是需要合并的 commit 的前一个 commit 节点的 ID，
+
+![](img/gitrebase1.png)
+
+比如要修改最后三个 commit，那么这里的 commitHash 就是第四个 e8e56ae
+
+```bash
+git rebase -i e8e56ae
+```
+
+命令行终端会输出如下内容：
+
+![](img/gitrebase2.png)
+
+由远及近列出了我们期望处理的三个提交，前面 pick 代表的默认使用该提交 commit，我们现在可以按 i 进入编辑模式，修改该字段值，值可以如图中描述，经常使用的如下：
+
+1. pick：简写 p，启用该 commit；
+2. reword：简写 r，使用该 commit，但是修改提交信息，修改后可以继续编辑后面的提交信息；
+3. edit：简写 e，使用 commit，停止合并该 commit；
+4. squash：简写 s，使用该 commit，并将该 commit 并入前一 commit；
+5. drop：简写 d，移除该 commit；
+
+### 修改提交信息
+
+我们现在尝试修改最近一次的提交 commit 信息，将其前面 pick 修改成 reword：
+
+![](img/gitrebase3.png)
+
+esc 退出编辑 :wq 保存之后，即可修改之前指定的 commit 提交信息
+
+![](img/gitrebase4.png)
+
+保存之后会提示成功
+
+![](img/gitrebase5.png)
+
+### 合并历史提交
+
+前面修改 commit 成功，如果期望将多个提交合并成一个提交，使得整个提交历史更干净，如何处理呢？
+
+如果要将最后三个提交合并提交
+
+```bash
+git rebase -i e8e56ae
+
+# 或者
+
+git rebase -i head～3
+```
+
+然后修改 pick 值为 squash：
+
+![](img/gitrebase6.png)
+
+保存退出，会进入最终合并提交 commit 信息编辑状态，在这里会列出合并 commit 的所有 message，我们可以只保留第一次的 message
+
+保存之后提示成功，这样我们就将最后三条 commit 提交 压缩成一个提交，达到了整理提交信息的目的，不至于那么细碎。
+
+![](img/gitrebase8.png)
