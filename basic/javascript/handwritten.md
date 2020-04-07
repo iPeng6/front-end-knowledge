@@ -5,7 +5,7 @@
 ```js
 var xhr = new XMLHttpRequest()
 xhr.open('GET', url)
-xhr.onreadystatechange = function() {
+xhr.onreadystatechange = function () {
   if (xhr.readyState === 4 && xhr.status === 200) {
     console.log(xhr.responseText)
   }
@@ -29,7 +29,7 @@ function getCookie(objName) {
 //es6版
 function getCookies() {
   let cookies = {}
-  document.cookie.match(/\w+=\w+;/gi).forEach(item => {
+  document.cookie.match(/\w+=\w+;/gi).forEach((item) => {
     let [key, val] = item.split('=')
     cookies[key] = val.slice(0, -1)
   })
@@ -73,7 +73,7 @@ function add(a) {
   return function _add(b) {
     var sum = list.reduce((m, n) => m + n, b)
     clearTimeout(st)
-    st = setTimeout(function() {
+    st = setTimeout(function () {
       console.log(sum)
     }, 0)
     list.push(b)
@@ -92,7 +92,7 @@ add(1)(2)(3)(3)(3)
  * @param context   上下文this对象
  * @param args      动态参数
  */
-Function.prototype.myCall = function(context, ...args) {
+Function.prototype.myCall = function (context, ...args) {
   context = typeof context === 'object' ? context : window
   // 防止覆盖掉原有属性
   const key = Symbol()
@@ -109,7 +109,7 @@ Function.prototype.myCall = function(context, ...args) {
  * @param context   上下文this对象
  * @param args      参数数组
  */
-Function.prototype.myApply = function(context, args) {
+Function.prototype.myApply = function (context, args) {
   context = typeof context === 'object' ? context : window
   // 防止覆盖掉原有属性
   const key = Symbol()
@@ -126,7 +126,7 @@ Function.prototype.myApply = function(context, args) {
  * @param context     上下文
  * @returns {Function}
  */
-Function.prototype.myBind = function(context) {
+Function.prototype.myBind = function (context) {
   context = typeof context === 'object' ? context : window
   return (...args) => {
     this.call(context, ...args)
@@ -140,7 +140,7 @@ Function.prototype.myBind = function(context) {
 // 函数防抖实现
 function debounce(fn, delay) {
   let timer = null
-  return function() {
+  return function () {
     if (timer) clearTimeout(timer)
     timer = setTimeout(() => {
       fn.apply(this, arguments)
@@ -153,7 +153,7 @@ function throttle(fn, cycle) {
   let start = Date.now()
   let now
   let timer
-  return function() {
+  return function () {
     now = Date.now()
     clearTimeout(timer)
     if (now - start >= cycle) {
@@ -175,18 +175,18 @@ function jsonp(url: String, callback: String, params: Object) {
   var queryString =
     '?' +
     Object.keys(params)
-      .map(key => `${key}=${params[key]}`)
+      .map((key) => `${key}=${params[key]}`)
       .join('&')
 
   var script = document.createElement('script')
   script.src = url + queryString + '&callback=' + callback
   script.onerror =
     params.failure ||
-    function(err) {
+    function (err) {
       //console.log(err)
     }
 
-  window[callback] = params.success || function() {}
+  window[callback] = params.success || function () {}
   document.head.appendChild(script)
 }
 ```
@@ -199,7 +199,7 @@ function myTimeout(callback, delay) {
   var raf
   ;(function loop() {
     var now = Date.now()
-    raf = requestAnimationFrame(function() {
+    raf = requestAnimationFrame(function () {
       sum += Date.now() - now
       if (sum > delay) {
         callback()
@@ -216,7 +216,7 @@ function myClearTimeout(raf) {
   cancelAnimationFrame(raf)
 }
 
-var t = myTimeout(function() {
+var t = myTimeout(function () {
   console.log(1)
 }, 1000)
 ```
@@ -232,7 +232,7 @@ var t = myTimeout(function() {
 function flat(data) {
   let result = []
   function loop(arr) {
-    arr.forEach(d => {
+    arr.forEach((d) => {
       if (Array.isArray(d)) {
         loop(d)
       } else {
@@ -264,4 +264,62 @@ function myNew(fn, ...params) {
 
 ## 将一维数组随机分为 m 组，使得每一组个数尽量平均，例如[1,2,3,4,5] 分成 2 组得 [[3,1],[5,2,4]]
 
+```js
+function foo(arr, m) {
+  const result = new Array(m).fill(0).map(() => [])
+  let startIndex = 0
+
+  do {
+    const [getOne] = arr.splice(parseInt(Math.random() * arr.length), 1)
+    startIndex = startIndex % m
+    result[startIndex].push(getOne)
+    startIndex++
+  } while (arr.length > 0)
+
+  return result
+}
+console.log(foo([1, 2, 3, 4, 5], 2))
+console.log(foo([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3))
+console.log(foo([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], 3))
+```
+
 ## 实现金额数字千分位表示
+
+```js
+// 递归方案
+function foo(num) {
+  const [intpart, decimalPart] = num.toString().split('.')
+  const arr = []
+
+  function loop(str) {
+    arr.push(str.slice(-3))
+    const remainstr = str.substr(0, str.length - 3)
+    if (remainstr.length > 3) {
+      loop(remainstr)
+    } else {
+      if (remainstr != '') {
+        arr.push(remainstr)
+      }
+    }
+  }
+  loop(intpart)
+  return arr.reverse().join(',') + (!!decimalPart ? '.' + decimalPart : '')
+}
+
+// for循环方案
+function foo(num) {
+  const [intPart, decimalPart] = num.toString().split('.')
+
+  const arr = Array.from(intPart).reverse()
+  for (let i = 1; i < intPart.length / 3; i++) {
+    arr.splice(3 * i + i - 1, 0, ',')
+  }
+  return arr.reverse().join('') + (!!decimalPart ? '.' + decimalPart : '')
+}
+
+console.log(foo(12))
+console.log(foo(0.45))
+console.log(foo(12345.45))
+console.log(foo(123456.45))
+console.log(foo(1234567.45))
+```
