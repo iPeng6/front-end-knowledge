@@ -1,7 +1,6 @@
 # HTML
 
 - [你需要知道的 HTML 知识](https://juejin.im/post/5e09d52c51882549333fbed6)
-- [图标方案](https://github.com/kaola-fed/blog/issues/107)
 - [前端面试-HTML5](https://juejin.im/post/5df3b019518825122671c068)
 
 ## 标准
@@ -41,4 +40,4 @@
 
 ## H5 新增
 
-![](https://upload-images.jianshu.io/upload_images/7166236-7416a45973370997.png?imageMogr2/auto-orient/strip|imageView2/2/w/910/format/webp)
+![](img/h5new.webp)

@@ -323,3 +323,11 @@ console.log(foo(12345.45))
 console.log(foo(123456.45))
 console.log(foo(1234567.45))
 ```
+
+## 找出一个字符串中重复出现的子序列及次数
+
+```js
+function find(str) {}
+
+const str = 'asdfsdfgadfdsfsdfgasdfadf'
+```

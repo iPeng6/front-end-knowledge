@@ -4,3 +4,4 @@
 - [Inside look at modern web browser](https://developers.google.com/web/updates/2018/09/inside-browser-part1) [[中文]](https://juejin.im/post/5c347dace51d45504451480d)
 - [how javascript works](https://github.com/Troland/how-javascript-works)
 - [面试环节：在浏览器输入 URL 回车之后发生了什么？（超详细版）](https://zhuanlan.zhihu.com/p/82956784)
+- [从输入 URL 到页面加载的过程？如何由一道题完善自己的前端知识体系！](http://www.dailichun.com/2018/03/12/whenyouenteraurl.html)
