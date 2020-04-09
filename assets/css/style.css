@@ -7,7 +7,9 @@ table {
 }
 
 .content {
-  padding: 16px 24px 16px 16px;
+  padding-top: 16px;
+  padding-right: 24px;
+  padding-left: 16px;
 }
 
 .markdown-section {

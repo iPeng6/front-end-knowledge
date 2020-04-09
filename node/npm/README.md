@@ -83,3 +83,29 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
 cnpm install [name]
 
 ```
+
+npm 和 yarn 转换淘宝源和官方源
+
+```bash
+npm config set registry http://registry.npm.taobao.org/
+npm config set registry https://registry.npmjs.org/
+
+yarn config set registry http://registry.npm.taobao.org/
+yarn config set registry https://registry.npmjs.org/
+```
+
+npm 和 yarn 设置代理
+
+```bash
+npm config set proxy http://127.0.0.1:8080
+npm config set https-proxy http://127.0.0.1:8080
+
+npm config delete proxy
+npm config delete https-proxy
+
+yarn config set proxy http://127.0.0.1:8080
+yarn config set https-proxy http://127.0.0.1:8080
+
+yarn config delete proxy
+yarn config delete https-proxy
+```
