@@ -1,1 +1,21 @@
 # 跨域
+
+参考
+
+- [跨域](https://juejin.im/post/59c132415188256bb018e825)
+
+## 一、why
+
+同源: 如果两个页面拥有相同的协议（protocol），端口（port）和主机（host），那么这两个页面就属于同一个源（origin）。
+
+同源策略：
+
+- 通常浏览器允许进行跨域写操作（Cross-origin writes），如链接，重定向；
+- 通常浏览器允许跨域资源嵌入（Cross-origin embedding），如 img、script 标签；
+- 通常浏览器不允许跨域读操作（Cross-origin reads）。
+
+## 二、解决方案
+
+1. jsonp
+2. cors
+3. postMessage

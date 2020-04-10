@@ -13,3 +13,11 @@
 ```js
 Math.abs(0.1 + 0.2 - 0.3) < Number.EPSILON
 ```
+
+## 箭头函数跟普通函数区别
+
+1. 箭头函数不会创建自己的 this，所以它没有自己的 this，它只会从自己的作用域链的上一层继承 this。
+2. 箭头函数里的 this 指向永远不会变，.call()/.apply()/.bind() 也无法改变箭头函数中 this 的指向
+3. 箭头函数没有自己的 arguments
+4. 箭头函数不能作为构造函数使用，也没有 prototype 属性
+5. 箭头函数不能用作 Generator 函数，不能使用 yeild 关键字

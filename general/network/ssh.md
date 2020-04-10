@@ -33,9 +33,6 @@ ssh-add -K ~/.ssh/id_rsa.github
 
 > 使用 macOS Sierra 10.12.2 以上版本 需要修改配置文件 `~/.ssh/config`
 
-AddKeysToAgent 自动加载到 ssh-agent\
-UseKeychain 使用 keychain 管理密码
-
 ```text
 Host github
     HostName github.com
@@ -50,6 +47,9 @@ Host gitlab
     UseKeychain yes
     IdentityFile /Users/you/.ssh/id_rsa
 ```
+
+AddKeysToAgent 自动加载到 ssh-agent\
+UseKeychain 使用 keychain 管理密码
 
 4. 重启 ssh 服务
 
