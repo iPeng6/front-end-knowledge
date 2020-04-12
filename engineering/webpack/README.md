@@ -48,4 +48,4 @@
   - tree-shaking
   - scope hosting 作用域提升
 - babel 配置的优化
-  - @babel/plugin-transform-runtime
+  - @babel/plugin-transform-runtime 减少辅助函数重复注入

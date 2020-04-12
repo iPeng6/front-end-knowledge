@@ -127,6 +127,7 @@
       - [Debug with Devtools](/frame/react/performance/debug-react-performance.md)
   - [Vue](/frame/vue/README.md)
 - [跨平台](/cross-platform/README.md)
+  - [Hybrid](/cross-platform/hybrid.md)
   - [React Native](/cross-platform/rn/README.md)
     - [安装配置](/cross-platform/rn/start.md)
     - [安卓签名](/cross-platform/rn/androidsign.md)
