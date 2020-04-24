@@ -1,0 +1,20 @@
+# editorconfig
+
+vue cli
+
+```
+[{*.js, *.vue}]
+charset=utf-8
+end_of_line=lf
+insert_final_newline=false
+indent_style=space
+indent_size=2
+
+[{.babelrc,.stylelintrc,.eslintrc,jest.config,*.json,*.jsb3,*.jsb2,*.bowerrc}]
+indent_style=space
+indent_size=2
+
+[{.analysis_options,*.yml,*.yaml}]
+indent_style=space
+indent_size=2
+```
