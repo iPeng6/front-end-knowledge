@@ -6,10 +6,15 @@ table {
   font-size: 16px;
 }
 
+.sidebar {
+  width: 22vw;
+}
+
 .content {
   padding-top: 16px;
   padding-right: 24px;
   padding-left: 16px;
+  left: 22vw;
 }
 
 .markdown-section {
@@ -18,7 +23,7 @@ table {
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
   margin-bottom: 16px;
   background: #fff;
-  padding: 54px 100px;
+  padding: 3vw 5vw;
   max-width: 1024px;
 }
 
@@ -49,15 +54,15 @@ table {
 }
 
 .markdown-section h3 span {
-  color: #ec5545;
+  color: #880d00;
 }
 
 .markdown-section h4 span {
-  color: #357b2d;
+  color: #b900ff;
 }
 
 .markdown-section h5 span {
-  color: #c079db;
+  color: #357b2d;
 }
 
 .markdown-section code {
@@ -82,33 +87,21 @@ table {
 .sidebar-nav li > a[href^='#/']:not([href*='?id=']):not(:only-child) {
   background-image: var(
     --sidebar-nav-pagelink-background-image--collapse,
-    var(
-      --sidebar-nav-pagelink-background-image--loaded,
-      var(--sidebar-nav-pagelink-background-image)
-    )
+    var(--sidebar-nav-pagelink-background-image--loaded, var(--sidebar-nav-pagelink-background-image))
   );
   background-position: var(
     --sidebar-nav-pagelink-background-position--collapse,
-    var(
-      --sidebar-nav-pagelink-background-position--loaded,
-      var(--sidebar-nav-pagelink-background-image)
-    )
+    var(--sidebar-nav-pagelink-background-position--loaded, var(--sidebar-nav-pagelink-background-image))
   );
 }
 
 .sidebar-nav li.open > a[href^='#/']:not([href*='?id=']):not(:only-child) {
   background-image: var(
     --sidebar-nav-pagelink-background-image--active,
-    var(
-      --sidebar-nav-pagelink-background-image--loaded,
-      var(--sidebar-nav-pagelink-background-image)
-    )
+    var(--sidebar-nav-pagelink-background-image--loaded, var(--sidebar-nav-pagelink-background-image))
   );
   background-position: var(
     --sidebar-nav-pagelink-background-position--active,
-    var(
-      --sidebar-nav-pagelink-background-position--loaded,
-      var(--sidebar-nav-pagelink-background-image)
-    )
+    var(--sidebar-nav-pagelink-background-position--loaded, var(--sidebar-nav-pagelink-background-image))
   );
 }
