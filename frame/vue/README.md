@@ -10,6 +10,10 @@ vue nextTick
 - [全面解析 Vue.nextTick 实现原理](https://juejin.im/entry/5aced80b518825482e39441e)
 - [vm.\$nextTick](https://nlrx-wjc.github.io/Learn-Vue-Source-Code/instanceMethods/lifecycle.html#_3-vm-nexttick)
 
+keep-alive
+
+- [前端进阶算法 3：从浏览器缓存淘汰策略和 Vue 的 keep-alive 学习 LRU 算法](https://github.com/sisterAn/JavaScript-Algorithms/issues/9)
+
 ## 组件间通信
 
 - props/\$emit

@@ -10,6 +10,7 @@
 
 - [Dark Mode in CSS](https://css-tricks.com/dark-modes-with-css/)
 - [prefers-color-scheme: CSS Media Query](https://davidwalsh.name/prefers-color-scheme)
+- [Mac Chrome 禁用黑暗模式](/adapter/darkmode.md)
 
 全站变灰
 
