@@ -8,6 +8,7 @@ table {
 
 .sidebar {
   width: 22vw;
+  min-width: 200px;
 }
 
 .content {
