@@ -1,7 +1,7 @@
 # 编码规范
 
 <details>
-<summary>参考 - 2019年04月19日</summary>
+<summary>引用参考 - 2019年04月19日</summary>
 
 - [clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript)
 - [The Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
@@ -25,7 +25,7 @@
 - **函数**：因为 `this` 工作原理的关系，使用箭头函数，比如在对象方法或构造函数中。除非您有特定的理由使用常规函数。将它们声明为 `const`，并尽可能使用隐式返回。可以随意使用嵌套函数将辅助函数隐藏到其他代码中。
   ```js
   const test = (a, b) => a + b
-  const another = a => a + 2
+  const another = (a) => a + 2
   ```
 - **命名**：函数命名，变量命名和方法命名始终以小写字母开头（除非您将它们标识为私有），并且使用 camelCased(驼峰命名) 。 只有构造函数和类名才应该以大写开始。 如果您使用的框架需要特定约定，请相应地改变您的习惯。 文件名应全部为小写，单词用 `_` 下划线分隔，遵守复数命名法 `scripts、images`。
 - **空格**：明智地使用空格来提高可读性：

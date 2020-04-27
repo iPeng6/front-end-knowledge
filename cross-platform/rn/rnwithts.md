@@ -1,7 +1,7 @@
 # React Native With Typescript
 
 <details>
-<summary>参考 - 2019年06月15日</summary>
+<summary>引用参考 - 2019年06月15日</summary>
 
 - [Using TypeScript with React Native](http://facebook.github.io/react-native/blog/2018/05/07/using-typescript-with-react-native)
 - [Compiler Options](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
@@ -51,6 +51,6 @@ module.exports = {
   },
   getSourceExts() {
     return ['ts', 'tsx', 'js', 'jsx']
-  }
+  },
 }
 ```

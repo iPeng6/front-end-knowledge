@@ -1,11 +1,11 @@
 # React Native with wechat
 
 <details>
-<summary>参考 - 2019年6月19日</summary>
+<summary>引用参考 - 2019年6月19日</summary>
 
 - [链接原生库](https://reactnative.cn/docs/linking-libraries-ios/)
 - [react-native-wechat](https://github.com/yorkie/react-native-wechat)
-- [使用react-native-wechat完成微信登录、分享和支付](https://juejin.im/entry/5b65baffe51d45348a3011b9)
+- [使用 react-native-wechat 完成微信登录、分享和支付](https://juejin.im/entry/5b65baffe51d45348a3011b9)
 </details>
 
 ## 账号
@@ -122,10 +122,10 @@ WeChat.registerApp('wx517b1a5aaaaaaaa')
 
 ```js
 <Button
-  title='分享'
+  title="分享"
   onPress={() => {
     WeChat.isWXAppInstalled()
-      .then(isInstalled => {
+      .then((isInstalled) => {
         if (isInstalled) {
           WeChat.shareToSession({
             // type: 'imageFile',
@@ -133,15 +133,16 @@ WeChat.registerApp('wx517b1a5aaaaaaaa')
             title: '邀请好友',
             description: 'hehe',
             // imageUrl: Image.resolveAssetSource(shareImg).uri,
-            imageUrl: 'https://user-images.githubusercontent.com/7380874/58780231-e61d8500-860a-11e9-873e-4414b0f842e1.png'
-          }).catch(error => {
+            imageUrl:
+              'https://user-images.githubusercontent.com/7380874/58780231-e61d8500-860a-11e9-873e-4414b0f842e1.png',
+          }).catch((error) => {
             Alert.alert(JSON.stringify(error))
           })
         } else {
           Alert.alert('您还没有安装微信，请安装微信之后再试')
         }
       })
-      .catch(err => {
+      .catch((err) => {
         Alert.alert(JSON.stringify(error))
       })
   }}

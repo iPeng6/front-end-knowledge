@@ -1,7 +1,7 @@
 # Grid 布局
 
 <details>
-<summary>参考</summary>
+<summary>引用参考</summary>
 
 - [CSS Grid 网格布局教程](https://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html)
 - [写给自己看的 display: grid 布局教程](https://www.zhangxinxu.com/wordpress/2018/11/display-grid-css-css3/?shrink=1#grid-template)
@@ -291,9 +291,9 @@ grid-template-columns 属性和 grid-template-rows 属性里面，还可以使�
   export default {
     data() {
       return {
-        dataType: 'c1'
+        dataType: 'c1',
       }
-    }
+    },
   }
 </script>
 <style>
@@ -449,64 +449,24 @@ grid-auto-columns 属性和 grid-auto-rows 属性用来设置，浏览器自动�
   <div class="grid-layout-demo5">
     <section>
       justify-items:
-      <input
-        type="radio"
-        value="stretch"
-        v-model="justifyItems"
-        id="demo5-justify-items-stretch"
-      />
+      <input type="radio" value="stretch" v-model="justifyItems" id="demo5-justify-items-stretch" />
       <label for="demo5-justify-items-stretch">stretch</label>
-      <input
-        type="radio"
-        value="start"
-        v-model="justifyItems"
-        id="demo5-justify-items-start"
-      />
+      <input type="radio" value="start" v-model="justifyItems" id="demo5-justify-items-start" />
       <label for="demo5-justify-items-start">start</label>
-      <input
-        type="radio"
-        value="end"
-        v-model="justifyItems"
-        id="demo5-justify-items-end"
-      />
+      <input type="radio" value="end" v-model="justifyItems" id="demo5-justify-items-end" />
       <label for="demo5-justify-items-end">end</label>
-      <input
-        type="radio"
-        value="center"
-        v-model="justifyItems"
-        id="demo5-justify-items-center"
-      />
+      <input type="radio" value="center" v-model="justifyItems" id="demo5-justify-items-center" />
       <label for="demo5-justify-items-center">center</label>
     </section>
     <section>
       align-items:
-      <input
-        type="radio"
-        value="stretch"
-        v-model="alignItems"
-        id="demo5-align-items-stretch"
-      />
+      <input type="radio" value="stretch" v-model="alignItems" id="demo5-align-items-stretch" />
       <label for="demo5-align-items-stretch">stretch</label>
-      <input
-        type="radio"
-        value="start"
-        v-model="alignItems"
-        id="demo5-align-items-start"
-      />
+      <input type="radio" value="start" v-model="alignItems" id="demo5-align-items-start" />
       <label for="demo5-align-items-start">start</label>
-      <input
-        type="radio"
-        value="end"
-        v-model="alignItems"
-        id="demo5-align-items-end"
-      />
+      <input type="radio" value="end" v-model="alignItems" id="demo5-align-items-end" />
       <label for="demo5-align-items-end">end</label>
-      <input
-        type="radio"
-        value="center"
-        v-model="alignItems"
-        id="demo5-align-items-center"
-      />
+      <input type="radio" value="center" v-model="alignItems" id="demo5-align-items-center" />
       <label for="demo5-align-items-center">center</label>
     </section>
     <div class="container" :style="{justifyItems, alignItems}">
@@ -519,9 +479,9 @@ grid-auto-columns 属性和 grid-auto-rows 属性用来设置，浏览器自动�
     data() {
       return {
         justifyItems: 'stretch',
-        alignItems: 'stretch'
+        alignItems: 'stretch',
       }
-    }
+    },
   }
 </script>
 <style>
@@ -582,10 +542,8 @@ grid-auto-columns 属性和 grid-auto-rows 属性用来设置，浏览器自动�
 
 ```css
 .container {
-  justify-content: stretch | start | end | center | space-between | space-around
-    | space-evenly;
-  align-content: stretch | start | end | center | space-between | space-around |
-    space-evenly;
+  justify-content: stretch | start | end | center | space-between | space-around | space-evenly;
+  align-content: stretch | start | end | center | space-between | space-around | space-evenly;
 }
 .container {
   place-content: <align-content> / <justify-content>;
@@ -598,106 +556,36 @@ grid-auto-columns 属性和 grid-auto-rows 属性用来设置，浏览器自动�
   <div class="grid-layout-demo6">
     <section>
       justify-content:
-      <input
-        type="radio"
-        value="stretch"
-        v-model="justifyContent"
-        id="demo5-justify-content-stretch"
-      />
+      <input type="radio" value="stretch" v-model="justifyContent" id="demo5-justify-content-stretch" />
       <label for="demo5-justify-content-stretch">stretch</label>
-      <input
-        type="radio"
-        value="start"
-        v-model="justifyContent"
-        id="demo5-justify-content-start"
-      />
+      <input type="radio" value="start" v-model="justifyContent" id="demo5-justify-content-start" />
       <label for="demo5-justify-content-start">start</label>
-      <input
-        type="radio"
-        value="end"
-        v-model="justifyContent"
-        id="demo5-justify-content-end"
-      />
+      <input type="radio" value="end" v-model="justifyContent" id="demo5-justify-content-end" />
       <label for="demo5-justify-content-end">end</label>
-      <input
-        type="radio"
-        value="center"
-        v-model="justifyContent"
-        id="demo5-justify-content-center"
-      />
+      <input type="radio" value="center" v-model="justifyContent" id="demo5-justify-content-center" />
       <label for="demo5-justify-content-center">center</label>
-      <input
-        type="radio"
-        value="space-between"
-        v-model="justifyContent"
-        id="demo5-justify-content-space-between"
-      />
+      <input type="radio" value="space-between" v-model="justifyContent" id="demo5-justify-content-space-between" />
       <label for="demo5-justify-content-space-between">space-between</label>
-      <input
-        type="radio"
-        value="space-around"
-        v-model="justifyContent"
-        id="demo5-justify-content-space-around"
-      />
+      <input type="radio" value="space-around" v-model="justifyContent" id="demo5-justify-content-space-around" />
       <label for="demo5-justify-content-space-around">space-around</label>
-      <input
-        type="radio"
-        value="space-evenly"
-        v-model="justifyContent"
-        id="demo5-justify-content-space-evenly"
-      />
+      <input type="radio" value="space-evenly" v-model="justifyContent" id="demo5-justify-content-space-evenly" />
       <label for="demo5-justify-content-space-evenly">space-evenly</label>
     </section>
     <section>
       align-content:
-      <input
-        type="radio"
-        value="stretch"
-        v-model="alignContent"
-        id="demo5-align-content-stretch"
-      />
+      <input type="radio" value="stretch" v-model="alignContent" id="demo5-align-content-stretch" />
       <label for="demo5-align-content-stretch">stretch</label>
-      <input
-        type="radio"
-        value="start"
-        v-model="alignContent"
-        id="demo5-align-content-start"
-      />
+      <input type="radio" value="start" v-model="alignContent" id="demo5-align-content-start" />
       <label for="demo5-align-content-start">start</label>
-      <input
-        type="radio"
-        value="end"
-        v-model="alignContent"
-        id="demo5-align-content-end"
-      />
+      <input type="radio" value="end" v-model="alignContent" id="demo5-align-content-end" />
       <label for="demo5-align-content-end">end</label>
-      <input
-        type="radio"
-        value="center"
-        v-model="alignContent"
-        id="demo5-align-content-center"
-      />
+      <input type="radio" value="center" v-model="alignContent" id="demo5-align-content-center" />
       <label for="demo5-align-content-center">center</label>
-      <input
-        type="radio"
-        value="space-between"
-        v-model="alignContent"
-        id="demo5-align-content-space-between"
-      />
+      <input type="radio" value="space-between" v-model="alignContent" id="demo5-align-content-space-between" />
       <label for="demo5-align-content-space-between">space-between</label>
-      <input
-        type="radio"
-        value="space-around"
-        v-model="alignContent"
-        id="demo5-align-content-space-around"
-      />
+      <input type="radio" value="space-around" v-model="alignContent" id="demo5-align-content-space-around" />
       <label for="demo5-align-content-space-around">space-around</label>
-      <input
-        type="radio"
-        value="space-evenly"
-        v-model="alignContent"
-        id="demo5-align-content-space-evenly"
-      />
+      <input type="radio" value="space-evenly" v-model="alignContent" id="demo5-align-content-space-evenly" />
       <label for="demo5-align-content-space-evenly">space-evenly</label>
     </section>
     <div class="container" :style="{justifyContent, alignContent}">
@@ -710,9 +598,9 @@ grid-auto-columns 属性和 grid-auto-rows 属性用来设置，浏览器自动�
     data() {
       return {
         justifyContent: 'stretch',
-        alignContent: 'stretch'
+        alignContent: 'stretch',
       }
-    }
+    },
   }
 </script>
 <style>
@@ -758,30 +646,22 @@ grid-auto-columns 属性和 grid-auto-rows 属性用来设置，浏览器自动�
 <template>
   <div class="grid-layout-demo8">
     <section>
-      <input
-        type="radio"
-        value="row"
-        v-model="flow"
-        id="demo8-grid-auto-flow-row"
-      /><label for="demo8-grid-auto-flow-row">row</label>
-      <input
-        type="radio"
-        value="column"
-        v-model="flow"
-        id="demo8-grid-auto-flow-column"
-      /><label for="demo8-grid-auto-flow-column">column</label>
-      <input
-        type="radio"
-        value="row dense"
-        v-model="flow"
-        id="demo8-grid-auto-flow-row-dense"
-      /><label for="demo8-grid-auto-flow-row-dense">row dense</label>
-      <input
-        type="radio"
-        value="column dense"
-        v-model="flow"
-        id="demo8-grid-auto-flow-column-dense"
-      /><label for="demo8-grid-auto-flow-column-dense">column dense</label>
+      <input type="radio" value="row" v-model="flow" id="demo8-grid-auto-flow-row" /><label
+        for="demo8-grid-auto-flow-row"
+        >row</label
+      >
+      <input type="radio" value="column" v-model="flow" id="demo8-grid-auto-flow-column" /><label
+        for="demo8-grid-auto-flow-column"
+        >column</label
+      >
+      <input type="radio" value="row dense" v-model="flow" id="demo8-grid-auto-flow-row-dense" /><label
+        for="demo8-grid-auto-flow-row-dense"
+        >row dense</label
+      >
+      <input type="radio" value="column dense" v-model="flow" id="demo8-grid-auto-flow-column-dense" /><label
+        for="demo8-grid-auto-flow-column-dense"
+        >column dense</label
+      >
     </section>
     <div class="container" :style="{gridAutoFlow:flow}">
       <div v-for="n in 7" :class="'item-'+n">{{n}}</div>
@@ -792,9 +672,9 @@ grid-auto-columns 属性和 grid-auto-rows 属性用来设置，浏览器自动�
   export default {
     data() {
       return {
-        flow: 'row'
+        flow: 'row',
       }
-    }
+    },
   }
 </script>
 <style>

@@ -1,7 +1,7 @@
 # HTTP/2
 
 <details>
-<summary>参考 - 2019年04月17日</summary>
+<summary>引用参考 - 2019年04月17日</summary>
 
 - [标准规范 RFC 7540](https://httpwg.org/specs/rfc7540.html)
 - [HTTP2 详解](https://juejin.im/post/5b88a4f56fb9a01a0b31a67e)

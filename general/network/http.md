@@ -1,7 +1,7 @@
 # HTTP
 
 <details>
-<summary>参考 - 2019年04月17日</summary>
+<summary>引用参考 - 2019年04月17日</summary>
 
 - [标准规范文档](https://httpwg.org/specs/)
 - [MDN HTTP 的发展](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP)

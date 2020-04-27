@@ -1,7 +1,7 @@
 # OAuth2.0
 
 <details>
-<summary>参考 - 2020年03月22日</summary>
+<summary>引用参考 - 2020年03月22日</summary>
 
 - [微信网页授权](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html)
 - [OAuth 2.0 的四种方式](http://www.ruanyifeng.com/blog/2019/04/oauth-grant-types.html)

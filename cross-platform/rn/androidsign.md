@@ -1,7 +1,7 @@
 # 安卓签名
 
 <details>
-<summary>参考 - 2019年05月21日</summary>
+<summary>引用参考 - 2019年05月21日</summary>
 
 - [打包 APK](https://reactnative.cn/docs/signed-apk-android/)
 - [签署您的应用](https://developer.android.com/studio/publish/app-signing)

@@ -1,7 +1,7 @@
 # 安卓 linux 服务器打包
 
 <details>
-<summary>参考 - 2019年09年15日</summary>
+<summary>引用参考 - 2019年09年15日</summary>
 
 - [Linux 服务器搭建 Jenkins 自动化打包](https://fenglincanyi.github.io/2018/02/28/Linux服务器搭建Jenkins自动化打包/)
 

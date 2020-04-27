@@ -1,7 +1,7 @@
 # 命令
 
 <details>
-<summary>参考 - 2019年6月21日</summary>
+<summary>引用参考 - 2019年6月21日</summary>
 
 - [the-art-of-command-line](https://github.com/jlevy/the-art-of-command-line)
 - [学会使用命令帮助](https://linuxtools-rst.readthedocs.io/zh_CN/latest/base/01_use_man.html)

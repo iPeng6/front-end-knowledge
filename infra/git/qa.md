@@ -23,7 +23,7 @@
 ## 改提交人信息
 
 <details>
-<summary>参考 - 2019年04月20日</summary>
+<summary>引用参考 - 2019年04月20日</summary>
 
 - [Changing author info](https://help.github.com/en/articles/changing-author-info)
 

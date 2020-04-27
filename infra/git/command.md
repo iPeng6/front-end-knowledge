@@ -1,7 +1,7 @@
 # Git 常用命令
 
 <details>
-<summary>参考 - 2020年04月06日</summary>
+<summary>引用参考 - 2020年04月06日</summary>
 
 - [Git 提交历史的修改删除合并等实践](https://zhuanlan.zhihu.com/p/31989869)
 

@@ -1,7 +1,7 @@
 # 启动屏&应用图标
 
 <details>
-<summary>参考 - 2019年09月24日</summary>
+<summary>引用参考 - 2019年09月24日</summary>
 
 - [Ape Tools - Image Gorilla](https://apetools.webprofusion.com/#/tools/imagegorilla)
 - [图标工厂](https://icon.wuruihong.com/)
@@ -214,7 +214,7 @@ import { NativeModules } from 'react-native'
 export const Splash = NativeModules.SplashScreen
 
 export default {
-  Splash
+  Splash,
 }
 
 // src/hooks/useSplash.ts

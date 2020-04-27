@@ -1,7 +1,7 @@
 # 哈希表
 
 <details>
-<summary>参考 - 2020年01月06日</summary>
+<summary>引用参考 - 2020年01月06日</summary>
 
 - [漫画：什么是 HashMap？](https://zhuanlan.zhihu.com/p/31610616)
 - [HashMap 和 HashTable 到底哪不同？](https://www.cnblogs.com/xinzhao/p/5644175.html)

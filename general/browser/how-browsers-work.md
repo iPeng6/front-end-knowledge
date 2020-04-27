@@ -1,7 +1,7 @@
 # 浏览器是如何工作的
 
 <details>
-<summary>参考</summary>
+<summary>引用参考</summary>
 
 - [how browsers work](https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork)
 - [认识 V8 引擎](https://zhuanlan.zhihu.com/p/27628685)
@@ -183,9 +183,7 @@ function demo(name) {
       "id": { "type": "Identifier", "start": 9, "end": 13, "name": "demo" },
       "expression": false,
       "generator": false,
-      "params": [
-        { "type": "Identifier", "start": 14, "end": 18, "name": "name" }
-      ],
+      "params": [{ "type": "Identifier", "start": 14, "end": 18, "name": "name" }],
       "body": {
         "type": "BlockStatement",
         "start": 20,
@@ -217,9 +215,7 @@ function demo(name) {
                 },
                 "computed": false
               },
-              "arguments": [
-                { "type": "Identifier", "start": 38, "end": 42, "name": "name" }
-              ]
+              "arguments": [{ "type": "Identifier", "start": 38, "end": 42, "name": "name" }]
             }
           }
         ]

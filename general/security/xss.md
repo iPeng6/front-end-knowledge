@@ -1,7 +1,13 @@
 # XSS
 
+<details>
+<summary>引用参考 - 2020/04/27</summary>
+
 - [【译文】了解 XSS 攻击](https://zhuanlan.zhihu.com/p/21308080)
 - [如何让前端更安全？——XSS 攻击和防御详解](https://mp.weixin.qq.com/s/6ChuUdOm7vej8vQ3dbC8fw?)
+- [前端安全系列（一）：如何防止 XSS 攻击？](https://tech.meituan.com/2018/09/27/fe-security.html) - _李阳 2018 年 09 月 27 日_
+
+</details>
 
 ## 一、什么是 XSS
 

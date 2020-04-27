@@ -1,7 +1,7 @@
 # Git
 
 <details>
-<summary>参考 - 2019年09月14日</summary>
+<summary>引用参考 - 2019年09月14日</summary>
 
 - [代码合并：Merge、Rebase 的选择](https://github.com/geeeeeeeeek/git-recipes/wiki/5.1-%E4%BB%A3%E7%A0%81%E5%90%88%E5%B9%B6%EF%BC%9AMerge%E3%80%81Rebase-%E7%9A%84%E9%80%89%E6%8B%A9)
 - [git book](https://git-scm.com/book/en/v2) [[中文]](https://git-scm.com/book/zh/v2)

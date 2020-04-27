@@ -104,6 +104,7 @@
   - [SVG](/graphic/svg.md)
   - [WebGL](/graphic/webgl.md)
   - [图标技术](/graphic/icon.md)
+  - [图片处理](/graphic/pichandle.md)
 - [Node](/node/README.md)
   - [手册](/node/node/README.md)
     - [基础架构](/node/node/infrastructure.md)

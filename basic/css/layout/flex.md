@@ -1,7 +1,7 @@
 # Flex 布局
 
 <details>
-<summary>参考</summary>
+<summary>引用参考</summary>
 
 - [30 分钟学会 Flex 布局](https://zhuanlan.zhihu.com/p/25303493)
 
@@ -252,8 +252,7 @@ baseline: 项目的第一行文字的基线对齐
 
 ```css
 .container {
-  align-content: flex-start | flex-end | center | space-between | space-around |
-    stretch;
+  align-content: flex-start | flex-end | center | space-between | space-around | stretch;
 }
 ```
 

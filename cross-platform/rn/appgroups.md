@@ -1,10 +1,10 @@
-# App Group 跨App、扩展服务共享数据
+# App Group 跨 App、扩展服务共享数据
 
 <details>
-<summary>参考 - 2019年10月10日</summary>
+<summary>引用参考 - 2019年10月10日</summary>
 
-- [App Group---APP之间数据共享](https://www.jianshu.com/p/4b5a7b661aa5)
-- [App Groups简单使用](https://www.jianshu.com/p/f9c2a435a483)
+- [App Group---APP 之间数据共享](https://www.jianshu.com/p/4b5a7b661aa5)
+- [App Groups 简单使用](https://www.jianshu.com/p/f9c2a435a483)
 
 </details>
 
@@ -12,12 +12,12 @@
 
 需求
 
-1. 公司两个app，一个app登录之后，另一个app可以免登录
-2. 同一个app使用通知扩展服务（Notification Service Extension），当app处于后台或被杀死之后，依然可以拿到app的共享数据（本文初衷就是为了拿到app的极光regid）
+1. 公司两个 app，一个 app 登录之后，另一个 app 可以免登录
+2. 同一个 app 使用通知扩展服务（Notification Service Extension），当 app 处于后台或被杀死之后，依然可以拿到 app 的共享数据（本文初衷就是为了拿到 app 的极光 regid）
 
 ## What
 
-iOS8 之后添加了App Groups，应用可以通过App Groups共享数据，原文如下：
+iOS8 之后添加了 App Groups，应用可以通过 App Groups 共享数据，原文如下：
 
 > AppGroup allows data sharing between two different apps or even app and widgets by creating one common shared path (like document directory). Data saved over there can be accessed by any app which is associated with that particular AppGroup. It is an offline data sharing between apps.
 
@@ -30,24 +30,21 @@ iOS8 之后添加了App Groups，应用可以通过App Groups共享数据，原�
 ![](img/appgroups0.png)
 ![](img/appgroups1.png)
 
-
 Identifiers + -> Register a New Identifier -> App Groups -> continue
 
 ![](img/appgroups3.png)
 
-这里一共有两个选项，第一个是我们这个app group的描述，第二个是我们app group的id。这个id默认是要group.打头，并且是不能去掉的。
-
+这里一共有两个选项，第一个是我们这个 app group 的描述，第二个是我们 app group 的 id。这个 id 默认是要 group.打头，并且是不能去掉的。
 
 ### 二、关联 Group 配置
 
-现在在 Identifiers App IDs 下找到需要关联的 app id，编辑App Groups 选上刚才新建的groud id
+现在在 Identifiers App IDs 下找到需要关联的 app id，编辑 App Groups 选上刚才新建的 groud id
 
 ![](img/appgroups2.png)
 
 在 xcode 中找到 TARGETS -> Capabilities -> App Groups 选择 Group Id
 
 ![](img/appgroups4.png)
-
 
 ## Usage
 

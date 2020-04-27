@@ -1,7 +1,7 @@
 # 代码片段
 
 <details>
-<summary>参考 - 2019年09月10日</summary>
+<summary>引用参考 - 2019年09月10日</summary>
 
 - [Snippets in Visual Studio Code](https://code.visualstudio.com/docs/editor/userdefinedsnippets)
 </details>

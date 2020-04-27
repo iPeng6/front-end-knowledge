@@ -1,7 +1,7 @@
 # DNS
 
 <details>
-<summary>参考 - 2019年04月14日</summary>
+<summary>引用参考 - 2019年04月14日</summary>
 
 - [DNS: Why It’s Important and How It Works](https://baidu.com/blog/dns-why-its-important-how-it-works/)
 - [What is DNS](https://aws.amazon.com/cn/route53/what-is-dns/)

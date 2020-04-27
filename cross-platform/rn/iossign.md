@@ -1,7 +1,7 @@
 # 苹果账号证书
 
 <details>
-<summary>参考 - 2019年09月25日</summary>
+<summary>引用参考 - 2019年09月25日</summary>
 
 - [深度长文：细说 iOS 代码签名](http://xelz.info/blog/2019/01/11/ios-code-signature/)
 - [iOS 证书签名原理分析](https://www.jianshu.com/p/fc56a70ee4fb)
