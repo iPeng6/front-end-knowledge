@@ -146,6 +146,139 @@
 
 ## 水平垂直居中
 
+1. 绝对定位 + 上下左右距离 0 + margin:auto
+
+```css
+.container {
+  position: relative;
+}
+.item {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+```
+
+```html
+/*vue*/
+<template>
+  <div class="layout-wrapper-demo7">
+    <div class="container">
+      <div class="item"></div>
+    </div>
+  </div>
+</template>
+<script>
+  export default {}
+</script>
+<style>
+  .layout-wrapper-demo7 .container {
+    outline: 1px solid red;
+    width: 300px;
+    height: 200px;
+    position: relative;
+  }
+  .layout-wrapper-demo7 .item {
+    outline: 1px solid black;
+    width: 50px;
+    height: 60px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+</style>
+```
+
+2. 50%定位 + transform 负 50%
+
+```css
+.container {
+  position: relative;
+}
+.item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+```
+
+```html
+/*vue*/
+<template>
+  <div class="layout-wrapper-demo8">
+    <div class="container">
+      <div class="item"></div>
+    </div>
+  </div>
+</template>
+<script>
+  export default {}
+</script>
+<style>
+  .layout-wrapper-demo8 .container {
+    outline: 1px solid red;
+    width: 300px;
+    height: 200px;
+    position: relative;
+  }
+  .layout-wrapper-demo8 .item {
+    outline: 1px solid black;
+    width: 50px;
+    height: 60px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+</style>
+```
+
+3. flex 布局
+
+```css
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+```
+
+```html
+/*vue*/
+<template>
+  <div class="layout-wrapper-demo9">
+    <div class="container">
+      <div class="item"></div>
+    </div>
+  </div>
+</template>
+<script>
+  export default {}
+</script>
+<style>
+  .layout-wrapper-demo9 .container {
+    outline: 1px solid red;
+    width: 300px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .layout-wrapper-demo9 .item {
+    outline: 1px solid black;
+    width: 50px;
+    height: 60px;
+  }
+</style>
+```
+
 ## 9 宫格
 
 ```css

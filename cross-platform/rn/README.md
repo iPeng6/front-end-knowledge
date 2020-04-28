@@ -13,11 +13,12 @@
 9. [启动屏 & 应用图标](/cross-platform/rn/splash.md)
 10. [状态管理 Hooks + Context Api](/cross-platform/rn/statemgr.md)
 11. [国际化](/cross-platform/rn/i18n.md)
+
 - [ ] 主题
 - [ ] 图标
 - [ ] 路由管理
 - [ ] 工具类
-  - [ ] 网路库
+  - [ ] 网络库
   - [ ] 存储持久化
   - [ ] 设备信息
   - [ ] 日志服务
