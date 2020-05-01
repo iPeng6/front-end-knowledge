@@ -103,9 +103,7 @@ npm config set https-proxy http://127.0.0.1:8080
 npm config delete proxy
 npm config delete https-proxy
 
+# yarn 目前只支持 http 代理
 yarn config set proxy http://127.0.0.1:8080
-yarn config set https-proxy http://127.0.0.1:8080
-
 yarn config delete proxy
-yarn config delete https-proxy
 ```

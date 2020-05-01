@@ -1,20 +1,14 @@
 # editorconfig
 
-vue cli
-
 ```
-[{*.js, *.vue}]
-charset=utf-8
-end_of_line=lf
-insert_final_newline=false
-indent_style=space
-indent_size=2
+# http://editorconfig.org
+root = true
 
-[{.babelrc,.stylelintrc,.eslintrc,jest.config,*.json,*.jsb3,*.jsb2,*.bowerrc}]
-indent_style=space
-indent_size=2
-
-[{.analysis_options,*.yml,*.yaml}]
-indent_style=space
-indent_size=2
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
 ```

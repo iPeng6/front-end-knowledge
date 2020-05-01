@@ -1,6 +1,6 @@
 # 翻墙
 
-vpn: [零点云](https://www.dyuns.top/)
+vpn: [零点云](http://www.vdoos.com)
 
 app: ShadowsocksX-NG-R8
 

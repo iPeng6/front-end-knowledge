@@ -6,11 +6,11 @@
 {
   "include": ["./src/**/*"],
   "compilerOptions": {
-    "baseUrl": "src",
+    "baseUrl": "./",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["src/*"]
     }
   },
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist"]
 }
 ```

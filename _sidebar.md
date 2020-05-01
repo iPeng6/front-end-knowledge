@@ -66,6 +66,8 @@
     - [编码规范](/basic/standard-specification/code-style/README.md)
       - [ESLint](/basic/standard-specification/eslint.md)
       - [Prettier](/basic/standard-specification/prettier.md)
+      - [editorconfig](/basic/standard-specification/editorconfig.md)
+      - [jsconfig](/basic/standard-specification/jsconfig.md)
   - [HTML](/basic/html/README.md)
     - [语义化](/basic/html/semantization.md)
     - [QA](/basic/html/qa.md)

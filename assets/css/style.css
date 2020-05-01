@@ -33,7 +33,8 @@ table {
     padding: 24px;
   }
 }
-.markdown-section p {
+.markdown-section p,
+.markdown-section li {
   line-height: 32px;
   text-align: justify;
 }
