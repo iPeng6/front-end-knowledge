@@ -3,8 +3,8 @@
 <details>
 <summary>引用参考 - 2020/04/27</summary>
 
-- [跨域](https://juejin.im/post/59c132415188256bb018e825) - _考拉海购前端团队 2017 年 09 月 19 日_
-- [Same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) - _MDN Last modified: Feb 22, 2020_
+- [跨域](https://juejin.im/post/59c132415188256bb018e825) _- 考拉海购前端团队 2017 年 09 月 19 日_
+- [Same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) _- MDN Last modified: Feb 22, 2020_
 
 </details>
 

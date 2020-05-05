@@ -3,7 +3,7 @@
 <details>
 <summary>引用参考 - 2020/04/26</summary>
 
-- [关闭 macOS Google Chrome 黑暗模式风格](https://www.jianshu.com/p/408c26f1cbd8) - _玉圣 2019.03.29_
+- [关闭 macOS Google Chrome 黑暗模式风格](https://www.jianshu.com/p/408c26f1cbd8) _- 玉圣 2019.03.29_
 
 </details>
 
