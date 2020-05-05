@@ -91,7 +91,7 @@ const a = new Foo()
 
 ```js
 Foo.prototype = {
-  constructor: Foo
+  constructor: Foo,
 }
 ```
 
@@ -105,11 +105,13 @@ Foo.prototype = {
 类似这样：
 
 ```js
-a = {}
-const ret = Foo.call(a)
-a.__proto__ = Foo.prototype
-if (ret) {
-  a = ret
+function New(Foo) {
+  const obj = Object.create(Foo.prototype)
+  const ret = Foo.call(obj)
+  if (ret) {
+    return ret
+  }
+  return obj
 }
 ```
 
