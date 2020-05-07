@@ -1,6 +1,6 @@
 - [What is book](/README.md)
 - [通识](/general/README.md)
-  - [算法与数据结构](/general/algorithm/README.md)
+  - [数据结构与算法](/general/algorithm/README.md)
     - 数据结构
       - [stack](/general/algorithm/data-structures/stack/README.zh-CN.md)
       - [queue](/general/algorithm/data-structures/queue/README.zh-CN.md)
@@ -119,6 +119,7 @@
     - [常用命令](/node/npm/command.md)
     - [发布包](/node/npm/publish.md)
     - [package.json](/node/npm/package.json.md)
+    - [Github Packages](/node/npm/githubpkg.md)
   - [性能优化](/node/performance/README.md)
     - [你不知道的 node.js 性能优化](/node/performance/node-performance.md)
   - [Express](/node/express/README.md)

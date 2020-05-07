@@ -23,7 +23,7 @@ table {
   color: #191d21;
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
   margin-bottom: 16px;
-  background: #fff;
+  background: #f9f9f5;
   padding: 3vw 5vw;
   max-width: 1024px;
 }
@@ -69,6 +69,10 @@ table {
 
 .markdown-section code {
   font-size: 0.9em;
+}
+
+.markdown-section pre > code {
+  font-size: 0.86rem;
 }
 
 .sidebar-nav li {
