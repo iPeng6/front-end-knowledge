@@ -11,7 +11,7 @@
 
 ## 第一层约束: IDE
 
-VSCode 它只需要安装一个插件：eslint 插件，便可以做到智能提示，在配置下 autofix，更是能在编码时实时杜绝错误
+VSCode 它只需要安装一个插件：eslint 插件，便可以做到智能提示，再配置下 autofix，更是能在编码时实时杜绝错误
 
 ```json
 {
@@ -22,7 +22,7 @@ VSCode 它只需要安装一个插件：eslint 插件，便可以做到智能提
 }
 ```
 
-这里配置了`editor.formatOnSave`是为了避免默认的 prettier 格式化规则跟 eslint 冲突
+这里配置了`"editor.formatOnSave": false`是为了避免默认的 prettier 格式化规则跟 eslint 冲突
 
 另外，配合 eslint-loader，使用浏览器也可以做到实时提示，下面是一段 vue-cli 的配置
 

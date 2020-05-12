@@ -1,5 +1,17 @@
 # Git commit 提交规范
 
+<details>
+<summary>引用参考 - 2020/05/12</summary>
+
+- [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0-beta.2/)
+- [Angular Commit Guidelines](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#commit)
+- [cz-cli](https://github.com/commitizen/cz-cli)
+- [cz-conventional-changelog](https://github.com/commitizen/cz-conventional-changelog)
+- [standard-version](https://github.com/conventional-changelog/standard-version)
+- [优雅的提交你的 Git Commit Message](https://zhuanlan.zhihu.com/p/34223150)
+
+</details>
+
 ## Why
 
 - 基于提交的类型，自动决定语义化的版本变更。
@@ -84,6 +96,36 @@ echo '{ "path": "cz-conventional-changelog" }' > ~/.czrc #全局模式下, 需�
 
 ![](img/gitcz.png)
 
+## CommitLint
+
+[commitlint](https://github.com/conventional-changelog/commitlint): 可以帮助我们 lint commit messages, 如果我们提交的不符合指向的规范, 直接拒绝提交。
+同样的, 它也需要一份校验的配置, 这里推荐 [@commitlint/config-conventional](https://www.npmjs.com/package/@commitlint/config-conventional) (符合 Angular 团队规范).
+
+```bash
+# Install commitlint cli and conventional config
+npm i -D @commitlint/config-conventional @commitlint/cli
+
+# Configure commitlint to use conventional config
+echo "module.exports = {extends: ['@commitlint/config-conventional']}" > commitlint.config.js
+```
+
+校验 commit message 的最佳方式是结合 git hook, 所以需要配合 [Husky](https://github.com/typicode/husky).
+
+```bash
+npm install husky --save-dev
+```
+
+```json
+// package.json
+{
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $GIT_PARAMS"
+    }
+  }
+}
+```
+
 ## CHANGELOG
 
 使用 [standard-version](https://github.com/conventional-changelog/standard-version) 自动生成 CHANGELOG
@@ -139,12 +181,3 @@ standard-version --release-as minor
 standard-version --release-as major
 standard-version --release-as 1.1.0
 ```
-
-参考：
-
-- [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0-beta.2/)
-- [Angular Commit Guidelines](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#commit)
-- [cz-cli](https://github.com/commitizen/cz-cli)
-- [cz-conventional-changelog](https://github.com/commitizen/cz-conventional-changelog)
-- [standard-version](https://github.com/conventional-changelog/standard-version)
-- [优雅的提交你的 Git Commit Message](https://zhuanlan.zhihu.com/p/34223150)
