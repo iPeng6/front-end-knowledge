@@ -23,7 +23,7 @@ table {
   color: #191d21;
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
   margin-bottom: 16px;
-  background: #f9f9f5;
+  background: #fefefe;
   padding: 3vw 5vw;
   max-width: 1024px;
 }
@@ -60,7 +60,7 @@ table {
 }
 
 .markdown-section h4 span {
-  color: #b900ff;
+  color: #773098;
 }
 
 .markdown-section h5 span {
