@@ -42,7 +42,6 @@
       - [JWT](/general/network/auth/jwt.md)
   - [安全](/general/security/README.md)
     - [跨域](/general/security/cross-domain.md)
-    - [CORS](/general/security/cors.md)
     - [SQL 注入](/general/security/sqlinjection.md)
     - [XSS](/general/security/xss.md)
     - [CSRF](/general/security/csrf.md)

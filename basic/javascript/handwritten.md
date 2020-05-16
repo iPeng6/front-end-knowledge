@@ -171,24 +171,36 @@ function throttle(fn, cycle) {
 ## 手写 jsonp
 
 ```js
-function jsonp(url: String, callback: String, params: Object) {
-  var queryString =
-    '?' +
-    Object.keys(params)
-      .map((key) => `${key}=${params[key]}`)
-      .join('&')
+function jsonp({ url, data, success, fail }) {
+  // 安装回调
+  const fnName = 'jsonp' + Math.random().toString(36).slice(-8)
+  window[fnName] = success
 
-  var script = document.createElement('script')
-  script.src = url + queryString + '&callback=' + callback
-  script.onerror =
-    params.failure ||
-    function (err) {
-      //console.log(err)
-    }
+  // 拼接url
+  const query = Object.keys(data)
+    .map((key) => `${key}=${data[key]}`)
+    .join('&')
+  const separator = url.includes('?') ? '&' : '?'
+  url = url + separator + query + '&callback=' + fnName
 
-  window[callback] = params.success || function () {}
+  // 创建script请求
+  const script = document.createElement('script')
+  script.src = url
+  script.onerror = fail
   document.head.appendChild(script)
 }
+
+// 调用
+jsonp({
+  url: 'http://www.example.com',
+  data: { id: 1 },
+  success(res) {
+    console.log(res)
+  },
+  fail(error) {
+    console.log(error)
+  },
+})
 ```
 
 ## 用 requestAnimationFrame 模拟 setTimeout

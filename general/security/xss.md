@@ -17,7 +17,7 @@
 
 ## 二、恶意脚本能做啥
 
-### 1. Cookie 窃取：
+### 1. Cookie 窃取
 
 攻击者能够通过`document.cookie`访问受害者与网站关联的 cookie，然后传送到攻击者自己的服务器，接着从这些 cookie 中提取敏感信息，如 Session ID。
 

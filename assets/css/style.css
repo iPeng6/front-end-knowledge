@@ -19,7 +19,7 @@ table {
 }
 
 .markdown-section {
-  font-size: 18px;
+  font-size: 17px;
   color: #191d21;
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
   margin-bottom: 16px;
@@ -35,7 +35,7 @@ table {
 }
 .markdown-section p,
 .markdown-section li {
-  line-height: 32px;
+  line-height: 30px;
   text-align: justify;
 }
 
