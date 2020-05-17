@@ -23,15 +23,15 @@
 
    比如购物网站 A，有个接口请求可以将商品添加到购物车 `/api/cart/add?productId=xxx`，那么促销网站 B 就可以诱导你打开 B 网站，然后直接跨域直接发起请求，利用浏览器自动会带上 cookie 的机制，让网站 A 以为是用户自己主动发起的请求
 
-2. 没有限制的 dom 读取
+2. 没有限制的 DOM 读取
 
-   比如钓鱼网站直接用 iframe 嵌入原来的网站，父窗体通过 js 就可以直接操控 dom 读取密码等
+   比如钓鱼网站直接用 iframe 嵌入原来的网站，父窗体通过 js 就可以直接操控 DOM 读取密码等
 
 ```js
 // html
 //<iframe name="yinhang" src="www.yinhang.com"></iframe>
 
-// 由于没有同源策略的限制，钓鱼网站可以直接拿到别的网站的Dom
+// 由于没有同源策略的限制，钓鱼网站可以直接拿到别的网站的DOM
 const iframe = window.frames['yinhang']
 const node = iframe.document.getElementById('你输入账号密码的Input')
 console.log(`拿到了这个${node}，我还拿不到你刚刚输入的账号密码吗`)
@@ -125,7 +125,7 @@ window.addEventListener(
 )
 ```
 
-## 二、跨域接口请求
+## 三、跨域接口请求
 
 ### 1、JSONP
 
@@ -233,7 +233,30 @@ CORS 是一个 W3C 标准，全称是"跨域资源共享"（Cross-origin resourc
 - **Access-Control-Max-Age**: 可选，用来指定本次预检请求的有效期，单位为秒
 - **Access-Control-Expose-Headers**: 该字段可选。CORS 请求时，XMLHttpRequest 对象的 getResponseHeader()方法只能拿到 6 个基本字段：Cache-Control、Content-Language、Content-Type、Expires、Last-Modified、Pragma。如果想拿到其他字段，就必须在 Access-Control-Expose-Headers 里面指定
 
-#### （4） withCredentials 属性
+以 Node.js 后台配置(express 框架)为例：
+
+```js
+app.all('*', function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Headers', 'X-Requested-With')
+  res.header('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS')
+  res.header('X-Powered-By', ' 3.2.1')
+  //这段仅仅为了方便返回json而已
+  res.header('Content-Type', 'application/json;charset=utf-8')
+  if (req.method == 'OPTIONS') {
+    //让options请求快速返回
+    res.sendStatus(200)
+  } else {
+    next()
+  }
+})
+```
+
+#### （4）OPTIONS 预检的优化
+
+这里强调一下 `Access-Control-Max-Age`, 加上这个响应头可以用来指定本次预检请求的有效期，单位为秒。在这个时间范围内，所有同类型的请求都将不再发送预检请求而是直接使用此次返回的头作为判断依据，可以大幅优化请求次数。
+
+#### （5） withCredentials 属性
 
 CORS 请求默认不发送 Cookie 和 HTTP 认证信息。如果要把 Cookie 发到服务器，一方面要服务器同意，指定 Access-Control-Allow-Credentials 字段。
 
@@ -253,3 +276,29 @@ xhr.withCredentials = true
 整个 CORS 通信过程，都是浏览器自动完成，不需要用户参与。对于开发者来说，CORS 通信与同源的 AJAX 通信没有差别，代码完全一样。浏览器一旦发现 AJAX 请求跨源，就会自动添加这些附加的头信息，有时还会多出一次附加的预检，但用户不会有感觉。
 
 因此，实现 CORS 通信的关键是服务器。只要服务器实现了 CORS 接口，就可以跨源通信。
+
+## 四、代理
+
+在开发环境，为了临时规避跨域接口的请求，可以通过本地 node 代理转发来规避，这里以 webpack 为例：
+
+```js
+{
+  devServer: {
+    port: port,
+    open: true,
+    overlay: {
+       warnings: false,
+      errors: true,
+    },
+    before: require('./mock/mock-server.js'),
+    proxy: {
+      '/proxy': {
+        target: process.env.VUE_APP_BASE_API,
+        pathRewrite: { '^/proxy': '' },
+        changeOrigin: true, // target是域名的话，需要这个参数，
+        secure: false, // 设置支持https协议的代理
+      },
+    },
+  },
+}
+```
