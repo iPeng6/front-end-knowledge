@@ -11,7 +11,7 @@
         - [binary search tree](/general/algorithm/data-structures/tree/binary-search-tree/README.md)
         - [red black tree](/general/algorithm/data-structures/tree/red-black-tree/README.md)
       - [heap](/general/algorithm/data-structures/heap/README.zh-CN.md)
-      - [hash-table](/general/algorithm/data-structures/hash-table/README.zh-CN.md)
+      - [hash-table](/general/algorithm/data-structures/hash-table/README.md)
       - [graph](/general/algorithm/data-structures/graph/README.zh-CN.md)
     - 算法
       - [排序算法](/general/algorithm/algorithms/sorting.md)

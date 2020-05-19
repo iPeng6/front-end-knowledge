@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <title>Front-End knowledge</title>
@@ -10,7 +10,7 @@
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="//unpkg.com/docsify/themes/vue.css">
+    <link rel="stylesheet" href="//unpkg.com/docsify/themes/vue.css" />
     <!-- Theme: Simple Dark -->
     <!-- <link
       rel="stylesheet"
@@ -29,13 +29,13 @@
       var jsResources = '<scr' + 'ipt src="//unpkg.com/vue/dist/vue.js"></scr' + 'ipt>'
       var cssResources = '@import url("//cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css");'
       var bootCode = 'var globalVariable = "leon"'
-      var globalVariable = "leon"
+      var globalVariable = 'leon'
 
       window.$docsify = {
         // routerMode: 'history', // default: 'hash'
         loadSidebar: true,
         alias: {
-          '/.*/_sidebar.md': '/_sidebar.md'
+          '/.*/_sidebar.md': '/_sidebar.md',
         },
         name: 'Front-End Knowledge',
         // repo: 'https://github.com/iPeng6/ipeng6.github.io',
@@ -44,10 +44,9 @@
         subMaxLevel: 4,
         autoHeader: true,
         search: {
-          placeholder: '🔍 Search'
-        },plugins:[
-          DemoBoxVue.create(jsResources, cssResources, bootCode)
-        ]
+          placeholder: '🔍 Search',
+        },
+        plugins: [DemoBoxVue.create(jsResources, cssResources, bootCode)],
       }
     </script>
     <!-- plugins -->
@@ -61,4 +60,6 @@
     <script src="https://unpkg.com/prismjs/components/prism-typescript.min.js" async></script>
     <script src="https://unpkg.com/prismjs/components/prism-objectivec.min.js" async></script>
     <script src="https://unpkg.com/prismjs/components/prism-yaml.min.js" async></script>
+    <script src="https://unpkg.com/prismjs/components/prism-sql.min.js" async></script>
+  </body>
 </html>

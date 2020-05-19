@@ -43,29 +43,34 @@
 
 ### 3. DOM-XSS
 
-纯粹发生在客户端的 XSS 攻击，比如：http://www.some.site/page.html?default=French
+纯粹发生在客户端的 XSS 攻击，这就非常值得留意了，因为即便你后端服务做到绝对安全也没用，这锅都得前端来背
+
+比如：`http://www.some.site/page.html?lang=en` URL 上的参数直接拿来用了
 
 ```html
-<select>
-  <script>
-    document.write(
-      '<option value=1>' +
-        document.location.href.substring(documnent.location.href.indexOf('default=') + 8) +
-        '</option>',
-    )
-    document.write('<option value=2>English</option>')
-  </script>
-</select>
+<script>
+  const lang = document.location.href.substring(documnent.location.href.indexOf('lang=') + 5)
+  document.querySelector('#currentLang').innerHTML = lang
+</script>
 ```
 
 恶意链接
 
 ```
-http://www.some.site/page.html?default=<script>alert(document.cookie)</script>
+http://www.some.site/page.html?lang=<script>alert(document.cookie)</script>
 ```
 
-## 四、避免
+## 四、防范
+
+根据客户端不可信任原则，前后端都必须校验处理
 
 - 编码转义
+  - html 特殊字符转义
+  - url 编码
 - 过滤校验
+  - 危险标签过滤或校验拒绝
+  - 黑白名单机制
 - CSP (Content Security Policy)
+  - 不许允不可信赖的来源：只有来自明确定义过的可信赖来源的外链资源才可以被下载
+  - 不允许内联资源：行内脚本和内联 CSS 不允许被执行。
+  - 不允许 eval 函数：Javascript 的`eval`函数不可以被使用
