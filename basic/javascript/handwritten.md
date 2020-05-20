@@ -264,13 +264,10 @@ console.log(flat(data))
 ## 实现 new
 
 ```js
-function myNew(fn, ...params) {
-  const a = Object.create(fn.prototype)
-  const res = fn.call(a, ...params)
-  if (res) {
-    return res
-  }
-  return a
+function myNew(Cons, ...params) {
+  const obj = Object.create(Cons.prototype)
+  const res = Cons.apply(a, params)
+  return typeof res === 'object' ? res : obj
 }
 ```
 

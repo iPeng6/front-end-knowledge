@@ -105,13 +105,10 @@ Foo.prototype = {
 类似这样：
 
 ```js
-function New(Foo) {
-  const obj = Object.create(Foo.prototype)
-  const ret = Foo.call(obj)
-  if (ret) {
-    return ret
-  }
-  return obj
+function myNew(Cons, ...params) {
+  const obj = Object.create(Cons.prototype)
+  const res = Cons.apply(a, params)
+  return typeof res === 'object' ? res : obj
 }
 ```
 

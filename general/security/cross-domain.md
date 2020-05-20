@@ -6,6 +6,7 @@
 - [跨域](https://juejin.im/post/59c132415188256bb018e825) _- 考拉海购前端团队 2017 年 09 月 19 日_
 - [浏览器的同源策略](https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy) _- MDN_
 - [跨域资源共享 CORS 详解](http://www.ruanyifeng.com/blog/2016/04/cors.html) _- 阮一峰 2016 年 4 月 12 日_
+- [九种跨域方式实现原理（完整版）](https://juejin.im/post/5c23993de51d457b8c1f4ee1#heading-10) _- 浪里行舟 2019 年 01 月 25 日_
 
 </details>
 
@@ -97,7 +98,13 @@ Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly
 
 ### 2、PostMessage API
 
-通常，对于两个不同页面的脚本，只有当执行它们的页面位于具有相同的协议（通常为 https），端口号（443 为 https 的默认值），以及主机 (两个页面的模数 Document.domain 设置为相同的值) 时，这两个脚本才能相互通信。window.postMessage() 方法提供了一种受控机制来规避此限制，只要正确的使用，这种方法就很安全。
+postMessage 是 HTML5 XMLHttpRequest Level 2 中的 API, 通常，对于两个不同页面的脚本，只有当执行它们的页面位于具有相同的协议/端口号/主机 (两个页面的 Document.domain 设置为相同的值) 时，这两个脚本才能相互通信。window.postMessage() 方法提供了一种受控机制来规避此限制，只要正确的使用，这种方法就很安全。
+
+它可用于解决以下方面的问题：
+
+1. 页面和其打开的新窗口的数据传递
+2. 多窗口之间消息传递
+3. 页面与嵌套的 iframe 消息传递
 
 ```js
 // 语法
@@ -124,6 +131,13 @@ window.addEventListener(
   false,
 )
 ```
+
+### 3、其他 hack 方式
+
+原理是通过一些公共可访问的属性来传递信息，比如
+
+1. window.name (需要额外代码比如轮询来监听变化，影响性能)
+2. location.hash (通过 hashchange 事件监听变化， 可通过 [noopener](/general/security/noopener.md) 规避）
 
 ## 三、跨域接口请求
 
@@ -277,9 +291,55 @@ xhr.withCredentials = true
 
 因此，实现 CORS 通信的关键是服务器。只要服务器实现了 CORS 接口，就可以跨源通信。
 
-## 四、代理
+### 3、代理
 
-在开发环境，为了临时规避跨域接口的请求，可以通过本地 node 代理转发来规避，这里以 webpack 为例：
+同源策略是浏览器的限制，而服务与服务之间的请求无需遵循同源策略，那么只要代理服务服务同源或者支持跨域，那么之后的所有请求就可以通过代理转发来获取。
+
+#### node
+
+比如通过 node 层转发
+
+```js
+const http = require('http')
+// 第一步：接受客户端请求
+const server = http.createServer((request, response) => {
+  // 代理服务器，直接和浏览器直接交互，需要设置CORS 的首部字段
+  response.writeHead(200, {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': '*',
+    'Access-Control-Allow-Headers': 'Content-Type',
+  })
+  // 第二步：将请求转发给服务器
+  const proxyRequest = http
+    .request(
+      {
+        host: '127.0.0.1',
+        port: 4000,
+        url: '/',
+        method: request.method,
+        headers: request.headers,
+      },
+      (serverResponse) => {
+        // 第三步：收到服务器的响应
+        var body = ''
+        serverResponse.on('data', (chunk) => {
+          body += chunk
+        })
+        serverResponse.on('end', () => {
+          console.log('The data is ' + body)
+          // 第四步：将响应结果转发给浏览器
+          response.end(body)
+        })
+      },
+    )
+    .end()
+})
+server.listen(3000, () => {
+  console.log('The proxyServer is running at http://localhost:3000')
+})
+```
+
+在开发环境，为了临时规避跨域接口的请求，也可以直接通过配置 webpack devServer 来转发
 
 ```js
 {
@@ -300,5 +360,28 @@ xhr.withCredentials = true
       },
     },
   },
+}
+```
+
+#### nginx 反向代理
+
+实现原理类似于 Node 中间件代理，需要你搭建一个中转 nginx 服务器，用于转发请求。
+
+使用 nginx 反向代理实现跨域，是最简单的跨域方式。只需要修改 nginx 的配置即可解决跨域问题，支持所有浏览器，支持 session，不需要修改任何代码，并且不会影响服务器性能。
+
+```bash
+// proxy服务器
+server {
+    listen       81;
+    server_name  www.domain1.com;
+    location / {
+        proxy_pass   http://www.domain2.com:8080;  #反向代理
+        proxy_cookie_domain www.domain2.com www.domain1.com; #修改cookie里域名
+        index  index.html index.htm;
+
+        # 当用webpack-dev-server等中间件代理接口访问nignx时，此时无浏览器参与，故没有同源限制，下面的跨域配置可不启用
+        add_header Access-Control-Allow-Origin http://www.domain1.com;  #当前端只跨域不带cookie时，可为*
+        add_header Access-Control-Allow-Credentials true;
+    }
 }
 ```

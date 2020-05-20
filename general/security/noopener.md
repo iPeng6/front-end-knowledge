@@ -33,7 +33,7 @@ if (window.opener) {
 
 ## 二、防御
 
-给 a 标签加上 `rel="noopener noreferrer"` 属性，opener 就会被置为 null，也拿不到 referrer，如果为了 SEO 也可以加上 `nofollow`，告诉搜索引擎不要追踪特定的网页链接，而避免辣鸡网站拉低本站的权重排名
+给 a 标签加上 `rel="noopener noreferrer"` 属性，opener 就会被置为 null，也拿不到 referrer，如果为了 SEO 也可以加上 `nofollow`，告诉搜索引擎不要追踪特定的网页链接，避免辣鸡网站拉低本站的权重排名
 
 ```html
 <a href="https://an.evil.site" target="_blank" rel="noopener noreferrer nofollow">进入一个“邪恶”的网站</a>
