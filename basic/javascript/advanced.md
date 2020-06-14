@@ -121,8 +121,3 @@ a instanceof Foo // true
 ```
 
 instanceof 操作符的左操作数是一个普通的对象，右操作数是一个函数。instanceof 回答的问题是：在 a 的整条[[Prototype]]链中是否有指向 Foo.prototype 的对象
-
-## 线程机制与事件循环
-
-- [从浏览器多进程到 JS 单线程，JS 运行机制最全面的一次梳理](http://www.dailichun.com/2018/01/21/js_singlethread_eventloop.html)
-- [总是一知半解的 Event Loop](https://juejin.im/post/5927ca63a0bb9f0057d3608e)

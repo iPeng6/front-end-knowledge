@@ -42,7 +42,7 @@ function fib(n) {
 // 函数防抖实现
 function debounce(fn, delay) {
   let timer = null
-  return function() {
+  return function () {
     if (timer) clearTimeout(timer)
     timer = setTimeout(() => {
       fn.apply(this, arguments)
@@ -55,7 +55,7 @@ function throttle(fn, cycle) {
   let start = Date.now()
   let now
   let timer
-  return function() {
+  return function () {
     now = Date.now()
     clearTimeout(timer)
     if (now - start >= cycle) {
@@ -86,7 +86,7 @@ function curry(func) {
   return function curried() {
     var args = [].slice.call(arguments)
     if (args.length < l) {
-      return function() {
+      return function () {
         var argsInner = [].slice.call(arguments)
         return curried.apply(this, args.concat(argsInner))
       }
@@ -96,7 +96,7 @@ function curry(func) {
   }
 }
 
-var f = function(a, b, c) {
+var f = function (a, b, c) {
   return console.log([a, b, c])
 }
 var curried = curry(f)
@@ -127,21 +127,27 @@ cf1(2)(3)
 
 ## 深拷贝
 
-```js
-JSON.parse(JSON.stringify(obj))
+最直接的方式 `JSON.parse(JSON.stringify(obj))` 但是也会存在问题
 
+- 会忽略 undefined，转换之后 undefined 的 key 会丢失
+- 不能序列化函数，转换之后 function 的 key 会丢失
+- 不能解决循环引用的对象，转换抛异常 `Uncaught TypeError: Converting circular structure to JSON`
+
+MessageChannel、postMessage 也可以实现深拷贝采用了 [结构化克隆算法](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm) 解决了 undefined 和循环引用的问题，但还是不支持函数，会抛异常
+
+```js
 function clone(value, isDeep) {
   if (value === null) return null
   if (typeof value !== 'object') return value
   if (Array.isArray(value)) {
     if (isDeep) {
-      return value.map(item => clone(item, true))
+      return value.map((item) => clone(item, true))
     }
     return [].concat(value)
   } else {
     if (isDeep) {
       var obj = {}
-      Object.keys(value).forEach(item => {
+      Object.keys(value).forEach((item) => {
         obj[item] = clone(value[item], true)
       })
       return obj

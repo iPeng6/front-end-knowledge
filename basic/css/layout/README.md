@@ -248,4 +248,16 @@ FFC（flex formatting context）和 GFC（grid formatting context），分别是
 - filter 值不为“none”的元素
 - 在 will-change 中指定了任意 CSS 属性
 
-面试题： 1、GPU 加速会对定位有影响吗？ 2、哀悼日全站灰度对页面会有影响吗？
+GPU 加速方式
+
+- transform
+- opacity
+- filter
+- will-change
+- `<video><iframe><canvas><webgl>`等元素
+
+面试题：
+
+Q；1、GPU 加速会对定位有影响吗？ 2、哀悼日全站灰度对页面会有影响吗？
+
+A：主要是有些属性会创建 stacking context 而影响 position:fixed 元素的定位基准
