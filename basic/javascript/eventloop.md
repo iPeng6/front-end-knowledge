@@ -14,9 +14,9 @@
 
 ## 一、事件循环
 
-我们知道 JS 引擎线程是单线程的，为了非阻塞式的执行多任务，js 采用了一种任务轮询的方式叫做 eventloop，因为虽然 JS 引擎是单线程的，但是浏览器内核是多线程的，事件线程、定时器线程、网络线程这些是可以与 JS 引擎线程并行的，期间产生的回调就会加入到任务队列里等待 JS 引擎消费。
+我们知道 JS 引擎是单线程的，为了非阻塞式的执行多任务，JS 采用了一种任务轮询的方式来实现多任务并行，这种机制被叫做 Eventloop，因为虽然 JS 引擎是单线程的，但是浏览器内核是多线程的，事件线程、定时器线程、网络线程这些是可以与 JS 引擎线程并行的，期间产生的回调就会当做一个 event 加入到任务队列里等待 JS 引擎消费。
 
-JS 中任务类型分为两种：`macrotask` 和 `microtask`，在 ECMAScript 中，microtask 称为 jobs，macrotask 可称为 task
+JS 中任务类型分为两种：`macrotask` 和 `microtask`，在 ECMAScript 中 macrotask 可称为 task，microtask 称为 jobs
 
 **macrotask(task)**: setImmediate(node\ie\edge) > 鼠标键盘 I/O > MessageChannel、postMessage > setTimeout、setInterval、ajax\
 **microtask(jobs)**: process.nextTick(node) > Promise > MutationObserver
@@ -25,7 +25,7 @@ JS 引擎一旦空闲，就会从 task 队列里取出一个任务加入执行�
 
 ![](img/eventloop.png)
 
-### vue.nextTick
+### 案例：Vue.nextTick
 
 源码路径 `src/core/util/next-tick.js`，版本 2.6.11
 
@@ -72,9 +72,9 @@ if (typeof Promise !== 'undefined' && isNative(Promise)) {
 }
 ```
 
-可以看到 vue 的 nextTick 也正是利用 eventloop 的 microTask 的 Promise 和 MutationObserver，如果不支持再降级为 setImmediate、setTimeout
+可以看到 vue 的 nextTick 也正是利用 eventloop 的 microtask 的 Promise 和 MutationObserver，如果不支持再降级为 setImmediate、setTimeout
 
-但是为什么一定要是 nextTick 之后拿到 dom 修改呢？因为 vue 为了优化状态修改会合并更新，最后也是调用的 nextTick
+但是为什么一定要是 nextTick 之后才能拿到 dom 修改呢？我直接`Promise.resolve().then`可不可以呢？通过源码我们发现 vue 为了优化会合并更新，最后也是调用的 nextTick
 
 ```js
 // 1、src/core/observer/watcher.js
@@ -143,11 +143,24 @@ export function nextTick (cb?: Function, ctx?: Object) {
   }
 }
 
+// 4、timerFunc =》flushCallbacks
+const callbacks = []
+let pending = false
+
+function flushCallbacks () {
+  pending = false
+  const copies = callbacks.slice(0)
+  callbacks.length = 0
+  for (let i = 0; i < copies.length; i++) {
+    copies[i]()
+  }
+}
+
 ```
 
-所以 watcher 更新和 nextTick 回调都是加入到 nextTick callbacks 中，然后在同一个 microTask 或者 macroTask 中按序一起同步执行掉的
+所以 watcher 更新和 nextTick 回调都是加入到 nextTick callbacks 中，然后在同一个 microtask 或者 macrotask 中按序遍历执行掉的，所以如果用`Promise.resolve().then`来代替 Vue.nextTick，那么也就是说环境支持 Promise，那么 watcher 最终产生的也是一个 microtask，microtask 队列在一个 macrotask 之后会按序一起执行掉那么理论上也是可以的
 
-## 二、requestAnimationFrame、requestIdleCallback 和 渲染的关系
+## 二、requestAnimationFrame、requestIdleCallback 和 渲染时机
 
 以上感觉还是很清晰的，但是当 eventloop 遇到 requestAnimationFrame、requestIdleCallback、IntersectionObserver、Update rendering 时就感觉一阵模糊了
 
@@ -155,14 +168,76 @@ export function nextTick (cb?: Function, ctx?: Object) {
 
 ### 渲染
 
-事件循环是很快的代码的执行都是微妙级别的，而我们的屏幕刷新率一般 60hz，相当于 16.67ms，所以不可能每个事件循环之间都有渲染，渲染是会合并的通常跟屏幕刷新率保持一致，另外如果当前任务并没有产生 reflow\repaint，也没有 requestAnimationFrame 回调，那么也不会触发渲染
+事件循环是很快的代码的执行都是微秒级别的，而我们的屏幕刷新率一般 60hz，相当于 16.67ms，所以不可能每个事件循环之间都有渲染，渲染是会合并的通常跟屏幕刷新率保持一致，另外如果当前任务并没有产生 reflow\repaint，也没有 requestAnimationFrame 回调，那么也没必要重新渲染，所以传统说法每一次事件循环都夹着渲染是不对的
+
+![](img/eventloopunrender.png)
 
 ### requestAnimationFrame
 
-requestAnimationFrame 告诉浏览器——你希望执行一个动画，并且要求浏览器在下次重绘之前调用指定的回调函数更新动画。如果有 rAF 回调就一定会触发渲染，在渲染前会清空 rAF 回调，这期间再次产生的 rAF 都会在下一帧执行
+requestAnimationFrame 告诉浏览器——你希望执行一个动画，并且要求浏览器在下次重绘之前调用指定的回调函数更新动画。如果有 rAF 回调就一定会触发渲染，在渲染前会清空 rAF 回调，这期间再次产生的 rAF 都会在下一帧执行，rAF 的执行时机其实主要跟屏幕刷新率有关，比如我自己的一个外接屏幕设置成 50hz，就会基本 20ms 执行一次了
+
+![](img/eventloop50hz.png)
+
+![](img/eventloopraf.png)
 
 ### requestIdleCallback
 
-requestIdleCallback 提供了在空闲时间自动执行队列任务的能力，在一次渲染之后如果没有任何队列任务就进入空闲阶段，requestIdleCallback 的执行有 50ms 的限制以便于响应更高优先级的任务，但为了不被饿了也提高了 timeout 选项，使得过期的空闲任务会被优先执行
+requestIdleCallback 提供了在空闲时间自动执行队列任务的能力，在一次渲染之后如果没有任何队列任务就进入空闲阶段
 
-### React 时间分片
+![](img/eventloopidle.png)
+
+因为有个`hasARenderingOpportunity is false` 条件，所以 rIC 的执行时机一般在一次渲染之后下一个任务之前，但也不是绝对的，因为有些 task 并没有触发渲染，renderingOpportunity 还是 false，下一个 task 还没来，就有机会在这个 task 之后插入一个 rIC
+
+```html
+<script>
+  t0 = performance.now()
+  times = 3
+
+  function loopRIC(n) {
+    requestIdleCallback(() => {
+      console.log('rIC_' + n, performance.now() - t0)
+      n < times && loopRIC(n + 1)
+    })
+  }
+  loopRIC(1)
+
+  function loopRAF(n) {
+    requestAnimationFrame(() => {
+      console.log('rAF_' + n, performance.now() - t0)
+      n < times && loopRAF(n + 1)
+    })
+  }
+  loopRAF(1)
+
+  function loopSetTimeout(tn) {
+    setTimeout(() => {
+      function loopRIC(n) {
+        requestIdleCallback(() => {
+          console.log('st_' + tn + '_rIC_' + n, performance.now() - t0)
+          n < times && loopRIC(n + 1)
+        })
+      }
+      loopRIC(1)
+
+      function loopRAF(n) {
+        requestAnimationFrame(() => {
+          console.log('st_' + tn + '_rAF_' + n, performance.now() - t0)
+          n < times && loopRAF(n + 1)
+        })
+      }
+      loopRAF(1)
+
+      console.log('st_' + tn, performance.now() - t0)
+      tn < times && loopSetTimeout(tn + 1)
+    }, 2 * tn + 2)
+  }
+  loopSetTimeout(1)
+  console.log('main', performance.now() - t0)
+</script>
+```
+
+![](img/eventloopric.png)
+
+另外 requestIdleCallback 的执行有 50ms 的限制以便于响应更高优先级的任务，但为了不被饿死也提供了 timeout 选项，使得过期的空闲任务会被优先执行
+
+### 案例：React 时间分片
