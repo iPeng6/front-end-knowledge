@@ -50,6 +50,12 @@ git config --global alias.lg 'log --color --graph --pretty=format:'%Cred%h%Crese
 
 # 设置pull默认rebase模式
 git config --global pull.rebase true
+
+# 代理
+git config --global https.proxy socks5://127.0.0.1:1086
+git config --global https.proxy socks5://127.0.0.1:1086
+git config --global --unset http.proxy
+git config --global --unset https.proxy
 ```
 
 ## 三、增加/删除/修改文件

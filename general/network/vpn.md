@@ -1,10 +1,18 @@
-# 翻墙
+# VPN
 
-vpn: [零点云](http://www.vdoos.com)
+<details>
+<summary>引用参考 - 2020/07/07</summary>
 
-app: ShadowsocksX-NG-R8
+- [2020 中国最好用的翻墙软件 VPN 推荐，翻墙必备 VPN，6 月更新](https://vpnfast.github.io/)
 
-## 自定义 pac 列表规则
+</details>
+
+- [零点云](http://www.vdoos.com)
+- [ExpressVPN](https://www.expressvpn.com/)
+- [NordVPN](https://nordwebsite.net/zh/)
+- [PandaVPN](https://www.pancerra.xyz/r/9689528)
+
+## ShadowsocksX-NG-R8 自定义 pac 列表规则
 
 规则大概描述如下
 

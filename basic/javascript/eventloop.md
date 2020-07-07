@@ -18,8 +18,8 @@
 
 JS 中任务类型分为两种：`macrotask` 和 `microtask`，在 ECMAScript 中 macrotask 可称为 task，microtask 称为 jobs
 
-**macrotask(task)**: setImmediate(node\ie\edge) > 鼠标键盘 I/O > MessageChannel、postMessage > setTimeout、setInterval、ajax\
-**microtask(jobs)**: process.nextTick(node) > Promise > MutationObserver
+**macrotask(task)**: User I/O > MessageChannel、postMessage > setTimeout、setInterval、setImmediate(node\ie\edge)、network I/O、UI rendering\
+**microtask(jobs)**: process.nextTick(node) > Promise > Object.observe(已废弃)、MutationObserver
 
 JS 引擎一旦空闲，就会从 task 队列里取出一个任务加入执行栈，此间产生的 jobs 也一并执行完，然后再从 task 队列里取出下一个任务进入下一个循环周期，这就是我们常说的**事件循环**
 
