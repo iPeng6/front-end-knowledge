@@ -4,6 +4,7 @@
 <summary>引用参考 - 2020/07/07</summary>
 
 - [2020 中国最好用的翻墙软件 VPN 推荐，翻墙必备 VPN，6 月更新](https://vpnfast.github.io/)
+- [中国最好用的 VPN 推荐，2020 这几款翻墙软件能看 4K 视频](https://qiangwaikan.com/best-vpn-china/)
 
 </details>
 
