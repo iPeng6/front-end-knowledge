@@ -11,7 +11,6 @@
 - [零点云](http://www.vdoos.com)
 - [ExpressVPN](https://www.expressvpn.com/)
 - [NordVPN](https://nordwebsite.net/zh/)
-- [PandaVPN](https://www.pancerra.xyz/r/9689528)
 
 ## ShadowsocksX-NG-R8 自定义 pac 列表规则
 
