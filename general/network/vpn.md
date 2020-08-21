@@ -5,12 +5,15 @@
 
 - [2020 中国最好用的翻墙软件 VPN 推荐，翻墙必备 VPN，6 月更新](https://vpnfast.github.io/)
 - [中国最好用的 VPN 推荐，2020 这几款翻墙软件能看 4K 视频](https://qiangwaikan.com/best-vpn-china/)
+- [2020 年中国大陆可用的最佳 10 款 VPN 推荐：全方位测试了其应用程序、速度、安全性等等](https://zh.wizcase.com/)
 
 </details>
 
 - [零点云](http://www.vdoos.com)
 - [ExpressVPN](https://www.expressvpn.com/)
 - [NordVPN](https://nordwebsite.net/zh/)
+- [VyprVPN](https://www.vyprvpn.com/zh/)
+- [CyberGhost](https://www.cyberghostvpn.com/en_US/)
 
 ## ShadowsocksX-NG-R8 自定义 pac 列表规则
 
