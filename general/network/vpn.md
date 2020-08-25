@@ -11,9 +11,7 @@
 
 - [零点云](http://www.vdoos.com)
 - [ExpressVPN](https://www.expressvpn.com/)
-- [NordVPN](https://nordwebsite.net/zh/)
-- [VyprVPN](https://www.vyprvpn.com/zh/)
-- [CyberGhost](https://www.cyberghostvpn.com/en_US/)
+- [Astrill VPN](https://www.wizcase.com/)
 
 ## ShadowsocksX-NG-R8 自定义 pac 列表规则
 
