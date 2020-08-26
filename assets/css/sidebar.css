@@ -15,6 +15,7 @@
   border-right: 1px solid #505d6b;
   border-bottom: 1px solid #505d6b;
   transform: rotate(-45deg);
+  transition: transform 0.1s;
 }
 
 .sidebar-nav ul:not(.app-sub-sidebar) > li.open::before {
