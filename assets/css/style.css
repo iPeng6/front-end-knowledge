@@ -75,10 +75,6 @@ table {
   font-size: 0.86rem;
 }
 
-.sidebar-nav li {
-  cursor: pointer;
-}
-
 /* vue plugin */
 .demo-block .description {
   display: none;
@@ -90,7 +86,7 @@ table {
 
 /* fix black theme fold arrow */
 
-.sidebar-nav li > a[href^='#/']:not([href*='?id=']):not(:only-child) {
+/* .sidebar-nav li > a[href^='#/']:not([href*='?id=']):not(:only-child) {
   background-image: var(
     --sidebar-nav-pagelink-background-image--collapse,
     var(--sidebar-nav-pagelink-background-image--loaded, var(--sidebar-nav-pagelink-background-image))
@@ -110,4 +106,4 @@ table {
     --sidebar-nav-pagelink-background-position--active,
     var(--sidebar-nav-pagelink-background-position--loaded, var(--sidebar-nav-pagelink-background-image))
   );
-}
+} */
