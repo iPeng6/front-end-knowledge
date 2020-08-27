@@ -84,6 +84,10 @@ table {
   width: 100% !important;
 }
 
+.sidebar .file > ul.app-sub-sidebar {
+  margin-left: 0;
+}
+
 /* fix black theme fold arrow */
 
 /* .sidebar-nav li > a[href^='#/']:not([href*='?id=']):not(:only-child) {
