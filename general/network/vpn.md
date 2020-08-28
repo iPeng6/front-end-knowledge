@@ -13,7 +13,7 @@
 
 - [零点云](http://www.vdoos.com)(很稳定，没有加密，有政治黑名单，其他都可以正常访问最适合日常办公，速度还可以能看油管高清视频)
 - [ExpressVPN](https://www.expressvpn.com/) (可以连，但不稳定不能长时间保持连接，需要手动切换服务器，不过速度确实快 50Mbps 有加密保护隐私)
-- [Astrill VPN](https://www.wizcase.com/)（太贵，未测试）
+- [Astrill VPN](https://www.astrill.com/zh/)（太贵，未测试）
 
 NordVPN、VyprVPN 已测试不能用(2020-08-23)，但确实 30 天保证退款，已退款成功
 
