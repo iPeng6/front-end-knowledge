@@ -1,13 +1,21 @@
 # Front-End Knowledge
 
-前端知识整理，便于系统得学习、复习、查漏补缺，最终形成一个前端 wiki。(内容大部分来自互联网加上一些个人实践总结)
+前端知识整理，便于系统得学习、复习、查漏补缺，最终形成一个完整的前端知识体系。(内容大部分来自互联网加上一些个人实践总结)
+
+## 信念
+
+1. 合抱之木生于毫末；九层之台起于累土；千里之行始于足下。
+2. 不积跬步，无以至千里；不积小流，无以成江海。
+3. 冰冻三尺，非一日之寒；为山九仞，岂一日之功。
+4. 为天地立心，为生民立命，为往圣继绝学，为万世开太平。
+5. 他山之石，可以攻玉。
 
 ## Roadmap
 
 - [Web Developer Roadmap](https://github.com/kamranahmedse/developer-roadmap)
 - [前端技术清单](https://github.com/alienzhou/frontend-tech-list)
 
-## 教程
+## 文档手册
 
 - [MDN Web technology for developers](https://developer.mozilla.org/en-US/docs/Web)
 - [现代 JavaScript 教程](https://zh.javascript.info/)
@@ -49,7 +57,7 @@
 - 前端开发
 - 开发者技术前线
 - 前端桃园
-- 前端精度周刊
+- 前端精读周刊
 - 程序员成长指北
 - 前端工匠
 - code 秘密花园

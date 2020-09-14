@@ -1,6 +1,11 @@
-# 前端监控
+# 异常监控
 
 - [把前端监控做到极致](https://zhuanlan.zhihu.com/p/32262716)
+
+## 三方服务
+
+- [sentry](https://sentry.io/welcome/)
+- [Rollbar](https://rollbar.com/)
 
 ## 数据采集
 
@@ -17,7 +22,7 @@ window.onerror = function(errorMessage, scriptURI, lineNumber,columnNumber,error
 3. Vue.config.errorHandler
 
 ```js
-Vue.config.errorHandler = function(err, vm, info) {
+Vue.config.errorHandler = function (err, vm, info) {
   // handle error
   // `info` 是 Vue 特定的错误信息，比如错误所在的生命周期钩子
   // 只在 2.2.0+ 可用
@@ -59,9 +64,9 @@ class ErrorBoundary extends React.Component {
 ```js
 const prevSetTimeout = window.setTimeout
 
-window.setTimeout = function(callback, timeout) {
+window.setTimeout = function (callback, timeout) {
   const self = this
-  return prevSetTimeout(function() {
+  return prevSetTimeout(function () {
     try {
       callback.call(this)
     } catch (e) {
@@ -76,7 +81,7 @@ window.setTimeout = function(callback, timeout) {
 ## 数据上报
 
 ```js
-window.onerror = function(msg, url, row, col, error) {
+window.onerror = function (msg, url, row, col, error) {
   new Image().src = `/m?msg=${msg}&url=${url}&row=${row}&col=${col}&e=${error.stack}`
 }
 ```

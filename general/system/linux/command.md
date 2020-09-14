@@ -265,3 +265,42 @@ history | grep 'search'
 ln -s file1 link1
 rm link1 # 可以直接删除link 而原文件还在
 ```
+
+## cat
+
+[cat](https://www.runoob.com/linux/linux-comm-cat.html)（英文全拼：concatenate）命令用于连接文件并打印到标准输出设备上。
+
+```bash
+# 显示文件内容
+cat textfile1
+```
+
+## grep
+
+[grep](https://www.runoob.com/linux/linux-comm-grep.html) 指令用于查找内容包含指定的范本样式的文件，如果发现某文件的内容符合所指定的范本样式，预设 grep 指令会把含有范本样式的那一列显示出来。若不指定任何文件名称，或是所给予的文件名为`-`，则 grep 指令会从标准输入设备读取数据。
+
+```bash
+grep 'search content' access.log | grep '2019:16:55'
+history | grep 'search content'
+```
+
+## tail
+
+[tail](https://www.runoob.com/linux/linux-comm-tail.html) 命令可用于查看文件的内容，有一个常用的参数 -f 常用于查阅正在改变的日志文件。
+
+tail -f filename 会把 filename 文件里的最尾部的内容显示在屏幕上，并且不断刷新，只要 filename 更新就可以看到最新的文件内容。(自动滚屏显示最新内容)
+
+> tail [参数] [文件]
+
+```bash
+tail -f notes.log
+```
+
+## ps
+
+Linux [ps](http://www.runoob.com/linux/linux-comm-ps.html) （英文全拼：process status）命令用于显示当前进程的状态，类似于 windows 的任务管理器。
+
+```bash
+#显示所有进程信息，连同命令行
+ps -ef | grep searchkeywords
+```
