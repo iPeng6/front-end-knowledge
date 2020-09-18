@@ -15,7 +15,7 @@
       - [graph](/general/algorithm/data-structures/graph/README.zh-CN.md)
     - 算法
       - [排序算法](/general/algorithm/algorithms/sorting.md)
-  - [设计模式](/general/design_pattern/README.md)
+  - [设计模式](/general/design-pattern/README.md)
   - 网络
     - [协议模型](/general/network/protocol-model.md)
     - [TCP/IP](/general/network/tcp-ip.md)
