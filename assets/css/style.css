@@ -2,10 +2,6 @@ body {
   background: #f6f7f9;
 }
 
-table {
-  font-size: 16px;
-}
-
 .sidebar {
   width: 22vw;
   min-width: 200px;
@@ -19,7 +15,6 @@ table {
 }
 
 .markdown-section {
-  font-size: 17px;
   color: #191d21;
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
   margin-bottom: 16px;
@@ -33,9 +28,9 @@ table {
     padding: 24px;
   }
 }
+
 .markdown-section p,
 .markdown-section li {
-  line-height: 30px;
   text-align: justify;
 }
 
@@ -52,27 +47,23 @@ table {
 }
 
 .markdown-section h2 span {
+  font-size: 1.4rem;
   color: #938846;
 }
 
 .markdown-section h3 span {
+  font-size: 1.2rem;
   color: #880d00;
 }
 
 .markdown-section h4 span {
+  font-size: 1.1rem;
   color: #773098;
 }
 
 .markdown-section h5 span {
+  font-size: 1rem;
   color: #357b2d;
-}
-
-.markdown-section code {
-  font-size: 0.9em;
-}
-
-.markdown-section pre > code {
-  font-size: 0.86rem;
 }
 
 /* vue plugin */
@@ -87,27 +78,3 @@ table {
 .sidebar .file > ul.app-sub-sidebar {
   margin-left: 0;
 }
-
-/* fix black theme fold arrow */
-
-/* .sidebar-nav li > a[href^='#/']:not([href*='?id=']):not(:only-child) {
-  background-image: var(
-    --sidebar-nav-pagelink-background-image--collapse,
-    var(--sidebar-nav-pagelink-background-image--loaded, var(--sidebar-nav-pagelink-background-image))
-  );
-  background-position: var(
-    --sidebar-nav-pagelink-background-position--collapse,
-    var(--sidebar-nav-pagelink-background-position--loaded, var(--sidebar-nav-pagelink-background-image))
-  );
-}
-
-.sidebar-nav li.open > a[href^='#/']:not([href*='?id=']):not(:only-child) {
-  background-image: var(
-    --sidebar-nav-pagelink-background-image--active,
-    var(--sidebar-nav-pagelink-background-image--loaded, var(--sidebar-nav-pagelink-background-image))
-  );
-  background-position: var(
-    --sidebar-nav-pagelink-background-position--active,
-    var(--sidebar-nav-pagelink-background-position--loaded, var(--sidebar-nav-pagelink-background-image))
-  );
-} */

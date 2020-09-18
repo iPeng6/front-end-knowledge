@@ -178,6 +178,7 @@
   - [打点埋点](/infra/mars.md)
   - [调试](/infra/debug/README.md)
 - [性能](/performance/README.md)
+  - [移动端 h5 优化](/performance/h5.md)
 - [测试](/test/README.md)
   - [单元测试](/test/unit-test.md)
 - [面经](interview/README.md)
