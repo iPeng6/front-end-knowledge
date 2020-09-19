@@ -35,7 +35,7 @@ body {
 }
 
 .markdown-section li {
-  margin: 8px 0;
+  margin: 4px 0;
 }
 
 .markdown-section strong {
@@ -43,7 +43,7 @@ body {
 }
 
 .markdown-section h1 span {
-  font-weight: 600;
+  font-size: 1.8rem;
 }
 
 .markdown-section h2 span {

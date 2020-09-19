@@ -13,7 +13,7 @@
 
 ```
 window.onerror = function(errorMessage, scriptURI, lineNumber,columnNumber,errorObj) {
-    // TODO
+    // doSomething
 }
 ```
 
