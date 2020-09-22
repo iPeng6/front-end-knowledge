@@ -29,11 +29,6 @@ body {
   }
 }
 
-.markdown-section p,
-.markdown-section li {
-  text-align: justify;
-}
-
 .markdown-section li {
   margin: 4px 0;
 }
@@ -66,15 +61,21 @@ body {
   color: #357b2d;
 }
 
-/* vue plugin */
-.demo-block .description {
-  display: none;
-}
-
-.demo-block .highlight {
-  width: 100% !important;
-}
-
 .sidebar .file > ul.app-sub-sidebar {
   margin-left: 0;
+}
+
+/* vuep */
+.markdown-section .vuep {
+  height: auto;
+  flex-direction: column;
+}
+
+.vuep .vuep-editor {
+  margin-right: 0;
+}
+.vuep-editor,
+.vuep-preview,
+.vuep-error {
+  width: auto;
 }

@@ -1,12 +1,11 @@
 # 布局
 
-## 左边固定右边自适应
+## 一、左边固定右边自适应
 
-1.
+### 1、float\margin-left
 
 ```css
 .left {
-  width: 100px;
   float: left;
 }
 .right {
@@ -14,45 +13,43 @@
 }
 ```
 
-```html
-/*vue*/
-<template>
-  <div>
-    <div class="layout-wrapper-demo1">
-      <div class="left">left</div>
-      <div class="right">right</div>
-    </div>
-  </div>
-</template>
-<script>
-  export default {}
-</script>
+<vuep template="#layout-wrapper-demo1"></vuep>
+
+<script v-pre type="text/x-template" id="layout-wrapper-demo1">
 <style>
   .layout-wrapper-demo1 {
     border: 1px solid black;
   }
-  .layout-wrapper-demo1 div {
+  div {
     height: 50px;
   }
-  .layout-wrapper-demo1 .left {
+  .left {
     width: 100px;
     float: left;
 
     border: 1px solid blue;
   }
-  .layout-wrapper-demo1 .right {
+  .right {
     margin-left: 100px;
 
     border: 1px solid red;
   }
 </style>
-```
+<template>
+  <div class="layout-wrapper-demo1">
+    <div class="left">left</div>
+    <div class="right">right</div>
+  </div>
+</template>
+<script>
+  export default {}
+</script>
+</script>
 
-2.
+### 2、float\ overflow
 
 ```css
 .left {
-  width: 200px;
   float: left;
 }
 .right {
@@ -60,41 +57,40 @@
 }
 ```
 
-```html
-/*vue*/
-<template>
-  <div>
-    <div class="layout-wrapper-demo2">
-      <div class="left">left</div>
-      <div class="right">right</div>
-    </div>
-  </div>
-</template>
-<script>
-  export default {}
-</script>
+<vuep template="#layout-wrapper-demo2"></vuep>
+
+<script v-pre type="text/x-template" id="layout-wrapper-demo2">
 <style>
-  .layout-wrapper-demo2 div {
+  div {
     height: 50px;
   }
   .layout-wrapper-demo2 {
     border: 1px solid black;
   }
-  .layout-wrapper-demo2 .left {
+  .left {
     width: 200px;
     float: left;
 
     border: 1px solid blue;
   }
-  .layout-wrapper-demo2 .right {
+  .right {
     overflow: auto;
 
     border: 1px solid red;
   }
 </style>
-```
+<template>
+  <div class="layout-wrapper-demo2">
+    <div class="left">left</div>
+    <div class="right">right</div>
+  </div>
+</template>
+<script>
+  export default {}
+</script>
+</script>
 
-3.
+### 3、flex
 
 ```css
 .wrapper {
@@ -108,45 +104,44 @@
 }
 ```
 
-```html
-/*vue*/
-<template>
-  <div>
-    <div class="layout-wrapper-demo3">
-      <div class="left">left</div>
-      <div class="right">right</div>
-    </div>
-  </div>
-</template>
-<script>
-  export default {}
-</script>
+<vuep template="#layout-wrapper-demo3"></vuep>
+
+<script v-pre type="text/x-template" id="layout-wrapper-demo3">
 <style>
-  .layout-wrapper-demo3 div {
+  div {
     height: 50px;
   }
   .layout-wrapper-demo3 {
     display: flex;
     border: 1px solid black;
   }
-  .layout-wrapper-demo3 .left {
+  .left {
     width: 300px;
 
     border: 1px solid blue;
   }
-  .layout-wrapper-demo3 .right {
+  .right {
     flex: 1;
 
     border: 1px solid red;
   }
 </style>
-```
+<template>
+  <div class="layout-wrapper-demo3">
+    <div class="left">left</div>
+    <div class="right">right</div>
+  </div>
+</template>
+<script>
+  export default {}
+</script>
+</script>
 
-## 右边固定左边自适应
+## 二、右边固定左边自适应
 
-## 水平垂直居中
+## 三、水平垂直居中
 
-1. 绝对定位 + 上下左右距离 0 + margin:auto
+### 1、绝对定位 + 上下左右距离 0 + margin:auto
 
 ```css
 .container {
@@ -162,29 +157,22 @@
 }
 ```
 
-```html
-/*vue*/
-<template>
-  <div class="layout-wrapper-demo7">
-    <div class="container">
-      <div class="item"></div>
-    </div>
-  </div>
-</template>
-<script>
-  export default {}
-</script>
+<vuep template="#layout-wrapper-demo4"></vuep>
+
+<script v-pre type="text/x-template" id="layout-wrapper-demo4">
 <style>
-  .layout-wrapper-demo7 .container {
+  .container {
     outline: 1px solid red;
     width: 300px;
     height: 200px;
+
     position: relative;
   }
-  .layout-wrapper-demo7 .item {
+  .item {
     outline: 1px solid black;
     width: 50px;
     height: 60px;
+
     position: absolute;
     top: 0;
     bottom: 0;
@@ -193,9 +181,17 @@
     margin: auto;
   }
 </style>
-```
+<template>
+  <div class="container">
+    <div class="item"></div>
+  </div>
+</template>
+<script>
+  export default {}
+</script>
+</script>
 
-2. 50%定位 + transform 负 50%
+### 2、50%定位 + transform 负 50%
 
 ```css
 .container {
@@ -209,26 +205,17 @@
 }
 ```
 
-```html
-/*vue*/
-<template>
-  <div class="layout-wrapper-demo8">
-    <div class="container">
-      <div class="item"></div>
-    </div>
-  </div>
-</template>
-<script>
-  export default {}
-</script>
+<vuep template="#layout-wrapper-demo5"></vuep>
+
+<script v-pre type="text/x-template" id="layout-wrapper-demo5">
 <style>
-  .layout-wrapper-demo8 .container {
+  .container {
     outline: 1px solid red;
     width: 300px;
     height: 200px;
     position: relative;
   }
-  .layout-wrapper-demo8 .item {
+  .item {
     outline: 1px solid black;
     width: 50px;
     height: 60px;
@@ -238,9 +225,17 @@
     transform: translate(-50%, -50%);
   }
 </style>
-```
+<template>
+  <div class="container">
+    <div class="item"></div>
+  </div>
+</template>
+<script>
+  export default {}
+</script>
+</script>
 
-3. flex 布局
+### 3、flex 布局
 
 ```css
 .container {
@@ -250,20 +245,11 @@
 }
 ```
 
-```html
-/*vue*/
-<template>
-  <div class="layout-wrapper-demo9">
-    <div class="container">
-      <div class="item"></div>
-    </div>
-  </div>
-</template>
-<script>
-  export default {}
-</script>
+<vuep template="#layout-wrapper-demo6"></vuep>
+
+<script v-pre type="text/x-template" id="layout-wrapper-demo6">
 <style>
-  .layout-wrapper-demo9 .container {
+  .container {
     outline: 1px solid red;
     width: 300px;
     height: 200px;
@@ -271,15 +257,25 @@
     align-items: center;
     justify-content: center;
   }
-  .layout-wrapper-demo9 .item {
+  .item {
     outline: 1px solid black;
     width: 50px;
     height: 60px;
   }
 </style>
-```
+<template>
+  <div class="container">
+    <div class="item"></div>
+  </div>
+</template>
+<script>
+  export default {}
+</script>
+</script>
 
-## 9 宫格
+## 四、9 宫格
+
+### 1、flex
 
 ```css
 .container {
@@ -292,32 +288,33 @@
 }
 ```
 
-```html
-/*vue*/
-<template>
-  <div class="layout-wrapper-demo6">
-    <div class="container">
-      <div class="item" v-for="n in 9">{{n}}</div>
-    </div>
-  </div>
-</template>
-<script>
-  export default {}
-</script>
+<vuep template="#layout-wrapper-demo7"></vuep>
+
+<script v-pre type="text/x-template" id="layout-wrapper-demo7">
 <style>
-  .layout-wrapper-demo6 .container {
+  .container {
     display: flex;
     flex-wrap: wrap;
     width: 300px;
     height: 300px;
   }
-  .layout-wrapper-demo6 .item {
+  .item {
     width: 33%;
 
     outline: 1px solid black;
   }
 </style>
-```
+<template>
+  <div class="container">
+    <div class="item" v-for="n in 9">{{n}}</div>
+  </div>
+</template>
+<script>
+  export default {}
+</script>
+</script>
+
+### 2、grid
 
 ```css
 .container {
@@ -326,28 +323,27 @@
 }
 ```
 
-```html
-/*vue*/
-<template>
-  <div class="layout-wrapper-demo6_1">
-    <div class="container">
-      <div class="item" v-for="n in 9">{{n}}</div>
-    </div>
-  </div>
-</template>
-<script>
-  export default {}
-</script>
+<vuep template="#layout-wrapper-demo8"></vuep>
+
+<script v-pre type="text/x-template" id="layout-wrapper-demo8">
 <style>
-  .layout-wrapper-demo6_1 .container {
+  .container {
     display: grid;
     grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
 
     width: 300px;
     height: 300px;
   }
-  .layout-wrapper-demo6_1 .item {
+  .item {
     outline: 1px solid black;
   }
 </style>
-```
+<template>
+  <div class="container">
+    <div class="item" v-for="n in 9">{{n}}</div>
+  </div>
+</template>
+<script>
+  export default {}
+</script>
+</script>

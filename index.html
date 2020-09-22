@@ -12,6 +12,7 @@
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
     <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css" /> -->
     <link rel="stylesheet" href="assets/css/vue.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/vuep/dist/vuep.min.css" />
     <link rel="stylesheet" href="assets/css/okaid.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/sidebar-folder.css" />
@@ -19,15 +20,16 @@
   <body>
     <div id="app"></div>
 
+    <script src="//cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/vuep/dist/vuep.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/babel-standalone@6.26.0/babel.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/docsify-demo-box-vue@1.1.1/dist/docsify-demo-box-vue.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/babel-standalone/babel.min.js"></script>
+
     <script>
-      var jsResources = '<scr' + 'ipt src="//unpkg.com/vue/dist/vue.js"></scr' + 'ipt>'
-      var cssResources = '@import url("//cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css");'
-      var bootCode = 'var globalVariable = "leon"'
-      var globalVariable = 'leon'
+      // var jsResources = '<scr' + 'ipt src="//unpkg.com/vue/dist/vue.js"></scr' + 'ipt>'
+      // var cssResources = '@import url("//cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css");'
+      // var bootCode = 'var globalVariable = "leon"'
+      // var globalVariable = 'leon'
 
       window.$docsify = {
         loadSidebar: true,
@@ -43,7 +45,7 @@
         search: {
           placeholder: '🔍 Search',
         },
-        plugins: [DemoBoxVue.create(jsResources, cssResources, bootCode)],
+        // plugins: [DemoBoxVue.create(jsResources, cssResources, bootCode)],
       }
     </script>
     <!-- plugins -->

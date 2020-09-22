@@ -16,91 +16,92 @@ CSS Houdini 是一组底层 API，它们公开了 CSS 引擎的各个部分，�
 
 🌰: 随机颜色
 
-```html
-/*vue*/
-<template>
-  <div>
-    <div class="houdini-paint-demo1"></div>
-  </div>
-</template>
-<script>
-  export default {
-    mounted() {
-      let blobURL = URL.createObjectURL(
-        new Blob(
-          [
-            `(function() {
-              class RandomColorPainter {
-                  // 可以获取的css属性，先写在这里
-                  // 我这里定义宽高和间隔，从css获取
-                  static get inputProperties() {
-                    return ['--w', '--h', '--spacing'];
-                  }
+<vuep template="#houdini-paint"></vuep>
 
-                  paint(ctx, PaintSize, props) {
-                      const w = props.get('--w') && +props.get('--w')[0].trim() || 30;
-                      const h = props.get('--h') && +props.get('--h')[0].trim() || 30;
-                      const spacing = +props.get('--spacing')[0].trim() || 10;
-
-                      for (let x = 0; x < PaintSize.width / w; x++) {
-                          for (let y = 0; y < PaintSize.height / h; y++) {
-                              ctx.fillStyle = "#"+Math.random().toString(16).slice(2, 8)
-                              ctx.beginPath();
-                              ctx.rect(x * (w + spacing), y * (h + spacing), w, h);
-                              ctx.fill();
-                          }
-                      }
-                  }
-              }
-              registerPaint('randomcolor', RandomColorPainter);
-            })()`
-          ],
-          { type: 'application/javascript' }
-        )
-      )
-      CSS.paintWorklet.addModule(blobURL)
-    }
-  }
-</script>
+<script v-pre type="text/x-template" id="houdini-paint">
 <style>
-  .houdini-paint-demo1 {
+  .houdini-paint {
     height: 300px;
+    width: 100%;
     --w: 50;
     --h: 50;
     --spacing: 10;
     background-image: paint(randomcolor);
   }
 </style>
-```
+<template>
+  <div class="houdini-paint"></div>
+</template>
+<script>
+export default {
+  mounted() {
+    let blobURL = URL.createObjectURL(
+      new Blob(
+        [
+          `(function() {
+            class RandomColorPainter {
+                // 可以获取的css属性，先写在这里
+                // 我这里定义宽高和间隔，从css获取
+                static get inputProperties() {
+                  return ['--w', '--h', '--spacing'];
+                }
+
+                paint(ctx, PaintSize, props) {
+                    const w = props.get('--w') && +props.get('--w')[0].trim() || 30;
+                    const h = props.get('--h') && +props.get('--h')[0].trim() || 30;
+                    const spacing = +props.get('--spacing')[0].trim() || 10;
+
+                    for (let x = 0; x < PaintSize.width / w; x++) {
+                        for (let y = 0; y < PaintSize.height / h; y++) {
+                            ctx.fillStyle = "#"+Math.random().toString(16).slice(2, 8)
+                            ctx.beginPath();
+                            ctx.rect(x * (w + spacing), y * (h + spacing), w, h);
+                            ctx.fill();
+                        }
+                    }
+                }
+            }
+            registerPaint('randomcolor', RandomColorPainter);
+          })()`
+        ],
+        { type: 'application/javascript' }
+      )
+    )
+    CSS.paintWorklet.addModule(blobURL)
+
+}
+}
+</script>
+
+</script>
 
 ## CSS Typed Object Model
 
 - [更高效、更安全地操作 CSSOM ：CSS Typed OM](https://juejin.im/post/5bc712245188255c352d8c5a)
 - [Working with the new CSS Typed Object Model](https://developers.google.com/web/updates/2018/03/cssom)
 
-```html
-/*vue*/
-<template>
-  <div>
-    <div class="houdini-typedom-demo1" id="typedombox1"></div>
-  </div>
-</template>
-<script>
-  export default {
-    mounted() {
-      const box = document.querySelector('#typedombox1')
-      box.attributeStyleMap.set('width', CSS.px(200))
-      box.attributeStyleMap.set('height', CSS.px(200))
+<vuep template="#houdini-typedom"></vuep>
 
-      const x = box.computedStyleMap().get('width')
-      console.log(x)
-      box.attributeStyleMap.set('transform', new CSSTranslate(x, CSS.px(0)))
-    }
-  }
-</script>
+<script v-pre type="text/x-template" id="houdini-typedom">
 <style>
-  .houdini-typedom-demo1 {
+  .houdini-typedom {
     background: linear-gradient(to right, #2c3e50, #4ca1af);
   }
 </style>
-```
+<template>
+  <div class="houdini-typedom" id="houdini-typedom"></div>
+</template>
+<script>
+export default {
+  mounted() {
+    const box = document.querySelector('#houdini-typedom')
+    box.attributeStyleMap.set('width', CSS.px(200))
+    box.attributeStyleMap.set('height', CSS.px(200))
+
+    const x = box.computedStyleMap().get('width')
+    box.attributeStyleMap.set('transform', new CSSTranslate(x, CSS.px(0)))
+
+}
+}
+</script>
+</script>

@@ -69,8 +69,22 @@ http://www.some.site/page.html?lang=<script>alert(document.cookie)</script>
   - url 编码
 - 过滤校验
   - 危险标签过滤或校验拒绝
-  - 黑白名单机制
-- CSP (Content Security Policy)
+  - 黑白名单机制，只允许部分标签属性
+- [CSP (Content Security Policy)](https://content-security-policy.com/)
   - 不许允不可信赖的来源：只有来自明确定义过的可信赖来源的外链资源才可以被下载
   - 不允许内联资源：行内脚本和内联 CSS 不允许被执行。
   - 不允许 eval 函数：Javascript 的`eval`函数不可以被使用
+
+CSP 使用方式
+
+meta
+
+```html
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' ssl.google-analytics.com;" />
+```
+
+header
+
+```
+Content-Security-Policy: default-src 'none'; script-src 'self' ssl.google-analytics.com;
+```

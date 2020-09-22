@@ -29,10 +29,6 @@
 
       ![](img/proxy.png ':size=350xauto')
 
-2.  [Hyper](https://hyper.is) 另一个酷炫的终端 GUI
-
-    ![](https://cloud.githubusercontent.com/assets/13041/16820268/13c9bfe6-4905-11e6-8fe4-baf8fc8d9293.gif)
-
 ## 二、shell 增强
 
 [oh my zsh](https://ohmyz.sh/) 提供了丰富的插件和主题

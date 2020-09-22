@@ -71,51 +71,37 @@
 - `<line-name>`：网格线名称
 
 例子：
+<vuep template="#grid-layout-demo1"></vuep>
 
-```css
-.container {
-  grid-template-rows: 25% 100px auto;
-  grid-template-columns: 80px auto 200px;
-}
-
-/* 等同于 */
-.container {
-  grid-template: 25% 100px auto / 80px auto 200px;
-}
-```
-
-```html
-/*vue*/
-<template>
-  <div class="grid-layout-demo1">
-    <div class="container">
-      <div>1: 宽80px 高25%</div>
-      <div>2: 宽auto 高25%</div>
-      <div>3: 宽200px 高25%</div>
-      <div>4: 宽80px 高100px</div>
-      <div>5: 宽auto 高100px</div>
-      <div>6: 宽200px 高100px</div>
-      <div>7: 宽80px 高auto</div>
-      <div>8: 宽auto 高auto</div>
-      <div>9: 宽200px 高auto</div>
-    </div>
-  </div>
-</template>
-<script>
-  export default {}
-</script>
+<script v-pre type="text/x-template" id="grid-layout-demo1">
 <style>
-  .grid-layout-demo1 .container {
+  .container {
     height: 300px;
     display: grid;
     grid-template-columns: 80px auto 200px;
     grid-template-rows: 25% 100px auto;
+    /* 缩写 */
+    /* grid-template: 25% 100px auto / 80px auto 200px; */
   }
-  .grid-layout-demo1 div {
+  div {
     border: 1px solid orange;
   }
 </style>
-```
+<template>
+  <div class="container">
+    <div>1: 宽80px 高25%</div>
+    <div>2: 宽auto 高25%</div>
+    <div>3: 宽200px 高25%</div>
+    <div>4: 宽80px 高100px</div>
+    <div>5: 宽auto 高100px</div>
+    <div>6: 宽200px 高100px</div>
+    <div>7: 宽80px 高auto</div>
+    <div>8: 宽auto 高auto</div>
+    <div>9: 宽200px 高auto</div>
+  </div>
+</template>
+<script></script>
+</script>
 
 **grid-template** 是 grid-template-rows，grid-template-columns 和 grid-template-areas 属性的缩写。
 
@@ -137,8 +123,8 @@
 ```
 
 <div style="display: grid;grid-template-columns: 1fr 2fr;">
-  <div style="background: red;">1</div>
-  <div style="background: orange;">2</div>
+  <div style="background: red;">1fr</div>
+  <div style="background: orange;">2fr</div>
 </div>
 
 fr 也可以与绝对长度的单位结合使用，这时会非常方便。
@@ -151,84 +137,68 @@ fr 也可以与绝对长度的单位结合使用，这时会非常方便。
 ```
 
 <div style="display: grid;grid-template-columns:150px 1fr 2fr;">
-  <div style="background: red;">1</div>
-  <div style="background: orange;">2</div>
-  <div style="background: blue;">3</div>
+  <div style="background: red;">150px</div>
+  <div style="background: orange;">1fr</div>
+  <div style="background: blue;">2fr</div>
 </div>
 
 #### (2) repeat()
 
 有时候，重复写同样的值非常麻烦，尤其网格很多时。这时，可以使用 repeat()函数，简化重复的值。
 
-```css
-.container {
-  grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(5, 50px);
-}
-```
-
 repeat()接受两个参数，第一个参数是重复的次数，第二个参数是所要重复的值。
 
-```html
-/*vue*/
-<template>
-  <div class="grid-layout-demo2">
-    <div class="container">
-      <div v-for="n in 50">{{n}}</div>
-    </div>
-  </div>
-</template>
-<script>
-  export default {}
-</script>
+<vuep template="#grid-layout-demo2"></vuep>
+
+<script v-pre type="text/x-template" id="grid-layout-demo2">
 <style>
-  .grid-layout-demo2 .container {
+  .container {
     height: 300px;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(5, 50px);
   }
-  .grid-layout-demo2 div {
+  div {
     border: 1px solid orange;
   }
 </style>
-```
-
-#### (3) auto-fill 关键字
-
-有时，单元格的大小是固定的，但是容器的大小不确定。如果希望每一行（或每一列）容纳尽可能多的单元格，这时可以使用 auto-fill 关键字表示自动填充。
-
-```css
-.container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 100px);
-  grid-auto-rows: 50px;
-}
-```
-
-```html
-/*vue*/
 <template>
-  <div class="grid-layout-demo3">
-    <div class="container">
-      <div v-for="n in 10">{{n}}</div>
-    </div>
+  <div class="container">
+    <div v-for="n in 50">{{n}}</div>
   </div>
 </template>
 <script>
   export default {}
 </script>
+</script>
+
+#### (3) auto-fill 关键字
+
+有时，单元格的大小是固定的，但是容器的大小不确定。如果希望每一行（或每一列）容纳尽可能多的单元格，这时可以使用 auto-fill 关键字表示自动填充。
+
+<vuep template="#grid-layout-demo3"></vuep>
+
+<script v-pre type="text/x-template" id="grid-layout-demo3">
 <style>
-  .grid-layout-demo3 .container {
+  .container {
     display: grid;
     grid-template-columns: repeat(auto-fill, 100px);
     grid-auto-rows: 50px;
   }
-  .grid-layout-demo3 div {
+  div {
     border: 1px solid orange;
   }
 </style>
-```
+<template>
+  <div class="container">
+    <div v-for="n in 10">{{n}}</div>
+  </div>
+</template>
+<script>
+  export default {}
+</script>
+
+</script>
 
 #### (4) auto 关键字
 
@@ -256,10 +226,60 @@ grid-template-columns 属性和 grid-template-rows 属性里面，还可以使�
 
 网格布局允许同一根线有多个名字，比如[c1 column-start]。
 
-```html
-/*vue*/
+<vuep template="#grid-layout-demo3-1"></vuep>
+
+<script v-pre type="text/x-template" id="grid-layout-demo3-1">
+<style>
+  .container {
+    display: grid;
+    grid-template-columns: [c1 column-start] 100px [c2] 100px [c3] auto [c4];
+    grid-template-rows: [r1 row-start] 100px [r2] 100px [r3] auto [r4];
+    position: relative;
+  }
+  div {
+    border: 1px solid orange;
+  }
+  .container::before {
+    content: '';
+    position: absolute;
+    transition: left 0.25s, top 0.25s;
+    background: red;
+  }
+  .container[data-type^='c']::before {
+    width: 3px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transform: translateX(-1.5px);
+  }
+  .container[data-type^='r']::before {
+    width: 100%;
+    height: 3px;
+    left: 0;
+    top: 0;
+    transform: translateY(-1.5px);
+  }
+  .container[data-type='c2']::before {
+    left: 100px;
+  }
+  .container[data-type='c3']::before {
+    left: 200px;
+  }
+   .container[data-type='c4']::before {
+    left: 100%;
+  }
+   .container[data-type='r2']::before {
+    top: 100px;
+  }
+  .container[data-type='r3']::before {
+    top: 200px;
+  }
+   .container[data-type='r4']::before {
+    top: 100%;
+  }
+</style>
 <template>
-  <div class="grid-layout-demo3-1">
+  <div>
     <section>
       纵向网格线：
       <input type="radio" value="c1" v-model="dataType" id="demo3-1-c1" />
@@ -296,97 +316,38 @@ grid-template-columns 属性和 grid-template-rows 属性里面，还可以使�
     },
   }
 </script>
-<style>
-  .grid-layout-demo3-1 .container {
-    display: grid;
-    grid-template-columns: [c1 column-start] 100px [c2] 100px [c3] auto [c4];
-    grid-template-rows: [r1 row-start] 100px [r2] 100px [r3] auto [r4];
-    position: relative;
-  }
-  .grid-layout-demo3-1 div {
-    border: 1px solid orange;
-  }
-  .grid-layout-demo3-1 .container::before {
-    content: '';
-    position: absolute;
-    transition: left 0.25s, top 0.25s;
-    background: red;
-  }
-  .grid-layout-demo3-1 .container[data-type^='c']::before {
-    width: 3px;
-    height: 100%;
-    left: 0;
-    top: 0;
-    transform: translateX(-1.5px);
-  }
-  .grid-layout-demo3-1 .container[data-type^='r']::before {
-    width: 100%;
-    height: 3px;
-    left: 0;
-    top: 0;
-    transform: translateY(-1.5px);
-  }
-  .grid-layout-demo3-1 .container[data-type='c2']::before {
-    left: 100px;
-  }
-  .grid-layout-demo3-1 .container[data-type='c3']::before {
-    left: 200px;
-  }
-  .grid-layout-demo3-1 .container[data-type='c4']::before {
-    left: 100%;
-  }
-  .grid-layout-demo3-1 .container[data-type='r2']::before {
-    top: 100px;
-  }
-  .grid-layout-demo3-1 .container[data-type='r3']::before {
-    top: 200px;
-  }
-  .grid-layout-demo3-1 .container[data-type='r4']::before {
-    top: 100%;
-  }
-</style>
-```
+</script>
 
 ### 3. grid-row-gap/grid-column-gap、grid-gap 属性
 
 grid-row-gap 属性设置行与行的间隔（行间距），grid-column-gap 属性设置列与列的间隔（列间距）。
 
-```css
-.container {
-  grid-row-gap: 10px;
-  grid-column-gap: 20px;
-}
-/* 等同于 */
-.container {
-  grid-gap: 10px 20px;
-}
-```
+<vuep template="#grid-layout-demo4"></vuep>
 
-```html
-/*vue*/
-<template>
-  <div class="grid-layout-demo4">
-    <div class="container">
-      <div v-for="n in 10">{{n}}</div>
-    </div>
-  </div>
-</template>
-<script>
-  export default {}
-</script>
+<script v-pre type="text/x-template" id="grid-layout-demo4">
 <style>
-  .grid-layout-demo4 .container {
+  .container {
     display: grid;
     grid-template-columns: repeat(auto-fill, 100px);
     grid-auto-rows: 50px;
     grid-row-gap: 10px;
     grid-column-gap: 20px;
+    /* 缩写 */
+    /* grid-gap: 10px 20px; */
   }
-  .grid-layout-demo4 div {
+   div {
     border: 1px solid orange;
   }
 </style>
-```
+<template>
+  <div class="container">
+    <div v-for="n in 10">{{n}}</div>
+  </div>
+</template>
+<script>
+  export default {}
+</script>
+</script>
 
 **grid-gap** 属性是 grid-column-gap 和 grid-row-gap 的合并简写形式，语法如下。
 
@@ -443,10 +404,21 @@ grid-auto-columns 属性和 grid-auto-rows 属性用来设置，浏览器自动�
 }
 ```
 
-```html
-/*vue*/
+<vuep template="#grid-layout-demo5"></vuep>
+
+<script v-pre type="text/x-template" id="grid-layout-demo5">
+<style>
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: 50px;
+  }
+  div {
+    border: 1px solid orange;
+  }
+</style>
 <template>
-  <div class="grid-layout-demo5">
+  <div>
     <section>
       justify-items:
       <input type="radio" value="stretch" v-model="justifyItems" id="demo5-justify-items-stretch" />
@@ -482,55 +454,44 @@ grid-auto-columns 属性和 grid-auto-rows 属性用来设置，浏览器自动�
         alignItems: 'stretch',
       }
     },
-  }
+     mounted() {
+      const styleEl = document.createElement('style')
+
+        styleEl.innerText = `
+        .item-1 {
+        background-color: #ef342a;
+        }
+        .item-2 {
+        background-color: #f68f26;
+        }
+        .item-3 {
+        background-color: #4ba946;
+        }
+        .item-4 {
+        background-color: #0376c2;
+        }
+        .item-5 {
+        background-color: #c077af;
+        }
+        .item-6 {
+        background-color: #f8d29d;
+        }
+        .item-7 {
+        background-color: #b5a87f;
+        }
+        .item-8 {
+        background-color: #d0e4a9;
+        }
+        .item-9 {
+        background-color: #4dc7ec;
+        }`
+
+        document.head.appendChild(styleEl);
+    }
+
+}
 </script>
-<style>
-  .grid-layout-demo5 .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-auto-rows: 50px;
-  }
-  .grid-layout-demo5 div {
-    border: 1px solid orange;
-  }
-
-  .item-1 {
-    background-color: #ef342a;
-  }
-
-  .item-2 {
-    background-color: #f68f26;
-  }
-
-  .item-3 {
-    background-color: #4ba946;
-  }
-
-  .item-4 {
-    background-color: #0376c2;
-  }
-
-  .item-5 {
-    background-color: #c077af;
-  }
-
-  .item-6 {
-    background-color: #f8d29d;
-  }
-
-  .item-7 {
-    background-color: #b5a87f;
-  }
-
-  .item-8 {
-    background-color: #d0e4a9;
-  }
-
-  .item-9 {
-    background-color: #4dc7ec;
-  }
-</style>
-```
+</script>
 
 ### 7. align-content/justify-content，place-content
 
@@ -550,10 +511,22 @@ grid-auto-columns 属性和 grid-auto-rows 属性用来设置，浏览器自动�
 }
 ```
 
-```html
-/*vue*/
+<vuep template="#grid-layout-demo6"></vuep>
+
+<script v-pre type="text/x-template" id="grid-layout-demo6">
+<style>
+  .container {
+    display: grid;
+    width: 400px;
+    height: 300px;
+    grid-template: auto auto auto / auto auto auto;
+  }
+  div {
+    border: 1px solid orange;
+  }
+</style>
 <template>
-  <div class="grid-layout-demo6">
+  <div>
     <section>
       justify-content:
       <input type="radio" value="stretch" v-model="justifyContent" id="demo5-justify-content-stretch" />
@@ -603,18 +576,7 @@ grid-auto-columns 属性和 grid-auto-rows 属性用来设置，浏览器自动�
     },
   }
 </script>
-<style>
-  .grid-layout-demo6 .container {
-    display: grid;
-    width: 400px;
-    height: 300px;
-    grid-template: auto auto auto / auto auto auto;
-  }
-  .grid-layout-demo6 div {
-    border: 1px solid orange;
-  }
-</style>
-```
+</script>
 
 ### 8. grid-auto-flow 属性
 
@@ -625,43 +587,35 @@ grid-auto-columns 属性和 grid-auto-rows 属性用来设置，浏览器自动�
 - row: 可以理解成俄罗斯方框 从下往上落子，colum: 可以理解成从右往左落子，遇到碰撞就停止。
 - dense: 可以理解为落子的时候可以穿透，直到没有空间为止
 
-```css
-.container {
-  width: 300px;
-  height: 300px;
-  display: grid;
-  grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
-  grid-gap: 4px;
-}
-.item-1 {
-  grid-row: 2/4;
-}
-.item-2 {
-  grid-column: 2/3;
-}
-```
+<vuep template="#grid-layout-demo8"></vuep>
 
-```html
-/*vue*/
+<script v-pre type="text/x-template" id="grid-layout-demo8">
+<style>
+  .container {
+    width: 300px;
+    height: 300px;
+    display: grid;
+    grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+    grid-gap: 4px;
+  }
+  .item-1 {
+    grid-row: 2/4;
+  }
+  .item-2 {
+    grid-column: 2/3;
+  }
+</style>
 <template>
-  <div class="grid-layout-demo8">
+  <div>
     <section>
-      <input type="radio" value="row" v-model="flow" id="demo8-grid-auto-flow-row" /><label
-        for="demo8-grid-auto-flow-row"
-        >row</label
-      >
-      <input type="radio" value="column" v-model="flow" id="demo8-grid-auto-flow-column" /><label
-        for="demo8-grid-auto-flow-column"
-        >column</label
-      >
-      <input type="radio" value="row dense" v-model="flow" id="demo8-grid-auto-flow-row-dense" /><label
-        for="demo8-grid-auto-flow-row-dense"
-        >row dense</label
-      >
-      <input type="radio" value="column dense" v-model="flow" id="demo8-grid-auto-flow-column-dense" /><label
-        for="demo8-grid-auto-flow-column-dense"
-        >column dense</label
-      >
+      <input type="radio" value="row" v-model="flow" id="demo8-grid-auto-flow-row" />
+      <label for="demo8-grid-auto-flow-row" >row</label>
+      <input type="radio" value="column" v-model="flow" id="demo8-grid-auto-flow-column" />
+      <label for="demo8-grid-auto-flow-column">column</label>
+      <input type="radio" value="row dense" v-model="flow" id="demo8-grid-auto-flow-row-dense" />
+      <label for="demo8-grid-auto-flow-row-dense">row dense</label>
+      <input type="radio" value="column dense" v-model="flow" id="demo8-grid-auto-flow-column-dense" />
+      <label for="demo8-grid-auto-flow-column-dense">column dense</label>
     </section>
     <div class="container" :style="{gridAutoFlow:flow}">
       <div v-for="n in 7" :class="'item-'+n">{{n}}</div>
@@ -677,22 +631,7 @@ grid-auto-columns 属性和 grid-auto-rows 属性用来设置，浏览器自动�
     },
   }
 </script>
-<style>
-  .grid-layout-demo8 .container {
-    width: 300px;
-    height: 300px;
-    display: grid;
-    grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
-    grid-gap: 4px;
-  }
-  .grid-layout-demo8 .item-1 {
-    grid-row: 2/4;
-  }
-  .grid-layout-demo8 .item-2 {
-    grid-column: 2/3;
-  }
-</style>
-```
+</script>
 
 ## Grid 项目属性
 
@@ -739,20 +678,11 @@ grid-area 属性指定项目放在哪一个区域。
 
 1 号项目位于 e 区域
 
-```html
-/*vue*/
-<template>
-  <div class="grid-layout-demo7">
-    <div class="container">
-      <div v-for="n in 9" :class="'item-'+n">{{n}}</div>
-    </div>
-  </div>
-</template>
-<script>
-  export default {}
-</script>
+<vuep template="#grid-layout-demo7"></vuep>
+
+<script v-pre type="text/x-template" id="grid-layout-demo7">
 <style>
-  .grid-layout-demo7 .container {
+  .container {
     width: 300px;
     height: 300px;
     display: grid;
@@ -763,11 +693,19 @@ grid-area 属性指定项目放在哪一个区域。
       'd e f'
       'g h i';
   }
-  .grid-layout-demo7 .item-1 {
+  .item-1 {
     grid-area: e;
   }
 </style>
-```
+<template>
+  <div class="container">
+    <div v-for="n in 9" :class="'item-'+n">{{n}}</div>
+  </div>
+</template>
+<script>
+  export default {}
+</script>
+</script>
 
 grid-area 属性还可用作 grid-row-start、grid-column-start、grid-row-end、grid-column-end 的合并简写形式，直接指定项目的位置。
 
