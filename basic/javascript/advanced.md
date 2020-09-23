@@ -121,3 +121,31 @@ a instanceof Foo // true
 ```
 
 instanceof 操作符的左操作数是一个普通的对象，右操作数是一个函数。instanceof 回答的问题是：在 a 的整条[[Prototype]]链中是否有指向 Foo.prototype 的对象
+
+```js
+function new_instance_of(leftValue, rightValue) {
+  let rightProto = rightValue.prototype // 取右表达式的 prototype 值
+
+  leftValue = leftValue.__proto__ // 取左表达式的__proto__值
+
+  while (true) {
+    if (leftVaule === null) {
+      return false
+    }
+
+    if (leftVaule === rightProto) {
+      return true
+    }
+
+    leftVaule = leftVaule.__proto__
+  }
+}
+```
+
+根据原型链和 instanceof 可以得到几个有意思的结论，可以很好的考察这两个概念
+
+```js
+Object instanceof Object // true
+Function instanceof Function // true
+Function instanceof Object // true
+```
