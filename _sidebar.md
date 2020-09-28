@@ -164,6 +164,7 @@
     - [Lint](/infra/engineering/lint.md)
     - [Webpack](/infra/engineering/webpack/README.md)
       - [编译原理](/infra/engineering/webpack/minipack.md)
+      - [HMR](/infra/engineering/webpack/hmr.md)
     - [Babel](/infra/engineering/babel/README.md)
       - [编译原理](/infra/engineering/babel/the-super-tiny-compiler.md)
       - [loose mode](/infra/engineering/babel/loose-mode.md)

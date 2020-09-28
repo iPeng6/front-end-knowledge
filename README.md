@@ -15,6 +15,7 @@
 
 - [Web Developer Roadmap](https://github.com/kamranahmedse/developer-roadmap)
 - [前端技术清单](https://github.com/alienzhou/frontend-tech-list)
+- [front-end-handbook-2019](https://github.com/FrontendMasters/front-end-handbook-2019)
 
 ## 文档手册
 
