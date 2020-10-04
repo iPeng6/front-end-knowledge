@@ -9,7 +9,7 @@
    git init # 如果还不是git项目需要init初始化，否则忽略这一步
    git remote add origin git@github.com:iPeng6/test_new_repo.git
 
-   echo '# test new repo' >> README.md # 新建一些文件或者本地自己新建，一个仓库通常需要 README, LICENSE, .gitignore.文件
+   echo '# test new repo' >> README.md # 新建一些文件或者本地自己新建，一个仓库通常需要 README, LICENSE, .gitignore 文件
 
    git add .
    git commit -m 'first commit'
