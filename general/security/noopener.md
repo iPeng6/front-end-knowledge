@@ -5,6 +5,7 @@
 
 - [危险的 target="\_blank" 与 “opener”](https://mp.weixin.qq.com/s/T4jQUdS-rar7hr2EWilJrw) _- 创宇前端 2018-03-06_
 - [About rel=noopener](https://mathiasbynens.github.io/rel-noopener/)
+- [网页外链用了 target="\_blank"，结果悲剧了](https://mp.weixin.qq.com/s/hujbrCFotMgoNZzvCEkorA)
 
 </details>
 

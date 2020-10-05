@@ -87,5 +87,5 @@ body {
 .vuep-editor,
 .vuep-preview,
 .vuep-error {
-  width: auto;
+  width: auto !important;
 }

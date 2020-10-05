@@ -10,12 +10,17 @@
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
-    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css" /> -->
     <link rel="stylesheet" href="assets/css/vue.css" />
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/vuep/dist/vuep.min.css" />
-    <link rel="stylesheet" href="assets/css/okaid.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/sidebar-folder.css" />
+    <!-- 代码块主题样式 -->
+    <link rel="preload" as="style" onload="this.rel='stylesheet'" href="assets/css/okaid.css" />
+    <link
+      rel="preload"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="//cdn.jsdelivr.net/npm/vuep/dist/vuep.min.css"
+    />
 
     <script>
       function togglePin() {
@@ -60,13 +65,13 @@
     <!-- plugins -->
     <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse@1.1.5/dist/docsify-sidebar-collapse.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/docsify@4.11.4/lib/plugins/search.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/prismjs@1.20.0/components/prism-bash.min.js" async></script>
-    <script src="//cdn.jsdelivr.net/npm/prismjs@1.20.0/components/prism-json.min.js" async></script>
-    <script src="//cdn.jsdelivr.net/npm/prismjs@1.20.0/components/prism-java.min.js" async></script>
-    <script src="//cdn.jsdelivr.net/npm/prismjs@1.20.0/components/prism-c.min.js" async></script>
-    <script src="//cdn.jsdelivr.net/npm/prismjs@1.20.0/components/prism-typescript.min.js" async></script>
-    <script src="//cdn.jsdelivr.net/npm/prismjs@1.20.0/components/prism-objectivec.min.js" async></script>
-    <script src="//cdn.jsdelivr.net/npm/prismjs@1.20.0/components/prism-yaml.min.js" async></script>
-    <script src="//cdn.jsdelivr.net/npm/prismjs@1.20.0/components/prism-sql.min.js" async></script>
+    <script async src="//cdn.jsdelivr.net/npm/prismjs@1.20.0/components/prism-bash.min.js"></script>
+    <script async src="//cdn.jsdelivr.net/npm/prismjs@1.20.0/components/prism-json.min.js"></script>
+    <script async src="//cdn.jsdelivr.net/npm/prismjs@1.20.0/components/prism-java.min.js"></script>
+    <script async src="//cdn.jsdelivr.net/npm/prismjs@1.20.0/components/prism-c.min.js"></script>
+    <script async src="//cdn.jsdelivr.net/npm/prismjs@1.20.0/components/prism-typescript.min.js"></script>
+    <script async src="//cdn.jsdelivr.net/npm/prismjs@1.20.0/components/prism-objectivec.min.js"></script>
+    <script async src="//cdn.jsdelivr.net/npm/prismjs@1.20.0/components/prism-yaml.min.js"></script>
+    <script async src="//cdn.jsdelivr.net/npm/prismjs@1.20.0/components/prism-sql.min.js"></script>
   </body>
 </html>
