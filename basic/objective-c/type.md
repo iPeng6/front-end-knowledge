@@ -4,12 +4,12 @@
 
 1. 获取类型
 
-```oc
+```c
 NSString *name = [NSString stringWithUTF8String:object_getClassName(self.var)];
 ```
 
 2. 判断类型
 
-```oc
+```c
 [message isKindOfClass:[NSString class]
 ```

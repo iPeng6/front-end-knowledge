@@ -24,8 +24,11 @@ body {
 }
 
 @media screen and (max-width: 768px) {
+  .content {
+    padding: 0;
+  }
   .markdown-section {
-    padding: 24px;
+    padding: 16px;
   }
   /* pin */
   .sidebar-pin {

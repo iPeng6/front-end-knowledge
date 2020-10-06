@@ -182,8 +182,8 @@ li input[type='checkbox'] {
 main {
   display: block;
   position: relative;
-  width: 100vw;
-  height: 100%;
+  /* width: 100vw;
+  height: 100%; */
   z-index: 0;
 }
 main.hidden {
