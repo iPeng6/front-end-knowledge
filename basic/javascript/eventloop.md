@@ -21,11 +21,11 @@ JS 中任务类型分为两种：`macrotask` 和 `microtask`(全小写)，在 EC
 
 **macrotask(task)**:
 
-User I/O(鼠标键盘事件) > MessageChannel、postMessage > setTimeout、setInterval、setImmediate(node\ie\edge)、network I/O、UI rendering
+User I/O(鼠标键盘滚轮事件) > MessageChannel、postMessage > setTimeout、setInterval、setImmediate(node\ie\edge)、network I/O、UI rendering(dom 解析)
 
-**microtask(jobs)**:
+**microtask(job)**:
 
-process.nextTick(node) > Promise > Object.observe(已废弃)、MutationObserver
+process.nextTick(node) > Promise > MutationObserver、Object.observe(已废弃)
 
 JS 引擎一旦空闲，就会从 task 队列里取出一个任务加入执行栈，此间产生的 jobs 也一并执行完，然后再从 task 队列里取出下一个任务进入下一个循环周期，这就是我们常说的**事件循环**
 

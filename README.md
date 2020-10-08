@@ -83,6 +83,12 @@
 - [掘金](https://juejin.im/)
 - [Medium](https://medium.com/)
 
+## 书籍
+
+- 《JavaScript 高级程序设计》【红宝书】
+- 《你不知道的 JavaScript》【小黄书】
+- 《JavaScript 语言精髓与编程实践》【绿宝书】
+
 ## 检验掌握的标准
 
 1. 能造出轮子
