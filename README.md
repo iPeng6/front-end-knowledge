@@ -87,7 +87,7 @@
 
 - 《JavaScript 高级程序设计》【红宝书】
 - 《你不知道的 JavaScript》【小黄书】
-- 《JavaScript 语言精髓与编程实践》【绿宝书】
+- 《JavaScript 语言精髓与编程实践》【绿皮书】
 
 ## 检验掌握的标准
 
