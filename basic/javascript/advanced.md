@@ -68,7 +68,7 @@ function foo() {
 
 ## 原型链
 
-[[Prototype]]机制就是指对象中的一个内部链接引用另一个对象。如果在第一个对象上没有找到需要的属性或者方法引用，引擎就会继续在[[Prototype]]关联的对象上进行查找。同理，如果在后者中也没有找到需要的引用就会继续查找它的[[Prototype]]，以此类推。这一系列对象的链接被称为 “**原型链**”。
+原型机制就是指对象中的一个内部链接引用另一个对象。如果在第一个对象上没有找到需要的属性或者方法引用，引擎就会继续在原型关联的对象上进行查找。同理，如果在后者中也没有找到需要的引用就会继续查找它的原型，以此类推。这一系列对象的链接被称为 “**原型链**”。
 
 ![](img/prototypechain.png)
 
@@ -98,16 +98,16 @@ Foo.prototype = {
 当执行 new 调用时:
 
 1. 创建（或者说构造）一个全新的对象。
-2. 这个新对象会被执行[[Prototype]]连接到函数的 `prototype` 属性。
+2. 这个新对象的原型会被连接到函数的 `prototype` 属性。
 3. 这个新对象会绑定到函数调用的 this。
 4. 如果函数没有返回其他对象，那么 new 表达式中的函数调用会自动返回这个新对象，否则返回函数返回值。
 
 类似这样：
 
 ```js
-function myNew(Cons, ...params) {
-  const obj = Object.create(Cons.prototype)
-  const res = Cons.apply(a, params)
+function myNew(Ctor, ...params) {
+  const obj = Object.create(Ctor.prototype)
+  const res = Ctor.apply(a, params)
   return typeof res === 'object' ? res : obj
 }
 ```
@@ -116,27 +116,32 @@ function myNew(Cons, ...params) {
 
 ```js
 function Foo() {}
+function Child() {}
+Child.prototype = Object.create(Foo.prototype)
 const a = new Foo()
+const c = new Child()
+
 a instanceof Foo // true
+c instanceof Child // true
+
+c.__proto__.__proto__ === Foo.prototype // true
 ```
 
-instanceof 操作符的左操作数是一个普通的对象，右操作数是一个函数。instanceof 回答的问题是：在 a 的整条[[Prototype]]链中是否有指向 Foo.prototype 的对象
+instanceof 操作符的左操作数是一个普通的对象，右操作数是一个函数。instanceof 回答的问题是：在 a 的整条原型链中是否有指向 Foo.prototype 的对象
 
 ```js
 function new_instance_of(leftValue, rightValue) {
+  
   let rightProto = rightValue.prototype // 取右表达式的 prototype 值
-
   leftValue = leftValue.__proto__ // 取左表达式的__proto__值
 
   while (true) {
     if (leftVaule === null) {
       return false
     }
-
     if (leftVaule === rightProto) {
       return true
     }
-
     leftVaule = leftVaule.__proto__
   }
 }
@@ -147,5 +152,7 @@ function new_instance_of(leftValue, rightValue) {
 ```js
 Object instanceof Object // true
 Function instanceof Function // true
+Object instanceof Function // true
 Function instanceof Object // true
 ```
+

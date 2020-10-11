@@ -84,6 +84,7 @@
     - [Houdini](/basic/css/houdini.md)
     - [QA](/basic/css/qa.md)
   - [JavaScript](/basic/javascript/README.md)
+    - [基础](/basic/javascript/basic.md)
     - 历年标准
       - [es2015](/basic/javascript/esversions/es2015.md)
       - [es2016](/basic/javascript/esversions/es2016.md)
