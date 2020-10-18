@@ -35,6 +35,17 @@
           document.querySelector('.content').style.transform = 'translateX(300px)'
         }
       }
+      window.addEventListener('load', () => {
+        const content = document.querySelector('.content')
+        if (content) {
+          content.onclick = () => {
+            console.log('click')
+            if (localStorage.getItem('pin') === 'true') {
+              togglePin()
+            }
+          }
+        }
+      })
     </script>
   </head>
   <body>

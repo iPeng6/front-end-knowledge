@@ -2,7 +2,7 @@
 
 - [十大经典排序算法](https://sort.hust.cc/)
 
-![](https://blobscdn.gitbook.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-Lm9JtwbhXVOfXyecToy%2F-Lm9KQIJAMvCgJQzErQS%2F-Lm9KSPi7v-ygMtlI6Zr%2Fsort.png?generation=1565688978687703&alt=media)
+![](./img/sortoo.png)
 
 ## 平方阶 O(n2)
 
@@ -10,7 +10,7 @@
 
 遍历，依次两两比较，将大的数向后交换，这样一次遍历之后就会将最大的数移到未排序数列的最后，就像冒泡一样。
 
-![](https://blobscdn.gitbook.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-Lm9JtwbhXVOfXyecToy%2F-Lm9KQIJAMvCgJQzErQS%2F-Lm9KRSInFt3BHoLgdXb%2FbubbleSort.gif?generation=1565688974562234&alt=media)
+![](./img/bubbleSort.gif)
 
 ```js
 function bubbleSort(arr) {
@@ -33,7 +33,7 @@ function bubbleSort(arr) {
 
 始终从未排序的数列中找出最小数移到未排序数列最前面所以叫选择排序。
 
-![](https://blobscdn.gitbook.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-Lm9JtwbhXVOfXyecToy%2F-Lm9KQIJAMvCgJQzErQS%2F-Lm9KSObDh5VGWhPE8Wh%2FselectionSort.gif?generation=1565688983763784&alt=media)
+![](./img/selectionSort.gif)
 
 ```js
 function selectionSort(arr) {
@@ -59,7 +59,7 @@ function selectionSort(arr) {
 
 将待排序元素从后往前找插入到已排序元素的适当位置，就像打牌插牌一样。
 
-![](https://blobscdn.gitbook.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-Lm9JtwbhXVOfXyecToy%2F-Lm9KQIJAMvCgJQzErQS%2F-Lm9KSRUSDsU1-_gwBLT%2FinsertionSort.gif?generation=1565688978183976&alt=media)
+![](./img/insertionSort.gif)
 
 ```js
 function insertionSort(arr) {
@@ -86,7 +86,7 @@ function insertionSort(arr) {
 
 采用分治思想，先将元素分组，各分组里再分组，直到不可分，然后将各分组排好序，再**按序**合并各分组，最终将整体合并完成排序
 
-![](https://blobscdn.gitbook.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-Lm9JtwbhXVOfXyecToy%2F-Lm9KQIJAMvCgJQzErQS%2F-Lm9KR9MTC7BHYOobU-Y%2FmergeSort.gif?generation=1565688974047164&alt=media)
+![](./img/mergeSort.gif)
 
 ```js
 function mergeSort(arr) {
@@ -124,7 +124,7 @@ function merge(left, right) {
 
 从数列里挑出一个元素作为基准，然后重新排序将小的移到基准左边，大的移到右边。然后再对左右子串使用相同方式。
 
-![](https://blobscdn.gitbook.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-Lm9JtwbhXVOfXyecToy%2F-Lm9KQIJAMvCgJQzErQS%2F-Lm9KR8iDzYGG-GLSb8O%2FquickSort.gif?generation=1565688974101077&alt=media)
+![](./img/quickSort.gif)
 
 ```js
 function quickSort(arr, left, right) {
@@ -160,6 +160,9 @@ function swap(arr, i, j) {
   arr[i] = arr[j]
   arr[j] = temp
 }
+```
+
+```js
 function partition2(arr, low, high) {
   let pivot = arr[low]
   while (low < high) {

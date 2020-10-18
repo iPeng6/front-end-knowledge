@@ -7,11 +7,11 @@
       - list
         - [linked-list](/general/algorithm/data-structures/linked-list/README.zh-CN.md)
         - [doubly-linked-list](/general/algorithm/data-structures/doubly-linked-list/README.zh-CN.md)
+      - [hash-table](/general/algorithm/data-structures/hash-table/README.md)
       - [tree](/general/algorithm/data-structures/tree/README.zh-CN.md)
         - [binary search tree](/general/algorithm/data-structures/tree/binary-search-tree/README.md)
         - [red black tree](/general/algorithm/data-structures/tree/red-black-tree/README.md)
       - [heap](/general/algorithm/data-structures/heap/README.zh-CN.md)
-      - [hash-table](/general/algorithm/data-structures/hash-table/README.md)
       - [graph](/general/algorithm/data-structures/graph/README.zh-CN.md)
     - 算法
       - [排序算法](/general/algorithm/algorithms/sorting.md)
@@ -133,6 +133,8 @@
     - [性能调优](/frame/react/performance/README.md)
       - [Debug with Devtools](/frame/react/performance/debug-react-performance.md)
   - [Vue](/frame/vue/README.md)
+    - [要点总结](/frame/vue/handbook.md)
+    - [常见问题](/frame/vue/qa.md)
   - [状态管理](/frame/statemgr.md)
 - [跨平台](/cross-platform/README.md)
   - [Hybrid](/cross-platform/hybrid.md)
