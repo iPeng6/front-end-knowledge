@@ -37,9 +37,8 @@
       }
       window.addEventListener('load', () => {
         const content = document.querySelector('.content')
-        if (content) {
-          content.onclick = () => {
-            console.log('click')
+        document.body.onclick = content.onclick = (e) => {
+          if (e.target === document.body || e.currentTarget === content) {
             if (localStorage.getItem('pin') === 'true') {
               togglePin()
             }
