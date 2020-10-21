@@ -29,7 +29,7 @@ Cache-Control 和浏览器相关的命令
 | ----------- | ------ | ---------------------------------------------------------------------- |
 | private     | 无     | 表明响应只能被单个用户缓存，不能作为共享缓存（即代理服务器不能缓存它） |
 | public      | 可省略 | 表明响应可以被任何对象（包括：发送请求的客户端，代理服务器，等等）缓存 |
-| no-cache    | 可省略 | 缓存前必需确认其有效性（协商缓存）                                     |
+| no-cache    | 可省略 | 缓存前必需确认其有效性（协商缓存），不许强缓存                         |
 | no-store    | 无     | 不缓存请求或响应的任何内容                                             |
 | max-age=[s] | 必需   | 响应的最大值                                                           |
 
@@ -61,8 +61,7 @@ Cache-Control 和浏览器相关的命令
 与强缓存相关的主要是 Pragma、Cache-Control 、Expires
 
 ```html
-<meta http-equiv="Pragma" content="no-cache" />
-<meta http-equiv="Expires" content="-1" />
+<meta http-equiv="Pragma" content="no-cache" /> <meta http-equiv="Expires" content="-1" />
 ```
 
 注意上面两条指令的作用是不允许浏览器缓存当前页面以及页面上引用的资源，强制浏览器每次请求当前页面时都需要从服务器端获取最新版本。这种方式仅对部分浏览器有效，而且不影响代理服务器对该页面的缓存控制，原因是因为代理服务器并不会去解析页面上的内容。
@@ -105,3 +104,8 @@ ETag 属性之间的比较采用的是弱比较算法，即两个文件除了每
 ## 用户行为对浏览器的影响
 
 ![](img/http-cache4.png ':size=600xauto')
+
+MAC
+
+- cmd+r 强缓存无效
+- cmd+shift+r 协商缓存也无效

@@ -74,6 +74,7 @@ http://www.some.site/page.html?lang=<script>alert(document.cookie)</script>
   - 不许允不可信赖的来源：只有来自明确定义过的可信赖来源的外链资源才可以被下载
   - 不允许内联资源：行内脚本和内联 CSS 不允许被执行。
   - 不允许 eval 函数：Javascript 的`eval`函数不可以被使用
+- HttpOnly Cookie
 
 CSP 使用方式
 

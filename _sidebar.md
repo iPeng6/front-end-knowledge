@@ -11,11 +11,16 @@
       - [tree](/general/algorithm/data-structures/tree/README.zh-CN.md)
         - [binary search tree](/general/algorithm/data-structures/tree/binary-search-tree/README.md)
         - [red black tree](/general/algorithm/data-structures/tree/red-black-tree/README.md)
-      - [heap](/general/algorithm/data-structures/heap/README.zh-CN.md)
       - [graph](/general/algorithm/data-structures/graph/README.zh-CN.md)
     - 算法
       - [排序算法](/general/algorithm/algorithms/sorting.md)
+      - [查找](/general/algorithm/algorithms/search.md)
+      - [递归](/general/algorithm/algorithms/recursion.md)
+      - [贪心](/general/algorithm/algorithms/greedy.md)
+      - [动态规划](/general/algorithm/algorithms/dynamic.md)
   - [设计模式](/general/design-pattern/README.md)
+    - [原则](/general/design-pattern/principle.md)
+    - [单例](/general/design-pattern/singleton.md)
   - 网络
     - [协议模型](/general/network/protocol-model.md)
     - [TCP/IP](/general/network/tcp-ip.md)
@@ -56,6 +61,8 @@
       - [环境变量](/general/system/linux/env.md)
     - [Mac](/general/system/mac/README.md)
       - [软件工具](/general/system/mac/tools.md)
+    - Android
+      - [ADB](/general/system/android/adb.md)
 - 基础拾遗
   - 标准
     - [W3C](/basic/standard/w3c.md)
@@ -98,6 +105,7 @@
     - [常见问题](/basic/javascript/qa.md)
     - [手写](/basic/javascript/handwritten.md)
   - [TypeScript](/basic/typescript/README.md)
+    - [手写](basic/typescript/handwrite.md)
   - DSL(domain-specific language)
     - [正则表达式](/basic/dsl/regexp.md)
     - [SQL](/basic/dsl/sql.md)

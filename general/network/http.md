@@ -116,7 +116,7 @@ sequence
 
 #### Content-Length 字段
 
-一个 TCP 连接现在可以传送多个回应，势必就要有一种机制，区分数据包是属于哪一个回应的。这就是 Content-length 字段的作用，声明本次回应的数据长度。
+一个 TCP 连接现在可以传送多个回应，势必就要有一种机制，区分数据包是属于哪一个回应的。这就是 Content-Length 字段的作用，声明本次回应的数据长度。
 
 #### Host 字段
 
@@ -132,7 +132,7 @@ Host: www.example.com
 
 新增了许多动词方法：PUT、PATCH、 OPTIONS、DELETE、CONNECT
 
-引入更多缓存控制机制：如 Etag，cache-control
+引入更多缓存控制机制：如 etag，cache-control
 
 #### 缺点
 
@@ -146,7 +146,7 @@ Host: www.example.com
 
 - Binary Format，使用二进制格式传输，更高效、更紧凑
 - MultiPlexing，多路复用，一个网络连接实现并行请求
-- 对报头压缩，降低开销
+- 报头压缩，降低开销
 - server push，服务端推送，允许服务器在客户端缓存中填充数据，减少请求
 - 请求优先级
 - 默认使用加密
@@ -288,7 +288,7 @@ fragment: #后的hash值，一般用来定位到某个位置
 | 401  | Unauthorized                    | 客户端错误，缺少身份认证凭证                                                                  |
 | 403  | Forbidden                       | 禁止访问，如授权验证没通过，密码不对等                                                        |
 | 404  | Not Found                       | 资源未找到                                                                                    |
-| 405  | Method Not Allowed              |                                                                                               |
+| 405  | Method Not Allowed              | 请求 method 不允许                                                                            |
 | 406  | Not Acceptable                  |                                                                                               |
 | 407  | Proxy Authentication Required   |                                                                                               |
 | 408  | Request Timeout                 |                                                                                               |

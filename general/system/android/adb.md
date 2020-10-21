@@ -12,25 +12,20 @@
      - offline：连接出现异常，设备无响应
      - unknown：没有连接设备
 
-2. 查看系统应用
-
-   - 查看所有应用：adb shell pm list packages
-   - 查看系统应用：adb shell pm list packages -s
-   - 查看用户应用：adb shell pm list packages -3
-
-3. 查看禁用的系统应用命令
-
-   - 先输入 ADB-tools> adb shell
-   - HWEVR:/ \$ pm list packages -s -d 回车
-   - 再输入 pm list packages -s -d 回车
-
-4. 重启命令
+2. 重启命令
 
    - 重启手机：adb reboot
    - 重启到 recovery：adb reboot recovery
    - 重启到 fastboot：adb reboot fastboot
 
-5. 禁用、启用、删除应用的命令
+3. 查看系统应用
+
+   - 查看所有应用：adb shell pm list packages
+   - 查看系统应用：adb shell pm list packages -s
+   - 查看禁用的系统应用 adb shell pm list packages -s -d
+   - 查看用户应用：adb shell pm list packages -3
+
+4. 禁用、启用、删除应用的命令
 
    - 禁用程序为 adb shell pm disable-user+空格+程序名；
    - 启用程序为 adb shell pm enable+空格+程序名；
