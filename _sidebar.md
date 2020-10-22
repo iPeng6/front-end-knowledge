@@ -36,6 +36,7 @@
     - [CDN](/general/network/cdn.md)
     - [Nginx](/general/network/nginx.md)
     - [VPN](/general/network/vpn.md)
+    - [网络类型](/general/network/nettype.md)
     - [Api 技术](/general/network/api/README.md)
       - [RESTful](/general/network/api/restful.md)
       - [GraphQL](/general/network/api/graphql.md)

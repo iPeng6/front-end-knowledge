@@ -1,5 +1,9 @@
 # nginx
 
+## 正向代理反向代理
+
+![](./img/npproxy.png ':size=600')
+
 ## CentOS 7 下 yum 安装和配置 Nginx
 
 ```bash

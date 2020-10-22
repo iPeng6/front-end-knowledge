@@ -84,7 +84,7 @@ https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code
 ```
 
 - `access_token` 就是我们要的网页授权接口调用凭证
-- `refresh_token` 用户可以根据此 refresh_token 刷新 access_token，避免 access_token 避免授权泛滥
+- `refresh_token` 用户可以根据此 refresh_token 刷新 access_token，避免 access_token 授权泛滥
 
 ### 第四步，刷新 access_token（如果需要）
 
