@@ -116,9 +116,7 @@ otherWindow.postMessage(message, targetOrigin, [transfer])
 window.addEventListener(
   'message',
   (event) => {
-    // 这里不准确，chrome没有这个属性，chrome的 event.origin 为 event.originalEvent.origin
-    // var origin = event.origin || event.originalEvent.origin;
-    var origin = event.origin
+    const origin = event.origin || event.originalEvent.origin
     if (origin !== 'http://example.org:8080') return
 
     // ...
@@ -247,7 +245,7 @@ CORS 是一个 W3C 标准，全称是"跨域资源共享"（Cross-origin resourc
 - **Access-Control-Max-Age**: 可选，用来指定本次预检请求的有效期，单位为秒
 - **Access-Control-Expose-Headers**: 该字段可选。CORS 请求时，XMLHttpRequest 对象的 getResponseHeader()方法只能拿到 6 个基本字段：Cache-Control、Content-Language、Content-Type、Expires、Last-Modified、Pragma。如果想拿到其他字段，就必须在 Access-Control-Expose-Headers 里面指定
 
-以 Node.js 后台配置(express 框架)为例：
+以 Node.js 后台配置为例(express 框架)：
 
 ```js
 app.all('*', function (req, res, next) {
@@ -259,7 +257,7 @@ app.all('*', function (req, res, next) {
   res.header('Content-Type', 'application/json;charset=utf-8')
   if (req.method == 'OPTIONS') {
     //让options请求快速返回
-    res.sendStatus(200)
+    res.sendStatus(204)
   } else {
     next()
   }
@@ -293,7 +291,7 @@ xhr.withCredentials = true
 
 ### 3、代理
 
-同源策略是浏览器的限制，而服务与服务之间的请求无需遵循同源策略，那么只要代理服务服务同源或者支持跨域，那么之后的所有请求就可以通过代理转发来获取。
+同源策略是浏览器的限制，而服务与服务之间的请求无需遵循同源策略，那么只要代理服务同源或者支持跨域，那么之后的所有请求就可以通过代理转发来获取。
 
 #### node
 
@@ -355,7 +353,7 @@ server.listen(3000, () => {
       '/proxy': {
         target: process.env.VUE_APP_BASE_API,
         pathRewrite: { '^/proxy': '' },
-        changeOrigin: true, // target是域名的话，需要这个参数，
+        changeOrigin: true, // target是域名的话，需要这个参数，会将http请求头中的host改成域名而不是localhost
         secure: false, // 设置支持https协议的代理
       },
     },

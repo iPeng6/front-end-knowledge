@@ -47,6 +47,7 @@
       - [JWT](/general/network/auth/jwt.md)
   - 安全
     - [跨域](/general/security/cross-domain.md)
+    - [Cookie](/general/security/cookie.md)
     - [XSS](/general/security/xss.md)
     - [CSRF](/general/security/csrf.md)
     - [HSTS](/general/security/hsts.md)
