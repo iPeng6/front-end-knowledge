@@ -15,3 +15,4 @@
   技术面试必备基础知识、Leetcode、计算机操作系统、计算机网络、系统设计、Java、Python、C++
 
 - [leetcode 题解，记录自己的 leetcode 解题之路](https://github.com/azl397985856/leetcode)
+- [Daily-Interview-Question](https://github.com/Advanced-Frontend/Daily-Interview-Question)

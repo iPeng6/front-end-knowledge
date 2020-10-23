@@ -11,7 +11,7 @@
 
 ## 一、什么是 XSS
 
-跨站点脚本（Cross-site scripting，XSS）是一种允许攻击者在另一个用户的浏览器中执行恶意脚本的脚本注入式攻击。
+**XSS**（Cross-site scripting）跨站点脚本，是一种允许攻击者在另一个用户的浏览器中执行恶意脚本的脚本注入式攻击。
 
 攻击者并不直接锁定受害者。而是利用一个受害者可能会访问的存在漏洞的网站，通过这个网站间接把恶意代码呈递给受害者。对于受害者的浏览器而言，这些恶意代码看上去就是网站正常的一部分，而网站也就无意中成了攻击者的帮凶。
 
@@ -88,4 +88,15 @@ header
 
 ```
 Content-Security-Policy: default-src 'none'; script-src 'self' ssl.google-analytics.com;
+```
+
+```
+// 只允许加载本站资源
+Content-Security-Policy: default-src 'self'
+
+// 只允许加载 HTTPS 协议图⽚片
+Content-Security-Policy: img-src https://*
+
+// 不不允许加载任何来源框架
+Content-Security-Policy: child-src 'none'
 ```
