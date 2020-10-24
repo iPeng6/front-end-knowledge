@@ -13,7 +13,7 @@
 
 栈的 push 和 pop 操作的示意
 
-![Stack](https://upload.wikimedia.org/wikipedia/commons/b/b4/Lifo_stack.png)
+![Stack](https://upload.wikimedia.org/wikipedia/commons/b/b4/Lifo_stack.png ':size=500')
 
 ## 实现
 
@@ -87,7 +87,7 @@ class Stack {
   }
 
   toArray() {
-    return this.linkedList.toArray().map(linkedListNode => linkedListNode.value)
+    return this.linkedList.toArray().map((linkedListNode) => linkedListNode.value)
   }
 
   toString(callback) {
@@ -95,3 +95,14 @@ class Stack {
   }
 }
 ```
+
+## 场景
+
+- 浏览器的前进后退，路由的 push pop
+- Vue 模板编译匹配开始标签结束标签
+
+## 时间复杂度
+
+- 增 O(1)
+- 删 O(1)
+- 查 O(n)

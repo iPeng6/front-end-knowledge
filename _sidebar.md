@@ -2,8 +2,8 @@
 - [猿人通识](/general/README.md)
   - [数据结构与算法](/general/algorithm/README.md)
     - 数据结构
-      - [stack](/general/algorithm/data-structures/stack/README.zh-CN.md)
-      - [queue](/general/algorithm/data-structures/queue/README.zh-CN.md)
+      - [stack](/general/algorithm/data-structures/stack.md)
+      - [queue](/general/algorithm/data-structures/queue.md)
       - list
         - [linked-list](/general/algorithm/data-structures/linked-list/README.zh-CN.md)
         - [doubly-linked-list](/general/algorithm/data-structures/doubly-linked-list/README.zh-CN.md)
