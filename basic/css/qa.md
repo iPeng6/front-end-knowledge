@@ -17,8 +17,18 @@ word-spacing 表示单词之间间距，white-space 表示是否换行显示的
 <details>
 <summary>position取值及之间的区别</summary>
 
-- absolute 相对于父级最近的 position 非 static 的元素，如果不存在则相对于 ICB 初始包含块
-- fixed 相对于视口 viewport
+- static 该关键字指定元素使用正常的布局行为，即元素在文档常规流中当前的布局位置。此时 top, right, bottom, left 和 z-index 属性无效。
+- relative 该关键字下，元素先放置在未添加定位时的位置，再在不改变页面布局的前提下调整元素位置（因此会在此元素未添加定位时所在位置留下空白）。
+- absolute 相对于父级最近的 position 非 static 的元素，如果不存在则相对于 ICB 初始包含块。绝对定位的元素可以设置外边距（margins），且不会与其他边距合并。
+- fixed 默认相对于视口 viewport。元素的位置在屏幕滚动时不会改变。
+- sticky 元素根据正常文档流进行定位，然后相对它的最近滚动祖先（nearest scrolling ancestor）和 containing block (最近块级祖先 nearest block-level ancestor)
+
+如果 position 属性是 absolute 或 fixed，包含块也可能是由满足以下条件的最近父级元素的内边距区的边缘组成的：
+
+* transform 或 perspective 的值不是 none
+* will-change 的值是 transform 或 perspective
+* filter 的值不是 none 或 will-change 的值是 filter(只在 Firefox 下生效).
+* contain 的值是 paint (例如: contain: paint;)
 
 </details>
 
