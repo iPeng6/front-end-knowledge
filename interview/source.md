@@ -12,3 +12,4 @@
 - [ ] babel
 - [ ] webpack
 - [ ] koa
+- [ ] axios

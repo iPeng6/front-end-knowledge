@@ -1,6 +1,7 @@
-# 手写代码
+# 手写
 
-## 手写原生 Ajax
+<details>
+<summary>手写原生 Ajax</summary>
 
 ```js
 var xhr = new XMLHttpRequest()
@@ -13,20 +14,12 @@ xhr.onreadystatechange = function () {
 xhr.send()
 ```
 
-## 手写操作 cookie
+</details>
+
+<details>
+<summary>手写操作 cookie</summary>
 
 ```js
-//读Cookie
-function getCookie(objName) {
-  //获取指定名称的cookie的值
-  var arrStr = document.cookie.split('; ')
-  for (var i = 0; i < arrStr.length; i++) {
-    var temp = arrStr[i].split('=')
-    if (temp[0] == objName) return unescape(temp[1])
-  }
-  return ''
-}
-//es6版
 function getCookies() {
   let cookies = {}
   document.cookie.match(/\w+=\w+;/gi).forEach((item) => {
@@ -36,7 +29,6 @@ function getCookies() {
   return cookies
 }
 
-//设置cookie的值
 function setCookie(cname, cvalue, exdays) {
   var d = new Date()
   d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000)
@@ -45,9 +37,18 @@ function setCookie(cname, cvalue, exdays) {
 }
 ```
 
-## 柯里化
+</details>
+
+<details>
+<summary>柯里化</summary>
 
 ```js
+/*
+function add(a, b, c) {
+  return a + b + c
+}
+add(1)(2)(3)
+*/
 function curry(fn) {
   var l = fn.length
   var args = []
@@ -60,73 +61,45 @@ function curry(fn) {
     }
   }
 }
-function add1(a, b, c) {
+
+function add(a, b, c) {
   return a + b + c
 }
 
-var add = curry(add1)
-console.log(add(1)(2)(3))
-
-function add(a) {
-  var list = [a]
-  var st = null
-  return function _add(b) {
-    var sum = list.reduce((m, n) => m + n, b)
-    clearTimeout(st)
-    st = setTimeout(function () {
-      console.log(sum)
-    }, 0)
-    list.push(b)
-    return _add
-  }
-}
-
-add(1)(2)(3)(3)(3)
+var cadd = curry(add)
+console.log(cadd(1)(2)(3))
 ```
 
-## 手写 call、apply、bind
+
+</details>
+
+<details>
+<summary>手写 call、apply、bind</summary>
 
 ```js
-/**
- * 自定义call实现
- * @param context   上下文this对象
- * @param args      动态参数
- */
-Function.prototype.myCall = function (context, ...args) {
+
+Function.prototype.call = function (context, ...args) {
   context = typeof context === 'object' ? context : window
-  // 防止覆盖掉原有属性
+
   const key = Symbol()
-  // 这里的this为需要执行的方法，将方法挂载到当前上下文对象上，这样当对象调用方法时内部this自动指向调用对象
   context[key] = this
-  // 方法执行
-  const result = context[key](...args)
+
+  const res = context[key](...args)
   delete context[key]
-  return result
+  return res
 }
 
-/**
- * 自定义Apply实现
- * @param context   上下文this对象
- * @param args      参数数组
- */
-Function.prototype.myApply = function (context, args) {
+Function.prototype.apply = function (context, args) {
   context = typeof context === 'object' ? context : window
-  // 防止覆盖掉原有属性
+
   const key = Symbol()
-  // 这里的this为需要执行的方法
   context[key] = this
-  // 方法执行
-  const result = context[key](...args)
+  const res = context[key](...args)
   delete context[key]
-  return result
+  return res
 }
 
-/**
- * 自定义bind实现
- * @param context     上下文
- * @returns {Function}
- */
-Function.prototype.myBind = function (context) {
+Function.prototype.bind = function (context) {
   context = typeof context === 'object' ? context : window
   return (...args) => {
     return this.call(context, ...args)
@@ -134,7 +107,10 @@ Function.prototype.myBind = function (context) {
 }
 ```
 
-## 防抖节流
+</details>
+
+<details>
+<summary>防抖节流</summary>
 
 ```js
 // 函数防抖实现
@@ -168,7 +144,10 @@ function throttle(fn, cycle) {
 }
 ```
 
-## 手写 jsonp
+</details>
+
+<details>
+<summary>手写 jsonp</summary>
 
 ```js
 function jsonp({ url, data, success, fail }) {
@@ -203,14 +182,40 @@ jsonp({
 })
 ```
 
-## 用 requestAnimationFrame 模拟 setTimeout
+</details>
+
+<details>
+<summary>模拟FPS</summary>
+
+```js
+let frame = 0;
+let lastTime = Date.now();
+
+const loop = function () {
+    const now = Date.now();
+    frame++;
+    if (now > 1000 + lastTime) {
+        fps = Math.round((frame * 1000) / (now - lastTime));
+        console.log('fps', fps, frame);  // 每秒 FPS
+        frame = 0;
+        lastTime = now;
+    };
+
+    requestAnimationFrame(loop);
+}
+```
+
+</details>
+
+<details>
+<summary>用 requestAnimationFrame 模拟 setTimeout</summary>
 
 ```js
 function myTimeout(callback, delay) {
-  var sum = 0
-  var raf
+  let sum = 0
+  let raf
   ;(function loop() {
-    var now = Date.now()
+    let now = Date.now()
     raf = requestAnimationFrame(function () {
       sum += Date.now() - now
       if (sum > delay) {
@@ -228,19 +233,30 @@ function myClearTimeout(raf) {
   cancelAnimationFrame(raf)
 }
 
-var t = myTimeout(function () {
+myTimeout(function () {
   console.log(1)
 }, 1000)
 ```
 
-## flat 展平数组
+</details>
+
+<details>
+<summary>flat</summary>
 
 ```js
-/**
- * 多维数组展平成一维数组
- * [1, [2, [3]], [4]] => [1, 2, 3, 4]
- * @param data
- */
+const arr = [1, [2, [3]], [4]]
+
+function flat(arr) {
+  return arr.reduce((res, a) => {
+    if (Array.isArray(a)) {
+      return res.concat(flat(a))
+    }
+    return res.concat(a)
+  }, [])
+}
+
+console.log(flat(arr))
+
 function flat(data) {
   let result = []
   function loop(arr) {
@@ -256,43 +272,25 @@ function flat(data) {
   return result
 }
 
-const data = [1, [2, [3]], [4]]
-
-console.log(flat(data))
 ```
 
-## 实现 new
+</details>
+
+<details>
+<summary>实现 new</summary>
 
 ```js
-function myNew(Cons, ...params) {
-  const obj = Object.create(Cons.prototype)
-  const res = Cons.apply(a, params)
+function myNew(Ctor, ...params) {
+  const obj = Object.create(Ctor.prototype)
+  const res = Ctor.apply(a, params)
   return typeof res === 'object' ? res : obj
 }
 ```
 
-## 将一维数组随机分为 m 组，使得每一组个数尽量平均，例如[1,2,3,4,5] 分成 2 组得 [[3,1],[5,2,4]]
+</details>
 
-```js
-function foo(arr, m) {
-  const result = new Array(m).fill(0).map(() => [])
-  let startIndex = 0
-
-  do {
-    const [getOne] = arr.splice(parseInt(Math.random() * arr.length), 1)
-    startIndex = startIndex % m
-    result[startIndex].push(getOne)
-    startIndex++
-  } while (arr.length > 0)
-
-  return result
-}
-console.log(foo([1, 2, 3, 4, 5], 2))
-console.log(foo([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3))
-console.log(foo([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], 3))
-```
-
-## 实现金额数字千分位表示
+<details>
+<summary>实现金额数字千分位表示</summary>
 
 ```js
 // 递归方案
@@ -333,10 +331,158 @@ console.log(foo(123456.45))
 console.log(foo(1234567.45))
 ```
 
-## 找出一个字符串中重复出现的子序列及次数
+</details>
 
-```js
-function find(str) {}
+<details>
+<summary></summary>
 
-const str = 'asdfsdfgadfdsfsdfgasdfadf'
-```
+
+
+</details>
+
+<details>
+<summary></summary>
+
+
+
+</details>
+
+<details>
+<summary></summary>
+
+
+
+</details>
+
+<details>
+<summary></summary>
+
+
+
+</details>
+
+<details>
+<summary></summary>
+
+
+
+</details>
+
+<details>
+<summary></summary>
+
+
+
+</details>
+
+<details>
+<summary></summary>
+
+
+
+</details>
+
+<details>
+<summary></summary>
+
+
+
+</details>
+
+<details>
+<summary></summary>
+
+
+
+</details>
+
+<details>
+<summary></summary>
+
+
+
+</details>
+
+<details>
+<summary></summary>
+
+
+
+</details>
+
+<details>
+<summary></summary>
+
+
+
+</details>
+
+<details>
+<summary></summary>
+
+
+
+</details>
+
+<details>
+<summary></summary>
+
+
+
+</details>
+
+<details>
+<summary></summary>
+
+
+
+</details>
+
+<details>
+<summary></summary>
+
+
+
+</details>
+
+<details>
+<summary></summary>
+
+
+
+</details>
+
+<details>
+<summary></summary>
+
+
+
+</details>
+
+<details>
+<summary></summary>
+
+
+
+</details>
+
+<details>
+<summary></summary>
+
+
+
+</details>
+
+<details>
+<summary></summary>
+
+
+
+</details>
+
+<details>
+<summary></summary>
+
+
+
+</details>
