@@ -8,6 +8,14 @@
 
 </details>
 
+- [格式化上下文](#格式化上下文)
+  - [BFC(Block Formatting Context)](#bfcblock-formatting-context)
+    - [创建 BFC 元素的方式有如下几种（摘自 MDN BFC）](#创建-bfc-元素的方式有如下几种摘自-mdn-bfc)
+    - [BFC 元素具有如下特性：](#bfc-元素具有如下特性)
+  - [IFC](#ifc)
+    - [创建方式](#创建方式)
+    - [特性](#特性)
+
 格式化上下文，它指的是具有某种 CSS 格式化规则（布局规则）的上下文环境，在这个上下文环境内的所有子元素，都将根据其特定的 CSS 格式化规则来进行排列。
 
 我们可以给某个作为容器的元素指定特定的格式化上下文，也就是说我们可以定义一个具有特定布局规则的渲染区域。常见的格式化上下文有 BFC（CSS2.1 规范）、IFC（CSS2.1 规范）、 FFC（CSS3 规范新增）和 GFC（CSS3 规范新增），具体介绍如下：
@@ -127,7 +135,5 @@ IFC, 全称是 inline formatting context，其内部的元素，在水平方向�
 1. IFC 内部的元素，按从左到右、从上到下的顺序排布；
 2. IFC 内部的每个元素，都可以通过设置 vertical-align 属性，来调整在垂直方向上的对齐；
 3. 包含这些内部元素的矩形区域，形成的每一行，被称为 line box
-
-## FFC 和 GFC
 
 FFC（flex formatting context）和 GFC（grid formatting context），分别是 flex 布局和 grid 布局的内容

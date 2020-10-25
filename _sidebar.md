@@ -99,6 +99,7 @@
       - [less](/basic/css/preprocessor/less.md)
       - [postcss](/basic/css/preprocessor/postcss.md)
     - [reset.css](/basic/css/reset.css.md)
+    - [GPU加速](/basic/css/gpu-acceleration.md)
     - [Houdini](/basic/css/houdini.md)
     - [QA](/basic/css/qa.md)
   - [JavaScript](/basic/javascript/README.md)
@@ -117,7 +118,7 @@
     - [手写](/basic/javascript/handwritten.md)
   - [TypeScript](/basic/typescript/README.md)
     - [手写](basic/typescript/handwrite.md)
-  - DSL(domain-specific language)
+  - DSL
     - [正则表达式](/basic/dsl/regexp.md)
     - [SQL](/basic/dsl/sql.md)
     - [Markdown](/basic/dsl/markdown.md)
