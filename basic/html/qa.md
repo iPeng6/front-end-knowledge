@@ -1,16 +1,81 @@
-# 常见问题
+# QA
 
 <details>
-<summary>引用参考</summary>
+<summary>DOCTYPE 的作用</summary>
 
-- https://zhuanlan.zhihu.com/p/33759023
-- https://juejin.im/post/58e8acf10ce46300585a7a42
-- http://www.alloyteam.com/2016/05/preload-what-is-it-good-for-part1/
-- https://segmentfault.com/a/1190000011577248
+IE5.5 引入了文档模式的概念，而这个概念是通过使用文档类型(DOCTYPE)切换实现的。
+
+`<!DOCTYPE>`声明位于 HTML 文档中的第一行，处于 `<html>` 标签之前。告知浏览器的解析器用什么文档标准解析这个文档。
+DOCTYPE 不存在或格式不正确会导致文档以兼容模式呈现。
+
+在标准模式下，浏览器的解析规则都是按照最新的标准进行解析的。而在兼容模式下，浏览器会以向后兼容的方式来模拟老式浏览器的行为，以保证一些老的网站的正确访问。 在 html5 之后不再需要指定 DTD 文档，因为 html5 以前的 html 文档都是基于 SGML 的，所以需要通过指定 DTD 来定义文档中允许的属性以及一些规则。而 html5 不再基于 SGML 了，所以不再需要使用 DTD。
+
+```html
+<!-- html 5 -->
+<!DOCTYPE html>
+
+<!-- HTML 4.01 Strict -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<!-- HTML 4.01 Transitional -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+```
 
 </details>
 
-## defer VS async
+<details>
+<summary>SGML 、 HTML 、XML 和 XHTML 的区别</summary>
+
+- SGML 是标准通用标记语言，是一种定义电子文档结构和描述其内容的国际标准语言， 是所有电子文档标记语言的起源。
+- HTML 是超文本标记语言，主要是用于规定怎么显示网页。
+- XML 是可扩展标记语言是未来网页语言的发展方向，XML 和 HTML 的最大区别就在于 XML 的标签是可以自己创建的，数量无限多，而 HTML 的标签都是固定的而且数量有限。
+- XHTML 也是现在基本上所有网页都在用的标记语言，他其实和 HTML 没什么本质的区 别，标签都一样，用法也都一样，就是比 HTML 更严格，比如标签必须都用**小写**，标签都必须有**闭合**标签等。
+
+</details>
+
+<details>
+<summary>行内元素、块级元素、内联块级元素的区别</summary>
+
+1. 块级元素: display 属性取 block、table、flex、grid 和 list-item 等值的独占一行显示的元素。
+
+   - 每个块级元素独占一行，每个块级元素都会从新的一行开始，从上到下排布
+   - 块级元素可以直接控制宽高以及盒子模型的相关 css 属性
+   - 在不设置宽度的情况下，块级元素的宽度是他父级元素内容的宽度
+   - 在不设置高度的情况下，块级元素的高度是他本身内容的高度
+
+   `<div>` / `<h1>~<h6>` / `<hr>` / `ol ul li` / `dl dt dd` / `<table>` / `<p>` / `<form>`
+
+2. 内联元素: display 属性取 inline 值的可在同一行内排列显示的元素。
+
+   - 内联元素会和其他元素从左到右显示在一行
+   - 宽高无效，但`水平方向`可以设置 `padding` 和 `margin`
+   - 内联元素的宽高是由内容本身的大小决定的（文字、图片等）
+   - 内联元素只能容纳文本或者其他内联元素（不要在内联元素中嵌套块级元素）
+     1. 可置换行内元素
+        `<img>`、`<object>`、`<video>` 和 `<embed>`，表单类的可替换元素有`<textarea>` 和 `<input>`， 有点特殊，可以设置宽高和 margin 类似 `inline-block` 元素。
+     2. 不可置换行内元素
+        `<a>` 、`<b>` 、`<strong>` 、`<span>` 、`<label>`、 `<select>` 、`<button>`
+
+3. 内联块级：display 属性取 inline-block、inline-table、inline-flex 和 inline-grid 等值的兼具块级元素和行内级元素布局特性的元素。
+
+   - 和其它 inline 元素同行显示
+   - 可以设置宽高/margin/padding（水平和垂直）多个内联块级不会换行
+
+</details>
+
+<details>
+<summary>简述一下你对 HTML 语义化的理解</summary>
+
+1. 用正确的标签做正确的事情。
+2. html 语义化让页面的内容结构化，结构更清晰，便于浏览器、搜索引擎解析;
+3. 即使在没有样式 CSS 情况下也以一种文档格式显示，并且是容易阅读的;
+4. 搜索引擎的爬虫也依赖于 HTML 标记来确定上下文和各个关键字的权重，利于 SEO ;
+5. 使阅读源代码的人对网站更容易将网站分块，便于阅读维护理解。
+
+</details>
+
+<details>
+<summary>defer VS async</summary>
 
 1. `<script src="example.js"></script>`
 
@@ -30,7 +95,10 @@
 
 也就是说 下载都是并行的，执行都是阻塞的，但是 `defer` 会放在文档解析完之后 DOMContentLoaded 之前执行，`async` 是下好立即执行，所以有可能文档过程中就下好阻塞执行，也可能文档解析结束后才下好执行
 
-## preload VS prefetch
+</details>
+
+<details>
+<summary>preload VS prefetch</summary>
 
 `preload` 是一种声明式的获取（fetch）指令，可以强制浏览器请求资源，提高资源优先级，将加载与执行分离，不阻塞文档解析，同时不阻塞文档 onload 事件。
 
@@ -70,7 +138,11 @@
 4. 如果从一个页面切换到另一个页面，preload 会立即中断，prefetch 不会，可解决跨页打点请求丢失问题
 5. 为了提高下一页加载速度而不是当前页的资源使用 prefetch
 
-## canvas VS svg
+</details>
+
+
+<details>
+<summary>canvas VS svg</summary>
 
 | Canvas                                                                                                                                                 | SVG                                                                                                                                                                                   |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -83,3 +155,14 @@
 | 不能被引擎抓取                                                                                                                                         | 可以被引擎抓取                                                                                                                                                                        |
 | ---                                                                                                                                                    | 复杂度高会减慢渲染速度（任何过度使用 DOM 的应用都不快）                                                                                                                               |
 | 最适合图像密集型的游戏，其中的许多对象会被频繁重绘                                                                                                     | 不适合游戏应用                                                                                                                                                                        |
+
+
+</details>
+
+
+<details>
+<summary></summary>
+
+
+
+</details>

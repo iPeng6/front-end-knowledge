@@ -8,7 +8,7 @@
 
 </details>
 
-> 思考：前端动画技术有哪些，css 动画有哪些，如何设置动画无限循环、往复循环，如何提升动画性能
+思考：前端动画技术有哪些，css 动画有哪些，如何设置动画无限循环、往复循环，如何提升动画性能
 
 ## 基本概念
 
@@ -58,7 +58,7 @@ animation: name duration timing-function delay iteration-count direction;
 | animation-direction       | 规定是否应该轮流反向播放动画。 （normal、alternate）                                        |
 | animation-fill-mode       | 设置 CSS 动画在执行之前和之后如何将样式应用于其目标。(none、forwards、backwards、both)      |
 
-<vuep template="#animation-demo1"></vuep>
+<vuep template="#animation-demo1" :iframe="true"></vuep>
 
 <script v-pre type="text/x-template" id="animation-demo1">
 <style>
@@ -81,22 +81,7 @@ animation: name duration timing-function delay iteration-count direction;
   <div class="box"></div>
 </template>
 <script>
-  export default {
-    mounted() {
-      const style = document.createElement('style')
-      style.innerText = `
-        @keyframes move {
-          from {
-            transform: translateX(0);
-          }
-          to {
-            transform: translateX(200px);
-          }
-        }
-      `
-      document.head.appendChild(style)
-    }
-  }
+  export default {}
 </script>
 </script>
 

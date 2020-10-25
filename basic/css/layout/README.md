@@ -87,16 +87,18 @@ BFC, 全称是 block formatting context，它是一个独立封闭的渲染区�
 
 #### 创建 BFC 元素的方式有如下几种（摘自 MDN BFC）
 
-- 根元素或其它包含它的元素
+[MDN BFC](https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context)
+
+- 根元素或其它包含它的元素`html`
 - 浮动元素 (`float` 不为 none)
 - `overflow` 不为 visible 的块元素
 - 定位元素 (position 为 `absolute`、`fixed`)
 - display: `flow-root`(没有副作用)
 - 内联块 (display: inline-block)
-- 表格元素 (display: table、table-cell、table-caption)
-- 弹性项 (display: flex 、inline-flex )
-- 网格项 (display: grid 、 inline-grid )
-- contain 为以下值的元素: layout, content, 或 strict
+- 表格元素 (display: table、inline-table、table-caption、able-cell、table-row、table-row-group、table-header-group、table-footer-group)
+- 弹性项 (display: flex 、inline-flex 元素的的直接子元素)
+- 网格项 (display: grid 、 inline-grid 元素的的直接子元素)
+- contain 为以下值的元素: layout, content, 或 paint
 - 多列容器 (元素的 column-count 或 column-width 不为 auto， 包括 column-count: 1 的元素)
 - column-span: all 应当总是会创建一个新的格式化上下文，即便具有 column-span: all 的元素并不被包裹在一个多列容器中。
 
@@ -193,7 +195,7 @@ IFC, 全称是 inline formatting context，其内部的元素，在水平方向�
 
 1. IFC 内部的元素，按从左到右、从上到下的顺序排布；
 2. IFC 内部的每个元素，都可以通过设置 vertical-align 属性，来调整在垂直方向上的对齐；
-3. 包含这些内部元素的矩形区域，形成的每一行，被称为 line box（行框，后面会详细介绍）；
+3. 包含这些内部元素的矩形区域，形成的每一行，被称为 line box
 
 ### FFC 和 GFC
 
