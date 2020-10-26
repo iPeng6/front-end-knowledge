@@ -6,7 +6,7 @@
 
 每个区域的尺寸，又分别由特定的 CSS 属性来控制，如下图所示：
 
-![](img/box2.webp)
+![](img/box2.webp ':size=600')
 
 ### box-sizing（CSS3 属性）
 

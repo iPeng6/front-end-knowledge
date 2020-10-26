@@ -4,6 +4,8 @@
 
 ### 1、float\margin-left
 
+利用了block元素横向默认铺满的特性
+
 ```css
 .left {
   float: left;
@@ -47,6 +49,8 @@
 </script>
 
 ### 2、float\ overflow
+
+利用BFC元素不会和float元素重叠特性
 
 ```css
 .left {
@@ -139,6 +143,96 @@
 
 ## 二、右边固定左边自适应
 
+### 1、float\margin-right
+
+利用了block元素横向默认铺满的特性，注意点是 float 元素放上面，优先进行计算
+
+```css
+.left {
+  margin-left: 100px;
+}
+.right {
+  float: right;
+}
+```
+
+<vuep template="#layout-wrapper-demo2-1"></vuep>
+
+<script v-pre type="text/x-template" id="layout-wrapper-demo2-1">
+<style>
+  .layout-wrapper {
+    border: 1px solid black;
+  }
+  div {
+    height: 50px;
+  }
+  .left {
+    margin-right: 100px;
+    border: 1px solid blue;
+  }
+  .right {
+    float: right;
+    width: 100px;
+    border: 1px solid red;
+  }
+</style>
+<template>
+  <div class="layout-wrapper">
+    <div class="right">right</div>
+    <div class="left">left</div>
+  </div>
+</template>
+<script>
+  export default {}
+</script>
+</script>
+
+### 2、float\ overflow
+
+利用BFC元素不会和float元素重叠特性
+
+```css
+.left {
+  float: left;
+}
+.right {
+  overflow: auto;
+}
+```
+
+<vuep template="#layout-wrapper-demo2-2"></vuep>
+
+<script v-pre type="text/x-template" id="layout-wrapper-demo2-2">
+<style>
+  div {
+    height: 50px;
+  }
+  .layout-wrapper {
+    border: 1px solid black;
+  }
+  .left {
+    overflow: auto;
+
+    border: 1px solid blue;
+  }
+  .right {
+    width: 200px;
+    float: right;
+
+    border: 1px solid red;
+  }
+</style>
+<template>
+  <div class="layout-wrapper">
+    <div class="right">right</div>
+    <div class="left">left</div>
+  </div>
+</template>
+<script>
+  export default {}
+</script>
+</script>
+
 ## 三、水平垂直居中
 
 ### 1、绝对定位 + 上下左右距离 0 + margin:auto
@@ -162,23 +256,23 @@
 <script v-pre type="text/x-template" id="layout-wrapper-demo4">
 <style>
   .container {
-    outline: 1px solid red;
+    position: relative;
+
     width: 300px;
     height: 200px;
-
-    position: relative;
+    outline: 1px solid red;
   }
   .item {
-    outline: 1px solid black;
-    width: 50px;
-    height: 60px;
-
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     margin: auto;
+
+    width: 50px;
+    height: 60px;
+    outline: 1px solid black;
   }
 </style>
 <template>
@@ -192,6 +286,8 @@
 </script>
 
 ### 2、50%定位 + transform 负 50%
+
+利用绝对定位相对于容器，而transform相对于自身
 
 ```css
 .container {
@@ -210,19 +306,21 @@
 <script v-pre type="text/x-template" id="layout-wrapper-demo5">
 <style>
   .container {
-    outline: 1px solid red;
+    position: relative;
+
     width: 300px;
     height: 200px;
-    position: relative;
+    outline: 1px solid red;
   }
   .item {
-    outline: 1px solid black;
-    width: 50px;
-    height: 60px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    width: 50px;
+    height: 60px;
+    outline: 1px solid black;
   }
 </style>
 <template>
@@ -250,17 +348,18 @@
 <script v-pre type="text/x-template" id="layout-wrapper-demo6">
 <style>
   .container {
-    outline: 1px solid red;
-    width: 300px;
-    height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    outline: 1px solid red;
+    width: 300px;
+    height: 200px;
   }
   .item {
-    outline: 1px solid black;
     width: 50px;
     height: 60px;
+    outline: 1px solid black;
   }
 </style>
 <template>
@@ -276,6 +375,8 @@
 ## 四、9 宫格
 
 ### 1、flex
+
+利用  flex-wrap: wrap; 换行机制
 
 ```css
 .container {

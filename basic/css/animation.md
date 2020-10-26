@@ -107,51 +107,51 @@ export default {
     var c = document.getElementById('animation-canvas-demo1'),
             $ = c.getContext('2d'),
             w = c.width = 800,                                //设置 Canvas 宽度（全屏）
-            h = c.height = 500,                              //设置 Canvas 高度（全屏）
-            t = 0, num = 450,                                               //num = 450 绘制数量
-            u = 0, _u,                                                      //线性渐变的颜色值
+            h = c.height = 500,                               //设置 Canvas 高度（全屏）
+            t = 0, num = 450,                                 //num = 450 绘制数量
+            u = 0, _u,                                        //线性渐变的颜色值
             s, a, b,
             x, y, _x, _y,
-            _t = 1 / 100;                                                   //控制摆动速度
+            _t = 1 / 100;                                     //控制摆动速度
 
-        var anim = function() {
-            $.globalCompositeOperation = 'source-over';                     //默认，在目标图像上显示源图像
-            $.fillStyle = 'hsla(0, 0%, 0%, .75)';                           //填充颜色
-            $.fillRect(0, 0, w, h);                                         //绘制“已填色”的矩形
-            $.globalCompositeOperation = 'lighter';                         //显示源图像 + 目标图像
-            for (var i = 0; i < 2; i++) {
-                x = 0; _u = (u / 4)+i;
-                $.beginPath();
-                //循环绘制个数（num），正玄 Math.sin(弧度)，余弦 Math.cos(弧度)
-                for (var j = 0; j < num; j++) {
-                    x -= .72 * Math.sin(4);
-                    y = x * Math.sin(i + 3.0 * t + x / 20) / 2;
-                    _x = x * Math.cos(b) - y * Math.sin(b);
-                    _y = x * Math.sin(b) + y * Math.cos(b);
-                    b = (j * 3) * Math.PI / 6.8;
-                    $.lineWidth = .18;                                      //线条宽度
-                    $.arc(w / 2 - _x, h / 2 -_y, .5, 0, 2 * Math.PI);       //画圆（半径0.5）
-                }
+    var anim = function() {
+      $.globalCompositeOperation = 'source-over';           //默认，在目标图像上显示源图像
+      $.fillStyle = 'hsla(0, 0%, 0%, .75)';                 //填充颜色
+      $.fillRect(0, 0, w, h);                               //绘制“已填色”的矩形
+      $.globalCompositeOperation = 'lighter';               //显示源图像 + 目标图像
+      for (var i = 0; i < 2; i++) {
+          x = 0; _u = (u / 4)+i;
+          $.beginPath();
+          //循环绘制个数（num），正玄 Math.sin(弧度)，余弦 Math.cos(弧度)
+          for (var j = 0; j < num; j++) {
+              x -= .72 * Math.sin(4);
+              y = x * Math.sin(i + 3.0 * t + x / 20) / 2;
+              _x = x * Math.cos(b) - y * Math.sin(b);
+              _y = x * Math.sin(b) + y * Math.cos(b);
+              b = (j * 3) * Math.PI / 6.8;
+              $.lineWidth = .18;                                      //线条宽度
+              $.arc(w / 2 - _x, h / 2 -_y, .5, 0, 2 * Math.PI);       //画圆（半径0.5）
+          }
 
-                //设置线性渐变
-                var g = $.createLinearGradient(w / 2 + _x, h / 2 + _y,  0, w / 2 + _x, h / 2 + _y);
-                g.addColorStop(0.0, 'hsla('+ u +',85%,50%,1)');
-                g.addColorStop(0.5, 'hsla('+ _u +',85%,40%,1)');
-                g.addColorStop(1, 'hsla(0,0%,5%,1)');
-                $.strokeStyle = g;                                          //线条颜色为 g（线性渐变）
-                $.stroke();
-            }
-            t += _t;                                                        //摆动速度会不断增加
-            u -= .2;                                                        //改变颜色值
-            window.requestAnimationFrame(anim);                             //绘制动画 anim
-        };
-        anim();
+          //设置线性渐变
+          var g = $.createLinearGradient(w / 2 + _x, h / 2 + _y,  0, w / 2 + _x, h / 2 + _y);
+          g.addColorStop(0.0, 'hsla('+ u +',85%,50%,1)');
+          g.addColorStop(0.5, 'hsla('+ _u +',85%,40%,1)');
+          g.addColorStop(1, 'hsla(0,0%,5%,1)');
+          $.strokeStyle = g;                                          //线条颜色为 g（线性渐变）
+          $.stroke();
+      }
+      t += _t;                                                        //摆动速度会不断增加
+      u -= .2;                                                        //改变颜色值
+      window.requestAnimationFrame(anim);                             //绘制动画 anim
+    };
+    anim();
 
-        //监听，当浏览器宽度和高度改变时，改变 Canvas 的宽度和高度
-        window.addEventListener('resize', function() {
-            c.width = w = window.innerWidth;
-            c.height = h = window.innerHeight;
-        }, false);
+    //监听，当浏览器宽度和高度改变时，改变 Canvas 的宽度和高度
+    window.addEventListener('resize', function() {
+        c.width = w = window.innerWidth;
+        c.height = h = window.innerHeight;
+    }, false);
   }
 }
 </script>
@@ -181,7 +181,7 @@ SVG (Scalable Vector Graphics)，意为可缩放矢量图形，用来定义用�
 
 ### WebGL
 
-WebGL 使得网页在支持 HTML `<canvas>` 标签的浏览器中，不需要安装任何插件，便可以使用基于 OpenGL ES 2.0 的 API 在 canvas 中进行 3D 渲染。 WebGL 程序由 JavaScript 的控制代码，和在计算机的图形处理单元（GPU）中执行的特效代码(shader code，渲染代码) 组成。
+WebGL 使得网页在支持 HTML `<canvas>` 标签的浏览器中，不需要安装任何插件，便可以使用基于 OpenGL ES 2.0 的 API 在 canvas 中进行 3D 渲染。 WebGL 程序由 JavaScript 的控制代码和在计算机的图形处理单元（GPU）中执行的特效代码(shader code，渲染代码) 组成。
 
 ## 几个常用的动画库
 

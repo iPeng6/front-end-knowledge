@@ -10,7 +10,7 @@
 
 - [格式化上下文](#格式化上下文)
   - [BFC(Block Formatting Context)](#bfcblock-formatting-context)
-    - [创建 BFC 元素的方式有如下几种（摘自 MDN BFC）](#创建-bfc-元素的方式有如下几种摘自-mdn-bfc)
+    - [创建 BFC 元素的方式有如下几种](#创建-bfc-元素的方式有如下几种)
     - [BFC 元素具有如下特性：](#bfc-元素具有如下特性)
   - [IFC](#ifc)
     - [创建方式](#创建方式)
@@ -24,22 +24,22 @@
 
 BFC, 全称是 block formatting context，它是一个独立封闭的渲染区域，在这个区域内的所有元素，从区域的顶部起，一个接一个地根据自身的布局特性进行排列：在这个区域内的块级元素 ，按从上到下的顺序显示，相邻的块级元素可以使用 margin 隔离，**但在垂直方向上相邻的块级元素会发生 margin 合并**；在这个区域内的 inline-level 或 inline-level-block 元素，则按从左到右的顺序显示。具有 BFC 格式化环境的元素，我们称之为 BFC 元素，可以说，BFC 定义了 BFC 元素 content 区域的渲染规则。
 
-### 创建 BFC 元素的方式有如下几种（摘自 MDN BFC）
+### 创建 BFC 元素的方式有如下几种
 
-[MDN BFC](https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context)
+摘自 [MDN BFC](https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context)
 
-- 根元素或其它包含它的元素`html`
-- 浮动元素 (`float` 不为 none)
+- **根元素** (`html`)
+- **浮动元素** (`float` 不为 none)
+- **绝对定位元素** (position 为 `absolute`、`fixed`)
+- **表格类元素** (display: table、inline-table、table-caption、table-cell、table-row、table-row-group、table-header-group、table-footer-group)
+- **弹性项** (display: flex 、inline-flex 元素的的直接子元素)
+- **网格项** (display: grid 、 inline-grid 元素的的直接子元素)
+- **行内块元素** (display: inline-block)
+- `display`: `flow-root`(没有副作用)
 - `overflow` 不为 visible 的块元素
-- 定位元素 (position 为 `absolute`、`fixed`)
-- display: `flow-root`(没有副作用)
-- 内联块 (display: inline-block)
-- 表格元素 (display: table、inline-table、table-caption、able-cell、table-row、table-row-group、table-header-group、table-footer-group)
-- 弹性项 (display: flex 、inline-flex 元素的的直接子元素)
-- 网格项 (display: grid 、 inline-grid 元素的的直接子元素)
-- contain 为以下值的元素: layout, content, 或 paint
+- `contain` 为以下值的元素: layout, content 或 paint
 - 多列容器 (元素的 column-count 或 column-width 不为 auto， 包括 column-count: 1 的元素)
-- column-span: all 应当总是会创建一个新的格式化上下文，即便具有 column-span: all 的元素并不被包裹在一个多列容器中。
+- column-span: all 应当总是会创建一个新的BFC，即使该元素没有包裹在一个多列容器中
 
 ### BFC 元素具有如下特性：
 
@@ -66,7 +66,7 @@ BFC 元素
 
 #### 2、 浮动子元素参与 BFC 父元素的高度计算，也就是 BFC 元素能够识别浮动元素
 
-普通块级元素
+普通块级元素 (高度塌陷问题)
 
 <div style="border:1px solid green;">
   <div style="border:1px solid red; float: left;">浮动子元素</div>
@@ -136,4 +136,4 @@ IFC, 全称是 inline formatting context，其内部的元素，在水平方向�
 2. IFC 内部的每个元素，都可以通过设置 vertical-align 属性，来调整在垂直方向上的对齐；
 3. 包含这些内部元素的矩形区域，形成的每一行，被称为 line box
 
-FFC（flex formatting context）和 GFC（grid formatting context），分别是 flex 布局和 grid 布局的内容
+**FFC**（flex formatting context）和 **GFC**（grid formatting context），分别是 flex 布局和 grid 布局的内容
