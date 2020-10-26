@@ -206,7 +206,7 @@
 - [测试](/test/README.md)
   - [单元测试](/test/unit-test.md)
 - [可视化](/graphic/README.md)
-  - [canvas](/graphic/canvas.md)
+  - [Canvas](/graphic/canvas.md)
   - [SVG](/graphic/svg.md)
   - [WebGL](/graphic/webgl.md)
   - [图标技术](/graphic/icon.md)
