@@ -2,7 +2,7 @@
 
 CSS Houdini 是一组底层 API，它们公开了 CSS 引擎的各个部分，从而使开发者可以通过这组 API 来扩展 CSS。它让开发者拥有了直接访问 CSSOM 的能力，开发者可以通过这组 API 来编写浏览器可解析的 CSS 代码，这让开发者可以在不需要等待浏览器的实现的前提下实现自己想要的 CSS 功能。
 
-![](https://www.qed42.com/sites/default/files/inline-images/4_3.png)
+![](img/houdini.png)
 
 1. Typed OM API
 2. Properties & Values API

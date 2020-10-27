@@ -3,11 +3,11 @@
 最新的 ECMAScript 标准定义了 8 种数据类型:
 
 - 7 种原始类型:
+  - Number
+  - String
   - Boolean
   - Null
   - Undefined
-  - Number
-  - String
   - Symbol
   - BigInt
 - 和 Object
