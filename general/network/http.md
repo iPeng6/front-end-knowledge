@@ -300,7 +300,7 @@ fragment: #后的hash值，一般用来定位到某个位置
 | 302  | Found                           | 临时重定向                                                                                    |
 | 303  | See Other                       |                                                                                               |
 | 304  | Not Modified                    | 请求资源未修改，请使用本地缓存                                                                |
-| 307  | Temporary Redirect              |                                                                                               |
+| 307  | Internal Redirect               | 内部重定向由浏览器执行，比如http自动跳转https                                                 |
 | 308  | Permanent Redirect              |                                                                                               |
 | 400  | Bad Request                     | 客户端请求语法错误，服务器无法理解该请求                                                      |
 | 401  | Unauthorized                    | 客户端错误，缺少身份认证凭证                                                                  |

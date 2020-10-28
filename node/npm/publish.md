@@ -48,8 +48,16 @@
    npm publish
    npm publish --access public # 首次需要加上参数 --access public
    ```
+5. 过滤文件
 
-5. 取消发布
+   配置package.json files字段，只发布这些目录
+   ```
+   "files": [
+    "dist"
+   ],
+   ```
+
+7. 取消发布
 
    ```bash
    npm unpublish --force
