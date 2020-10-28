@@ -208,7 +208,7 @@ const loop = function () {
 </details>
 
 <details>
-<summary>用 requestAnimationFrame 模拟 setTimeout</summary>
+<summary>模拟 setTimeout</summary>
 
 ```js
 function myTimeout(callback, delay) {
