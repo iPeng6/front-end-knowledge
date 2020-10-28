@@ -110,6 +110,7 @@
       - [es2017](/basic/javascript/esversions/es2017.md)
       - [es2018](/basic/javascript/esversions/es2018.md)
       - [es2019](/basic/javascript/esversions/es2019.md)
+      - [es2020](/basic/javascript/esversions/es2020.md)
     - [进阶](/basic/javascript/advanced.md)
       - [Eventloop](/basic/javascript/eventloop.md)
     - [DOM 操作](/basic/javascript/dom.md)
@@ -118,6 +119,7 @@
     - [手写](/basic/javascript/handwritten.md)
   - [TypeScript](/basic/typescript/README.md)
     - [手写](basic/typescript/handwrite.md)
+    - [tsconfig](/basic/typescript/tsconfig.md)
   - DSL
     - [正则表达式](/basic/dsl/regexp.md)
     - [SQL](/basic/dsl/sql.md)
