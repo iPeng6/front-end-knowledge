@@ -11,7 +11,7 @@
 - [格式化上下文](#格式化上下文)
   - [BFC(Block Formatting Context)](#bfcblock-formatting-context)
     - [创建 BFC 元素的方式有如下几种](#创建-bfc-元素的方式有如下几种)
-    - [BFC 元素具有如下特性：](#bfc-元素具有如下特性)
+    - [BFC 元素具有如下特性](#bfc-元素具有如下特性)
   - [IFC](#ifc)
     - [创建方式](#创建方式)
     - [特性](#特性)
@@ -41,7 +41,7 @@ BFC, 全称是 block formatting context，它是一个独立封闭的渲染区�
 - 多列容器 (元素的 column-count 或 column-width 不为 auto， 包括 column-count: 1 的元素)
 - column-span: all 应当总是会创建一个新的BFC，即使该元素没有包裹在一个多列容器中
 
-### BFC 元素具有如下特性：
+### BFC 元素具有如下特性
 
 #### 1、 对应一个独立、封闭的渲染区域，子元素的 CSS 样式不会影响 BFC 元素外部；
 
