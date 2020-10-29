@@ -1,6 +1,5 @@
 - [What is book](/README.md)
 - [猿人通识](/general/README.md)
-
   - [数据结构与算法](/general/algorithm/README.md)
     - 数据结构
       - [stack](/general/algorithm/data-structures/stack.md)
@@ -112,7 +111,10 @@
       - [es2018](/basic/javascript/esversions/es2018.md)
       - [es2019](/basic/javascript/esversions/es2019.md)
       - [es2020](/basic/javascript/esversions/es2020.md)
-    - [进阶](/basic/javascript/advanced.md)
+    - 进阶
+      - [执行上下文作用域链与提升](/basic/javascript/scope.md)
+      - [闭包](/basic/javascript/closure.md)
+      - [原型链](/basic/javascript/protochain.md)
       - [Eventloop](/basic/javascript/eventloop.md)
     - [DOM 操作](/basic/javascript/dom.md)
     - [常见算法](/basic/javascript/common-algorithm.md)
@@ -216,7 +218,6 @@
   - [图片处理](/graphic/pichandle.md)
 - [面经](/interview/README.md)
   - [源码](/interview/source.md)
-
   - [手写](/interview/handwrite.md)
   - [编程](/interview/code.md)
   - [HTML](/interview/html.md)
