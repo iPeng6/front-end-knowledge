@@ -151,6 +151,7 @@
   - [SSR](/node/ssr/README.md)
 - [前端框架](/frame/README.md)
   - [React](/frame/react/README.md)
+    - [diff](/frame/react/diff.md)
     - [Redux](/frame/react/redux.md)
     - [Mobx](/frame/react/mobx.md)
     - [React-Router](/frame/react/react-router.md)

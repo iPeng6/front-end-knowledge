@@ -49,7 +49,7 @@
     webpack --watch --config build/webpack.dev.config.js --devtool source-map
     rollup -w -c scripts/config.js --sourcemap
     ```
-  3. 通过 package.json scripts 找配置找入口，分析目录结构，找到入口构造函数，找到兴趣点，记录文件方法等方便后续打断点
+  3. 通过 package.json scripts 找配置找入口，分析目录结构，找到入口构造函数，找到兴趣点，记录文件方法打标签等方便后续打断点
   4. 跑跑源码里的Demo，devtool 里 source -> cmd+p 直接定位文件打断点单步，ipad 上画画图
   5. 脚手架生成一个快速上手的小例子，尝试自己实现，逐步替换掉库引用，使得依然可以跑起来，里程碑
   6. 功能补充
