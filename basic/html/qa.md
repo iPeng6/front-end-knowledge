@@ -1,7 +1,15 @@
-# QA
+# HTML QA
 
-<details>
-<summary>DOCTYPE 的作用</summary>
+- [HTML QA](#html-qa)
+  - [DOCTYPE 的作用](#doctype-的作用)
+  - [SGML 、 HTML 、XML 和 XHTML 的区别](#sgml--html-xml-和-xhtml-的区别)
+  - [行内元素、块级元素、内联块级元素的区别](#行内元素块级元素内联块级元素的区别)
+  - [简述一下你对 HTML 语义化的理解](#简述一下你对-html-语义化的理解)
+  - [defer VS async](#defer-vs-async)
+  - [preload VS prefetch](#preload-vs-prefetch)
+  - [canvas VS svg](#canvas-vs-svg)
+
+## DOCTYPE 的作用
 
 IE5.5 引入了文档模式的概念，而这个概念是通过使用文档类型(DOCTYPE)切换实现的。
 
@@ -21,20 +29,14 @@ DOCTYPE 不存在或格式不正确会导致文档以兼容模式呈现。
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 ```
 
-</details>
-
-<details>
-<summary>SGML 、 HTML 、XML 和 XHTML 的区别</summary>
+## SGML 、 HTML 、XML 和 XHTML 的区别
 
 - SGML 是标准通用标记语言，是一种定义电子文档结构和描述其内容的国际标准语言， 是所有电子文档标记语言的起源。
 - HTML 是超文本标记语言，主要是用于规定怎么显示网页。
 - XML 是可扩展标记语言是未来网页语言的发展方向，XML 和 HTML 的最大区别就在于 XML 的标签是可以自己创建的，数量无限多，而 HTML 的标签都是固定的而且数量有限。
 - XHTML 也是现在基本上所有网页都在用的标记语言，他其实和 HTML 没什么本质的区 别，标签都一样，用法也都一样，就是比 HTML 更严格，比如标签必须都用**小写**，标签都必须有**闭合**标签等。
 
-</details>
-
-<details>
-<summary>行内元素、块级元素、内联块级元素的区别</summary>
+## 行内元素、块级元素、内联块级元素的区别
 
 1. 块级元素: display 属性取 block、table、flex、grid 和 list-item 等值的独占一行显示的元素。
 
@@ -61,10 +63,7 @@ DOCTYPE 不存在或格式不正确会导致文档以兼容模式呈现。
    - 和其它 inline 元素同行显示
    - 可以设置宽高/margin/padding（水平和垂直）多个内联块级不会换行
 
-</details>
-
-<details>
-<summary>简述一下你对 HTML 语义化的理解</summary>
+## 简述一下你对 HTML 语义化的理解
 
 1. 用正确的标签做正确的事情。
 2. html 语义化让页面的内容结构化，结构更清晰，便于浏览器、搜索引擎解析;
@@ -72,10 +71,7 @@ DOCTYPE 不存在或格式不正确会导致文档以兼容模式呈现。
 4. 搜索引擎的爬虫也依赖于 HTML 标记来确定上下文和各个关键字的权重，利于 SEO ;
 5. 使阅读源代码的人对网站更容易将网站分块，便于阅读维护理解。
 
-</details>
-
-<details>
-<summary>defer VS async</summary>
+## defer VS async
 
 1. `<script src="example.js"></script>`
 
@@ -95,10 +91,7 @@ DOCTYPE 不存在或格式不正确会导致文档以兼容模式呈现。
 
 也就是说 下载都是并行的，执行都是阻塞的，但是 `defer` 会放在文档解析完之后 DOMContentLoaded 之前执行，`async` 是下好立即执行，所以有可能文档过程中就下好阻塞执行，也可能文档解析结束后才下好执行
 
-</details>
-
-<details>
-<summary>preload VS prefetch</summary>
+## preload VS prefetch
 
 `preload` 是一种声明式的获取（fetch）指令，可以强制浏览器请求资源，提高资源优先级，将加载与执行分离，不阻塞文档解析，同时不阻塞文档 onload 事件。
 
@@ -138,11 +131,7 @@ DOCTYPE 不存在或格式不正确会导致文档以兼容模式呈现。
 4. 如果从一个页面切换到另一个页面，preload 会立即中断，prefetch 不会，可解决跨页打点请求丢失问题
 5. 为了提高下一页加载速度而不是当前页的资源使用 prefetch
 
-</details>
-
-
-<details>
-<summary>canvas VS svg</summary>
+## canvas VS svg
 
 | Canvas                                                                                                                                                 | SVG                                                                                                                                                                                   |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -155,14 +144,3 @@ DOCTYPE 不存在或格式不正确会导致文档以兼容模式呈现。
 | 不能被引擎抓取                                                                                                                                         | 可以被引擎抓取                                                                                                                                                                        |
 | ---                                                                                                                                                    | 复杂度高会减慢渲染速度（任何过度使用 DOM 的应用都不快）                                                                                                                               |
 | 最适合图像密集型的游戏，其中的许多对象会被频繁重绘                                                                                                     | 不适合游戏应用                                                                                                                                                                        |
-
-
-</details>
-
-
-<details>
-<summary></summary>
-
-
-
-</details>

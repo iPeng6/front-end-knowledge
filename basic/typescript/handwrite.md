@@ -1,6 +1,9 @@
-# 手写
+# Typescript 手写
 
-## Q: 用 ts 设计计算图形面积和
+- [Typescript 手写](#typescript-手写)
+  - [用 ts 设计计算图形面积和](#用-ts-设计计算图形面积和)
+
+## 用 ts 设计计算图形面积和
 
 ```
 function main(shapes) {

@@ -119,10 +119,11 @@
     - [DOM 操作](/basic/javascript/dom.md)
     - [常见算法](/basic/javascript/common-algorithm.md)
     - [常见问题](/basic/javascript/qa.md)
-    - [手写](/basic/javascript/handwritten.md)
+    - [手写](/basic/javascript/handwrite.md)
   - [TypeScript](/basic/typescript/README.md)
     - [手写](basic/typescript/handwrite.md)
     - [tsconfig](/basic/typescript/tsconfig.md)
+    - [QA](/basic/typescript/qa.md)
   - DSL
     - [正则表达式](/basic/dsl/regexp.md)
     - [SQL](/basic/dsl/sql.md)
@@ -222,3 +223,4 @@
   - [手写](/interview/handwrite.md)
   - [编程](/interview/code.md)
   - [HTML](/interview/html.md)
+  - [Javascript](/interview/js.md)

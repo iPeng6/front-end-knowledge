@@ -1,21 +1,21 @@
-# QA
+# CSS QA
 
-<details>
-<summary>word-break: break-all 和 word-wrap: break-word 的区别</summary>
+- [CSS QA](#css-qa)
+  - [word-break: break-all 和 word-wrap: break-word 的区别](#word-break-break-all-和-word-wrap-break-word-的区别)
+  - [word-spacing 和 white-space 区别](#word-spacing-和-white-space-区别)
+  - [position取值及之间的区别](#position取值及之间的区别)
+  - [margin 合并问题及解决](#margin-合并问题及解决)
+  - [清除浮动方法有哪些](#清除浮动方法有哪些)
+
+## word-break: break-all 和 word-wrap: break-word 的区别
 
 ![](/img/word-break-word-wrap.png ':size=400xauto')
 
-</details>
-
-<details>
-<summary>word-spacing 和 white-space 区别</summary>
+## word-spacing 和 white-space 区别
 
 word-spacing 表示单词之间间距，white-space 表示是否换行显示的
 
-</details>
-
-<details>
-<summary>position取值及之间的区别</summary>
+## position取值及之间的区别
 
 - static 该关键字指定元素使用正常的布局行为，即元素在文档常规流中当前的布局位置。此时 top, right, bottom, left 和 z-index 属性无效。
 - relative 该关键字下，元素先放置在未添加定位时的位置，再在不改变页面布局的前提下调整元素位置（因此会在此元素未添加定位时所在位置留下空白）。
@@ -30,12 +30,7 @@ word-spacing 表示单词之间间距，white-space 表示是否换行显示的
 * filter 的值不是 none 或 will-change 的值是 filter(只在 Firefox 下生效).
 * contain 的值是 paint (例如: contain: paint;)
 
-</details>
-
-<details>
-<summary>margin 合并问题及解决</summary>
-
-https://segmentfault.com/a/1190000013735912
+## margin 合并问题及解决
 
 相邻元素的情况
 
@@ -45,34 +40,8 @@ https://segmentfault.com/a/1190000013735912
 4. 相邻元素可以在其中一个元素外面包一层 div，并设置触发 BFC
 5. 浮动与绝对定位之类脱离文档流的元素不发生 margin 合并
 
-</details>
-
-<details>
-<summary>清除浮动方法有哪些</summary>
+## 清除浮动方法有哪些
 
 1. 添加额外元素设置 clear: both
 2. 使用伪元素:before :after 设置 clear: both
 3. 触发 BFC 隔离浮动使之不影响外部元素
-
-</details>
-
-<details>
-<summary></summary>
-
-
-
-</details>
-
-<details>
-<summary></summary>
-
-
-
-</details>
-
-<details>
-<summary></summary>
-
-
-
-</details>

@@ -44,7 +44,7 @@
 - 一口吃不下一个大胖子，先能跑起来一个基本小例子
 - 实际操作
   1. 首先 fork 一份源码库方便自己本地切分支打注释 log，提交笔记等
-  2. 构建出带 source-map 的源码，方便调试打断点，观察调用栈等熟悉源码执行流程
+  2. 如有必要构建出带 source-map 的源码，方便调试打断点，观察调用栈等熟悉源码执行流程
     ```
     webpack --watch --config build/webpack.dev.config.js --devtool source-map
     rollup -w -c scripts/config.js --sourcemap

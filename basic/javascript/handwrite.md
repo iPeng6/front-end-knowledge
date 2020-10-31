@@ -1,4 +1,19 @@
-# 手写代码
+# Javascript 手写
+
+- [Javascript 手写](#javascript-手写)
+  - [手写原生 Ajax](#手写原生-ajax)
+  - [手写操作 cookie](#手写操作-cookie)
+  - [柯里化](#柯里化)
+  - [手写 call、apply、bind](#手写-callapplybind)
+  - [防抖节流](#防抖节流)
+  - [手写 jsonp](#手写-jsonp)
+  - [模拟FPS](#模拟fps)
+  - [模拟 setTimeout](#模拟-settimeout)
+  - [flat 展平数组](#flat-展平数组)
+  - [实现 new](#实现-new)
+  - [将一维数组随机分为 m 组](#将一维数组随机分为-m-组)
+  - [实现金额数字千分位表示](#实现金额数字千分位表示)
+  - [找出一个字符串中重复出现的子序列及次数](#找出一个字符串中重复出现的子序列及次数)
 
 ## 手写原生 Ajax
 
@@ -48,6 +63,13 @@ function setCookie(cname, cvalue, exdays) {
 ## 柯里化
 
 ```js
+/*
+function add(a, b, c) {
+  return a + b + c
+}
+add(1)(2)(3)
+*/
+
 function curry(fn) {
   var l = fn.length
   var args = []
@@ -87,49 +109,33 @@ add(1)(2)(3)(3)(3)
 ## 手写 call、apply、bind
 
 ```js
-/**
- * 自定义call实现
- * @param context   上下文this对象
- * @param args      动态参数
- */
-Function.prototype.myCall = function (context, ...args) {
-  context = typeof context === 'object' ? context : window
-  // 防止覆盖掉原有属性
+
+Function.prototype.call = function (ctx, ...args) {
+  ctx = typeof ctx === 'object' ? ctx : window
+
   const key = Symbol()
-  // 这里的this为需要执行的方法，将方法挂载到当前上下文对象上，这样当对象调用方法时内部this自动指向调用对象
-  context[key] = this
-  // 方法执行
-  const result = context[key](...args)
-  delete context[key]
+  ctx[key] = this
+
+  const result = ctx[key](...args)
+  delete ctx[key]
   return result
 }
 
-/**
- * 自定义Apply实现
- * @param context   上下文this对象
- * @param args      参数数组
- */
-Function.prototype.myApply = function (context, args) {
-  context = typeof context === 'object' ? context : window
-  // 防止覆盖掉原有属性
+Function.prototype.apply = function (ctx, args) {
+  ctx = typeof ctx === 'object' ? ctx : window
+
   const key = Symbol()
-  // 这里的this为需要执行的方法
-  context[key] = this
-  // 方法执行
-  const result = context[key](...args)
-  delete context[key]
+  ctx[key] = this
+
+  const result = ctx[key](...args)
+  delete ctx[key]
   return result
 }
 
-/**
- * 自定义bind实现
- * @param context     上下文
- * @returns {Function}
- */
-Function.prototype.myBind = function (context) {
-  context = typeof context === 'object' ? context : window
+Function.prototype.bind = function (ctx) {
+  ctx = typeof ctx === 'object' ? ctx : window
   return (...args) => {
-    return this.call(context, ...args)
+    return this.call(ctx, ...args)
   }
 }
 ```
@@ -202,8 +208,27 @@ jsonp({
   },
 })
 ```
+## 模拟FPS
 
-## 用 requestAnimationFrame 模拟 setTimeout
+```js
+let frame = 0;
+let lastTime = Date.now();
+
+const loop = function () {
+  const now = Date.now();
+  frame++;
+  if (now > 1000 + lastTime) {
+      fps = Math.round((frame * 1000) / (now - lastTime));
+      console.log('fps', fps, frame);  // 每秒 FPS
+      frame = 0;
+      lastTime = now;
+  };
+
+  requestAnimationFrame(loop);
+}
+```
+
+## 模拟 setTimeout
 
 ```js
 function myTimeout(callback, delay) {
@@ -241,6 +266,16 @@ var t = myTimeout(function () {
  * [1, [2, [3]], [4]] => [1, 2, 3, 4]
  * @param data
  */
+
+function flat(arr) {
+  return arr.reduce((res, a) => {
+    if (Array.isArray(a)) {
+      return res.concat(flat(a))
+    }
+    return res.concat(a)
+  }, [])
+}
+
 function flat(data) {
   let result = []
   function loop(arr) {
@@ -264,14 +299,16 @@ console.log(flat(data))
 ## 实现 new
 
 ```js
-function myNew(Cons, ...params) {
-  const obj = Object.create(Cons.prototype)
-  const res = Cons.apply(a, params)
-  return typeof res === 'object' ? res : obj
+function myNew(Ctor, ...args) {
+  const obj = Object.create(Ctor.prototype)
+  const res = Ctor.apply(a, args)
+  return typeof res === 'object' && res !== null? res : obj
 }
 ```
 
-## 将一维数组随机分为 m 组，使得每一组个数尽量平均，例如[1,2,3,4,5] 分成 2 组得 [[3,1],[5,2,4]]
+## 将一维数组随机分为 m 组
+
+使得每一组个数尽量平均，例如 `[1,2,3,4,5]` 分成 2 组得 `[[3,1],[5,2,4]]`
 
 ```js
 function foo(arr, m) {
