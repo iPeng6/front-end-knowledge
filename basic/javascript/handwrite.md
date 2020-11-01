@@ -13,7 +13,6 @@
   - [实现 new](#实现-new)
   - [将一维数组随机分为 m 组](#将一维数组随机分为-m-组)
   - [实现金额数字千分位表示](#实现金额数字千分位表示)
-  - [找出一个字符串中重复出现的子序列及次数](#找出一个字符串中重复出现的子序列及次数)
 
 ## 手写原生 Ajax
 
@@ -368,12 +367,4 @@ console.log(foo(0.45))
 console.log(foo(12345.45))
 console.log(foo(123456.45))
 console.log(foo(1234567.45))
-```
-
-## 找出一个字符串中重复出现的子序列及次数
-
-```js
-function find(str) {}
-
-const str = 'asdfsdfgadfdsfsdfgasdfadf'
 ```
