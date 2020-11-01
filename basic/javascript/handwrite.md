@@ -11,7 +11,6 @@
   - [模拟 setTimeout](#模拟-settimeout)
   - [flat 展平数组](#flat-展平数组)
   - [实现 new](#实现-new)
-  - [将一维数组随机分为 m 组](#将一维数组随机分为-m-组)
   - [实现金额数字千分位表示](#实现金额数字千分位表示)
 
 ## 手写原生 Ajax
@@ -303,29 +302,6 @@ function myNew(Ctor, ...args) {
   const res = Ctor.apply(a, args)
   return typeof res === 'object' && res !== null? res : obj
 }
-```
-
-## 将一维数组随机分为 m 组
-
-使得每一组个数尽量平均，例如 `[1,2,3,4,5]` 分成 2 组得 `[[3,1],[5,2,4]]`
-
-```js
-function foo(arr, m) {
-  const result = new Array(m).fill(0).map(() => [])
-  let startIndex = 0
-
-  do {
-    const [getOne] = arr.splice(parseInt(Math.random() * arr.length), 1)
-    startIndex = startIndex % m
-    result[startIndex].push(getOne)
-    startIndex++
-  } while (arr.length > 0)
-
-  return result
-}
-console.log(foo([1, 2, 3, 4, 5], 2))
-console.log(foo([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3))
-console.log(foo([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], 3))
 ```
 
 ## 实现金额数字千分位表示

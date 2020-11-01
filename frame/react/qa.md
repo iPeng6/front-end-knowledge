@@ -3,7 +3,7 @@
 <details>
 <summary>参考</summary>
 
-- [8 个问题带你进阶 React](https://mp.weixin.qq.com/s/9xWS-rMgMFIDjly9vB70Yw)
+- [8 个问题带你进阶 React](https://juejin.im/post/6844904109691109390)
 
 </details>
 
