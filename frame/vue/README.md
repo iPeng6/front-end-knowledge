@@ -4,6 +4,7 @@
 - [VUE 源码解读之响应式系统及 Watcher 的调度实现](https://mp.weixin.qq.com/s/NsNlTCxl3F6JHXEt61-jMw)
 - [从 0 到 1 实现一个简易版 Vuex](https://juejin.im/post/5e3771e4e51d4502671a444d)
 - [带你全面分析 vue-router 源码（万字长文）](https://juejin.im/post/5e456513f265da573c0c6d4b)
+- [前端大班车Vue3](https://www.josephxia.com/vue3/#%E4%BB%A3%E7%A0%81%E5%9C%B0%E5%9D%80)
 
 vue nextTick
 
