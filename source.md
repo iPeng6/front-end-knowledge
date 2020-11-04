@@ -42,14 +42,18 @@
   - 另一方面可以避免错失一些必要细节，避免走马观花
 - 平时积累一些工作中遇到的问题，带着问题到源码里找答案，寻宝
 - 一口吃不下一个大胖子，先能跑起来一个小例子
-- 实际操作
-  1. 首先 fork 一份源码库方便自己本地切分支打注释 log，提交笔记等
-  2. 如有必要构建出带 source-map 的源码，方便调试打断点，观察调用栈等熟悉源码执行流程
-    ```
-    webpack --watch --config build/webpack.dev.config.js --devtool source-map
-    rollup -w -c scripts/config.js --sourcemap
-    ```
-  3. 通过 package.json scripts 找配置找入口，分析目录结构，找到入口构造函数，找到兴趣点，记录文件方法打标签等方便后续打断点
-  4. 跑跑源码里的Demo，devtool 里 source -> cmd+p 直接定位文件打断点单步，ipad 上画画图
-  5. 脚手架生成一个快速上手的小例子，尝试自己实现，逐步替换掉库引用，使得依然可以跑起来，里程碑
-  6. 功能补充
+
+## 实际操作
+
+1. 首先 fork 一份源码库方便自己本地切分支打注释 log，提交笔记等
+2. vscode里装个Bookmarks插件方便打标签，文件路径不识别配置一个 [jsconfig.json](/basic/code-style/jsconfig.md) 文件方便点击直接转到定义配合`ctrl+=` 、`ctrl+shift+=` 前进后退
+3. yarn/ npm install 一下会有一些类型库需要安装
+4. 有些脚手架dev模式已有source-map支持，如有必要比如打umd版本调试，可以构建出带 source-map 的源码，方便调试打断点，观察调用栈等熟悉源码执行流程
+  ```
+  webpack --watch --config build/webpack.dev.config.js --devtool source-map
+  rollup -w -c scripts/config.js --sourcemap
+  ```
+4. 通过 package.json scripts 找配置找入口，分析目录结构，找到入口构造函数，找到兴趣点，记录文件方法打标签等方便后续打断点
+5. 跑跑源码里的Demo，devtool 里 source -> cmd+p 直接定位文件打断点单步，ipad 上画画图
+6. 脚手架生成一个快速上手的小例子，尝试自己实现，逐步替换掉库引用，使得依然可以跑起来，里程碑
+7. 功能补充

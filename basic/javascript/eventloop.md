@@ -10,6 +10,7 @@
 - https://developer.mozilla.org/zh-CN/docs/Web/API/Window/requestAnimationFrame
 - https://developer.mozilla.org/zh-CN/docs/Web/API/Window/requestIdleCallback
 - [Node 定时器详解](http://www.ruanyifeng.com/blog/2018/02/node-event-loop.html)
+- [浏览器与Node的事件循环(Event Loop)有何区别?](https://blog.fundebug.com/2019/01/15/diffrences-of-browser-and-node-in-event-loop/)
 
 </details>
 
