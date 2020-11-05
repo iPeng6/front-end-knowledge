@@ -6,6 +6,11 @@
   - [position取值及之间的区别](#position取值及之间的区别)
   - [margin 合并问题及解决](#margin-合并问题及解决)
   - [清除浮动方法有哪些](#清除浮动方法有哪些)
+  - [选择器优先级及计算](#选择器优先级及计算)
+  - [CSS单位](#css单位)
+  - [一像素方案](#一像素方案)
+  - [CSS 模块化/组件化设计](#css-模块化组件化设计)
+  - [页面导入样式时，使用link和@import区别](#页面导入样式时使用link和import区别)
 
 ## word-break: break-all 和 word-wrap: break-word 的区别
 
@@ -45,3 +50,24 @@ word-spacing 表示单词之间间距，white-space 表示是否换行显示的
 1. 添加额外元素设置 clear: both
 2. 使用伪元素:before :after 设置 clear: both
 3. 触发 BFC 隔离浮动使之不影响外部元素
+
+## 选择器优先级及计算
+
+!important > 内联 > id > class、属性、伪类 > tag、伪元素
+
+计算规则是分别统计 (内联, id, class、属性、伪类, tag、伪元素) 出现的次数得到 (a, b, c, d)，然后从左依次向右比较大小，大的胜出，相同继续找下一位比较，都相同，后面的覆盖前面的
+
+通配符 `*` 关系选择器 `+, >, ~, ' '` 对优先级计算没有影响
+
+`!important` 优先级最高，如果都有 `!important` 则还是上面的规则比较
+
+## CSS单位
+
+## 一像素方案
+
+## CSS 模块化/组件化设计
+
+## 页面导入样式时，使用link和@import区别
+
+- link属于XHTML标签，除了加载CSS外，还能用于定义RSS,定义rel连接属性等作用；而@import是CSS提供的，只能用于加载CSS;
+- 页面被加载的时，link会同时被加载，而@import引用的CSS会等到页面被加载完再加载;

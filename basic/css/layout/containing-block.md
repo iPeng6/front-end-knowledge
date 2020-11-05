@@ -25,3 +25,56 @@
    2. will-change 的值是 transform 或 perspective
    3. filter 的值不是 none 或 will-change 的值是 filter(只在 Firefox 下生效).
    4. contain 的值是 paint (例如: contain: paint;)
+
+这里还有一点值得注意，初始包含块就是viewport的尺寸，但是当页面滚动时并不会随着viewport移动，滚动起来会发现 bottom 0 的元素居然停在body的中间
+
+你可以打开 position: relative; 的注释 试试，正常是相对于padding-box的，不包括border
+
+<vuep template="#icb-position" :iframe="true"></vuep>
+
+<script v-pre type="text/x-template" id="icb-position">
+<style>
+.box1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.box2 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.box3 {
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+.box4 {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+html {
+   overflow: auto;
+}
+body {
+  background: white;
+  color: #323232;
+
+  height: 3000px;
+  border: 20px solid red;
+  /* position: relative; */
+}
+</style>
+<template>
+<div>
+  <div class="box1">absolute top 0</div>
+  <div class="box2">absolute bottom 0</div>
+  <div class="box3">fixed top 0</div>
+  <div class="box4">fixed bottom 0</div>
+</div>
+</template>
+<script>
+  export default {}
+</script>
+</script>

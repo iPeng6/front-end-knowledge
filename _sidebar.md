@@ -98,6 +98,7 @@
       - [sass](/basic/css/preprocessor/sass.md)
       - [less](/basic/css/preprocessor/less.md)
       - [postcss](/basic/css/preprocessor/postcss.md)
+    - [优先级](/basic/css/priority.md)
     - [reset.css](/basic/css/reset.css.md)
     - [GPU加速](/basic/css/gpu-acceleration.md)
     - [Houdini](/basic/css/houdini.md)

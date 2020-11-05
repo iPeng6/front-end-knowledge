@@ -8,6 +8,7 @@
   - [defer VS async](#defer-vs-async)
   - [preload VS prefetch](#preload-vs-prefetch)
   - [canvas VS svg](#canvas-vs-svg)
+  - [cookies，sessionStorage和localStorage 的区别](#cookiessessionstorage和localstorage-的区别)
 
 ## DOCTYPE 的作用
 
@@ -144,3 +145,15 @@ DOCTYPE 不存在或格式不正确会导致文档以兼容模式呈现。
 | 不能被引擎抓取                                                                                                                                         | 可以被引擎抓取                                                                                                                                                                        |
 | ---                                                                                                                                                    | 复杂度高会减慢渲染速度（任何过度使用 DOM 的应用都不快）                                                                                                                               |
 | 最适合图像密集型的游戏，其中的许多对象会被频繁重绘                                                                                                     | 不适合游戏应用                                                                                                                                                                        |
+
+## cookies，sessionStorage和localStorage 的区别
+
+* cookie数据始终在同源的http请求中携带（即使不需要）,即会在浏览器和服务器间来回传递。
+* sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。
+- 存储大小：
+  - cookie数据大小不能超过4k。
+  - sessionStorage和localStorage 虽然也有存储大小的限制，但比cookie大得多，可以达到5M或更大。
+- 有期时间：
+  * localStorage    存储持久数据，浏览器关闭后数据不丢失除非主动删除数据；
+  * sessionStorage  数据在当前浏览器窗口关闭后自动删除。
+  * cookie          设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭
