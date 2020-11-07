@@ -220,7 +220,7 @@
 - [源码](/source.md)
 - [面经](/interview/README.md)
   - [手写](/interview/handwrite.md)
-  - [编程](/interview/code.md)
+  - [编码](/interview/code.md)
   - [HTML](/interview/html.md)
   - [Javascript](/interview/js.md)
 - 悟道

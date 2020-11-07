@@ -9,9 +9,12 @@
   - [手写 jsonp](#手写-jsonp)
   - [模拟FPS](#模拟fps)
   - [模拟 setTimeout](#模拟-settimeout)
+  - [模拟 setInterval](#模拟-setinterval)
   - [flat 展平数组](#flat-展平数组)
   - [实现 new](#实现-new)
-  - [实现金额数字千分位表示](#实现金额数字千分位表示)
+  - [实现 instanceof](#实现-instanceof)
+  - [promisify](#promisify)
+  - [compose](#compose)
 
 ## 手写原生 Ajax
 
@@ -75,9 +78,8 @@ function curry(fn) {
     args.push(x)
     if (args.length === l) {
       return fn.apply(this, args)
-    } else {
-      return c
     }
+    return c
   }
 }
 function add1(a, b, c) {
@@ -108,13 +110,13 @@ add(1)(2)(3)(3)(3)
 
 ```js
 
-Function.prototype.call = function (ctx, ...args) {
-  ctx = typeof ctx === 'object' ? ctx : window
+Function.prototype.call = function (ctx,...args) {
+  ctx = typeof ctx === 'object' && ctx !== null ? ctx : window
 
   const key = Symbol()
   ctx[key] = this
 
-  const result = ctx[key](...args)
+  const result = ctx[key]( ...args)
   delete ctx[key]
   return result
 }
@@ -125,7 +127,7 @@ Function.prototype.apply = function (ctx, args) {
   const key = Symbol()
   ctx[key] = this
 
-  const result = ctx[key](...args)
+  const result = ctx[key]( ...args)
   delete ctx[key]
   return result
 }
@@ -144,10 +146,10 @@ Function.prototype.bind = function (ctx) {
 // 函数防抖实现
 function debounce(fn, delay) {
   let timer = null
-  return function () {
+  return function (...args) {
     if (timer) clearTimeout(timer)
     timer = setTimeout(() => {
-      fn.apply(this, arguments)
+      fn.apply(this, args)
     }, delay)
   }
 }
@@ -157,15 +159,15 @@ function throttle(fn, cycle) {
   let start = Date.now()
   let now
   let timer
-  return function () {
+  return function (...args) {
     now = Date.now()
     clearTimeout(timer)
     if (now - start >= cycle) {
-      fn.apply(this, arguments)
+      fn.apply(this, args)
       start = now
     } else {
       timer = setTimeout(() => {
-        fn.apply(this, arguments)
+        fn.apply(this, args)
       }, cycle)
     }
   }
@@ -209,51 +211,101 @@ jsonp({
 ## 模拟FPS
 
 ```js
-let frame = 0;
-let lastTime = Date.now();
+/**
+ * 统一一段时间内总帧数，得到一帧需要的毫秒数，再用 1000 毫秒除以 一帧所需要的时间
+ * 前面不是很准，但是时间越长越准确
+ */
+function fps() {
+  let frame = 0
+  let start = Date.now()
+  let now
+  let raf
+  function loop() {
+    frame++
+    now = Date.now()
 
-const loop = function () {
-  const now = Date.now();
-  frame++;
-  if (now > 1000 + lastTime) {
-      fps = Math.round((frame * 1000) / (now - lastTime));
-      console.log('fps', fps, frame);  // 每秒 FPS
-      frame = 0;
-      lastTime = now;
-  };
+    const fps = Math.round(1000 / ((now - start) / frame))
 
-  requestAnimationFrame(loop);
+    // 一秒内的可能不太准
+    if (frame > 100) {
+      console.log(fps)
+    }
+
+    raf = requestAnimationFrame(loop)
+  }
+  loop()
+  return () => {
+    cancelAnimationFrame(raf)
+  }
+}
+
+// 直接统计 requestAnimationFrame 时间得到每一帧时间 得到fps 不太稳定
+function fps2() {
+  let last = Date.now()
+  let raf
+  function loop() {
+    const fps = Math.round(1000 / (Date.now() - last))
+    console.log(fps)
+    last = Date.now()
+    raf = requestAnimationFrame(loop)
+  }
+  loop()
+  return () => {
+    cancelAnimationFrame(raf)
+  }
 }
 ```
 
 ## 模拟 setTimeout
 
 ```js
-function myTimeout(callback, delay) {
-  var sum = 0
-  var raf
-  ;(function loop() {
-    var now = Date.now()
-    raf = requestAnimationFrame(function () {
-      sum += Date.now() - now
-      if (sum > delay) {
-        callback()
-      } else {
-        loop()
-      }
-    })
-  })()
-
-  return raf
+function timeout(fn, delay) {
+  let raf
+  let start = Date.now()
+  function loop() {
+    if (Date.now() - start > delay) {
+      fn()
+      return
+    }
+    raf = requestAnimationFrame(loop)
+  }
+  loop()
+  return () => {
+    cancelAnimationFrame(raf)
+  }
 }
 
-function myClearTimeout(raf) {
-  cancelAnimationFrame(raf)
+const cancel = timeout(() => {
+  console.log('timeout')
+}, 2000)
+```
+
+## 模拟 setInterval
+
+```js
+function interval(fn, cycle) {
+  let raf
+  let last = Date.now()
+  let now
+  function loop() {
+    now = Date.now()
+    if (now - last >= cycle) {
+      fn()
+      last = now
+    }
+
+    raf = requestAnimationFrame(loop)
+  }
+  loop()
+  return () => {
+    cancelAnimationFrame(raf)
+  }
 }
 
-var t = myTimeout(function () {
+const cancel = interval(() => {
   console.log(1)
 }, 1000)
+
 ```
 
 ## flat 展平数组
@@ -266,32 +318,28 @@ var t = myTimeout(function () {
  */
 
 function flat(arr) {
-  return arr.reduce((res, a) => {
-    if (Array.isArray(a)) {
-      return res.concat(flat(a))
+  return arr.reduce((ret, item) => {
+    if (Array.isArray(item)) {
+      return ret.concat(flat(item))
     }
-    return res.concat(a)
+    return ret.concat(item)
   }, [])
 }
 
-function flat(data) {
-  let result = []
-  function loop(arr) {
-    arr.forEach((d) => {
-      if (Array.isArray(d)) {
-        loop(d)
-      } else {
-        result.push(d)
+function flat2(arr, depth = 1) {
+  function loop(arr, i) {
+    return arr.reduce((ret, item) => {
+      if (i < depth && Array.isArray(item)) {
+        const res = ret.concat(loop(item, i + 1))
+        return res
       }
-    })
+      return ret.concat(item)
+    }, [])
   }
-  loop(data)
-  return result
+  return loop(arr, 1)
 }
 
-const data = [1, [2, [3]], [4]]
-
-console.log(flat(data))
+console.log(flat2([1, [2, [3, [4, 5]]], 7, [[[8], 9], 0]], 2))
 ```
 
 ## 实现 new
@@ -304,43 +352,60 @@ function myNew(Ctor, ...args) {
 }
 ```
 
-## 实现金额数字千分位表示
+## 实现 instanceof
 
 ```js
-// 递归方案
-function foo(num) {
-  const [intpart, decimalPart] = num.toString().split('.')
-  const arr = []
-
-  function loop(str) {
-    arr.push(str.slice(-3))
-    const remainstr = str.substr(0, str.length - 3)
-    if (remainstr.length > 3) {
-      loop(remainstr)
-    } else {
-      if (remainstr != '') {
-        arr.push(remainstr)
-      }
+function instanceOf(left, right) {
+  left = left.__proto__
+  let rightV = right.prototype
+  while (left) {
+    if (left === rightV) {
+      return true
     }
+    left = left.__proto__
   }
-  loop(intpart)
-  return arr.reverse().join(',') + (!!decimalPart ? '.' + decimalPart : '')
+  return false
 }
 
-// for循环方案
-function foo(num) {
-  const [intPart, decimalPart] = num.toString().split('.')
+function A() {}
+let a = new A()
+b = Object.create(a)
 
-  const arr = Array.from(intPart).reverse()
-  for (let i = 1; i < intPart.length / 3; i++) {
-    arr.splice(3 * i + i - 1, 0, ',')
+console.log(b instanceof A)
+console.log(instanceOf(b, A))
+```
+
+## promisify
+
+```js
+function promisify(fn) {
+  return (...args) =>
+    new Promise((resolve, reject) => {
+      fn(args, (error, value) => {
+        if (error) {
+          reject(error)
+        } else {
+          resolve(value)
+        }
+      })
+    })
+}
+```
+
+## compose
+
+```js
+function compose(...fns) {
+  return (...args) => {
+    return fns.slice(1).reduce((ret, fn) => fn(ret), fns[0](...args))
   }
-  return arr.reverse().join('') + (!!decimalPart ? '.' + decimalPart : '')
 }
 
-console.log(foo(12))
-console.log(foo(0.45))
-console.log(foo(12345.45))
-console.log(foo(123456.45))
-console.log(foo(1234567.45))
+const add = (x, y) => x + y
+const square = (z) => z * z
+const doble = (m) => m * 2
+
+const nf = compose(add)
+
+console.log(nf(1, 2))
 ```
