@@ -16,13 +16,16 @@
   - [x] Form
   - [ ] Message
 - [ ] react
+  - [x] fiber
+  - [ ] diff
+  - [ ] event
 - [ ] react-router
 - [ ] redux
 - [ ] babel
 - [ ] webpack
 - [ ] Promise
 - [ ] Axios
-- [ ] koa
+- [x] koa
 
 ## 为什么要阅读源码
 
@@ -44,6 +47,8 @@
 - 一口吃不下一个大胖子，先能跑起来一个小例子
 
 ## 实际操作
+
+**抽丝剥茧、照虎画猫、深入浅出**
 
 1. 首先 fork 一份源码库方便自己本地切分支打注释 log，提交笔记等
 2. vscode里装个Bookmarks插件方便打标签，文件路径不识别配置一个 [jsconfig.json](/basic/code-style/jsconfig.md) 文件方便点击直接转到定义配合`ctrl+=` 、`ctrl+shift+=` 前进后退
