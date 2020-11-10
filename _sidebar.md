@@ -165,6 +165,7 @@
   - [Express](/node/express/README.md)
   - [Koa](/node/koa/README.md)
   - [SSR](/node/ssr/README.md)
+  - [常用模块库](/node/node/common-module.md)
 - [跨平台](/cross-platform/README.md)
   - [Hybrid](/cross-platform/hybrid.md)
   - [React Native](/cross-platform/rn/README.md)
