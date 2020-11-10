@@ -1,6 +1,13 @@
 # 异常监控
 
+<details>
+<summary>参考</summary>
+
+- [一篇文章教你如何捕获前端错误](https://cloud.tencent.com/developer/article/1477500)
 - [把前端监控做到极致](https://zhuanlan.zhihu.com/p/32262716)
+
+</details>
+
 
 ## 三方服务
 
@@ -9,17 +16,18 @@
 
 ## 数据采集
 
-1. window.onerror
+1. window.onerror 捕获js运行时错误
 
 ```
 window.onerror = function(errorMessage, scriptURI, lineNumber,columnNumber,errorObj) {
     // doSomething
 }
 ```
+2. window.addEventListener('error', event => (){}, true); 捕获资源加载异常
+3. window.addEventListener('rejectionhandled', event => {}); 捕获Promise异常；addEventListener('unhandledrejection', callback) 捕获未处理异常
+4. fetch与xhr错误的捕获 劫持
 
-2. Promise.prototype.catch()
-
-3. Vue.config.errorHandler
+5. Vue.config.errorHandler
 
 ```js
 Vue.config.errorHandler = function (err, vm, info) {
