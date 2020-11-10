@@ -102,6 +102,7 @@
     - [reset.css](/basic/css/reset.css.md)
     - [GPU加速](/basic/css/gpu-acceleration.md)
     - [Houdini](/basic/css/houdini.md)
+    - [Demo](/basic/css/demo.md)
     - [QA](/basic/css/qa.md)
   - [JavaScript](/basic/javascript/README.md)
     - [基础](/basic/javascript/basic.md)

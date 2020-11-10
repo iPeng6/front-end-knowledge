@@ -1,5 +1,5 @@
 
-# 编程
+# 编码题
 
 ## 实现金额数字千分位表示
 
@@ -69,3 +69,36 @@ console.log(foo([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], 3))
 ```
 
 </details>
+
+## babel 转化
+
+```js
+for(let i=0;i<3;i++) {
+  setTimeout(()=>{
+    console.log(i)
+  })
+}
+for(let i=0;i<3;i++) {
+  console.log(i)
+}
+```
+
+```js
+"use strict";
+
+function loop(i) {
+  setTimeout(function (){
+    console.log(i)
+  })
+}
+
+for(var i=0;i<3;i++) {
+  loop(i)
+}
+
+for(var _i=0;_i<3;_i++) {
+  console.log(_i)
+}
+```
+
+## urlParse 将url参数变成对象，如果考虑编码问题空格处理，属性path解析，重名参数，数组参数？

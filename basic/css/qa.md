@@ -11,6 +11,8 @@
   - [一像素方案](#一像素方案)
   - [CSS 模块化/组件化设计](#css-模块化组件化设计)
   - [页面导入样式时，使用link和@import区别](#页面导入样式时使用link和import区别)
+  - [CSS选择器有哪些？哪些属性可以继承？](#css选择器有哪些哪些属性可以继承)
+  - [CSS3有哪些新特性？](#css3有哪些新特性)
 
 ## word-break: break-all 和 word-wrap: break-word 的区别
 
@@ -71,3 +73,27 @@ word-spacing 表示单词之间间距，white-space 表示是否换行显示的
 
 - link属于XHTML标签，除了加载CSS外，还能用于定义RSS,定义rel连接属性等作用；而@import是CSS提供的，只能用于加载CSS;
 - 页面被加载的时，link会同时被加载，而@import引用的CSS会等到页面被加载完再加载;
+
+## CSS选择器有哪些？哪些属性可以继承？
+
+CSS选择符：id选择器(#myid)、类选择器(.myclassname)、标签选择器(div, h1, p)、相邻选择器(h1 + p)、子选择器（ul > li）、后代选择器（li a）、通配符选择器（*）、属性选择器（a[rel=”external”]）、伪类选择器（a:hover, li:nth-child）、伪元素(:before :after)
+
+可继承的属性：font-size, font-family, color
+
+不可继承的样式：border, padding, margin, width, height
+
+优先级（就近原则）：!important > 内联 > id > class、属性、伪类 > tag、伪元素
+
+!important 比内联优先级高
+
+## CSS3有哪些新特性？
+
+* RGBA和透明度
+* background-image background-origin(content-box/padding-box/border-box) background-size background-repeat
+* word-wrap（对长的不可分割单词换行）word-wrap：break-word
+* 文字阴影：text-shadow： 5px 5px 5px #FF0000;（水平阴影，垂直阴影，模糊距离，阴影颜色）
+* font-face属性：定义自己的字体
+* 圆角（边框半径）：border-radius 属性用于创建圆角
+* 边框图片：border-image: url(border.png) 30 30 round
+* 盒阴影：box-shadow: 10px 10px 5px #888888
+* 媒体查询：定义两套css，当浏览器的尺寸变化时会采用不同的属性
