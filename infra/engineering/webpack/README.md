@@ -1,5 +1,8 @@
 # Webpack
 
+<details>
+<summary>参考</summary>
+
 官方文档
 
 - [中文官网](https://www.webpackjs.com/concepts/)
@@ -10,6 +13,10 @@
 - [4W 字长文带你深度解锁 Webpack 系列(上)](https://mp.weixin.qq.com/s/OBUcxEFXKQQubP08LO2Uhg)
 - [万字长文带你深度解锁 Webpack（进阶篇）](https://mp.weixin.qq.com/s/9XGaw2TmGbGolNKM1eJ4wQ)
 - [带你深度解锁 Webpack 系列(优化篇)](https://mp.weixin.qq.com/s/1BdKGW43MqWWsdQJ7MYI7w)
+
+
+</details>
+
 
 ## 一、什么是 Webpack
 

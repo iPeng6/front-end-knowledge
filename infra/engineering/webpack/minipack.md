@@ -1,6 +1,9 @@
-# minipack
+# webpack 编译原理
 
-> 源码：https://github.com/ronami/minipack/blob/master/src/minipack.js
+- [200 行 JS 代码，带你实现代码编译器](https://mp.weixin.qq.com/s/aZCJf3oKC9TdKl-AbIyT3g)
+- 源码：https://github.com/ronami/minipack/blob/master/src/minipack.js
+
+一个 minipack 实现
 
 ```js
 /**
