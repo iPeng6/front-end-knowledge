@@ -1,5 +1,8 @@
 # 基建
 
+- [「可视化搭建系统」--从设计到架构，探索前端领域技术和业务价值](https://mp.weixin.qq.com/s/eMggtuTPf4HT33QZINlP_Q)
+- [微前端思考与总结](https://mp.weixin.qq.com/s/YTiJ4UBgZs2om2SI6TUcmQ)
+
 - npm 私服
 - 公共类库
   - UI 库

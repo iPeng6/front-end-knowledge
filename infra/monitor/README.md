@@ -5,6 +5,7 @@
 
 - [一篇文章教你如何捕获前端错误](https://cloud.tencent.com/developer/article/1477500)
 - [把前端监控做到极致](https://zhuanlan.zhihu.com/p/32262716)
+- [如何监控网页崩溃？](https://zhuanlan.zhihu.com/p/40273861)
 
 </details>
 
@@ -85,6 +86,8 @@ window.setTimeout = function (callback, timeout) {
   }, timeout)
 }
 ```
+
+6. service worker 监控网页崩溃
 
 ## 数据上报
 

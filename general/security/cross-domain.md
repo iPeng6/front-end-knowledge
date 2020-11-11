@@ -7,6 +7,7 @@
 - [浏览器的同源策略](https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy) _- MDN_
 - [跨域资源共享 CORS 详解](http://www.ruanyifeng.com/blog/2016/04/cors.html) _- 阮一峰 2016 年 4 月 12 日_
 - [九种跨域方式实现原理（完整版）](https://juejin.im/post/5c23993de51d457b8c1f4ee1#heading-10) _- 浪里行舟 2019 年 01 月 25 日_
+- [新的跨域策略：使用COOP、COEP为浏览器创建更安全的环境](https://mp.weixin.qq.com/s/cpFSK9Ix9pTQmNBvJRc2lw)
 
 </details>
 

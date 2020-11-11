@@ -1,5 +1,12 @@
 # npm
 
+<details>
+<summary>参考</summary>
+
+- [npm 知识完全指南](https://mp.weixin.qq.com/s/XhrZk2vjzPgzIlXqGzMWzQ)
+
+</details>
+
 ## npm 是什么
 
 npm 是全世界最大的软件注册中心，是 node 默认的包管理工具，世界各地的开源开发者使用 npm 分享借鉴代码。
