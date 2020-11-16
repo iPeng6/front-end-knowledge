@@ -52,11 +52,12 @@
 * copy-webpack-plugin：打包相关的文档。除了JS/CSS/图片/字体图标等需要打包以外, 可能还有一些相关的文档也需要打包（word等）。文档内容是固定不变的, 我们只需要将对应的文件拷贝到打包目录中即可。
 * mini-css-extract-plugin：是一个专门用于将打包的CSS内容提取到单独文件的插件。前面我们通过style-loader打包的CSS都是直接插入到head中的。
 * webpack-merge：用于优化配置文件。针对不同的环境将不同的配置写到不同的文件中。如：common文件做公共配置项文件，dev文件为开发配置，prod文件为上线配置。在dev，prod文件中配置webpack-merge，使其分别同common文件合并，并暴露给外界。
-* SplitChunksPlugin：Code-Splitting实现的底层就是通过Split-Chunks-Plugin实现的，其作用就是代码分割。
+* SplitChunksPlugin：Code-Splitting实现的底层就是通过Split-Chunks-Plugin实现的，其作用就是代码分割。也可以抽取公共模块。
 * HMR(HotModuleReplacementPlugin)：热更新插件, 会在内容发生改变的时候，时时的更新（打包）修改的内容但是不会重新刷新网站。推荐使用
-* babel：将ES678高级语法转换为ES5低级语法，否则在低级版本浏览器中我们的程序无法正确执行。使用说明
+* babel：将ES678高级语法转换为ES5低级语法，否则在低级版本浏览器中我们的程序无法正确执行。
 * babel-preset-env：告诉webpack我们需要兼容哪些浏览器，然后babel就会根据我们的配置自动调整转换方案, 如果需要兼容的浏览器已经实现了, 就不转换了。
 * babel/polyfill：没有对应关系就是指E5中根本就没有对应的语法, 例如Promise, includes等方法是ES678新增的。ES5中根本就没有对应的实现, 这个时候就需要再增加一些额外配置, 让babel自己帮我们实现对应的语法。
+* CommonsChunkPlugin：用于抽取公共模块，已经从 webpack v4 legato 中移除。新的使用 SplitChunksPlugin。
 
 ## 三、性能优化
 
