@@ -26,6 +26,7 @@
 - [ ] Promise
 - [ ] Axios
 - [x] koa
+- [ ] virtual-list
 
 ## 为什么要阅读源码
 
