@@ -237,6 +237,20 @@
 
   ![](img/openvscode2.png)
 
+- Finder 增加工具栏菜单
+
+  可以通过 Automator 创建应用程序
+
+  1. Automator -> 应用程序 -> 选取
+  2. 搜索 `访达` -> 依次拖入右侧 -> 选择打开方式对应的app -> 保存到应用程序下，名称例如 `typora-open.app`
+
+    ![](img/finder-tool.png)
+
+  3. 给 `typora-open.app` 换图标， 找到 原来 `Typora.app`， 显示简介，鼠标点击左上角 图标 `cmd+c` 复制
+  4. 找到 `typora-open.app` 显示简介，鼠标点击左上角图标 `cmd+v` 粘贴
+  5. 按住 `cmd` 键，直接拖入 finder 顶部工具栏
+    ![](img/finder-tool-eg.png)
+
 - 配置
 
   - `cmd + shift + .` 显示隐藏文件
