@@ -7,3 +7,4 @@
 - [vue-next-template-explorer](https://vue-next-template-explorer.netlify.app/)
 - [Typescript Playground](https://www.typescriptlang.org/play)
 - [Babel repl](https://babeljs.io/repl)
+- [Electron Playground](https://github.com/tal-tech/electron-playground)
