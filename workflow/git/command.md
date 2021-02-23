@@ -149,6 +149,7 @@ git push [remote][branch] # 上传本地指定分支到远程仓库
 git push [remote] --force # 强行推送当前分支到远程仓库，即使有冲突
 git push [remote] --all # 推送所有分支到远程仓库
 git push <remote> :<branch/tag-name> # 删除远程分支或标签
+git push <remote> -d [branch-name] # 删除远程分支
 git push --tags # 上传所有标签
 ```
 
